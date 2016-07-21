@@ -12,8 +12,8 @@ obvious name rsh for Ruby-shell was already in use by the Remote-shell. So,
 given the limited scope of this effort, and not wanting to do a lot of typing
 all the time, I chose the name mysh for My-shell.
 
-It would seem that no one has programmed a shell program at this level of
-narcissism until now as that name was available.
+Since that name was available, it would seem that no one had yet written a
+shell program at this level of narcissism.
 
 The mysh is available as both a stand-alone CLI program and for use as a
 command shell within Ruby applications and Rails web sites.
