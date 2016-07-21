@@ -1,0 +1,17 @@
+*.bat
+*.zip
+*.tmp
+*.gem
+*.rbc
+/.bundle/
+/.yardoc
+/Gemfile.lock
+/_yardoc/
+/coverage/
+/doc/
+/pkg/
+/spec/reports/
+/tmp/
+rdoc
+tmp
+temp.txt
