@@ -7,6 +7,7 @@
 $no_alias_read_line_module = true
 require "mini_readline"
 
+require_relative "mysh/internal"
 require_relative "mysh/version"
 
 #The MY SHell module. A container for its functionality.
@@ -24,7 +25,7 @@ module Mysh
     def do_mysh
       loop do
         input = @input.readline
-        system(input)
+        InternalCommand.execute(input) || system(input)
       end
 
       rescue MiniReadlineEOI
