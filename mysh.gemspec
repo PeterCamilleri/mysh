@@ -9,8 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Peter Camilleri"]
   spec.email         = ["peter.c.camilleri@gmail.com"]
 
-  spec.summary       = "mysh -- a Ruby inspired command shell"
-
+  spec.summary       = Mysh::SUMMARY
   spec.description   = "mysh -- a Ruby inspired command shell " +
                        "for CLI and application use."
   spec.homepage      = "http://teuthida-technologies.com/"

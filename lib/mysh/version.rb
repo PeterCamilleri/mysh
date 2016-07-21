@@ -1,6 +1,9 @@
 # coding: utf-8
 
-class Mysh
+module Mysh
   #The version string of MY SHell.
   VERSION = "0.0.1"
+
+  #A brief summary of this gem.
+  SUMMARY = "mysh -- a Ruby inspired command shell"
 end
