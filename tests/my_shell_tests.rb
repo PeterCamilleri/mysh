@@ -18,5 +18,7 @@ class MyShellTester < Minitest::Test
   def test_for_internal_commands
     assert(Mysh::InternalCommand.commands['exit'], "The exit command is missing.")
     assert(Mysh::InternalCommand.commands['quit'], "The quit command is missing.")
+
+    assert_raises { Mysh::InternalCommand.add_alias('blam', 'shazzam') }
   end
 end

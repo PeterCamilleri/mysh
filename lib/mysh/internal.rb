@@ -19,7 +19,10 @@ module Mysh
     end
 
     def self.add_alias(new_name, old_name)
-      command = @commands[old_name]
+      unless (command = @commands[old_name])
+        fail "Error adding alias #{new_name} for #{old_name}"
+      end
+
       @commands[new_name] = new(new_name,
                                 command.description,
                                 &command.action)
