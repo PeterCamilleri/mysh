@@ -12,4 +12,26 @@ require_relative "mysh/version"
 #The MY SHell module. A container for its functionality.
 module Mysh
 
+  #The MyShell class that implements the shell.
+  class MyShell
+
+    #Set up the shell instance.
+    def initialize
+      @input = MiniReadline::Readline.new(history: true, eoi_detect: true)
+    end
+
+    #The actual shell method.
+    def do_mysh
+      loop do
+        input = @input.readline
+        system(input)
+      end
+
+      rescue MiniReadlineEOI
+    end
+  end
+end
+
+if __FILE__ == $0
+  Mysh::MyShell.new.do_mysh
 end
