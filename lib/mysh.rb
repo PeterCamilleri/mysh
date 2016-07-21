@@ -9,7 +9,7 @@ require "mini_readline"
 
 require_relative "mysh/version"
 
-#The MY SHell class. Contains it's state.
-class Mysh
+#The MY SHell module. A container for its functionality.
+module Mysh
 
 end
