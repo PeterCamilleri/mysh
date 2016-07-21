@@ -1,2 +1,35 @@
+#!/usr/bin/env rake
+# coding: utf-8
+
+require 'rake/testtask'
+require 'rdoc/task'
 require "bundler/gem_tasks"
-task :default => :spec
+
+#Generate internal documentation with rdoc.
+RDoc::Task.new do |rdoc|
+  rdoc.rdoc_dir = "rdoc"
+
+  #List out all the files to be documented.
+  rdoc.rdoc_files.include("lib/**/*.rb", "license.txt", "README.md")
+
+  #Set a title.
+  rdoc.options << '--title' << 'My Shell Gem Internals'
+end
+
+#Run the mini_readline unit test suite.
+Rake::TestTask.new do |t|
+  #List out all the test files.
+  t.test_files = FileList['tests/**/*.rb']
+  t.verbose = false
+end
+
+desc "Run a scan for smelly code!"
+task :reek do |t|
+  `reek --no-color lib > reek.txt`
+end
+
+desc "What version of mine_readline is this?"
+task :vers do |t|
+  puts
+  puts "mysh (My Shell) version = #{Mysh::VERSION}"
+end
