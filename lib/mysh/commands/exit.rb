@@ -9,6 +9,8 @@ module Mysh
     add(self.new('exit', 'exit mysh.') do |args|
       raise MiniReadlineEOI
     end)
+
+    add_alias('quit', 'exit')
   end
 end
 

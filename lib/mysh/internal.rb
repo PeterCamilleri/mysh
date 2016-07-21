@@ -8,9 +8,21 @@ module Mysh
 
     @commands = {}
 
+    class << self
+      #The command library, a hash.
+      attr_reader :commands
+    end
+
     #Add a command to the command library.
     def self.add(command)
       @commands[command.name] = command
+    end
+
+    def self.add_alias(new_name, old_name)
+      command = @commands[old_name]
+      @commands[new_name] = new(new_name,
+                                command.description,
+                                &command.action)
     end
 
     #Execute an internal command
@@ -27,6 +39,12 @@ module Mysh
 
     #The name of the command.
     attr_reader :name
+
+    #The description of the command.
+    attr_reader :description
+
+    #The action of the command.
+    attr_reader :action
 
     #Setup an internal command
     def initialize(name, description, &action)

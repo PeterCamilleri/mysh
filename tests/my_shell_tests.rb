@@ -12,7 +12,11 @@ class MyShellTester < Minitest::Test
   include MinitestVisible
 
   def test_that_module_entities_exists
-    assert_equal(Class, Mysh.class)
+    assert_equal(Module, Mysh.class)
   end
 
+  def test_for_internal_commands
+    assert(Mysh::InternalCommand.commands['exit'], "The exit command is missing.")
+    assert(Mysh::InternalCommand.commands['quit'], "The quit command is missing.")
+  end
 end
