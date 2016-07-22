@@ -19,7 +19,7 @@ module Mysh
           first[0] <=> second[0]
         end
         .each do |info|
-          puts "#{info[0].to_s.ljust(width)} - #{info[1]}"
+          puts "#{info[0].ljust(width)} - #{info[1]}"
         end
     end)
 
