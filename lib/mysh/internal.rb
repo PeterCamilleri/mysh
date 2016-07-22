@@ -6,6 +6,11 @@ module Mysh
   #A mysh internal command.
   class InternalCommand
 
+    #------------------------------------
+    # Class data and behavior:
+    #------------------------------------
+
+    #Set up the command library hash.
     @commands = {}
 
     class << self
@@ -40,6 +45,10 @@ module Mysh
       end
     end
 
+    #------------------------------------
+    # Instance data and behavior:
+    #------------------------------------
+
     #The name of the command.
     attr_reader :name
 
@@ -67,7 +76,6 @@ module Mysh
     end
 
   end
-
 
 end
 
