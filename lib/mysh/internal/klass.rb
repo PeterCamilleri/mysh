@@ -42,6 +42,11 @@ module Mysh
       end
     end
 
+    #Get information on all commands.
+    def self.info
+      @commands.values.map { |command| command.info }
+    end
+
   end
 end
 
