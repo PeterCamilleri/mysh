@@ -11,6 +11,7 @@ module Mysh
       puts
 
       width = 0
+      puts "Internal mysh commands:"
 
       InternalCommand
         .info
