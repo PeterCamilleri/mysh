@@ -14,6 +14,7 @@ class MyShellTester < Minitest::Test
   def test_that_module_entities_exists
     assert_equal(Module, Mysh.class)
     assert_equal(Class,  Mysh::InternalCommand.class)
+    assert_equal(Class,  Mysh::ExecHost.class)
   end
 
   def test_for_internal_commands

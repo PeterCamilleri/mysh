@@ -8,6 +8,7 @@ $no_alias_read_line_module = true
 require "mini_readline"
 
 require_relative "mysh/internal"
+require_relative "mysh/expression"
 require_relative "mysh/version"
 
 #The MY SHell module. A container for its functionality.
@@ -20,14 +21,22 @@ module Mysh
 
   #The actual shell method.
   def self.do_mysh
+    reset
     @input = MiniReadline::Readline.new(history: true, eoi_detect: true)
 
     loop do
       input = @input.readline
-      InternalCommand.execute(input) || system(input)
+
+      @exec_host.execute(input)      ||
+      InternalCommand.execute(input) ||
+      system(input)
     end
 
     rescue MiniReadlineEOI
+  end
+
+  def self.reset
+    @exec_host = ExecHost.new
   end
 
 end

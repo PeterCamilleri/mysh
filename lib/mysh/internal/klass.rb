@@ -36,7 +36,7 @@ module Mysh
 
       if (command = @commands[args[0]])
         command.execute(args[1..-1])
-        true
+        :internal
       else
         false
       end
