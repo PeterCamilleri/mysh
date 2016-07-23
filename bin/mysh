@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+#
+# The Ruby inspired, ego based, My Shell command line processor.
+#
+
+require 'mysh'
+
+Mysh.do_mysh
