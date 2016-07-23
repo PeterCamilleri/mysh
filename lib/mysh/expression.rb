@@ -1,12 +1,15 @@
 # coding: utf-8
 
 require 'pp'
+require 'mathn'
 
 #* expression.rb -- mysh ruby expression processor.
 module Mysh
 
   #The mysh ruby expression processor.
   class ExecHost
+
+    include Math
 
     #Get help info on Ruby host exec.
     def self.info
