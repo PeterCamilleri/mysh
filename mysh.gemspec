@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = Mysh::SUMMARY
   spec.description   = "mysh -- a Ruby inspired command shell " +
-                       "for CLI and application use.[WIP]"
+                       "for CLI and application use."
   spec.homepage      = "http://teuthida-technologies.com/"
 
   spec.license       = "MIT"
@@ -30,5 +30,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest_visible', ">= 0.1.1"
   spec.add_development_dependency 'rdoc',             "~> 4.0.1"
 
+  spec.add_runtime_dependency     'pp'
   spec.add_runtime_dependency     'mini_readline',    ">= 0.5.2"
 end

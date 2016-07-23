@@ -32,13 +32,13 @@ module Mysh
 
     #Execute an internal command
     def self.execute(str)
-      args = str.split
+      unless str[0] == ' '
+        args = str.split
 
-      if (command = @commands[args[0]])
-        command.execute(args[1..-1])
-        :internal
-      else
-        false
+        if (command = @commands[args[0]])
+          command.execute(args[1..-1])
+          :internal
+        end
       end
     end
 

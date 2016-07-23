@@ -35,6 +35,7 @@ module Mysh
     rescue MiniReadlineEOI
   end
 
+  #Reset the state of the execution hosting environment.
   def self.reset
     @exec_host = ExecHost.new
   end
