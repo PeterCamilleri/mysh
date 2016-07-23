@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'pp'
+
 #* expression.rb -- mysh ruby expression processor.
 module Mysh
 
@@ -11,15 +13,8 @@ module Mysh
 
     #Process an expression.
     def execute(str)
-      if str[0] == '='
-        begin
-          eval("@result" + str)
-          puts @result
-        rescue StandardError, ScriptError => err
-          puts "Error: #{err}"
-        end
-
-        :expression
+      if str.start_with?('=')
+        do_execute(str)
       else
         false
       end
@@ -31,6 +26,20 @@ module Mysh
       nil
     end
 
+    private
+    def do_execute(str)
+      if /\\\s*$/ =~ str
+        do_execute($` + "\n" + Mysh.input.readline(prompt: "mysh\\ "))
+      else
+        begin
+          pp eval("@result" + str)
+        rescue StandardError, ScriptError => err
+          puts "Error: #{err}"
+        end
+
+        :expression
+      end
+    end
   end
 end
 
