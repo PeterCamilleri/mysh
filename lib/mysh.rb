@@ -25,7 +25,7 @@ module Mysh
     @input = MiniReadline::Readline.new(history: true, eoi_detect: true)
 
     loop do
-      input = @input.readline
+      input = @input.readline(prompt: "mysh>")
 
       @exec_host.execute(input)      ||
       InternalCommand.execute(input) ||
