@@ -5,4 +5,4 @@
 
 require 'mysh'
 
-Mysh.do_mysh
+Mysh.run

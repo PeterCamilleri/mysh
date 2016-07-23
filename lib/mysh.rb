@@ -20,7 +20,7 @@ module Mysh
   end
 
   #The actual shell method.
-  def self.do_mysh
+  def self.run
     reset
     @input = MiniReadline::Readline.new(history: true, eoi_detect: true)
 
@@ -44,5 +44,5 @@ end
 
 #Some test code to run a shell if this file is run directly.
 if __FILE__ == $0
-  Mysh.do_mysh
+  Mysh.run
 end
