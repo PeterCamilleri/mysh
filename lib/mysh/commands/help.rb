@@ -32,10 +32,17 @@ module Mysh
           end
 
         puts
+        puts "Math support:"
+        puts " - the execution environment includes the Math module."
+        puts " - for more info use the help math command."
+
+        puts
         puts "External commands:"
         puts " - executed by the system using the standard shell."
         puts " - use help #{EXT_TAG} for more info on external commands."
         puts
+      elsif args[0] = 'math'
+        puts IO.read(File.dirname(__FILE__) + '/help_math.txt')
       else
         args[0] = "" if args[0] == EXT_TAG
         system("help " + args.join)
