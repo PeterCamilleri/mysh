@@ -22,7 +22,10 @@ module Mysh
   #The actual shell method.
   def self.run
     reset
-    @input = MiniReadline::Readline.new(history: true, eoi_detect: true)
+    @input = MiniReadline::Readline.new(history: true,
+                                        eoi_detect: true,
+                                        auto_complete: true,
+                                        auto_source: MiniReadline::FileFolderSource)
 
     loop do
       input = @input.readline(prompt: "mysh> ")
