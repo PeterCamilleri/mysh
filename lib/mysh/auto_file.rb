@@ -13,7 +13,7 @@ module Mysh
     def rebuild(str)
       extract_root_pivot(str)
 
-      list = Dir.glob(@pivot + '*')
+      list = Dir.glob(dress_down(@pivot) + '*')
 
       @cycler = list.empty? ? nil : list.cycle
     end
@@ -25,7 +25,34 @@ module Mysh
 
     #Get the next string for auto-complete
     def next
-      @root + @cycler.next
+      @root + dress_up(@cycler.next)
+    end
+
+    #Prepare the file name for internal use.
+    def dress_down(name)
+      name.gsub("\\", "/")
+    end
+
+    #Prepare the file name for external use.
+    def dress_up(name)
+      backslash? ? name.gsub("/", "\\") : name
+    end
+
+    #Does this file name use backslashes?
+    def backslash?
+      if @pivot.end_with?("\\")
+        true
+      elsif @pivot.end_with?("/")
+        false
+      elsif @pivot["\\"]
+        true
+      elsif @pivot["/"]
+        false
+      elsif MiniReadline::PLATFORM == :windows
+        true
+      else
+        false
+      end
     end
 
   end
