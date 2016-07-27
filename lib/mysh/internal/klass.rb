@@ -35,8 +35,8 @@ module Mysh
       unless str[0] == ' '
         command, args = parse(str.chomp)
 
-        if (internal_command = @commands[command])
-          internal_command.execute(args)
+        if (command)
+          command.execute(args)
           :internal
         end
       end
