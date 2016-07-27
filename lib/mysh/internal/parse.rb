@@ -13,15 +13,14 @@ module Mysh
       loop do
         begin
           next_char = read_point.next
-
-          if next_char == '"'
-            result.concat(get_string(read_point))
-          elsif next_char != ' '
-            result.concat(get_parameter(next_char, read_point))
-          end
-
         rescue StopIteration
           break
+        end
+
+        if next_char == '"'
+          result.concat(get_string(read_point))
+        elsif next_char != ' '
+          result.concat(get_parameter(next_char, read_point))
         end
       end
 
@@ -37,13 +36,13 @@ module Mysh
       loop do
         begin
           next_char = read_point.next
-
-          break if next_char == '"'
-
-          result << next_char
         rescue StopIteration
           break
         end
+
+        break if next_char == '"'
+
+        result << next_char
       end
 
       [result]
@@ -56,16 +55,16 @@ module Mysh
       loop do
         begin
           next_char = read_point.next
-
-          if next_char == '"'
-            return [result].concat(get_string(read_point))
-          elsif next_char == ' '
-            break
-          else
-            result << next_char
-          end
         rescue StopIteration
           break
+        end
+
+        if next_char == '"'
+          return [result].concat(get_string(read_point))
+        elsif next_char == ' '
+          break
+        else
+          result << next_char
         end
       end
 
