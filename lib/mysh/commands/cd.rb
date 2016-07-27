@@ -6,7 +6,7 @@ module Mysh
   #* cd.rb -- The mysh internal cd command.
   class InternalCommand
     #Add the exit command to the library.
-    add(self.new('cd', 'Change directory to <dir>.') do |args|
+    add(self.new('cd <dir>', 'Change directory to <dir>.') do |args|
       begin
         Dir.chdir(args[0])
         puts Dir.pwd

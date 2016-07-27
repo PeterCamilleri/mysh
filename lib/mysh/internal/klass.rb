@@ -16,7 +16,7 @@ module Mysh
 
     #Add a command to the command library.
     def self.add(command)
-      @commands[command.name] = command
+      @commands[command.name.split[0]] = command
     end
 
     #Add an alias for an existing command.
@@ -25,7 +25,7 @@ module Mysh
         fail "Error adding alias #{new_name} for #{old_name}"
       end
 
-      @commands[new_name] = new(new_name,
+      @commands[new_name] = new(new_name.split[0],
                                 command.description,
                                 &command.action)
     end
