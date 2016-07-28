@@ -61,10 +61,8 @@ module Mysh
         true
       elsif @pivot["/"]
         false
-      elsif MiniReadline::PLATFORM == :windows
-        true
       else
-        false
+        MiniReadline::PLATFORM == :windows
       end
     end
 
