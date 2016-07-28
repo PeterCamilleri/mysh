@@ -42,7 +42,7 @@ module Mysh
     #Do the actual work of executing an expression.
     def do_execute(str)
       if /\\\s*$/ =~ str
-        do_execute($PREMATCH + "\n" + Mysh.input.readline(prompt: "mysh\\ "))
+        do_execute($PREMATCH + "\n" + Mysh.input.readline(prompt: 'mysh\\ '))
       else
         begin
           pp eval("@result" + str)

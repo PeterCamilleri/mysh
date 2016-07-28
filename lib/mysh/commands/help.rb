@@ -41,7 +41,7 @@ module Mysh
         puts " - executed by the system using the standard shell."
         puts " - use help #{EXT_TAG} for more info on external commands."
         puts
-      elsif args[0] = 'math'
+      elsif args[0] == 'math'
         puts IO.read(File.dirname(__FILE__) + '/help_math.txt')
       else
         args[0] = "" if args[0] == EXT_TAG

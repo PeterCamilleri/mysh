@@ -2,17 +2,17 @@
 
 # mysh -- MY SHell -- a Ruby/Rails inspired command shell.
 
-require "English"
+require 'English'
 
 #Use the mini_readline gem but make sure that it does
 #not interfere with the standard readline library.
 $no_alias_read_line_module = true
-require "mini_readline"
+require 'mini_readline'
 
-require_relative "mysh/auto_file"
-require_relative "mysh/internal"
-require_relative "mysh/expression"
-require_relative "mysh/version"
+require_relative 'mysh/auto_file'
+require_relative 'mysh/internal'
+require_relative 'mysh/expression'
+require_relative 'mysh/version'
 
 #The MY SHell module. A container for its functionality.
 module Mysh
@@ -23,6 +23,8 @@ module Mysh
   end
 
   #The actual shell method.
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
   def self.run
     reset
     @input = MiniReadline::Readline.new(history: true,
@@ -31,14 +33,18 @@ module Mysh
                                         auto_source: AutoFile)
 
     loop do
-      input = @input.readline(prompt: "mysh> ")
+      input = @input.readline(prompt: 'mysh> ')
 
-      @exec_host.execute(input)      ||
-      InternalCommand.execute(input) ||
-      system(input)
+      begin
+        @exec_host.execute(input)      ||
+        InternalCommand.execute(input) ||
+        system(input)
+      rescue Interrupt => err
+        puts err
+      end
     end
 
-    rescue MiniReadlineEOI
+    rescue Interrupt, MiniReadlineEOI
   end
 
   #Reset the state of the execution hosting environment.

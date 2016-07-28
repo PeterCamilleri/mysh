@@ -32,11 +32,15 @@ module Mysh
     end
 
     #Prepare the file name for internal use.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def dress_down(name)
       name.gsub("\\", "/").gsub('"', '')
     end
 
     #Prepare the file name for external use.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def dress_up(name)
       dress_up_quotes(dress_up_slashes(name))
     end
@@ -47,6 +51,8 @@ module Mysh
     end
 
     #Dress up in quotes if needed.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def dress_up_quotes(name)
       name[' '] ? "\"#{name}\"" : name
     end
