@@ -18,9 +18,12 @@ module Mysh
       @cycler = list.empty? ? nil : list.cycle
     end
 
+    #The regex for extraction of the root and pivot.
+    EXTRACT = /("[^"\s][^"]*"?$)|(\S+$)/
+
     #Parse the string into the two basic components.
     def extract_root_pivot(str)
-      @root, @pivot = /\S+$/ =~ str ? [$PREMATCH, $MATCH] : [str, ""]
+      @root, @pivot = EXTRACT =~ str ? [$PREMATCH, $MATCH] : [str, ""]
     end
 
     #Get the next string for auto-complete
@@ -30,7 +33,7 @@ module Mysh
 
     #Prepare the file name for internal use.
     def dress_down(name)
-      name.gsub("\\", "/")
+      name.gsub("\\", "/").gsub('"', '')
     end
 
     #Prepare the file name for external use.
