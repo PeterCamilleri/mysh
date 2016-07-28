@@ -38,16 +38,16 @@ module Mysh
 
     #Prepare the file name for external use.
     def dress_up(name)
-      fix_quotes(fix_slashes(name))
+      dress_up_quotes(dress_up_slashes(name))
     end
 
     #Dress up slashes and backslashes.
-    def fix_slashes(name)
+    def dress_up_slashes(name)
       backslash? ? name.gsub("/", "\\") : name
     end
 
     #Dress up in quotes if needed.
-    def fix_quotes(name)
+    def dress_up_quotes(name)
       name[' '] ? "\"#{name}\"" : name
     end
 
