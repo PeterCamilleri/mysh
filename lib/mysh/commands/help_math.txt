@@ -1,5 +1,9 @@
 mysh Math support summary
 
+ - The Ruby expression execution environment includes the Math module. Thus
+   the following advanced math functions are directly available without having
+   to explicitly reference that module.
+
 Method     Returns Description
 =======    ======= ================================================
 acos(x)    Float   Computes the arc cosine of x. Returns 0..PI.
@@ -25,8 +29,8 @@ hypot(x,y) Float   Returns sqrt(x**2 + y**2), the hypotenuse of a right-angled
 ldexp(f,e) Float   Returns the value of f*(2**e).
 lgamma(x)  Array   Returns a two-element array containing the log of the
                    gamma of x and the sign of gamma of x.
-log(x)     Float   Computes the natural log of c.
-log(x,B)   Float   Computes the base B log of c.
+log(x)     Float   Computes the natural log of x.
+log(x,B)   Float   Computes the base B log of x.
 log10(x)   Float   Returns the base 10 logarithm of x.
 log2(x)    Float   Returns the base 2 logarithm of x.
 sin(x)     Float   Computes the sine of x (expressed in radians).
