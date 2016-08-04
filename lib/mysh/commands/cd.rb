@@ -6,7 +6,8 @@ module Mysh
   #* cd.rb -- The mysh internal cd command.
   class InternalCommand
     #Add the cd command to the library.
-    add(self.new('cd <dir>', 'Change directory to <dir> and display the new working directory.') do |args|
+    desc = 'Change directory to <dir> and display the new working directory.'
+    add(self.new('cd <dir>', desc) do |args|
       begin
         Dir.chdir(args[0]) unless args.empty?
         puts decorate(Dir.pwd)
