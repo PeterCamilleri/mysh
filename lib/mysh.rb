@@ -9,6 +9,7 @@ require 'English'
 $no_alias_read_line_module = true
 require 'mini_readline'
 
+require_relative 'mysh/smart_source'
 require_relative 'mysh/internal'
 require_relative 'mysh/expression'
 require_relative 'mysh/version'
@@ -29,7 +30,7 @@ module Mysh
     @input = MiniReadline::Readline.new(history: true,
                                         eoi_detect: true,
                                         auto_complete: true,
-                                        auto_source: MiniReadline::AutoFileSource)
+                                        auto_source: SmartSource)
 
     loop do
       input = @input.readline(prompt: 'mysh> ')

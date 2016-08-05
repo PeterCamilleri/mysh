@@ -2,7 +2,14 @@ mysh Ruby expression support summary
 
  - All command lines that begin with an equals "=" sign are evaluated as Ruby
    expressions.
+ - Expressions ending with a backslash character "\" are continued on the next
+   line. The prompt changes to "mysh\" to indicate that this is going on.
  - The results are displayed using the pretty-print facility.
- - The results are also stored in the pseudo-variable result. This allows
-   previous results to be used in the next next expression.
+ - Auto-complete always places any file names in quotes so they can be used
+   as string parameters.
+
+A few noteworthy methods exist that facilitate use of Ruby expressions:
+
+reset    Reset the execution environment to the default state.
+result   Returns the result of the previous expression.
 

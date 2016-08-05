@@ -35,7 +35,12 @@ module Mysh
     #Do the actual work of executing an expression.
     def do_execute(str)
       if /\\\s*$/ =~ str
-        do_execute($PREMATCH + "\n" + Mysh.input.readline(prompt: 'mysh\\ '))
+        parms = {
+                 prompt: 'mysh\\ ',
+                 auto_source: MiniReadline::QuotedFileFolderSource
+                }
+
+        do_execute($PREMATCH + "\n" + Mysh.input.readline(parms))
       else
         begin
           pp eval("@result" + str)
