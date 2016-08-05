@@ -1,0 +1,8 @@
+mysh Ruby expression support summary
+
+ - All command lines that begin with an equals "=" sign are evaluated as Ruby
+   expressions.
+ - The results are displayed using the pretty-print facility.
+ - The results are also stored in the pseudo-variable result. This allows
+   previous results to be used in the next next expression.
+

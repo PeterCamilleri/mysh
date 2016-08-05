@@ -11,13 +11,6 @@ module Mysh
 
     include Math
 
-    #Get help info on Ruby host exec.
-    def self.info
-      [["=an_expr", "Display the result of evaluating an expression in ruby."],
-       ["=result",  "Display the result of the previous evaluation."],
-       ["=stuff \\","This expression is continued on the next line."]]
-    end
-
     #The result of the previous expression.
     attr_reader :result
 
@@ -55,4 +48,3 @@ module Mysh
     end
   end
 end
-
