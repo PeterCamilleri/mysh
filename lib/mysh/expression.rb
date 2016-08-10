@@ -43,7 +43,8 @@ module Mysh
         do_execute($PREMATCH + "\n" + Mysh.input.readline(parms))
       else
         begin
-          pp eval("@result" + str)
+          eval("@result" + str)
+          pp @result unless @result.nil?
         rescue StandardError, ScriptError => err
           puts "Error: #{err}"
         end

@@ -10,6 +10,7 @@ mysh Ruby expression support summary
 
 A few noteworthy methods exist that facilitate use of Ruby expressions:
 
-reset    Reset the execution environment to the default state.
-result   Returns the result of the previous expression.
-
+reset      Reset the execution environment to the default state.
+result     Returns the result of the previous expression.
+vls <mask> List modules with version info. The optional mask string value
+           is used to filter for modules containing that string.

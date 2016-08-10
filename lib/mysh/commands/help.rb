@@ -5,9 +5,6 @@ module Mysh
 
   #* exit.rb -- The mysh internal exit command.
   class InternalCommand
-    #The tag used for default external help.
-    EXT_TAG = '-'
-
     #Add the exit command to the library.
     add(self.new('help', 'Display help information for mysh.') do |args|
       puts "mysh (MY ruby SHell) version: #{Mysh::VERSION}"
@@ -33,8 +30,7 @@ module Mysh
       elsif args[0] == 'ruby'
         puts IO.read(File.dirname(__FILE__) + '/help_ruby.txt')
       else
-        args[0] = "" if args[0] == EXT_TAG
-        system("help " + args.join)
+        puts "help #{args[0]} ???"
       end
 
     end)
