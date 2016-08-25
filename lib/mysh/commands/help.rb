@@ -11,13 +11,7 @@ module Mysh
       puts
 
       if args.empty?
-        width = 0
-        puts "1) Internal mysh commands:"
-        puts " - executed by mysh directly."
-        puts " - supports the following set of commands."
-        puts
-        puts "Command    Description"
-        puts "=======    ==========="
+        puts IO.read(File.dirname(__FILE__) + '/help_internal.txt')
 
         InternalCommand
           .info
