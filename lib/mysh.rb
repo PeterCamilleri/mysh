@@ -27,11 +27,7 @@ module Mysh
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
   def self.run
-    reset
-    @input = MiniReadline::Readline.new(history: true,
-                                        eoi_detect: true,
-                                        auto_complete: true,
-                                        auto_source: SmartSource)
+    init_run
 
     loop do
       input = @input.readline(prompt: 'mysh> ')
@@ -48,8 +44,17 @@ module Mysh
     rescue Interrupt, MiniReadlineEOI
   end
 
+  #Set up for the run command.
+  def self.init_run
+    reset_host
+    @input = MiniReadline::Readline.new(history: true,
+                                        eoi_detect: true,
+                                        auto_complete: true,
+                                        auto_source: SmartSource)
+  end
+
   #Reset the state of the execution hosting environment.
-  def self.reset
+  def self.reset_host
     @exec_host = ExecHost.new
   end
 

@@ -27,12 +27,14 @@ module Mysh
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def reset
-      Mysh.reset
+      Mysh.reset_host
       nil
     end
 
     private
     #Do the actual work of executing an expression.
+    #<br>Endemic Code Smells
+    #* :reek:TooManyStatements
     def do_execute(str)
       if /\\\s*$/ =~ str
         parms = {
@@ -44,7 +46,13 @@ module Mysh
       else
         begin
           eval("@result" + str)
-          pp @result unless @result.nil?
+
+          if @result
+            pp @result
+          else
+            puts @result
+          end
+
         rescue StandardError, ScriptError => err
           puts "Error: #{err}"
         end
