@@ -12,3 +12,6 @@
  - executed by the system using the standard shell.
  - to force the use of the external shell, add a leading space to the command.
 
+Note: If the command has a '.rb' extension it is executed by Ruby.
+      So the command "myfile.rb" is executed as "ruby myfile.rb"
+
