@@ -11,8 +11,9 @@ require 'mini_readline'
 require 'vls'
 
 require_relative 'mysh/smart_source'
-require_relative 'mysh/internal'
 require_relative 'mysh/expression'
+require_relative 'mysh/internal'
+require_relative 'mysh/ruby'
 require_relative 'mysh/version'
 
 #The MY SHell module. A container for its functionality.
@@ -35,6 +36,7 @@ module Mysh
       begin
         @exec_host.execute(input)      ||
         InternalCommand.execute(input) ||
+        ruby_execute(input)            ||
         system(input)
       rescue Interrupt => err
         puts err
