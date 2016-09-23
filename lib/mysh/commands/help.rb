@@ -6,7 +6,7 @@ module Mysh
   #* exit.rb -- The mysh internal exit command.
   class InternalCommand
     #Add the exit command to the library.
-    add(self.new('help', 'Display help information for mysh.') do |args|
+    add('help', 'Display help information for mysh.') do |args|
       puts "mysh (MY ruby SHell) version: #{Mysh::VERSION}"
       puts
 
@@ -27,7 +27,7 @@ module Mysh
         puts "help #{args[0]} ???"
       end
 
-    end)
+    end
 
     add_alias('?', 'help')
   end

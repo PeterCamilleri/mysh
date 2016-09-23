@@ -7,23 +7,23 @@ module Mysh
   class InternalCommand
     #Add the cd command to the library.
     desc = 'Change directory to <dir> and display the new working directory.'
-    add(self.new('cd <dir>', desc) do |args|
+    add('cd <dir>', desc) do |args|
       begin
         Dir.chdir(args[0]) unless args.empty?
         puts decorate(Dir.pwd)
       rescue => err
         puts "Error: #{err}"
       end
-    end)
+    end
 
     #Add the pwd command to the library.
-    add(self.new('pwd', 'Display the current working directory.') do |args|
+    add('pwd', 'Display the current working directory.') do |args|
       begin
         puts decorate(Dir.pwd)
       rescue => err
         puts "Error: #{err}"
       end
-    end)
+    end
 
   end
 end
