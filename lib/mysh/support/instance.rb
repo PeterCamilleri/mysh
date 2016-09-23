@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal.rb -- mysh internal command instance data and methods.
+#* support/instance.rb -- mysh internal command instance data and methods.
 module Mysh
 
   #The mysh internal command instance data and methods.

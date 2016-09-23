@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal/klass.rb -- mysh internal command class level data and methods.
+#* support/klass.rb -- mysh internal command class level data and methods.
 module Mysh
 
   #The mysh internal command class level data and methods.
