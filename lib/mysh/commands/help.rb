@@ -12,12 +12,7 @@ module Mysh
 
       if args.empty?
         puts IO.read(File.dirname(__FILE__) + '/help_internal.txt')
-
-        InternalCommand
-          .info
-          .sort {|first, second | first[0] <=> second[0] }
-          .each {|info| puts "#{info[0].ljust(10)} #{info[1]}" }
-        puts
+        InternalCommand.display_internal_help_info
         puts IO.read(File.dirname(__FILE__) + '/help.txt')
       elsif args[0] == 'math'
         puts IO.read(File.dirname(__FILE__) + '/help_math.txt')
@@ -30,6 +25,32 @@ module Mysh
     end
 
     add_alias('?', 'help')
+
+    #Display internal help information.
+    def self.display_internal_help_info
+      #Get the help info sorted.
+      help_info = info.sort {|first, second | first[0] <=> second[0] }
+
+      #Determine the width of the tag area.
+      tag_width = help_info.max_by {|item| item[0].length}[0].length + 1
+
+      #Display the information.
+      help_info.each {|item| display_help_item(item, tag_width) }
+
+      puts
+    end
+
+    #Display one item of help.
+    def self.display_help_item(item, tag_width)
+      tag = item[0]
+
+      item[1].each do |detail|
+        puts "#{tag.ljust(tag_width)} #{detail}"
+        tag = ""
+      end
+    end
+
   end
+
 end
 

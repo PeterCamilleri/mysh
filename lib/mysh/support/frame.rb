@@ -16,7 +16,7 @@ module Mysh
 
     #Setup an internal command
     def initialize(name, description, &action)
-      @name, @description, @action = name, description, action
+      @name, @description, @action = name, description.in_array, action
     end
 
     #Execute the command.

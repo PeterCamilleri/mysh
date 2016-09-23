@@ -2,5 +2,6 @@
  - executed by mysh directly.
  - supports the following set of commands.
 
-Command    Description
-=======    ===========
+   Internal Commands
+  ===================
+
