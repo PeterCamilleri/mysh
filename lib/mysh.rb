@@ -3,10 +3,6 @@
 # mysh -- MY SHell -- a Ruby/Rails inspired command shell.
 
 require 'English'
-
-#Use the mini_readline gem but make sure that it does
-#not interfere with the standard readline library.
-$no_alias_read_line_module = true
 require 'mini_readline'
 require 'vls'
 
