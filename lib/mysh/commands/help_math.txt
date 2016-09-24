@@ -1,8 +1,10 @@
 mysh Math support summary
 
- - The Ruby expression execution environment includes the Math module. Thus
-   the following advanced math functions are directly available without having
-   to explicitly reference that module.
+The Ruby expression execution environment has direct access to many advanced
+Math functions. For example, to compute the cosine of 3.141592653589793 use:
+
+  mysh> =cos(PI)
+  -1.0
 
 Method     Returns Description
 =======    ======= ================================================
@@ -39,4 +41,7 @@ sinh(x)    Float   Computes the hyperbolic sine of x (expressed in radians).
 sqrt(x)    Float   Returns the non-negative square root of x.
 tan(x)     Float   Computes the tangent of x (expressed in radians).
 tanh(x)    Float   Computes the hyperbolic tangent of x (expressed in radians).
+
+PI         Float   The value 3.141592653589793
+E          Float   The value 2.718281828459045
 
