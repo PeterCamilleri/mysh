@@ -53,7 +53,7 @@ Ruby interpreter.
 From the mysh help:
 
     mysh> ?
-    mysh (MY ruby SHell) version: 0.1.9
+    mysh (MY ruby SHell) version: 0.1.11
 
     1) Internal mysh commands:
      - executed by mysh directly.
@@ -92,7 +92,7 @@ From the mysh help:
 and
 
     mysh> ? ruby
-    mysh (MY ruby SHell) version: 0.1.9
+    mysh (MY ruby SHell) version: 0.1.11
 
     mysh Ruby expression support summary
 
@@ -114,7 +114,7 @@ and
 and
 
     mysh> ? math
-    mysh (MY ruby SHell) version: 0.1.9
+    mysh (MY ruby SHell) version: 0.1.11
 
     mysh Math support summary
 
