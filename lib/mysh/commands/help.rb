@@ -11,9 +11,9 @@ module Mysh
       puts
 
       if args.empty?
-        puts IO.read(File.dirname(__FILE__) + '/help_internal.txt')
+        puts IO.read(File.dirname(__FILE__) + '/help_head.txt')
         InternalCommand.display_items(info)
-        puts IO.read(File.dirname(__FILE__) + '/help.txt')
+        puts IO.read(File.dirname(__FILE__) + '/help_tail.txt')
       elsif args[0] == 'math'
         puts IO.read(File.dirname(__FILE__) + '/help_math.txt')
       elsif args[0] == 'ruby'
