@@ -8,7 +8,7 @@
  - the execution environment includes the Math module.
  - for more info use the 'help math' command.
 
-4) External commands:"
+4) External commands:
  - executed by the system using the standard shell.
  - to force the use of the external shell, add a leading space to the command.
 
