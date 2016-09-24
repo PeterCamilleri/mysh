@@ -62,8 +62,9 @@ module Mysh
     end
 
     #Display one item.
-    def self.display_item(item, tag_width=item[0].length+1)
+    def self.display_item(item, tag_width=nil)
       tag = item[0]
+      tag_width ||= tag.length + 1
 
       item[1].each do |detail|
         puts "#{tag.ljust(tag_width)} #{detail}"

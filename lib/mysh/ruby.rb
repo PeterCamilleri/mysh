@@ -1,5 +1,6 @@
 # coding: utf-8
 
+#* ruby.rb -- Support for executing Ruby files with the ruby interpreter.
 module Mysh
 
   #Try to execute as a Ruby program.
