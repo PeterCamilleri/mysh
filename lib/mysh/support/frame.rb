@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal.rb -- mysh internal command instance data and methods.
+#* support/frame.rb -- The abstract frame of mysh internal commands.
 module Mysh
 
   #The mysh internal command instance data and methods.
@@ -16,9 +16,7 @@ module Mysh
 
     #Setup an internal command
     def initialize(name, description, &action)
-      @name        = name
-      @description = description
-      @action      = action
+      @name, @description, @action = name, description.in_array, action
     end
 
     #Execute the command.

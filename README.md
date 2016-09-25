@@ -47,43 +47,82 @@ This prompt can be used to execute three sorts of commands:
 
 * Internal commands that are processed directly by mysh
 * Ruby expressions, which are preceded by the equal (=) sign.
-* External commands that are passed on to the standard command shell.
+* External commands that are passed on to the standard command shell or the
+Ruby interpreter.
 
 From the mysh help:
 
     mysh> ?
-    mysh (MY SHell) version: 0.1.0
+    mysh (MY ruby SHell) version: 0.1.11
 
-    Internal mysh commands:
+    1) Internal mysh commands:
      - executed by mysh directly.
-     - a leading space skips all internal commands.
+     - supports the following set of commands.
 
-    !           Display the mysh command history.
-    =an_expr    Display the result of evaluating an expression in ruby.
-    =result     Display the result of the previous evaluation.
-    =stuff \    This expression is continued on the next line.
-    ?           Display help information for mysh.
-    cd <dir>    Change directory to <dir> and display the new working directory.
-    exit        Exit mysh.
-    help        Display help information for mysh.
-    history     Display the mysh command history.
-    pwd         Display the current working directory.
-    quit        Exit mysh.
+       Internal Commands
+      ===================
 
-    Math support:
+    !         Display the mysh command history.
+    ?         Display help information for mysh.
+    cd <dir>  Change directory to the optional <dir> parameter.
+              Then display the current working directory.
+    exit      Exit mysh.
+    help      Display help information for mysh.
+    history   Display the mysh command history.
+    pwd       Display the current working directory.
+    quit      Exit mysh.
+
+    2) Ruby Expression support:
+     - any line beginning with an equals "=" sign will be evaluated as a Ruby
+       expression. This allows the mysh command line to serve as a programming,
+       debugging and super-calculator environment.
+     - for more info use the 'help ruby' command.
+
+    3) Math support:
      - the execution environment includes the Math module.
-     - for more info use the help math command.
+     - for more info use the 'help math' command.
 
-    External commands:
+    4) External commands:
      - executed by the system using the standard shell.
-     - use help - for more info on external commands.
+     - to force the use of the external shell, add a leading space to the command.
+
+    Note: If the command has a '.rb' extension it is executed by Ruby.
+          So the command "myfile.rb" is executed as "ruby myfile.rb"
+
+and
+
+    mysh> ? ruby
+    mysh (MY ruby SHell) version: 0.1.11
+
+    mysh Ruby expression support summary
+
+     - All command lines that begin with an equals "=" sign are evaluated as Ruby
+       expressions.
+     - Expressions ending with a backslash character "\" are continued on the next
+       line. The prompt changes to "mysh\" to indicate that this is going on.
+     - The results are displayed using the pretty-print facility.
+     - Auto-complete always places any file names in quotes so they can be used
+       as string parameters.
+
+    A few noteworthy methods exist that facilitate use of Ruby expressions:
+
+    reset      Reset the execution environment to the default state.
+    result     Returns the result of the previous expression.
+    vls <mask> List modules with version info. The optional mask string value
+               is used to filter for modules containing that string.
 
 and
 
     mysh> ? math
-    mysh (MY SHell) version: 0.1.0
+    mysh (MY ruby SHell) version: 0.1.11
 
     mysh Math support summary
+
+    The Ruby expression execution environment has direct access to many advanced
+    Math functions. For example, to compute the cosine of 3.141592653589793 use:
+
+      mysh> =cos(PI)
+      -1.0
 
     Method     Returns Description
     =======    ======= ================================================
@@ -110,8 +149,8 @@ and
     ldexp(f,e) Float   Returns the value of f*(2**e).
     lgamma(x)  Array   Returns a two-element array containing the log of the
                        gamma of x and the sign of gamma of x.
-    log(x)     Float   Computes the natural log of c.
-    log(x,B)   Float   Computes the base B log of c.
+    log(x)     Float   Computes the natural log of x.
+    log(x,B)   Float   Computes the base B log of x.
     log10(x)   Float   Returns the base 10 logarithm of x.
     log2(x)    Float   Returns the base 2 logarithm of x.
     sin(x)     Float   Computes the sine of x (expressed in radians).
@@ -121,12 +160,81 @@ and
     tan(x)     Float   Computes the tangent of x (expressed in radians).
     tanh(x)    Float   Computes the hyperbolic tangent of x (expressed in radians).
 
+    PI         Float   The value 3.141592653589793
+    E          Float   The value 2.718281828459045
 
 The mysh can also be used from within a Ruby application:
 
 ```ruby
 Mysh.run
 ```
+
+## Adding New Commands
+
+It is possible to add new internal commands to the mysh CLI. This is done by
+depositing the appropriate ruby file in the commands folder located at:
+
+  /mysh/lib/mysh/commands
+
+As an example, the file cd.rb is shown to illustrate the responsibilities of
+a typical command plug-in:
+
+```ruby
+# coding: utf-8
+
+#* commands/cd.rb -- The mysh internal cd command.
+module Mysh
+
+  #* cd.rb -- The mysh internal cd command.
+  class InternalCommand
+    #Add the cd command to the library.
+    desc = ['Change directory to the optional <dir> parameter.',
+            'Then display the current working directory.']
+
+    add('cd <dir>', desc) do |args|
+      begin
+        Dir.chdir(args[0]) unless args.empty?
+        puts decorate(Dir.pwd)
+      rescue => err
+        puts "Error: #{err}"
+      end
+    end
+
+    #Add the pwd command to the library.
+    add('pwd', 'Display the current working directory.') do |args|
+      begin
+        puts decorate(Dir.pwd)
+      rescue => err
+        puts "Error: #{err}"
+      end
+    end
+
+  end
+end
+```
+
+Note that the plug in code is contained within the InternalCommand class under
+the Mysh module umbrella. The principle method used to create internal commands
+is the add method:
+
+```ruby
+add(command_name, command_description) do |args|
+  # Action block goes here
+end
+```
+Where:
+* command_name is the name of the command with optional argument descriptions
+seperated with spaces. The command is the first word of this string.
+* command_description is a string or an array of strings that describe the
+command.
+* args is an array of zero or more arguments that were entered with the command.
+
+Commands sometimes have more than one possible name. This is supported with:
+
+```ruby
+add_alias(new_name, old_name)
+```
+
 
 ## Contributing
 

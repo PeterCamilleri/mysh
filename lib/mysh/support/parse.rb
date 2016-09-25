@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* parse.rb -- mysh internal command parser.
+#* support/parse.rb -- mysh internal command parser.
 module Mysh
 
   #The mysh internal command instance data and methods.
