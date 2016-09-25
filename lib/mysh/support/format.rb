@@ -11,7 +11,7 @@ module Mysh
       @commands
         .values
         .map  {|command| command.info }
-        .sort {|first, second | first[0] <=> second[0] }
+        .sort {|first, second| first[0] <=> second[0] }
     end
 
     #Display an array of items.

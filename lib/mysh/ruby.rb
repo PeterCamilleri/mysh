@@ -5,7 +5,9 @@ module Mysh
 
   #Try to execute as a Ruby program.
   def self.ruby_execute(str)
-    if File.extname(str.split[0]) == '.rb'
+    command = str.split[0]
+
+    if command && File.extname(command) == '.rb'
       new_command = "ruby #{str}"
 
       puts "=> #{new_command}"
