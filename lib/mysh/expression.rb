@@ -38,7 +38,7 @@ module Mysh
     #* :reek:TooManyStatements
     def do_build(str)
       if /\\\s*$/ =~ str
-        parms = {prompt: 'mysh\\ ',
+        parms = {prompt: 'mysh\\',
                  auto_source: MiniReadline::QuotedFileFolderSource}
 
         do_build($PREMATCH + "\n" + Mysh.input.readline(parms))

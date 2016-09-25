@@ -28,7 +28,7 @@ module Mysh
     init_run
 
     loop do
-      input = @input.readline(prompt: 'mysh> ')
+      input = @input.readline(prompt: 'mysh>')
 
       begin
         @exec_host.execute(input)      ||
