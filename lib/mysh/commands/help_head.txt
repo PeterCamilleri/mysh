@@ -1,6 +1,7 @@
 1) Internal mysh commands:
- - executed by mysh directly.
- - supports the following set of commands.
+
+- Are executed by mysh directly.
+- Support the following set of commands.
 
    Internal Commands
   ===================
