@@ -16,24 +16,38 @@ module Mysh
 
     #Display an array of items.
     def self.display_items(items)
+      puts format_items(items)
+      puts
+    end
+
+    #Format an array of items.
+    def self.format_items(items, buffer=[])
       #Determine the width of the tag area.
       tag_width = items.max_by {|item| item[0].length}[0].length + 1
 
       #Display the information.
-      items.each {|item| display_item(item, tag_width) }
+      items.each {|item| format_item(item, buffer, tag_width) }
 
-      puts
+      buffer
     end
 
     #Display one item.
     def self.display_item(item, tag_width=nil)
+      puts format_item(item, [], tag_width)
+      puts
+    end
+
+    #Format one item.
+    def self.format_item(item, buffer=[], tag_width=nil)
       tag = item[0]
       tag_width ||= tag.length + 1
 
       item[1].each do |detail|
-        puts "#{tag.ljust(tag_width)} #{detail}"
+        buffer << "#{tag.ljust(tag_width)} #{detail}"
         tag = ""
       end
+
+      buffer
     end
 
   end
