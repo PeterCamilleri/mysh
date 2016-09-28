@@ -11,8 +11,12 @@ module Mysh
 
     include Math
 
+    @result = nil
+
     #The result of the previous expression.
-    attr_reader :result
+    class << self
+      attr_accessor :result
+    end
 
     #Process an expression.
     def execute(str)
@@ -49,12 +53,17 @@ module Mysh
 
     #Execute the string
     def do_execute(str)
-      instance_eval("@result" + str)
-      send(@result ? :pp : :puts, @result)
+      instance_eval("ExecHost.result #{str}")
+      send(@result ? :pp : :puts, result)
     rescue StandardError, ScriptError => err
       puts "Error: #{err}"
     ensure
       return :expression
+    end
+
+    #Get the previous result
+    def result
+      ExecHost.result
     end
   end
 
