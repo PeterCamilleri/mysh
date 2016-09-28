@@ -13,6 +13,8 @@ module Mysh
 
     include Math
 
+    #These variables live here so that they are not part of the mysh
+    #execution environment. This provides a little isolation.
     class << self
       attr_accessor :result
       attr_accessor :exec_fiber
@@ -21,6 +23,9 @@ module Mysh
     end
 
     #Set up a new execution environment
+    #<br>Note
+    #* The exec_result variable is needed because Fiber.yield messes up the
+    #  return value on an exception, even if that exception is handled.
     def initialize
       ExecHost.result = nil
 
