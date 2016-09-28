@@ -6,5 +6,8 @@
   leading space will force the use of the external command.
 - If the command has a '.rb' extension, it is executed by the appropriate ruby
   interpreter. So the command "myfile.rb" is executed as
-  "/usr/bin/ruby.exe test.rb"
+
+  "/usr/bin/ruby.exe myfile.rb"
+
+  for this particular system.
 
