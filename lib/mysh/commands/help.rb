@@ -10,14 +10,14 @@ module Mysh
       if args.empty?
         puts "mysh (MY ruby SHell) version: #{Mysh::VERSION}\n\n"
         puts IO.read(File.dirname(__FILE__) + '/help_head.txt')
-        InternalCommand.display_items(info)
+        display_items(InternalCommand.command_info)
         puts IO.read(File.dirname(__FILE__) + '/help_tail.txt')
       elsif args[0] == 'math'
         puts IO.read(File.dirname(__FILE__) + '/help_math.txt')
       elsif args[0] == 'ruby'
         puts IO.read(File.dirname(__FILE__) + '/help_ruby.txt')
       else
-        puts "help #{args[0]} ???"
+        puts "help #{args.inspect} ???"
       end
 
     end
