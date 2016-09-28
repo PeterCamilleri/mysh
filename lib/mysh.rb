@@ -10,7 +10,7 @@ require 'in_array'
 require_relative 'mysh/smart_source'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
-require_relative 'mysh/ruby'
+require_relative 'mysh/external_ruby'
 require_relative 'mysh/version'
 
 #The MY SHell module. A container for its functionality.

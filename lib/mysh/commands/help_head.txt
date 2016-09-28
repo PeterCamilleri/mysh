@@ -1,8 +1,16 @@
-1) Internal mysh commands:
+1) Ruby Expression support:
 
-- Are executed by mysh directly.
-- Support the following set of commands.
+- Any line beginning with an equals "=" sign will be evaluated as a Ruby
+  expression. This allows the mysh command line to serve as a programming,
+  debugging and super-calculator environment.
+- For more information on ruby expressions use the 'help ruby' command.
 
-   Internal Commands
-  ===================
+- This environment includes support for advanced mathematical operations.
+- For more information on this feature, use the 'help math' command.
+
+2) Internal mysh commands:
+
+- Internal commands are recognized by name and are executed by mysh directly.
+- These commands are found in the ".../mysh/lib/mysh/commands" folder.
+- The following set of commands are supported:
 

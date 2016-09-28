@@ -1,20 +1,10 @@
-2) Ruby Expression support:
+3) External commands:
 
-- Any line beginning with an equals "=" sign will be evaluated as a Ruby
-  expression. This allows the mysh command line to serve as a programming,
-  debugging and super-calculator environment.
-- For more info use the 'help ruby' command.
-
-3) Math support:
-
-- The execution environment includes the Math module.
-- For more info use the 'help math' command.
-
-4) External commands:
-
-- Executed by the system using the standard shell.
-- To force the use of the external shell, add a leading space to the command.
-
-Note: If the command has a '.rb' extension it is executed by Ruby.
-      So the command "myfile.rb" is executed as "ruby myfile.rb"
+- All other commands are executed by the system using the standard shell or
+  the appropriate ruby interpreter.
+- If an internal command has the same name as an external command, adding a
+  leading space will force the use of the external command.
+- If the command has a '.rb' extension, it is executed by the appropriate ruby
+  interpreter. So the command "myfile.rb" is executed as
+  "C:/RailsInstaller/Ruby2.1.0/bin/ruby.exe myfile.rb"
 
