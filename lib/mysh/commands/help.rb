@@ -17,7 +17,7 @@ module Mysh
 
     HELP = Hash.new(lambda {|args| puts "No help found for #{args[0]}." })
 
-    HELP[nil]    = lambda {|_args| show_help('/help_head.txt') }
+    HELP[nil]    = lambda {|_args| show_help('/help.txt') }
     HELP['math'] = lambda {|_args| show_help('/help_math.txt') }
     HELP['ruby'] = lambda {|_args| show_help('/help_ruby.txt') }
 
