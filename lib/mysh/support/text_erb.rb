@@ -7,7 +7,7 @@ module Mysh
   class InternalCommand
 
     #Process a string with embedded Ruby code.
-    def self.process_string(str)
+    def process_string(_str)
 
 
 

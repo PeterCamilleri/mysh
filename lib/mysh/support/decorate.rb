@@ -19,11 +19,15 @@ module Mysh
     end
 
     #Dress up in quotes if needed.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def dress_up_quotes(name)
       name[' '] ? "\"#{name}\"" : name
     end
 
     #Does this file name use backslashes?
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def backslash?
       MiniReadline::PLATFORM == :windows
     end

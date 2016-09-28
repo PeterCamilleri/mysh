@@ -21,6 +21,8 @@ module Mysh
     end
 
     #Format an array of items.
+    #<br>Endemic Code Smells
+    #* :reek:FeatureEnvy
     def format_items(items, buffer=[])
       #Determine the width of the tag area.
       tag_width = items.max_by {|item| item[0].length}[0].length + 1
@@ -38,9 +40,10 @@ module Mysh
     end
 
     #Format one item.
-    def format_item(item, buffer=[], tag_width=nil)
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
+    def format_item(item, buffer=[], tag_width)
       tag = item[0]
-      tag_width ||= tag.length + 1
 
       item[1].each do |detail|
         buffer << "#{tag.ljust(tag_width)} #{detail}"

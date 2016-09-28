@@ -13,11 +13,7 @@ module Mysh
       result, read_point = [], input.chars.each
 
       loop do
-        begin
-          next_parse_char = read_point.next
-        rescue StopIteration
-          break
-        end
+        next_parse_char = read_point.next
 
         if next_parse_char == '"'
           result.concat(get_string(read_point))
@@ -38,11 +34,7 @@ module Mysh
       result = ""
 
       loop do
-        begin
-          next_str_char = read_point.next
-        rescue StopIteration
-          break
-        end
+        next_str_char = read_point.next
 
         break if next_str_char == '"'
 
@@ -59,11 +51,7 @@ module Mysh
       result = first_char
 
       loop do
-        begin
-          next_parm_char = read_point.next
-        rescue StopIteration
-          break
-        end
+        next_parm_char = read_point.next
 
         if next_parm_char == '"'
           return [result].concat(get_string(read_point))
