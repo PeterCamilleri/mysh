@@ -4,6 +4,8 @@ require 'pp'
 require 'mathn'
 
 #* expression.rb -- mysh ruby expression processor.
+#<br>Endemic Code Smells
+#* :reek:Attribute
 module Mysh
 
   #The mysh ruby expression processor.
@@ -11,11 +13,31 @@ module Mysh
 
     include Math
 
-    @result = nil
-
-    #The result of the previous expression.
     class << self
       attr_accessor :result
+      attr_accessor :exec_fiber
+      attr_accessor :exec_binding
+      attr_accessor :exec_result
+    end
+
+    #Set up a new execution environment
+    def initialize
+      ExecHost.result = nil
+
+      ExecHost.exec_fiber = Fiber.new do |cmd|
+        ExecHost.exec_binding = binding
+
+        while true
+          begin
+            ExecHost.exec_result = ExecHost.exec_binding.eval(cmd)
+          rescue StandardError, ScriptError => err
+            ExecHost.exec_result = "#{err.class.to_s}: #{err}"
+          end
+
+          cmd = Fiber.yield
+        end
+      end
+
     end
 
     #Process an expression.
@@ -53,17 +75,15 @@ module Mysh
 
     #Execute the string
     def do_execute(str)
-      instance_eval("ExecHost.result #{str}")
-      send(@result ? :pp : :puts, result)
-    rescue StandardError, ScriptError => err
-      puts "Error: #{err}"
-    ensure
-      return :expression
+      ExecHost.exec_fiber.resume("ExecHost.result #{str}")
+      result = ExecHost.exec_result
+      send(result ? :pp : :puts, result)
+      :expression
     end
 
     #Get the previous result
     def result
-      ExecHost.result
+      self.class.result
     end
   end
 

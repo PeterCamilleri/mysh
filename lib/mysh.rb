@@ -54,7 +54,6 @@ module Mysh
 
   #Reset the state of the execution hosting environment.
   def self.reset_host
-    ExecHost.result = nil
     @exec_host = ExecHost.new
   end
 
