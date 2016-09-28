@@ -9,7 +9,7 @@ module Mysh
     #Process a string with embedded Ruby code.
     def process_erb_string(str)
       loop do
-        pre_match, match, post_match = str.partition(/{{.*}}/m)
+        pre_match, match, post_match = str.partition(/{{.*?}}/m)
 
         return pre_match if match.empty?
 

@@ -1,3 +1,5 @@
+mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
+
 In mysh, commands fall into one of three broad categories. There are:
 
 1) Ruby expressions:
@@ -15,4 +17,19 @@ In mysh, commands fall into one of three broad categories. There are:
 - Internal commands are recognized by name and are executed by mysh directly.
 - These commands are found in the ".../mysh/lib/mysh/commands" folder.
 - The following set of commands are supported:
+
+{{ format_items(InternalCommand.command_info).join("\n") }}
+
+3) External commands:
+
+- All other commands are executed by the system using the standard shell or
+  the appropriate ruby interpreter.
+- If an internal command has the same name as an external command, adding a
+  leading space will force the use of the external command.
+- If the command has a '.rb' extension, it is executed by the appropriate ruby
+  interpreter. So the command "myfile.rb" is executed as
+
+  {{ RbConfig.ruby }} myfile.rb"
+
+  for this particular system.
 
