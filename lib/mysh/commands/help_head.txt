@@ -1,4 +1,6 @@
-1) Ruby Expression support:
+In mysh, commands fall into one of three broad categories. There are:
+
+1) Ruby expressions:
 
 - Any line beginning with an equals "=" sign will be evaluated as a Ruby
   expression. This allows the mysh command line to serve as a programming,

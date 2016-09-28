@@ -7,10 +7,8 @@ module Mysh
   class InternalCommand
     #Add the exit command to the library.
     add('help', 'Display help information for mysh.') do |args|
-      puts "mysh (MY ruby SHell) version: #{Mysh::VERSION}"
-      puts
-
       if args.empty?
+        puts "mysh (MY ruby SHell) version: #{Mysh::VERSION}\n\n"
         puts IO.read(File.dirname(__FILE__) + '/help_head.txt')
         InternalCommand.display_items(info)
         puts IO.read(File.dirname(__FILE__) + '/help_tail.txt')
