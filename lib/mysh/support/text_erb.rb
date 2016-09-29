@@ -18,6 +18,16 @@ module Mysh
 
     end
 
+    #Show a file with embedded ruby handlebars.
+    def show_file(name)
+      full_name = COMMAND_PATH + name
+      str = IO.read(full_name)
+      puts process_erb_string(str)
+    rescue StandardError, ScriptError => err
+      puts "Error processing file #{full_name}"
+      puts "#{err.class.to_s}: #{err}"
+    end
+
   end
 
 end

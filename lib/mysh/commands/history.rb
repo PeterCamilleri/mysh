@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* commands/exit.rb -- The mysh internal exit command.
+#* commands/history.rb -- The mysh internal history command.
 module Mysh
 
-  #* exit.rb -- The mysh internal history command.
+  #* history.rb -- The mysh internal history command.
   class InternalCommand
     #Add the exit command to the library.
     add('history', 'Display the mysh command history.') do |args|
