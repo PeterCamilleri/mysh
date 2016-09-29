@@ -82,35 +82,35 @@ The following table describes the available math functions.
 
 Function   |Type  |Description
 -----------|------|-----------------------------------------------------
-acos(x)    |Float |The arc cosine of x. Returns 0..PI.
+acos(x)    |Float |The arc cosine of x. Returns 0..&#960;.
 acosh(x)   |Float |The inverse hyperbolic cosine of x.
-asin(x)    |Float |The arc sine of x. Returns -PI/2..PI/2.
+asin(x)    |Float |The arc sine of x. Returns -&#960;/2..&#960;/2.
 asinh(x)   |Float |The inverse hyperbolic sine of x.
-atan(x)    |Float |The arc tangent of x. Returns -PI/2..PI/2.
-atan2(y,x) |Float |The arc tangent given y and x. Returns -PI..PI.
+atan(x)    |Float |The arc tangent of x. Returns -&#960;/2..&#960;/2.
+atan2(y,x) |Float |The arc tangent given y and x. Returns -&#960;..&#960;.
 atanh(x)   |Float |The inverse hyperbolic tangent of x.
-cbrt(x)    |Float |The cube root of x.
+cbrt(x)    |Float |The cube root of x. (&#8731;x)
 cos(x)     |Float |The cosine of x (in radians). Returns -1.0..1.0.
 cosh(x)    |Float |The hyperbolic cosine of x (in radians).
 erf(x)     |Float |The error function of x.
 erfc(x)    |Float |The complementary error function of x.
-exp(x)     |Float |Raise e to the xth. (e\*\*x).
+exp(x)     |Float |Raise e to the power of x. (e<sup>x</sup>).
 frexp(x)   |Array |Extracts a two-element array containing [fraction, exponent].
-gamma(x)   |Float |The gamma function of x.
-hypot(x,y) |Float |The hypotenuse of a right-angled triangle with sides x & y.
+gamma(x)   |Float |The gamma function of x. (&#915;x).
+hypot(x,y) |Float |The hypotenuse of a right-angled triangle. &#8730;(x&#178; + y&#178;)
 ldexp(m,e) |Float |Builds a value where f is the fraction and e is the exponent.
-lgamma(x)  |Array |Builds a two-element array [ln(gamma(x)), sign(gamma(x))]
-log(x)     |Float |The natural log of x.
-log(x,B)   |Float |The base B log of x.
-log10(x)   |Float |The base 10 logarithm of x.
-log2(x)    |Float |The base 2 logarithm of x.
+lgamma(x)  |Array |Builds a two-element array [ln(&#124;&#915;x&#124;), sign(&#915;x)]
+log(x)     |Float |The natural log of x. (log<sub>e</sub> x) or (ln x).
+log(x,b)   |Float |The base b log of x. (log<sub>b</sub> x).
+log10(x)   |Float |The base 10 log of x. (log<sub>10</sub> x).
+log2(x)    |Float |The base 2 log of x. (log<sub>2</sub> x).
 sin(x)     |Float |The sine of x (in radians). Returns -1.0..1.0.
 sinh(x)    |Float |The hyperbolic sine of x (in radians).
-sqrt(x)    |Float |The non-negative square root of x.
+sqrt(x)    |Float |The non-negative square root of x. (&#8730;x).
 tan(x)     |Float |The tangent of x (in radians).
 tanh(x)    |Float |The hyperbolic tangent of x (in radians).
-E          |Float |The value 2.718281828459045
-PI         |Float |The value 3.141592653589793
+E          |Float |The value e (2.718281828459045)
+PI         |Float |The value &#960; (3.141592653589793)
 
 #### Internal mysh commands:
 
