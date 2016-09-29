@@ -37,7 +37,7 @@ class MyShellTester < Minitest::Test
     cmd = Mysh::InternalCommand.commands['help']
 
     assert_equal("ABC 123 DEF",
-                 cmd.process_erb_string("ABC {{ (1..3).to_a.join }} DEF"))
+                 cmd.expand_handlebars("ABC {{ (1..3).to_a.join }} DEF"))
 
   end
 

@@ -20,12 +20,9 @@ module Mysh
 
     #Show a file with embedded ruby handlebars.
     def show_file(name)
-      full_name = COMMAND_PATH + name
-      str = IO.read(full_name)
-      puts process_erb_string(str)
+      puts process_erb_string(IO.read(full_name = COMMAND_PATH + name))
     rescue StandardError, ScriptError => err
-      puts "Error processing file #{full_name}"
-      puts "#{err.class.to_s}: #{err}"
+      puts "Error in file: #{full_name}\n#{err.class}: #{err}"
     end
 
   end
