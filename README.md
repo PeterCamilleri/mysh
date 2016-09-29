@@ -195,7 +195,8 @@ separated with spaces. The command is the first word of this string.
 command.
 * args is an array of zero or more arguments that were entered with the command.
 
-Commands sometimes have more than one possible name. This is supported with:
+Commands sometimes have more than one possible name. This is supported with
+the add_alias method:
 
 ```ruby
 module Mysh
