@@ -4,6 +4,8 @@ require 'pp'
 require 'mathn'
 
 #* expression.rb -- mysh ruby expression processor.
+#<br>Endemic Code Smells
+#* :reek:Attribute
 module Mysh
 
   #The mysh ruby expression processor.
@@ -11,8 +13,37 @@ module Mysh
 
     include Math
 
-    #The result of the previous expression.
-    attr_reader :result
+    #These variables live here so that they are not part of the mysh
+    #execution environment. This provides a little isolation.
+    class << self
+      attr_accessor :result
+      attr_accessor :exec_fiber
+      attr_accessor :exec_binding
+      attr_accessor :exec_result
+    end
+
+    #Set up a new execution environment
+    #<br>Note
+    #* The exec_result variable is needed because Fiber.yield messes up the
+    #  return value on an exception, even if that exception is handled.
+    def initialize
+      ExecHost.result = nil
+
+      ExecHost.exec_fiber = Fiber.new do |cmd|
+        ExecHost.exec_binding = binding
+
+        while true
+          begin
+            ExecHost.exec_result = ExecHost.exec_binding.eval(cmd)
+          rescue StandardError, ScriptError => err
+            ExecHost.exec_result = "#{err.class.to_s}: #{err}"
+          end
+
+          cmd = Fiber.yield
+        end
+      end
+
+    end
 
     #Process an expression.
     def execute(str)
@@ -49,12 +80,15 @@ module Mysh
 
     #Execute the string
     def do_execute(str)
-      instance_eval("@result" + str)
-      send(@result ? :pp : :puts, @result)
-    rescue StandardError, ScriptError => err
-      puts "Error: #{err}"
-    ensure
-      return :expression
+      ExecHost.exec_fiber.resume("ExecHost.result #{str}")
+      result = ExecHost.exec_result
+      send(result ? :pp : :puts, result)
+      :expression
+    end
+
+    #Get the previous result
+    def result
+      self.class.result
     end
   end
 

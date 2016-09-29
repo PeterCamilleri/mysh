@@ -21,11 +21,11 @@ module Mysh
 
     #Execute the command.
     def execute(args)
-      @action.call(args)
+      instance_exec(args, &@action)
     end
 
     #Get information about the command.
-    def info
+    def command_info
       [@name, @description]
     end
 

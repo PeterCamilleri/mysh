@@ -5,23 +5,25 @@ module Mysh
 
   #* exit.rb -- The mysh internal exit command.
   class InternalCommand
+    #Show a help file
+    def show_help(name)
+      full_name = File.dirname(__FILE__) + name
+      str = IO.read(full_name)
+      puts process_erb_string(str)
+    rescue StandardError, ScriptError => err
+      puts "Error processing file #{full_name}"
+      puts "#{err.class.to_s}: #{err}"
+    end
+
+    HELP = Hash.new(lambda {|args| puts "No help found for #{args[0]}." })
+
+    HELP[nil]    = lambda {|_args| show_help('/help.txt') }
+    HELP['math'] = lambda {|_args| show_help('/help_math.txt') }
+    HELP['ruby'] = lambda {|_args| show_help('/help_ruby.txt') }
+
     #Add the exit command to the library.
     add('help', 'Display help information for mysh.') do |args|
-      puts "mysh (MY ruby SHell) version: #{Mysh::VERSION}"
-      puts
-
-      if args.empty?
-        puts IO.read(File.dirname(__FILE__) + '/help_head.txt')
-        InternalCommand.display_items(info)
-        puts IO.read(File.dirname(__FILE__) + '/help_tail.txt')
-      elsif args[0] == 'math'
-        puts IO.read(File.dirname(__FILE__) + '/help_math.txt')
-      elsif args[0] == 'ruby'
-        puts IO.read(File.dirname(__FILE__) + '/help_ruby.txt')
-      else
-        puts "help #{args[0]} ???"
-      end
-
+      instance_exec(args, &HELP[args[0]])
     end
 
     add_alias('?', 'help')

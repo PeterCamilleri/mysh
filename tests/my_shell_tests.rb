@@ -32,4 +32,15 @@ class MyShellTester < Minitest::Test
 
     assert_raises { Mysh::InternalCommand.add_alias('blam', 'shazzam') }
   end
+
+  def test_handlebars
+    cmd = Mysh::InternalCommand.commands['help']
+
+    assert_equal("ABC 123 DEF",
+                 cmd.process_erb_string("ABC {{ (1..3).to_a.join }} DEF"))
+
+  end
+
+
+
 end

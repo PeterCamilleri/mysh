@@ -41,14 +41,17 @@ Or install it yourself as:
 The mysh gem includes a simple executable called mysh. When run, the user is
 presented with a command prompt:
 
-  mysh>
+    Peter Camilleri@NCC1701G ~
+    $ mysh
+    mysh>
 
-This prompt can be used to execute three sorts of commands:
+
+This prompt can be used to execute four sorts of commands:
 
 * Internal commands that are processed directly by mysh
 * Ruby expressions, which are preceded by the equal (=) sign.
-* External commands that are passed on to the standard command shell or the
-Ruby interpreter.
+* External ruby source files that are passed on to the Ruby interpreter.
+* External commands that are passed on to the standard command shell.
 
 From the mysh help:
 
