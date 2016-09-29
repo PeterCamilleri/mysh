@@ -80,37 +80,37 @@ mysh> =cos(PI)
 
 The following table describes the available math functions.
 
-Function   |Returns |Description
------------|--------|-----------------------------------------------------
-acos(x)    |Float   |Computes the arc cosine of x. Returns a value in the range 0..PI.
-acosh(x)   |Float   |Computes the inverse hyperbolic cosine of x.
-asin(x)    |Float   |Computes the arc sine of x. Returns a value in the range -PI/2..PI/2.
-asinh(x)   |Float   |Computes the inverse hyperbolic sine of x.
-atan(x)    |Float   |Computes the arc tangent of x. Returns a value in the range -PI/2..PI/2.
-atan2(y,x) |Float   |Computes the arc tangent given y and x. Returns a value in the range -PI..PI.
-atanh(x)   |Float   |Computes the inverse hyperbolic tangent of x.
-cbrt(x)    |Float   |Returns the cube root of x.
-cos(x)     |Float   |Computes the cosine of x (expressed in radians). Returns a value in the range -1.0..1.0.
-cosh(x)    |Float   |Computes the hyperbolic cosine of x (expressed in radians).
-erf(x)     |Float   |Calculates the error function of x.
-erfc(x)    |Float   |Calculates the complementary error function of x.
-exp(x)     |Float   |Returns e**x.
-frexp(x)   |Array   |Returns a two-element array containing the normalized fraction (a float) and exponent (an integer) of x.
-gamma(x)   |Float   |Calculates the gamma function of x.
-hypot(x,y) |Float   |Returns sqrt(x\*\*2 + y\*\*2), the hypotenuse of a right-angled triangle with sides x and y.
-ldexp(m,e) |Float   |Returns the value of m\*(2\*\*e) where m is the mantissa and e is the (integer) power of 2 exponent.
-lgamma(x)  |Array   |Returns a two-element array containing the log of the gamma of x and the sign of gamma of x.
-log(x)     |Float   |Computes the natural log of x.
-log(x,B)   |Float   |Computes the base B log of x.
-log10(x)   |Float   |Returns the base 10 logarithm of x.
-log2(x)    |Float   |Returns the base 2 logarithm of x.
-sin(x)     |Float   |Computes the sine of x (expressed in radians). Returns a value in the range -1.0..1.0.
-sinh(x)    |Float   |Computes the hyperbolic sine of x (expressed in radians).
-sqrt(x)    |Float   |Returns the non-negative square root of x.
-tan(x)     |Float   |Computes the tangent of x (expressed in radians).
-tanh(x)    |Float   |Computes the hyperbolic tangent of x (expressed in radians).
-E          |Float   |The value 2.718281828459045
-PI         |Float   |The value 3.141592653589793
+Function   |Type  |Description
+-----------|------|-----------------------------------------------------
+acos(x)    |Float |The arc cosine of x. Returns 0..PI.
+acosh(x)   |Float |The inverse hyperbolic cosine of x.
+asin(x)    |Float |The arc sine of x. Returns -PI/2..PI/2.
+asinh(x)   |Float |The inverse hyperbolic sine of x.
+atan(x)    |Float |The arc tangent of x. Returns -PI/2..PI/2.
+atan2(y,x) |Float |The arc tangent given y and x. Returns -PI..PI.
+atanh(x)   |Float |The inverse hyperbolic tangent of x.
+cbrt(x)    |Float |The cube root of x.
+cos(x)     |Float |The cosine of x (in radians). Returns -1.0..1.0.
+cosh(x)    |Float |The hyperbolic cosine of x (in radians).
+erf(x)     |Float |The error function of x.
+erfc(x)    |Float |The complementary error function of x.
+exp(x)     |Float |Raise e to the xth. (e\*\*x).
+frexp(x)   |Array |Extracts a two-element array containing [fraction, exponent].
+gamma(x)   |Float |The gamma function of x.
+hypot(x,y) |Float |The hypotenuse of a right-angled triangle with sides x & y.
+ldexp(m,e) |Float |Builds a value where f is the fraction and e is the exponent.
+lgamma(x)  |Array |Builds a two-element array [ln(gamma(x)), sign(gamma(x))]
+log(x)     |Float |The natural log of x.
+log(x,B)   |Float |The base B log of x.
+log10(x)   |Float |The base 10 logarithm of x.
+log2(x)    |Float |The base 2 logarithm of x.
+sin(x)     |Float |The sine of x (in radians). Returns -1.0..1.0.
+sinh(x)    |Float |The hyperbolic sine of x (in radians).
+sqrt(x)    |Float |The non-negative square root of x.
+tan(x)     |Float |The tangent of x (in radians).
+tanh(x)    |Float |The hyperbolic tangent of x (in radians).
+E          |Float |The value 2.718281828459045
+PI         |Float |The value 3.141592653589793
 
 #### Internal mysh commands:
 
