@@ -15,7 +15,6 @@ module Mysh
 
         str = pre_match + eval(match[2...-2]) + post_match
       end
-
     end
 
     #Show a file with embedded ruby handlebars.
