@@ -1,7 +1,9 @@
 mysh Math support summary
 
 The Ruby expression execution environment has direct access to many advanced
-Math functions. For example, to compute the cosine of 3.141592653589793 use:
+mathematical functions and values.
+
+For example, to compute the cosine of 3.141592653589793 use:
 
   mysh> =cos(PI)
   -1.0
@@ -28,7 +30,8 @@ frexp(x)   Array   Returns a two-element array containing the normalized
 gamma(x)   Float   Calculates the gamma function of x.
 hypot(x,y) Float   Returns sqrt(x**2 + y**2), the hypotenuse of a right-angled
                    triangle with sides x and y.
-ldexp(f,e) Float   Returns the value of f*(2**e).
+ldexp(m,e) Float   Returns the value of m*(2**e). Where m is the mantissa and
+                   e is the base two exponent.
 lgamma(x)  Array   Returns a two-element array containing the log of the
                    gamma of x and the sign of gamma of x.
 log(x)     Float   Computes the natural log of x.
