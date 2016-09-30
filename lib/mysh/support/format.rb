@@ -9,7 +9,7 @@ module Mysh
     #Get information on all commands.
     def self.command_info(source=COMMANDS)
       source
-        .values
+        .commands
         .map  {|command| command.command_info }
         .sort {|first, second| first[0] <=> second[0] }
     end

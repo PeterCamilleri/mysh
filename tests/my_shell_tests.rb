@@ -30,7 +30,7 @@ class MyShellTester < Minitest::Test
     assert(Mysh::InternalCommand::COMMANDS['cd'], "The cd command is missing.")
     assert(Mysh::InternalCommand::COMMANDS['pwd'], "The pwd command is missing.")
 
-    assert_raises { Mysh::InternalCommand.add_alias('blam', 'shazzam') }
+    assert_raises { Mysh::InternalCommand::COMMANDS.add_alias('blam', 'shazzam') }
   end
 
   def test_handlebars

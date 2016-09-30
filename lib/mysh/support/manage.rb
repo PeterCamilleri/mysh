@@ -7,23 +7,7 @@ module Mysh
   class InternalCommand
 
     #Set up the command library hash.
-    COMMANDS = {}
-
-    #Add a command to the command library.
-    def self.add(name, description, target = COMMANDS, &action)
-      target[name.split[0] || ""] = new(name, description, &action)
-    end
-
-    #Add an alias for an existing command.
-    def self.add_alias(new_name, old_name, target=COMMANDS)
-      unless (command = target[old_name])
-        fail "Error adding alias #{new_name} for #{old_name}"
-      end
-
-      target[new_name] = new(new_name.split[0],
-                                command.description,
-                                &command.action)
-    end
+    COMMANDS = CommandPool.new
 
     #Execute an internal command
     def self.execute(str)
