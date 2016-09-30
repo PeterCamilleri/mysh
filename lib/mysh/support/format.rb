@@ -6,14 +6,6 @@ module Mysh
   #The mysh internal command class level report formatting.
   class Command
 
-    #Get information on all commands.
-    def self.command_info(source=COMMANDS)
-      source
-        .commands
-        .map  {|command| command.command_info }
-        .sort {|first, second| first[0] <=> second[0] }
-    end
-
     #Display an array of items.
     def display_items(items)
       puts format_items(items)

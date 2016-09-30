@@ -1,5 +1,8 @@
 mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
 
+The mysh is a shell program inspired by the Ruby programming language in the
+same way the csh was inspired by the "C" programming language. The name rsh
+was already widely in use so it was mysh for some extra ego.
 
 In mysh, commands fall into one of three broad categories. There are:
 
@@ -21,7 +24,7 @@ the name of an internal command is processed internally by mysh.
 
 The following set of commands are supported:
 
-{{ format_items(Command.command_info).join("\n") }}
+{{ format_items(COMMANDS.command_info).join("\n") }}
 
 3) External commands:
 

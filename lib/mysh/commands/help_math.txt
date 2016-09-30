@@ -1,4 +1,4 @@
-mysh Math support summary
+mysh Math support summary:
 
 The Ruby expression execution environment has direct access to many advanced
 mathematical functions and values.

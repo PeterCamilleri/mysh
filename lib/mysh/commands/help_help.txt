@@ -1,0 +1,9 @@
+mysh Help command summary:
+
+The help (or ?) command is used to get either general help about mysh
+or an optional specified topic.
+
+The available help topics are:
+
+{{ format_items(HELP.command_info).join("\n") }}
+

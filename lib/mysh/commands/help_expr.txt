@@ -1,4 +1,4 @@
-mysh Ruby expression support summary
+mysh Ruby expression support summary:
 
 All command lines that begin with an equals ("=") sign are evaluated as Ruby
 expressions. Lines ending with a backslash character ("\") are continued on the
