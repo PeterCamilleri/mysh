@@ -121,8 +121,8 @@ The following set of commands are supported:
 ```
 !         Display the mysh command history.
 ?         Display help information for mysh.
-cd <dir>  Change directory to the optional <dir> parameter.
-          Then display the current working directory.
+cd <dir>  Change directory to the optional <dir> parameter
+          and then display the current working directory.
 exit      Exit mysh.
 help      Display help information for mysh.
 history   Display the mysh command history.
