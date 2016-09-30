@@ -31,9 +31,9 @@ module Mysh
       input = @input.readline(prompt: 'mysh>')
 
       begin
-        @exec_host.execute(input)      ||
-        InternalCommand.execute(input) ||
-        ruby_execute(input)            ||
+        @exec_host.execute(input) ||
+        Command.execute(input)    ||
+        ruby_execute(input)       ||
         system(input)
       rescue Interrupt => err
         puts err

@@ -4,12 +4,12 @@
 module Mysh
 
   #* cd.rb -- The mysh internal cd command.
-  class InternalCommand
+  class Command
     #Add the cd command to the library.
-    desc = ['Change directory to the optional <dir> parameter.',
-            'Then display the current working directory.']
+    desc = ['Change directory to the optional <dir> parameter',
+            'and then display the current working directory.']
 
-    add('cd <dir>', desc) do |args|
+    COMMANDS.add('cd <dir>', desc) do |args|
       begin
         Dir.chdir(args[0]) unless args.empty?
         puts decorate(Dir.pwd)
@@ -19,7 +19,7 @@ module Mysh
     end
 
     #Add the pwd command to the library.
-    add('pwd', 'Display the current working directory.') do |args|
+    COMMANDS.add('pwd', 'Display the current working directory.') do |args|
       begin
         puts decorate(Dir.pwd)
       rescue => err

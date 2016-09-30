@@ -1,5 +1,9 @@
 mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
 
+The mysh is a shell program inspired by the Ruby programming language in the
+same way the csh was inspired by the "C" programming language. The name rsh
+was already widely in use so it was mysh for some extra ego.
+
 In mysh, commands fall into one of three broad categories. There are:
 
 1) Ruby expressions:
@@ -8,7 +12,7 @@ Any line beginning with an equals "=" sign will be evaluated as a Ruby
 expression. This allows the mysh command line to serve as a programming,
 debugging and super-calculator environment.
 
-For more information on ruby expressions use the 'help ruby' command.
+For more information on ruby expressions use the 'help =' command.
 
 Note: This environment includes support for advanced mathematical operations.
       For more information on this feature, use the 'help math' command.
@@ -20,7 +24,7 @@ the name of an internal command is processed internally by mysh.
 
 The following set of commands are supported:
 
-{{ format_items(InternalCommand.command_info).join("\n") }}
+{{ format_items(COMMANDS.command_info).join("\n") }}
 
 3) External commands:
 

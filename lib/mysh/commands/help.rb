@@ -4,20 +4,39 @@
 module Mysh
 
   #* help.rb -- The mysh internal help command.
-  class InternalCommand
+  class Command
 
-    HELP = Hash.new(lambda {|args| puts "No help found for #{args[0]}." })
-
-    HELP[nil]    = lambda {|_args| show_file('help.txt') }
-    HELP['math'] = lambda {|_args| show_file('help_math.txt') }
-    HELP['ruby'] = lambda {|_args| show_file('help_ruby.txt') }
-
-    #Add the exit command to the library.
-    add('help', 'Display help information for mysh.') do |args|
-      instance_exec(args, &HELP[args[0]])
+    # Help topics
+    HELP = CommandPool.new do |args|
+      puts "No help found for #{args[0].inspect}."
     end
 
-    add_alias('?', 'help')
+    HELP.add("", "General help on mysh.") do |args|
+      show_file('help.txt')
+    end
+
+    HELP.add("math", "Help on mysh math functions.") do |args|
+      show_file('help_math.txt')
+    end
+
+    HELP.add("=", "Help on mysh ruby expressions.") do |args|
+      show_file('help_expr.txt')
+    end
+
+    HELP.add("help", "Help on mysh help.") do |args|
+      show_file('help_help.txt')
+    end
+
+    HELP.add_alias('?', 'help')
+
+    # The base help command.
+    desc = 'Display help information for mysh with an optional topic.'
+
+    COMMANDS.add('help <topic>', desc) do |args|
+      HELP[args[0] || ""].execute(args)
+    end
+
+    COMMANDS.add_alias('? <topic>', 'help')
 
   end
 

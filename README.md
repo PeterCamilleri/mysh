@@ -20,6 +20,9 @@ command shell within Ruby applications and Rails web sites.
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
+By the way. The briefest look at the code will reveal that mysh has grown to be
+way more than 25 lines long. Gotta love dem features!
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -80,45 +83,37 @@ mysh> =cos(PI)
 
 The following table describes the available math functions.
 
-Function   |Returns |Description
------------|--------|-----------------------------------------------------
-acos(x)    |Float   |Computes the arc cosine of x. Returns 0..PI.
-acosh(x)   |Float   |Computes the inverse hyperbolic cosine of x.
-asin(x)    |Float   |Computes the arc sine of x. Returns -PI/2..PI/2.
-asinh(x)   |Float   |Computes the inverse hyperbolic sine of x.
-atan(x)    |Float   |Computes the arc tangent of x. Returns -PI/2..PI/2.
-atan2(y,x) |Float   |Computes the arc tangent given y and x.
-           |        |Returns a Float in the range -PI..PI.
-atanh(x)   |Float   |Computes the inverse hyperbolic tangent of x.
-cbrt(x)    |Float   |Returns the cube root of x.
-cos(x)     |Float   |Computes the cosine of x (expressed in radians).
-           |        |Returns a Float in the range -1.0..1.0.
-cosh(x)    |Float   |Computes the hyperbolic cosine of x (expressed in radians).
-erf(x)     |Float   |Calculates the error function of x.
-erfc(x)    |Float   |Calculates the complementary error function of x.
-exp(x)     |Float   |Returns e**x.
-frexp(x)   |Array   |Returns a two-element array containing the normalized
-           |        |fraction (a Float) and exponent (a Fixnum) of x.
-gamma(x)   |Float   |Calculates the gamma function of x.
-hypot(x,y) |Float   |Returns sqrt(x\*\*2 + y\*\*2), the hypotenuse of a right-angled
-           |        |triangle with sides x and y.
-ldexp(m,e) |Float   |Returns the value of m\*(2\*\*e) where m is the mantissa and
-           |        |e is the power of 2 exponent.
-lgamma(x)  |Array   |Returns a two-element array containing the log of the
-           |        |gamma of x and the sign of gamma of x.
-log(x)     |Float   |Computes the natural log of x.
-log(x,B)   |Float   |Computes the base B log of x.
-log10(x)   |Float   |Returns the base 10 logarithm of x.
-log2(x)    |Float   |Returns the base 2 logarithm of x.
-sin(x)     |Float   |Computes the sine of x (expressed in radians).
-           |        |Returns a Float in the range -1.0..1.0.
-sinh(x)    |Float   |Computes the hyperbolic sine of x (expressed in radians).
-sqrt(x)    |Float   |Returns the non-negative square root of x.
-tan(x)     |Float   |Computes the tangent of x (expressed in radians).
-tanh(x)    |Float   |Computes the hyperbolic tangent of x (expressed in radians).
-           |        |
-PI         |Float   |The value 3.141592653589793
-E          |Float   |The value 2.718281828459045
+Function   |Type  |Description
+-----------|------|-----------------------------------------------------
+acos(x)    |Float |The arc cosine of x. Returns 0..&#960;.
+acosh(x)   |Float |The inverse hyperbolic cosine of x.
+asin(x)    |Float |The arc sine of x. Returns -&#960;/2..&#960;/2.
+asinh(x)   |Float |The inverse hyperbolic sine of x.
+atan(x)    |Float |The arc tangent of x. Returns -&#960;/2..&#960;/2.
+atan2(y,x) |Float |The arc tangent given y and x. Returns -&#960;..&#960;.
+atanh(x)   |Float |The inverse hyperbolic tangent of x.
+cbrt(x)    |Float |The cube root of x. (&#8731;x)
+cos(x)     |Float |The cosine of x (in radians). Returns -1.0..1.0.
+cosh(x)    |Float |The hyperbolic cosine of x (in radians).
+erf(x)     |Float |The error function of x.
+erfc(x)    |Float |The complementary error function of x.
+exp(x)     |Float |Raise e to the power of x. (e<sup>x</sup>).
+frexp(x)   |Array |Extracts a two-element array containing [fraction, exponent].
+gamma(x)   |Float |The gamma function of x. (&#915;x).
+hypot(x,y) |Float |The hypotenuse of a right-angled triangle. &#8730;(x&#178; + y&#178;)
+ldexp(m,e) |Float |Builds a value where f is the fraction and e is the exponent.
+lgamma(x)  |Array |Builds a two-element array [ln(&#124;&#915;x&#124;), sign(&#915;x)]
+log(x)     |Float |The natural log of x. (log<sub>e</sub> x) or (ln x).
+log(x,b)   |Float |The base b log of x. (log<sub>b</sub> x).
+log10(x)   |Float |The base 10 log of x. (log<sub>10</sub> x).
+log2(x)    |Float |The base 2 log of x. (log<sub>2</sub> x).
+sin(x)     |Float |The sine of x (in radians). Returns -1.0..1.0.
+sinh(x)    |Float |The hyperbolic sine of x (in radians).
+sqrt(x)    |Float |The non-negative square root of x. (&#8730;x).
+tan(x)     |Float |The tangent of x (in radians).
+tanh(x)    |Float |The hyperbolic tangent of x (in radians).
+E          |Float |The value e (2.718281828459045)
+PI         |Float |The value &#960; (3.141592653589793)
 
 #### Internal mysh commands:
 
@@ -129,8 +124,8 @@ The following set of commands are supported:
 ```
 !         Display the mysh command history.
 ?         Display help information for mysh.
-cd <dir>  Change directory to the optional <dir> parameter.
-          Then display the current working directory.
+cd <dir>  Change directory to the optional <dir> parameter
+          and then display the current working directory.
 exit      Exit mysh.
 help      Display help information for mysh.
 history   Display the mysh command history.
