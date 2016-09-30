@@ -22,7 +22,7 @@ cos(x)     Float The cosine of x (in radians). Returns -1.0..1.0.
 cosh(x)    Float The hyperbolic cosine of x (in radians).
 erf(x)     Float The error function of x.
 erfc(x)    Float The complementary error function of x.
-exp(x)     Float Raise e to the xth. (e\*\*x).
+exp(x)     Float Raise e to the xth. (e**x).
 frexp(x)   Array Extracts a two-element array containing [fraction, exponent].
 gamma(x)   Float The gamma function of x.
 hypot(x,y) Float The hypotenuse of a right-angled triangle with sides x & y.
