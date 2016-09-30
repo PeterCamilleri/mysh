@@ -1,5 +1,6 @@
 mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
 
+
 In mysh, commands fall into one of three broad categories. There are:
 
 1) Ruby expressions:
@@ -8,7 +9,7 @@ Any line beginning with an equals "=" sign will be evaluated as a Ruby
 expression. This allows the mysh command line to serve as a programming,
 debugging and super-calculator environment.
 
-For more information on ruby expressions use the 'help ruby' command.
+For more information on ruby expressions use the 'help =' command.
 
 Note: This environment includes support for advanced mathematical operations.
       For more information on this feature, use the 'help math' command.

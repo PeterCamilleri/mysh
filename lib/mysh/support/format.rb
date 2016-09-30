@@ -7,8 +7,8 @@ module Mysh
   class InternalCommand
 
     #Get information on all commands.
-    def self.command_info
-      COMMANDS
+    def self.command_info(source=COMMANDS)
+      source
         .values
         .map  {|command| command.command_info }
         .sort {|first, second| first[0] <=> second[0] }

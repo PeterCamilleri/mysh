@@ -20,6 +20,9 @@ command shell within Ruby applications and Rails web sites.
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
+By the way. The briefest look at the code will reveal that mysh has grown to be
+way more than 25 lines long. Gotta love dem features!
+
 ## Installation
 
 Add this line to your application's Gemfile:

@@ -11,7 +11,7 @@ module Mysh
 
     #Add a command to the command library.
     def self.add(name, description, target = COMMANDS, &action)
-      target[name.split[0]] = new(name, description, &action)
+      target[name.split[0] || ""] = new(name, description, &action)
     end
 
     #Add an alias for an existing command.
