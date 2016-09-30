@@ -22,7 +22,7 @@ module Mysh
         end
       end
 
-      [@commands[result.shift], result]
+      [COMMANDS[result.shift], result]
     end
 
     private

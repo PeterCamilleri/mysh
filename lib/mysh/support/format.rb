@@ -8,7 +8,7 @@ module Mysh
 
     #Get information on all commands.
     def self.command_info
-      @commands
+      COMMANDS
         .values
         .map  {|command| command.command_info }
         .sort {|first, second| first[0] <=> second[0] }

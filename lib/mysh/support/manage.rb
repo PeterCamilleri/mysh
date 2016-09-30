@@ -7,25 +7,20 @@ module Mysh
   class InternalCommand
 
     #Set up the command library hash.
-    @commands = {}
-
-    class << self
-      #The command library, a hash.
-      attr_reader :commands
-    end
+    COMMANDS = {}
 
     #Add a command to the command library.
-    def self.add(name, description, &action)
-      @commands[name.split[0]] = new(name, description, &action)
+    def self.add(name, description, target = COMMANDS, &action)
+      target[name.split[0]] = new(name, description, &action)
     end
 
     #Add an alias for an existing command.
-    def self.add_alias(new_name, old_name)
-      unless (command = @commands[old_name])
+    def self.add_alias(new_name, old_name, target=COMMANDS)
+      unless (command = target[old_name])
         fail "Error adding alias #{new_name} for #{old_name}"
       end
 
-      @commands[new_name] = new(new_name.split[0],
+      target[new_name] = new(new_name.split[0],
                                 command.description,
                                 &command.action)
     end
