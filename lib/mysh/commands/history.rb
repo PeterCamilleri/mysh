@@ -4,7 +4,7 @@
 module Mysh
 
   #* history.rb -- The mysh internal history command.
-  class InternalCommand
+  class Command
     #Add the exit command to the library.
     COMMANDS.add('history', 'Display the mysh command history.') do |args|
       history = Mysh.input.history

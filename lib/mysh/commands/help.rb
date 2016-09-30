@@ -4,7 +4,7 @@
 module Mysh
 
   #* help.rb -- The mysh internal help command.
-  class InternalCommand
+  class Command
 
     HELP = CommandPool.new do |args|
       puts "No help found for #{args[0].inspect}."

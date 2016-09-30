@@ -4,7 +4,7 @@
 module Mysh
 
   #The mysh internal command instance data and methods.
-  class InternalCommand
+  class Command
     #The name of the command.
     attr_reader :name
 

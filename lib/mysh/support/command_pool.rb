@@ -11,7 +11,7 @@ module Mysh
       @pool = {}
 
       if default_action
-        @pool.default = InternalCommand.new("", "", &default_action)
+        @pool.default = Command.new("", "", &default_action)
       end
     end
 
@@ -27,7 +27,7 @@ module Mysh
 
     #Add a command.
     def add(name, description, &action)
-      @pool[name.split[0] || ""] = InternalCommand.new(name, description, &action)
+      @pool[name.split[0] || ""] = Command.new(name, description, &action)
     end
 
     #Add an alias for an existing command.
@@ -36,9 +36,9 @@ module Mysh
         fail "Error adding alias #{new_name} for #{old_name}"
       end
 
-      @pool[new_name] = InternalCommand.new(new_name.split[0],
-                                            command.description,
-                                            &command.action)
+      @pool[new_name] = Command.new(new_name.split[0],
+                                    command.description,
+                                    &command.action)
     end
 
   end

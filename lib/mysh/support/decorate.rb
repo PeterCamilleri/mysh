@@ -4,7 +4,7 @@
 module Mysh
 
   #The mysh internal file name beauty treatments.
-  class InternalCommand
+  class Command
 
     #Make the file name fit the local system.
     def decorate(name)

@@ -4,7 +4,7 @@
 module Mysh
 
   #The mysh internal command class level report formatting.
-  class InternalCommand
+  class Command
 
     #Get information on all commands.
     def self.command_info(source=COMMANDS)

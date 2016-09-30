@@ -10,4 +10,4 @@ require_relative 'support/decorate'
 require_relative 'support/handlebars'
 
 #Load up the internal commands!
-Dir[Mysh::InternalCommand::COMMAND_PATH + '*.rb'].each {|file| require file }
+Dir[Mysh::Command::COMMAND_PATH + '*.rb'].each {|file| require file }

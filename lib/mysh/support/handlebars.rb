@@ -4,7 +4,7 @@
 module Mysh
 
   #The mysh embedded ruby text formatting.
-  class InternalCommand
+  class Command
 
     #Process a string with embedded Ruby code.
     def expand_handlebars(str)

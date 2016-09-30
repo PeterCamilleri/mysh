@@ -4,7 +4,7 @@
 module Mysh
 
   #The mysh internal command class level data and methods.
-  class InternalCommand
+  class Command
 
     #Set up the command library hash.
     COMMANDS = CommandPool.new

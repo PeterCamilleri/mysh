@@ -4,7 +4,7 @@
 module Mysh
 
   #The mysh internal command instance data and methods.
-  class InternalCommand
+  class Command
 
     #Parse a command string for use by commands.
     #<br>Endemic Code Smells
