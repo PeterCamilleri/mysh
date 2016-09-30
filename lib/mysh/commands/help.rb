@@ -6,6 +6,7 @@ module Mysh
   #* help.rb -- The mysh internal help command.
   class Command
 
+    # Help topics
     HELP = CommandPool.new do |args|
       puts "No help found for #{args[0].inspect}."
     end
@@ -28,8 +29,7 @@ module Mysh
 
     HELP.add_alias('?', 'help')
 
-    #Add the exit command to the library. This is done by digging
-    #into the HELP command dictionary.
+    # The base help command.
     desc = 'Display help information for mysh with an optional topic.'
 
     COMMANDS.add('help <topic>', desc) do |args|

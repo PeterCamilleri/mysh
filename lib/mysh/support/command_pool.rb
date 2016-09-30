@@ -22,7 +22,9 @@ module Mysh
 
     #Add a command.
     def add(name, description, &action)
-      @pool[name.split[0] || ""] = Command.new(name, description, &action)
+      split_name = name.split[0] || ""
+
+      @pool[split_name] = Command.new(name, description, &action)
     end
 
     #Add an alias for an existing command.
@@ -33,9 +35,8 @@ module Mysh
 
       split_name = new_name.split[0]
 
-      @pool[split_name] = Command.new(new_name,
-                                      command.description,
-                                      &command.action)
+      @pool[split_name] =
+        Command.new(new_name, command.description, &command.action)
     end
 
     #Get information on all commands.
