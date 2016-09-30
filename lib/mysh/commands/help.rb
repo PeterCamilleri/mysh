@@ -24,11 +24,13 @@ module Mysh
 
     #Add the exit command to the library. This is done by digging
     #into the HELP command dictionary.
-    COMMANDS.add('help', 'Display help information for mysh.') do |args|
+    desc = 'Display help information for mysh with an optional topic.'
+
+    COMMANDS.add('help <topic>', desc) do |args|
       HELP[args[0] || ""].execute(args)
     end
 
-    COMMANDS.add_alias('?', 'help')
+    COMMANDS.add_alias('? <topic>', 'help')
 
   end
 

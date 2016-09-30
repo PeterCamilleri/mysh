@@ -36,9 +36,11 @@ module Mysh
         fail "Error adding alias #{new_name} for #{old_name}"
       end
 
-      @pool[new_name] = Command.new(new_name.split[0],
-                                    command.description,
-                                    &command.action)
+      split_name = new_name.split[0]
+
+      @pool[split_name] = Command.new(new_name,
+                                      command.description,
+                                      &command.action)
     end
 
   end
