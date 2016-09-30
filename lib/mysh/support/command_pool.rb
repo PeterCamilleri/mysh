@@ -7,7 +7,7 @@ module Mysh
   class CommandPool
 
     #Create a new command pool
-    def initialize(default_action=nil)
+    def initialize(&default_action)
       @pool = {}
 
       if default_action
