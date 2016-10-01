@@ -8,6 +8,7 @@ require_relative 'support/parse'
 require_relative 'support/format'
 require_relative 'support/decorate'
 require_relative 'support/handlebars'
+require_relative 'support/lineage'
 
 #Load up the internal commands!
 Dir[Mysh::Command::COMMAND_PATH + '*.rb'].each {|file| require file }
