@@ -13,9 +13,9 @@ Note: Auto-complete always places any file names in quotes so they can be used
 
 A few noteworthy special methods exist:
 
-=reset       Reset the execution environment to the default state.
-=result      Returns the result of the previous expression.
-=obj.lineage Get the class lineage of the object or class obj.
-=vls "mask"  List modules with version info. The optional mask string value is
-             used to filter for modules containing that string.
+=reset      Reset the execution environment to the default state.
+=result     Returns the result of the previous expression.
+=x.lineage  Get the class lineage of the object x.
+=vls "mask" List modules with version info. The optional mask string value is
+            used to filter for modules containing that string.
 
