@@ -16,9 +16,16 @@ module Mysh
     #These variables live here so that they are not part of the mysh
     #execution environment. This provides a little isolation.
     class << self
+      #The result of the last expression evaluated.
       attr_accessor :result
+
+      #The fiber that holds the execution binding.
       attr_accessor :exec_fiber
+
+      #The execution binding used for ruby expressions.
       attr_accessor :exec_binding
+
+      #The result or error returned from the ruby expression.
       attr_accessor :exec_result
     end
 
