@@ -41,15 +41,19 @@ module Mysh
     end
 
     rescue Interrupt, MiniReadlineEOI
+      #Ignore these.
+
+    rescue StandardError, ScriptError => err
+      puts err, err.backtrace
   end
 
   #Set up for the run command.
   def self.init_run
     reset_host
-    @input = MiniReadline::Readline.new(history: true,
-                                        eoi_detect: true,
+    @input = MiniReadline::Readline.new(history:       true,
+                                        eoi_detect:    true,
                                         auto_complete: true,
-                                        auto_source: SmartSource)
+                                        auto_source:   SmartSource)
   end
 
   #Reset the state of the execution hosting environment.
