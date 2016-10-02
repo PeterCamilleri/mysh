@@ -12,19 +12,19 @@ module Mysh
     end
 
     HELP.add("", "General help on mysh.") do |args|
-      show_file('help.txt')
+      show_expanded_file('help.txt')
     end
 
     HELP.add("math", "Help on mysh math functions.") do |args|
-      show_file('help_math.txt')
+      show_expanded_file('help_math.txt')
     end
 
     HELP.add("=", "Help on mysh ruby expressions.") do |args|
-      show_file('help_expr.txt')
+      show_expanded_file('help_expr.txt')
     end
 
     HELP.add("help", "Help on mysh help.") do |args|
-      show_file('help_help.txt')
+      show_expanded_file('help_help.txt')
     end
 
     HELP.add_alias('?', 'help')

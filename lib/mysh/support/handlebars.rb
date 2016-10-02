@@ -1,30 +1,31 @@
 # coding: utf-8
 
-#* support/handlebars.rb -- Allow text files to embed ruby code.
-module Mysh
+#* support/handlebars.rb -- Handlebar embedded ruby support.
+class Object
 
-  #The mysh embedded ruby text formatting.
-  class Command
+  #Process a string with embedded Ruby code.
+  def expand_handlebars(str)
+    loop do
+      pre_match, match, post_match = str.partition(/{{.*?}}/m)
 
-    #Process a string with embedded Ruby code.
-    def expand_handlebars(str)
-      loop do
-        pre_match, match, post_match = str.partition(/{{.*?}}/m)
+      return pre_match if match.empty?
 
-        return pre_match if match.empty?
-
-        str = pre_match + eval(match[2...-2]) + post_match
-      end
+      str = pre_match + instance_eval(match[2...-2]) + post_match
     end
+  end
 
-    #Show a file with embedded ruby handlebars.
-    def show_file(name)
-      puts expand_handlebars(IO.read(full_name = COMMAND_PATH + name))
-    rescue StandardError, ScriptError => err
-      puts "Error in file: #{full_name}\n#{err.class}: #{err}"
-    end
+  #Expand a file with embedded ruby handlebars.
+  def expand_file(name)
+    expand_handlebars(IO.read(Mysh::Command::COMMAND_PATH + name))
+  end
 
+  #Show a file with embedded ruby handlebars.
+  def show_expanded_file(name)
+    puts expand_file(name)
+  rescue StandardError, ScriptError => err
+    puts "Error in file: #{name}\n#{err.class}: #{err}"
   end
 
 end
+
 
