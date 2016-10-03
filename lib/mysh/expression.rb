@@ -46,15 +46,25 @@ module Mysh
 
     #Do the actual work of executing an expression.
     def do_execute(str)
-      ExecHost.result = ExecHost.exec_binding.eval(str[1..-1])
+      self.result = exec_binding.eval(str[1..-1])
       send(result ? :pp : :puts, result)
     rescue Interrupt, StandardError, ScriptError => err
       puts "#{err.class.to_s}: #{err}"
     end
 
+    #Get the execute binding.
+    def exec_binding
+      self.class.exec_binding
+    end
+
     #Get the previous result
     def result
       self.class.result
+    end
+
+    #Set the current result
+    def result=(value)
+      self.class.result=value
     end
 
     #Reset the state of the execution host.
