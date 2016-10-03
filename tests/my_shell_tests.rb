@@ -34,10 +34,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_handlebars
-    cmd = Mysh::Command::COMMANDS['help']
-
     assert_equal("ABC 123 DEF",
-                 cmd.eval_handlebars("ABC {{ (1..3).to_a.join }} DEF"))
+                 eval_handlebars("ABC {{ (1..3).to_a.join }} DEF"))
 
   end
 
