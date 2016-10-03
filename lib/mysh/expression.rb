@@ -24,7 +24,8 @@ module Mysh
     end
 
     #Set up a new execution environment
-    def initialize
+    def initialize(owner)
+      @owner = owner
       mysh_binding
     end
 
@@ -57,10 +58,8 @@ module Mysh
     end
 
     #Reset the state of the execution host.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
     def reset
-      Mysh.reset_host
+      @owner.reset_host
       nil
     end
 
@@ -68,7 +67,7 @@ module Mysh
 
   #Reset the state of the execution hosting environment.
   def self.reset_host
-    @exec_host = ExecHost.new
+    @exec_host = ExecHost.new(self)
   end
 
 end
