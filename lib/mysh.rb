@@ -36,15 +36,15 @@ module Mysh
         ruby_execute(input)       ||
         system(input)
       rescue Interrupt => err
-        puts err
+        puts err, err.backtrace
       end
     end
 
-    rescue Interrupt, MiniReadlineEOI
-      #Ignore these.
+    rescue MiniReadlineEOI
+      nil
 
-    rescue StandardError, ScriptError => err
-      puts err, err.backtrace
+    rescue Interrupt, StandardError, ScriptError => err
+      err
   end
 
   #Set up for the run command.
@@ -65,5 +65,6 @@ end
 
 #Some test code to run a shell if this file is run directly.
 if __FILE__ == $0
-  Mysh.run
+  result = Mysh.run
+  puts result, result.backtrace if result
 end
