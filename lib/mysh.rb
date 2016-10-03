@@ -29,29 +29,26 @@ module Mysh
     init_input
 
     loop do
-      input = get_command
-
       begin
+        input = @exec_host.eval_handlebars(get_command)
+
         try_expression_execute(input) ||
         try_internal_execute(input)   ||
         try_external_ruby(input)      ||
         system(input)
-      rescue Interrupt => err
+
+      rescue MiniReadlineEOI
+        break
+
+      rescue Interrupt, StandardError, ScriptError => err
         puts err, err.backtrace
       end
     end
-
-    rescue MiniReadlineEOI
-      nil
-
-    rescue Interrupt, StandardError, ScriptError => err
-      err
   end
 
 end
 
 #Some test code to run a shell if this file is run directly.
 if __FILE__ == $0
-  result = Mysh.run
-  puts result, result.backtrace if result
+  Mysh.run
 end

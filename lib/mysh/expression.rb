@@ -74,6 +74,10 @@ module Mysh
       nil
     end
 
+    #A proxy for instance_eval.
+    def instance_eval(str)
+      exec_binding.eval(str)
+    end
   end
 
   #Try to execute the string as a ruby expression.
