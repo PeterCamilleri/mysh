@@ -12,7 +12,7 @@ module Mysh
     #Execute an internal command
     def self.execute(str)
       unless str[0] == ' '
-        command, args = parse(str.chomp)
+        command, args = parse_command(str.chomp)
 
         if (command)
           command.execute(args)

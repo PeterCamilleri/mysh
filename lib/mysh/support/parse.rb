@@ -9,7 +9,7 @@ module Mysh
     #Parse a command string for use by commands.
     #<br>Endemic Code Smells
     #* :reek:TooManyStatements
-    def self.parse(input)
+    def self.parse_command(input)
       result, read_point = [], input.chars.each
 
       loop do
