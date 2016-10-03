@@ -10,7 +10,9 @@ class Object
 
       return pre_match if match.empty?
 
-      str = pre_match + instance_eval(match[2...-2]) + post_match
+      result = instance_eval(code = match[2...-2])
+
+      str = pre_match + (result unless code.end_with?("#")).to_s + post_match
     end
   end
 

@@ -37,6 +37,8 @@ class MyShellTester < Minitest::Test
     assert_equal("ABC 123 DEF",
                  eval_handlebars("ABC {{ (1..3).to_a.join }} DEF"))
 
+    assert_equal("ABC", eval_handlebars("{{ 'ABC'  }}"))
+    assert_equal("",    eval_handlebars("{{ 'ABC' #}}"))
   end
 
 end
