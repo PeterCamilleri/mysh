@@ -42,15 +42,16 @@ module Mysh
       end
     end
 
-    private
 
     #Do the actual work of executing an expression.
-    def do_execute(str)
+    def execute(str)
       self.result = exec_binding.eval(str[1..-1])
       send(result ? :pp : :puts, result)
     rescue Interrupt, StandardError, ScriptError => err
       puts "#{err.class.to_s}: #{err}"
     end
+
+    private
 
     #Get the execute binding.
     def exec_binding
@@ -73,6 +74,14 @@ module Mysh
       nil
     end
 
+  end
+
+  #Try to execute the string as a ruby expression.
+  def self.try_expression_execute(str)
+    if str.start_with?('=')
+      @exec_host.execute(str)
+      :expression
+    end
   end
 
   #Reset the state of the execution hosting environment.

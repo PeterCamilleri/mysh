@@ -32,9 +32,9 @@ module Mysh
       input = get_command
 
       begin
-        @exec_host.execute(input) ||
-        Command.execute(input)    ||
-        ruby_execute(input)       ||
+        try_expression_execute(input) ||
+        try_internal_execute(input)   ||
+        try_external_ruby(input)      ||
         system(input)
       rescue Interrupt => err
         puts err, err.backtrace
