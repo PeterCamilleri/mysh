@@ -19,43 +19,31 @@ module Mysh
       #The result of the last expression evaluated.
       attr_accessor :result
 
-      #The fiber that holds the execution binding.
-      attr_accessor :exec_fiber
-
       #The execution binding used for ruby expressions.
       attr_accessor :exec_binding
-
-      #The result or error returned from the ruby expression.
-      attr_accessor :exec_result
     end
 
     #Set up a new execution environment
-    #<br>Note
-    #* The exec_result variable is needed because Fiber.yield messes up the
-    #  return value on an exception, even if that exception is handled.
     def initialize
-      ExecHost.result = nil
+      mysh_binding
+    end
 
-      ExecHost.exec_fiber = Fiber.new do |cmd|
-        ExecHost.exec_binding = binding
-
-        while true
-          begin
-            ExecHost.exec_result = ExecHost.exec_binding.eval(cmd)
-          rescue StandardError, ScriptError => err
-            ExecHost.exec_result = "#{err.class.to_s}: #{err}"
-          end
-
-          cmd = Fiber.yield
-        end
-      end
-
+    #Create a binding for mysh to execute expressions in.
+    def mysh_binding
+      ExecHost.exec_binding = binding
     end
 
     #Process an expression.
     def execute(str)
       if str.start_with?('=')
-        do_execute(str)
+        begin
+          ExecHost.result = ExecHost.exec_binding.eval(str[1..-1])
+          send(result ? :pp : :puts, result)
+        rescue Interrupt, StandardError, ScriptError => err
+          puts "#{err.class.to_s}: #{err}"
+        end
+
+        :expr
       else
         false
       end
@@ -70,14 +58,6 @@ module Mysh
     end
 
     private
-
-    #Execute the string
-    def do_execute(str)
-      ExecHost.exec_fiber.resume("ExecHost.result #{str}")
-      result = ExecHost.exec_result
-      send(result ? :pp : :puts, result)
-      :expression
-    end
 
     #Get the previous result
     def result
