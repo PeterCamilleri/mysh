@@ -7,7 +7,7 @@ module Mysh
   class Command
 
     #Set up the command library hash.
-    COMMANDS = CommandPool.new
+    COMMANDS = ActionPool.new
 
     #Parse a command string for use by commands.
     def self.parse_command(str)

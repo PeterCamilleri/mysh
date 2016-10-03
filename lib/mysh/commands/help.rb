@@ -7,7 +7,7 @@ module Mysh
   class Command
 
     # Help topics
-    HELP = CommandPool.new do |args|
+    HELP = ActionPool.new do |args|
       puts "No help found for #{args[0].inspect}."
     end
 

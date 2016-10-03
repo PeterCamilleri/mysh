@@ -1,10 +1,10 @@
 # coding: utf-8
 
-#* support/command_pool.rb -- A managed hash of mysh commands.
+#* support/action_pool.rb -- A managed hash of mysh commands.
 module Mysh
 
-  #* support/command_pool.rb -- A managed hash of mysh commands.
-  class CommandPool
+  #* support/action_pool.rb -- A managed hash of mysh commands.
+  class ActionPool
 
     #Create a new command pool
     def initialize(&default_action)

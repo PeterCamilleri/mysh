@@ -2,7 +2,7 @@
 
 require_relative 'commands/command_path'
 require_relative 'support/frame'
-require_relative 'support/command_pool'
+require_relative 'support/action_pool'
 require_relative 'support/manage'
 require_relative 'support/parse'
 require_relative 'support/format'
