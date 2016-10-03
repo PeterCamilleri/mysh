@@ -55,7 +55,7 @@ module Mysh
     #Process an expression.
     def execute(str)
       if str.start_with?('=')
-        do_execute(do_build(str))
+        do_execute(str)
       else
         false
       end
@@ -70,20 +70,6 @@ module Mysh
     end
 
     private
-
-    #Gather up the full string of the expression to evaluate.
-    #<br>Endemic Code Smells
-    #* :reek:TooManyStatements
-    def do_build(str)
-      if /\\\s*$/ =~ str
-        parms = {prompt: 'mysh\\',
-                 auto_source: MiniReadline::QuotedFileFolderSource}
-
-        do_build($PREMATCH + "\n" + Mysh.input.readline(parms))
-      else
-        str
-      end
-    end
 
     #Execute the string
     def do_execute(str)
