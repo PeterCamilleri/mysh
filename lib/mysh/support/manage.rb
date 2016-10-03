@@ -9,10 +9,17 @@ module Mysh
     #Set up the command library hash.
     COMMANDS = CommandPool.new
 
+    #Parse a command string for use by commands.
+    def self.parse_command(str)
+      result = Mysh.parse_args(str.chomp)
+
+      [COMMANDS[result.shift], result]
+    end
+
     #Execute an internal command
     def self.execute(str)
       unless str[0] == ' '
-        command, args = Mysh.parse_command(str.chomp)
+        command, args = parse_command(str.chomp)
 
         if (command)
           command.execute(args)

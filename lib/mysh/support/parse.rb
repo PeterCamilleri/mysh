@@ -3,10 +3,10 @@
 #* support/parse.rb -- mysh general parser.
 module Mysh
 
-  #Parse a command string for use by commands.
+  #Parse a string into components.
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
-  def self.parse_command(input)
+  def self.parse_args(input)
     result, read_point = [], input.chars.each
 
     loop do
@@ -19,7 +19,7 @@ module Mysh
       end
     end
 
-    [Command::COMMANDS[result.shift], result]
+    result
   end
 
   private
