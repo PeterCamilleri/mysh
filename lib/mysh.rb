@@ -7,7 +7,7 @@ require 'mini_readline'
 require 'vls'
 require 'in_array'
 
-require_relative 'mysh/smart_source'
+require_relative 'mysh/user_input'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
@@ -28,7 +28,7 @@ module Mysh
     init_run
 
     loop do
-      input = @input.readline(prompt: 'mysh>')
+      input = get_command
 
       begin
         @exec_host.execute(input) ||
