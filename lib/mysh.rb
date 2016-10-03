@@ -25,7 +25,8 @@ module Mysh
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
   def self.run
-    init_run
+    reset_host
+    init_input
 
     loop do
       input = get_command
@@ -45,20 +46,6 @@ module Mysh
 
     rescue Interrupt, StandardError, ScriptError => err
       err
-  end
-
-  #Set up for the run command.
-  def self.init_run
-    reset_host
-    @input = MiniReadline::Readline.new(history:       true,
-                                        eoi_detect:    true,
-                                        auto_complete: true,
-                                        auto_source:   SmartSource)
-  end
-
-  #Reset the state of the execution hosting environment.
-  def self.reset_host
-    @exec_host = ExecHost.new
   end
 
 end

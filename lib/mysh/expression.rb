@@ -66,4 +66,9 @@ module Mysh
 
   end
 
+  #Reset the state of the execution hosting environment.
+  def self.reset_host
+    @exec_host = ExecHost.new
+  end
+
 end
