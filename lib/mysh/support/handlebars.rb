@@ -4,7 +4,7 @@
 class Object
 
   #Process a string with embedded Ruby code.
-  def expand_handlebars(str)
+  def eval_handlebars(str)
     loop do
       pre_match, match, post_match = str.partition(/{{.*?}}/m)
 
@@ -15,13 +15,13 @@ class Object
   end
 
   #Expand a file with embedded ruby handlebars.
-  def expand_file(name)
-    expand_handlebars(IO.read(Mysh::Command::COMMAND_PATH + name))
+  def eval_handlebar_file(name)
+    eval_handlebars(IO.read(name))
   end
 
   #Show a file with embedded ruby handlebars.
-  def show_expanded_file(name)
-    puts expand_file(name)
+  def show_handlebar_file(name)
+    puts eval_handlebar_file(name)
   rescue StandardError, ScriptError => err
     puts "Error in file: #{name}\n#{err.class}: #{err}"
   end
