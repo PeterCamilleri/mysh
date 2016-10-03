@@ -14,7 +14,7 @@ module Mysh
     include Math
 
     #These variables live here so that they are not part of the mysh
-    #execution environment. This provides a little isolation.
+    #execution environment. This provides a little bit of isolation.
     class << self
       #The result of the last expression evaluated.
       attr_accessor :result
@@ -36,17 +36,24 @@ module Mysh
     #Process an expression.
     def execute(str)
       if str.start_with?('=')
-        begin
-          ExecHost.result = ExecHost.exec_binding.eval(str[1..-1])
-          send(result ? :pp : :puts, result)
-        rescue Interrupt, StandardError, ScriptError => err
-          puts "#{err.class.to_s}: #{err}"
-        end
-
-        :expr
-      else
-        false
+        do_execute(str)
+        :expression
       end
+    end
+
+    private
+
+    #Do the actual work of executing an expression.
+    def do_execute(str)
+      ExecHost.result = ExecHost.exec_binding.eval(str[1..-1])
+      send(result ? :pp : :puts, result)
+    rescue Interrupt, StandardError, ScriptError => err
+      puts "#{err.class.to_s}: #{err}"
+    end
+
+    #Get the previous result
+    def result
+      self.class.result
     end
 
     #Reset the state of the execution host.
@@ -57,12 +64,6 @@ module Mysh
       nil
     end
 
-    private
-
-    #Get the previous result
-    def result
-      self.class.result
-    end
   end
 
 end
