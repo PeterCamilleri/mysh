@@ -4,7 +4,7 @@
 module Mysh
 
   #* help.rb -- The mysh internal help command.
-  class Command
+  class Action
 
     # Help topics
     HELP = ActionPool.new do |args|

@@ -5,5 +5,5 @@ or an optional specified topic.
 
 The available help topics are:
 
-{{ format_items(HELP.command_info).join("\n") }}
+{{ format_items(HELP.actions_info).join("\n") }}
 

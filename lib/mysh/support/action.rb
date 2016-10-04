@@ -1,10 +1,10 @@
 # coding: utf-8
 
-#* support/frame.rb -- The abstract frame of mysh internal commands.
+#* support/action.rb -- The framework of mysh internal actions.
 module Mysh
 
-  #The mysh internal command instance data and methods.
-  class Command
+  #The mysh internal action support.
+  class Action
     #The name of the command.
     attr_reader :name
 
@@ -25,7 +25,7 @@ module Mysh
     end
 
     #Get information about the command.
-    def command_info
+    def action_info
       [@name, @description]
     end
 

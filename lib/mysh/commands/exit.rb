@@ -4,7 +4,7 @@
 module Mysh
 
   #* exit.rb -- The mysh internal exit command.
-  class Command
+  class Action
     #Add the exit command to the library.
     COMMANDS.add('exit', 'Exit mysh.') do |args|
       raise MiniReadlineEOI

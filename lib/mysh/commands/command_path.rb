@@ -4,7 +4,7 @@
 module Mysh
 
   #* commands/command_path.rb -- A convenient hook to the command folder.
-  class Command
+  class Action
 
     #Capture this folder's name.
     COMMAND_PATH = File.dirname(__FILE__) + "/"

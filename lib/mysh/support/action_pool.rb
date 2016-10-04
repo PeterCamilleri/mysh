@@ -11,7 +11,7 @@ module Mysh
       @pool = {}
 
       if default_action
-        @pool.default = Command.new("", "", &default_action)
+        @pool.default = Action.new("", "", &default_action)
       end
     end
 
@@ -24,7 +24,7 @@ module Mysh
     def add(name, description, &action)
       split_name = name.split[0] || ""
 
-      @pool[split_name] = Command.new(name, description, &action)
+      @pool[split_name] = Action.new(name, description, &action)
     end
 
     #Add an alias for an existing command.
@@ -36,14 +36,14 @@ module Mysh
       split_name = new_name.split[0]
 
       @pool[split_name] =
-        Command.new(new_name, command.description, &command.action)
+        Action.new(new_name, command.description, &command.action)
     end
 
     #Get information on all commands.
-    def command_info
+    def actions_info
       @pool
         .values
-        .map  {|command| command.command_info }
+        .map  {|action| action.action_info }
         .sort {|first, second| first[0] <=> second[0] }
     end
 
