@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* support/manage.rb -- Manage mysh internal commands.
+#* internal/manage.rb -- Manage mysh internal commands.
 module Mysh
 
   #Set up the command library hash.

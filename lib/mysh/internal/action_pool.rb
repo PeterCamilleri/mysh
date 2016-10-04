@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* support/action_pool.rb -- A managed hash of mysh commands.
+#* internal/action_pool.rb -- A managed hash of mysh commands.
 module Mysh
 
-  #* support/action_pool.rb -- A managed hash of mysh commands.
+  #* A managed hash of mysh commands.
   class ActionPool
 
     #Create a new command pool

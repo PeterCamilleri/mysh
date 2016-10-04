@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* commands/help.rb -- The mysh internal help command.
+#* internal/actions/help.rb -- The mysh internal help command.
 module Mysh
 
   #* help.rb -- The mysh internal help command.

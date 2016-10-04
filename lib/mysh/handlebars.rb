@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* support/handlebars.rb -- Handlebar embedded ruby support.
+#* handlebars.rb -- Handlebar embedded ruby support.
 class Object
 
   #Process a string with embedded Ruby code.

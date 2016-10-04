@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* support/decorate.rb -- mysh internal file name beauty treatments.
+#* internal/decorate.rb -- mysh internal file name beauty treatments.
 module Mysh
 
   #The mysh internal file name beauty treatments.

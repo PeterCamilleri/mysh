@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* support/action.rb -- The framework of mysh internal actions.
+#* internal/action.rb -- The framework of mysh internal actions.
 module Mysh
 
   #The mysh internal action class.

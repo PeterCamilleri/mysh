@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* commands/exit.rb -- The mysh internal exit command.
+#* internal/actions/exit.rb -- The mysh internal exit command.
 module Mysh
 
   #* exit.rb -- The mysh internal exit command.

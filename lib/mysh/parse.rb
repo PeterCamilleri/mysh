@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* support/parse.rb -- mysh general parser.
+#* parse.rb -- mysh general parser.
 module Mysh
 
   #Parse a string into components.

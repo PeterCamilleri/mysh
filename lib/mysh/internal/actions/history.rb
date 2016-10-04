@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* commands/history.rb -- The mysh internal history command.
+#* internal/actions/history.rb -- The mysh internal history command.
 module Mysh
 
   #* history.rb -- The mysh internal history command.
