@@ -1,5 +1,9 @@
 # Mysh
 
+mysh -- A ruby based command line shell program.
+
+## Background
+
 Inspired by the excellent article "Writing a Shell in 25 Lines of Ruby Code"
 I thought it would be fun to experiment with that concept and see if it could
 be taken further.
@@ -47,8 +51,8 @@ presented with a command prompt:
     $ mysh
     mysh>
 
-
-This prompt can be used to execute four sorts of commands:
+Then start entering some commands! This prompt can be used to execute four
+sorts of commands:
 
 * Ruby expressions, which are preceded by the equal (=) sign.
 * Internal commands that are processed directly by mysh
@@ -70,6 +74,7 @@ A few noteworthy methods exist that facilitate use of Ruby expressions:
 ```
 reset      Reset the execution environment to the default state.
 result     Returns the result of the previous expression.
+x.lineage  Get the class lineage of the object x.
 vls "mask" List modules with version info. The optional mask string value is
            used to filter for modules containing that string.
 ```
