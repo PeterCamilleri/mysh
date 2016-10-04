@@ -32,9 +32,9 @@ module Mysh
       begin
         input = @exec_host.eval_handlebars(get_command)
 
-        try_expression_execute(input) ||
-        try_internal_execute(input)   ||
-        try_external_ruby(input)      ||
+        try_execute_ruby_expression(input)  ||
+        try_execute_internal_command(input) ||
+        try_execute_external_ruby(input)    ||
         system(input)
 
       rescue MiniReadlineEOI

@@ -31,7 +31,7 @@ module Mysh
   end
 
   #Try to execute the string as an internal command.
-  def self.try_internal_execute(str)
+  def self.try_execute_internal_command(str)
     Command.execute(str)
   end
 

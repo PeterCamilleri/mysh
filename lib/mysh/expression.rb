@@ -81,7 +81,7 @@ module Mysh
   end
 
   #Try to execute the string as a ruby expression.
-  def self.try_expression_execute(str)
+  def self.try_execute_ruby_expression(str)
     if str.start_with?('=')
       @exec_host.execute(str)
       :expression
