@@ -18,19 +18,19 @@ class MyShellTester < Minitest::Test
   end
 
   def test_for_internal_commands
-    assert(Mysh::Command::COMMANDS['exit'], "The exit command is missing.")
-    assert(Mysh::Command::COMMANDS['quit'], "The quit command is missing.")
+    assert(Mysh::COMMANDS['exit'], "The exit command is missing.")
+    assert(Mysh::COMMANDS['quit'], "The quit command is missing.")
 
-    assert(Mysh::Command::COMMANDS['history'], "The history command is missing.")
-    assert(Mysh::Command::COMMANDS['!'], "The ! command is missing.")
+    assert(Mysh::COMMANDS['history'], "The history command is missing.")
+    assert(Mysh::COMMANDS['!'], "The ! command is missing.")
 
-    assert(Mysh::Command::COMMANDS['help'], "The help command is missing.")
-    assert(Mysh::Command::COMMANDS['?'], "The ? command is missing.")
+    assert(Mysh::COMMANDS['help'], "The help command is missing.")
+    assert(Mysh::COMMANDS['?'], "The ? command is missing.")
 
-    assert(Mysh::Command::COMMANDS['cd'], "The cd command is missing.")
-    assert(Mysh::Command::COMMANDS['pwd'], "The pwd command is missing.")
+    assert(Mysh::COMMANDS['cd'], "The cd command is missing.")
+    assert(Mysh::COMMANDS['pwd'], "The pwd command is missing.")
 
-    assert_raises { Mysh::Command::COMMANDS.add_alias('blam', 'shazzam') }
+    assert_raises { Mysh::COMMANDS.add_alias('blam', 'shazzam') }
   end
 
   def test_handlebars

@@ -42,16 +42,15 @@ module Mysh
       end
     end
 
+    private
 
     #Do the actual work of executing an expression.
-    def execute(str)
+    def do_execute(str)
       self.result = exec_binding.eval(str[1..-1])
       send(result ? :pp : :puts, result)
     rescue Interrupt, StandardError, ScriptError => err
       puts "#{err.class.to_s}: #{err}"
     end
-
-    private
 
     #Get the execute binding.
     def exec_binding

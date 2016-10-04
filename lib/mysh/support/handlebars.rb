@@ -24,7 +24,7 @@ class Object
   #Show a file with embedded ruby handlebars.
   def show_handlebar_file(name)
     puts eval_handlebar_file(name)
-  rescue Interupt, StandardError, ScriptError => err
+  rescue Interrupt, StandardError, ScriptError => err
     puts "Error in file: #{name}\n#{err.class}: #{err}"
   end
 
