@@ -7,7 +7,7 @@ module Mysh
   class Action
 
     #Capture this folder's name.
-    COMMAND_PATH = File.dirname(__FILE__) + "/"
+    ACTIONS_PATH = File.dirname(__FILE__) + "/"
 
   end
 

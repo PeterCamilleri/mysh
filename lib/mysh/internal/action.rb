@@ -3,7 +3,7 @@
 #* support/action.rb -- The framework of mysh internal actions.
 module Mysh
 
-  #The mysh internal action support.
+  #The mysh internal action class.
   class Action
     #The name of the command.
     attr_reader :name

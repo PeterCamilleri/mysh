@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require_relative 'support/smart_source'
+require_relative 'user_input/smart_source'
 
 #* user_input.rb -- Get a command from the user.
 module Mysh

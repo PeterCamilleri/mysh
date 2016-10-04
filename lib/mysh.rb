@@ -8,9 +8,13 @@ require 'vls'
 require 'in_array'
 
 require_relative 'mysh/user_input'
+require_relative 'mysh/handlebars'
+require_relative 'mysh/parse'
+
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
+
 require_relative 'mysh/version'
 
 #The MY SHell module. A container for its functionality.
