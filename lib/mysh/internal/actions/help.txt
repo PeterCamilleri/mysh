@@ -2,41 +2,27 @@ mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
 
 The mysh is a shell program inspired by the Ruby programming language in the
 same way the csh was inspired by the "C" programming language. The name rsh
-was already widely in use so it was mysh for some extra ego.
+was already widely in use and the name mysh was available.
 
 In mysh, commands fall into one of three broad categories. There are:
 
-1) Ruby expressions:
+1) "=" expressions: Any line beginning with an "=" will be evaluated as a Ruby
+   language expression. For more see the '? =' or '? math' commands.
 
-Any line beginning with an equals "=" sign will be evaluated as a Ruby
-expression. This allows the mysh command line to serve as a programming,
-debugging and super-calculator environment.
-
-For more information on ruby expressions use the 'help =' command.
-
-Note: This environment includes support for advanced mathematical operations.
-      For more information on this feature, use the 'help math' command.
-
-2) Internal mysh commands:
-
-Internal commands are processed within mysh itself. Any command that matches
-the name of an internal command is processed internally by mysh.
-
-The following set of commands are supported:
+2) Internal mysh commands are processed within mysh itself. The following set
+   of commands are supported:
 
 {{ format_items(Mysh::COMMANDS.actions_info).join("\n") }}
 
-3) External commands:
-
-All other commands are executed by the system using the standard shell or the
-appropriate ruby interpreter.
-
-If the command has a '.rb' extension, it is executed by the appropriate ruby
-interpreter. So the command "myfile.rb" is executed as
+3) All other commands are executed by the system using the standard shell or
+   the appropriate ruby interpreter. If the command has a '.rb' extension, it
+   is executed by the appropriate ruby interpreter. So the command "myfile.rb"
+   is executed as
 
   {{ RbConfig.ruby }} myfile.rb"
 
 Note: If an internal command has the same name as an external command, adding a
       leading space will force the use of the external command.
 
+Help on help: For a list of all help topics see the '? ?' command.
 
