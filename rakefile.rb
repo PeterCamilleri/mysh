@@ -10,7 +10,7 @@ RDoc::Task.new do |rdoc|
   rdoc.rdoc_dir = "rdoc"
 
   #List out all the files to be documented.
-  rdoc.rdoc_files.include("lib/**/*.rb", "license.txt", "README.md")
+  rdoc.rdoc_files.include("lib/**/*.rb", "license.txt")
 
   #Set a title.
   rdoc.options << '--title' << 'My Shell Gem Internals'

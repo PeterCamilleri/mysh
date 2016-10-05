@@ -24,7 +24,7 @@ the name of an internal command is processed internally by mysh.
 
 The following set of commands are supported:
 
-{{ format_items(COMMANDS.command_info).join("\n") }}
+{{ format_items(Mysh::COMMANDS.actions_info).join("\n") }}
 
 3) External commands:
 

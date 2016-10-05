@@ -4,7 +4,7 @@
 module Mysh
 
   #Try to execute as a Ruby program.
-  def self.ruby_execute(str)
+  def self.try_execute_external_ruby(str)
     cmd = str.split[0]
 
     if cmd && File.extname(cmd) == '.rb'

@@ -1,10 +1,10 @@
 # coding: utf-8
 
-#* support/decorate.rb -- mysh internal file name beauty treatments.
+#* internal/decorate.rb -- mysh internal file name beauty treatments.
 module Mysh
 
   #The mysh internal file name beauty treatments.
-  class Command
+  class Action
 
     #Make the file name fit the local system.
     def decorate(name)

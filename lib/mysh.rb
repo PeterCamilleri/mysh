@@ -7,7 +7,7 @@ require 'mini_readline'
 require 'vls'
 require 'in_array'
 
-require_relative 'mysh/smart_source'
+require_relative 'mysh/user_input'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
@@ -25,36 +25,25 @@ module Mysh
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
   def self.run
-    init_run
+    reset_host
+    init_input
 
     loop do
-      input = @input.readline(prompt: 'mysh>')
-
       begin
-        @exec_host.execute(input) ||
-        Command.execute(input)    ||
-        ruby_execute(input)       ||
+        input = @exec_host.eval_handlebars(get_command)
+
+        try_execute_ruby_expression(input)  ||
+        try_execute_internal_command(input) ||
+        try_execute_external_ruby(input)    ||
         system(input)
-      rescue Interrupt => err
-        puts err
+
+      rescue MiniReadlineEOI
+        break
+
+      rescue Interrupt, StandardError, ScriptError => err
+        puts err, err.backtrace
       end
     end
-
-    rescue Interrupt, MiniReadlineEOI
-  end
-
-  #Set up for the run command.
-  def self.init_run
-    reset_host
-    @input = MiniReadline::Readline.new(history: true,
-                                        eoi_detect: true,
-                                        auto_complete: true,
-                                        auto_source: SmartSource)
-  end
-
-  #Reset the state of the execution hosting environment.
-  def self.reset_host
-    @exec_host = ExecHost.new
   end
 
 end

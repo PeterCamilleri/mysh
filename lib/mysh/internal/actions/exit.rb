@@ -1,10 +1,10 @@
 # coding: utf-8
 
-#* commands/exit.rb -- The mysh internal exit command.
+#* internal/actions/exit.rb -- The mysh internal exit command.
 module Mysh
 
   #* exit.rb -- The mysh internal exit command.
-  class Command
+  class Action
     #Add the exit command to the library.
     COMMANDS.add('exit', 'Exit mysh.') do |args|
       raise MiniReadlineEOI
