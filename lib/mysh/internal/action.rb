@@ -26,7 +26,7 @@ module Mysh
 
     #Get information about the command.
     def action_info
-      [@name, @description]
+      [@name].concat(@description)
     end
 
   end

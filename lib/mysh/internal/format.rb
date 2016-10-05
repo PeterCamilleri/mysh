@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require_relative 'format/bullets'
+
 #The mysh internal command class level report formatting.
 class Object
 
@@ -7,41 +9,15 @@ class Object
 
   #Display an array of items.
   def display_items(items)
-    puts format_items(items)
+    items.puts_mysh_bullets
     puts
   end
 
   #Format an array of items.
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy
-  def format_items(items, buffer=[])
-    #Determine the width of the tag area.
-    tag_width = items.max_by {|item| item[0].length}[0].length + 1
-
-    #Display the information.
-    items.each {|item| format_item(item, buffer, tag_width) }
-
-    buffer
-  end
-
-  #Display one item.
-  def display_item(item, tag_width=nil)
-    puts format_item(item, [], tag_width)
-    puts
-  end
-
-  #Format one item.
-  #<br>Endemic Code Smells
-  #* :reek:UtilityFunction
-  def format_item(item, buffer=[], tag_width)
-    tag = item[0]
-
-    item[1].each do |detail|
-      buffer << "#{tag.ljust(tag_width)} #{detail}"
-      tag = ""
-    end
-
-    buffer
+  def format_items(items)
+    items.mysh_bulletize
   end
 
 end
