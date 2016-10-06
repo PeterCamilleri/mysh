@@ -17,9 +17,9 @@ In mysh, commands fall into one of three broad categories. There are:
 3) All other commands are executed by the system using the standard shell or
    the appropriate ruby interpreter. If the command has a '.rb' extension, it
    is executed by the appropriate ruby interpreter. So the command "myfile.rb"
-   is executed as
+   is executed as:
 
-  {{ RbConfig.ruby }} myfile.rb"
+   "{{ RbConfig.ruby }} myfile.rb"
 
 Note: If an internal command has the same name as an external command, adding a
       leading space will force the use of the external command.

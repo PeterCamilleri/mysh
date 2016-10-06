@@ -4,15 +4,22 @@
 class Object
 
   #Process a string with embedded Ruby code.
-  def eval_handlebars(str)
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
+  def eval_handlebars(in_str)
+    out_str = ""
+
     loop do
-      pre_match, match, post_match = str.partition(/{{.*?}}/m)
+      pre_match, match, in_str = in_str.partition(/{{.*?}}/m)
 
-      return pre_match if match.empty?
+      out_str << pre_match
 
-      result = instance_eval(code = match[2...-2])
+      return out_str.gsub(/\\\S/) {|found| found[1]} if match.empty?
 
-      str = pre_match + (result unless code.end_with?("#")).to_s + post_match
+      code   = match[2...-2]
+      silent = code.end_with?("#")
+      result = instance_eval(code)
+      out_str << result.to_s unless silent
     end
   end
 

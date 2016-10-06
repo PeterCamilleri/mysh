@@ -15,7 +15,7 @@ class Object
 
   #Format an array of items.
   #<br>Endemic Code Smells
-  #* :reek:FeatureEnvy
+  #* :reek:FeatureEnvy :reek:UtilityFunction
   def format_items(items)
     items.mysh_bulletize
   end

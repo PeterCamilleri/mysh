@@ -14,10 +14,8 @@ module Mysh
     end
 
     #Add an item to this page.
-    #<br>Returns
-    #* The number if items that did not fit in the page.
     #<br>Endemic Code Smells
-    #* :reek:FeatureEnvy
+    #* :reek:FeatureEnvy  :reek:TooManyStatements
     def add(raw_bullet = "*", *raw_item)
 
       if raw_item.empty?
