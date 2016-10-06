@@ -1,8 +1,7 @@
 mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
 
 The mysh is a shell program inspired by the Ruby programming language in the
-same way the csh was inspired by the "C" programming language. The name rsh
-was already widely in use and the name mysh was available.
+same way the csh was inspired by the "C" programming language.
 
 In mysh, commands fall into one of three broad categories. There are:
 

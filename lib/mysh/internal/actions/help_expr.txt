@@ -1,13 +1,12 @@
 mysh Ruby expression support summary:
 
-All command lines that begin with an equals ("=") sign are evaluated as Ruby
-expressions.
+All command lines that begin with = are evaluated as Ruby expressions.
 
 Notes:
 
-Lines ending with a backslash character ("\") are continued on the next line.
-The prompt changes to "mysh\" to indicate that this is going on. The command is
-NOT actually processed until a line with NO trailing backslash is entered.
+Lines ending with a \\ are continued on the next line. The prompt changes to
+mysh\\ to indicate that this is going on. The command is NOT actually processed
+until a line with NO trailing \\ is entered.
 
 The results of the expression are displayed using the pretty-print facility
 except for nil (shows as blank).
