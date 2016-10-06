@@ -218,7 +218,7 @@ that were entered with the command.
 
 So if a command is given
 
-    'abc "this is a string" 23 --launch --all'
+    command abc "this is a string" 23 --launch --all
 
 the args array will contain:
 
