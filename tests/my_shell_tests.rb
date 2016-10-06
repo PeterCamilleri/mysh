@@ -39,6 +39,9 @@ class MyShellTester < Minitest::Test
 
     assert_equal("ABC", eval_handlebars("{{ 'ABC'  }}"))
     assert_equal("",    eval_handlebars("{{ 'ABC' #}}"))
+
+    assert_equal("{{ 'ABC' }}", eval_handlebars("\\{\\{ 'ABC' \\}\\}"))
+    assert_equal("{{A}}", eval_handlebars("{{ '{'+'{A}'+'}' }}"))
   end
 
 end
