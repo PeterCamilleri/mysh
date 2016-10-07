@@ -6,6 +6,7 @@ module Mysh
   #A class to display data in bullet points.
   class BulletPoints
 
+    #Assume an 80 column working area.
     PAGE_WIDTH = 80
 
     #Prepare a blank slate.
