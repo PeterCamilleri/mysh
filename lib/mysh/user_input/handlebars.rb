@@ -3,9 +3,19 @@
 #* user_input/handlebars.rb -- Handlebar embedded ruby support.
 class Object
 
-  #Process a string with embedded Ruby code.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
+  #Show a file with embedded ruby handlebars.
+  def show_handlebar_file(name)
+    puts eval_handlebar_file(name)
+  rescue Interrupt, StandardError, ScriptError => err
+    puts "Error in file: #{name}\n#{err.class}: #{err}"
+  end
+
+  #Expand a file with embedded ruby handlebars.
+  def eval_handlebar_file(name)
+    eval_handlebars(IO.read(name))
+  end
+
+  #Process a string with code embedded in handlebars.
   def eval_handlebars(in_str)
     out_str = ""
 
@@ -21,18 +31,6 @@ class Object
       result = instance_eval(code)
       out_str << result.to_s unless silent
     end
-  end
-
-  #Expand a file with embedded ruby handlebars.
-  def eval_handlebar_file(name)
-    eval_handlebars(IO.read(name))
-  end
-
-  #Show a file with embedded ruby handlebars.
-  def show_handlebar_file(name)
-    puts eval_handlebar_file(name)
-  rescue Interrupt, StandardError, ScriptError => err
-    puts "Error in file: #{name}\n#{err.class}: #{err}"
   end
 
 end
