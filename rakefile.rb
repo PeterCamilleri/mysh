@@ -12,6 +12,9 @@ RDoc::Task.new do |rdoc|
   #List out all the files to be documented.
   rdoc.rdoc_files.include("lib/**/*.rb", "license.txt")
 
+  #Make all access levels visible.
+  rdoc.options << '--visibility' << 'private'
+
   #Set a title.
   rdoc.options << '--title' << 'My Shell Gem Internals'
 end

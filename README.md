@@ -137,6 +137,18 @@ history   Display the mysh command history.
 pwd       Display the current working directory.
 quit      Exit mysh.
 ```
+Of note is the command "help help" which provides a list of available topics.
+
+    The help (or ?) command is used to get either general help about mysh
+    or an optional specified topic.
+
+    The available help topics are:
+
+         General help on mysh.
+    =    Help on mysh ruby expressions.
+    ?    Help on mysh help.
+    help Help on mysh help.
+    math Help on mysh math functions.
 
 #### External commands:
 
@@ -164,13 +176,12 @@ Mysh.run
 #### Adding New Commands
 
 It is possible to add new internal commands to the mysh CLI. This may done
-manually by depositing the appropriate ruby file in the commands folder located
-at:
+manually by depositing the appropriate ruby file in the actions folder
+located at:
 
-    <gem_root>/mysh/lib/mysh/commands
+    <gem_root>/mysh/lib/mysh/internal/actions
 
-A survey of the contents of that folder will reveal the nature of these
-command files.
+A survey of the contents of that folder will reveal the nature of these files.
 
 New internal commands may also be added in code via the the add method of the
 InternalCommand class of the Mysh module. The code to do this would look
@@ -178,7 +189,7 @@ something like this:
 
 ```ruby
 module Mysh
-  class InternalCommand
+  class Action
 
     add(command_name, command_description) do |args|
       # Action block goes here
@@ -190,17 +201,37 @@ end
 
 Where:
 * command_name is the name of the command with optional argument descriptions
-separated with spaces. The command is the first word of this string.
+separated with spaces. The command is the first word of this string. For
+example a command_name of:
+
+```
+"cd <dst>"
+```
+
+will create a command called "cd" with a title of "cd &#60;dst&#62;"
+
 * command_description is a string or an array of strings that describe the
-command.
-* args is an array of zero or more arguments that were entered with the command.
+command. This serves as the descriptive help for the command. The help display
+code handles matters like word wrap automatically.
+* The args parameter to the action block is an array of zero or more arguments
+that were entered with the command.
+
+So if a command is given
+
+    command abc "this is a string" 23 --launch --all
+
+the args array will contain:
+
+    ["abc", "this is a string", "23", "--launch", "--all"]
+
+#### Adding Command Aliases
 
 Commands sometimes have more than one possible name. This is supported with
 the add_alias method:
 
 ```ruby
 module Mysh
-  class InternalCommand
+  class Action
 
     add_alias(new_name, old_name)
 

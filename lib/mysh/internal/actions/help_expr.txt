@@ -1,21 +1,26 @@
 mysh Ruby expression support summary:
 
-All command lines that begin with an equals ("=") sign are evaluated as Ruby
-expressions. Lines ending with a backslash character ("\") are continued on the
-next line. The prompt changes to "mysh\" to indicate that this is going on. The
-command is NOT actually processed until a line with NO trailing backslash is
-entered.
+All command lines that begin with = are evaluated as Ruby expressions.
 
-The results of the expression are displayed using the pretty-print facility.
+Notes:
 
-Note: Auto-complete always places any file names in quotes so they can be used
-      as string parameters.
+Lines ending with a \\ are continued on the next line. The prompt changes to
+mysh\\ to indicate that this is going on. The command is NOT actually processed
+until a line with NO trailing \\ is entered.
 
-A few noteworthy special methods exist:
+The results of the expression are displayed using the pretty-print facility
+except for nil (shows as blank).
+
+Auto-complete always places any file names in quotes so they can be used as
+string parameters.
+
+A few special methods exist:
 
 =reset      Reset the execution environment to the default state.
 =result     Returns the result of the previous expression.
 =x.lineage  Get the class lineage of the object x.
 =vls "mask" List modules with version info. The optional mask string value is
             used to filter for modules containing that string.
+
+Also included are a number of math methods. See '? math' for more on these.
 
