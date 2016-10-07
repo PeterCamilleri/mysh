@@ -15,8 +15,15 @@ class Object
     eval_handlebars(IO.read(name))
   end
 
+  #Process a string with code embedded in handlebars and backslash quotes.
+  def eval_handlebars(str)
+    do_process_handlebars(str).gsub(/\\\S/) {|found| found[1]}
+  end
+
+  private
+
   #Process a string with code embedded in handlebars.
-  def eval_handlebars(in_str)
+  def do_process_handlebars(in_str)
     out_str = ""
 
     loop do
@@ -24,7 +31,7 @@ class Object
 
       out_str << pre_match
 
-      return out_str.gsub(/\\\S/) {|found| found[1]} if match.empty?
+      return out_str if match.empty?
 
       code   = match[2...-2]
       silent = code.end_with?("#")
@@ -32,6 +39,7 @@ class Object
       out_str << result.to_s unless silent
     end
   end
+
 
 end
 
