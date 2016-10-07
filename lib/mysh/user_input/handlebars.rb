@@ -23,20 +23,13 @@ class Object
   private
 
   #Process a string with code embedded in handlebars.
-  def do_process_handlebars(in_str)
-    out_str = ""
-
-    loop do
-      pre_match, match, in_str = in_str.partition(/{{.*?}}/m)
-
-      out_str << pre_match
-
-      return out_str if match.empty?
-
+  def do_process_handlebars(str)
+    str.gsub(/{{.*?}}/m) do |match|
       code   = match[2...-2]
       silent = code.end_with?("#")
       result = instance_eval(code)
-      out_str << result.to_s unless silent
+
+      (result unless silent).to_s
     end
   end
 

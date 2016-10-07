@@ -1,3 +1,1 @@
-lib/mysh/user_input/handlebars.rb -- 1 warning:
-  [26]:TooManyStatements: Object#do_process_handlebars has approx 9 statements [https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md]
-1 total warning
+0 total warnings
