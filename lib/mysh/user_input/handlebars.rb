@@ -15,7 +15,7 @@ class Object
     eval_handlebars(IO.read(name))
   end
 
-  #Process a string with code embedded in handlebars and backslash quotes.
+  #Process a string with backslash quotes and code embedded in handlebars.
   def eval_handlebars(str)
     do_process_handlebars(str).gsub(/\\\S/) {|found| found[1]}
   end
@@ -32,7 +32,6 @@ class Object
       (result unless silent).to_s
     end
   end
-
 
 end
 
