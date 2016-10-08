@@ -12,9 +12,15 @@ class MyShellTester < Minitest::Test
   include MinitestVisible
 
   def test_that_module_entities_exists
+    assert_equal(String, Mysh::VERSION.class)
+
     assert_equal(Module, Mysh.class)
     assert_equal(Class,  Mysh::Action.class)
+    assert_equal(Class,  Mysh::ActionPool.class)
     assert_equal(Class,  Mysh::ExecHost.class)
+
+    assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
+    assert_equal(Mysh::ActionPool, Mysh::Action::HELP.class)
   end
 
   def test_for_internal_commands
