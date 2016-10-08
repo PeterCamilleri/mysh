@@ -5,5 +5,5 @@ module Mysh
   VERSION = "0.1.16"
 
   #A brief summary of this gem.
-  SUMMARY = "mysh -- a Ruby inspired command shell."
+  SUMMARY = "mysh -- a Ruby inspired command line shell."
 end

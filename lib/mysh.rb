@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# mysh -- MY SHell -- a Ruby/Rails inspired command shell.
+# mysh -- MY SHell -- a Ruby/Rails inspired command line shell.
 
 require 'English'
 require 'mini_readline'

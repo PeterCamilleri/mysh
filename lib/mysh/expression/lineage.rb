@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#Object monkey patch for the mysh lineage command.
+#Object monkey patch for the mysh lineage method.
 class Object
 
   #Get the lineage of this object.
@@ -11,7 +11,7 @@ class Object
 
 end
 
-#Class monkey patch for the mysh lineage command.
+#Class monkey patch for the mysh lineage method.
 class Class
 
   #Get the lineage of this class.
