@@ -44,4 +44,17 @@ class MyShellTester < Minitest::Test
     assert_equal("{{A}}", eval_handlebars("{{ '{'+'{A}'+'}' }}"))
   end
 
+  def test_command_parsing
+    assert_equal([], Mysh.parse_args(""))
+
+    assert_equal(["1", "2", "3"], Mysh.parse_args("1 2 3"))
+
+    assert_equal(["1", "Trump", "loses", "election", "3"],
+                 Mysh.parse_args("1 Trump loses election 3"))
+
+    assert_equal(["1", "Trump loses election", "3"],
+                 Mysh.parse_args('1 "Trump loses election" 3'))
+
+  end
+
 end
