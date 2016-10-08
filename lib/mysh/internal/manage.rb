@@ -4,7 +4,7 @@
 module Mysh
 
   #Set up the command action pool.
-  COMMANDS = ActionPool.new
+  COMMANDS = ActionPool.new("COMMANDS")
 
   #Parse a command string for use by commands.
   def self.parse_command(str)

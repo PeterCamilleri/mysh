@@ -7,7 +7,7 @@ module Mysh
   class Action
 
     # Help topics
-    HELP = ActionPool.new do |args|
+    HELP = ActionPool.new("HELP") do |args|
       puts "No help found for #{args[0].inspect}."
     end
 
