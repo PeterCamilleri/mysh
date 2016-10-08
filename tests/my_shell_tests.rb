@@ -57,4 +57,12 @@ class MyShellTester < Minitest::Test
 
   end
 
+  def test_the_lineage_method
+    assert_equal("String instance < String < Object < BasicObject",
+                 "Hello".lineage)
+
+    assert_equal("Fixnum instance < Fixnum < Integer < Numeric < Object < BasicObject",
+                 (4).lineage)
+  end
+
 end
