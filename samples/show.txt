@@ -1,6 +1,6 @@
 This is a sample show file.
 
-{{ a = 5 #}}  {{ a.to_s }}
+{{ a = 5 #}}a = {{ a.to_s }}
 
 {{ args.inspect }}
 
