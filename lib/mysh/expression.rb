@@ -34,23 +34,15 @@ module Mysh
       ExecHost.exec_binding = binding
     end
 
-    #Process an expression.
-    def execute(str)
-      if str.start_with?('=')
-        do_execute(str)
-        :expression
-      end
-    end
-
-    private
-
     #Do the actual work of executing an expression.
-    def do_execute(str)
+    def execute(str)
       self.result = exec_binding.eval(str[1..-1])
       send(result ? :pp : :puts, result)
     rescue Interrupt, StandardError, ScriptError => err
       puts "#{err.class.to_s}: #{err}"
     end
+
+    private
 
     #Get the execute binding.
     def exec_binding
