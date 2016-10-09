@@ -3,7 +3,7 @@
 #* internal/actions/show.rb -- The mysh show command.
 module Mysh
 
-  #* help.rb -- The mysh internal help command.
+  #* internal/actions/show.rb -- The mysh show command.
   class Action
 
     # The base help command.

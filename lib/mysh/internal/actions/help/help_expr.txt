@@ -19,8 +19,7 @@ A few special methods exist:
 =reset      Reset the execution environment to the default state.
 =result     Returns the result of the previous expression.
 =x.lineage  Get the class lineage of the object x.
-=vls "mask" List modules with version info. The optional mask string value is
-            used to filter for modules containing that string.
+
 
 Also included are a number of math methods. See '? math' for more on these.
 
