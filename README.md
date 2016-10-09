@@ -239,7 +239,13 @@ module Mysh
   end
 end
 ```
+#### Add Method Return Values
+Both the add and add_alias methods return the newly created action instance.
+This may be useful, for example, if it is desired to add singleton methods to
+the action in order to extend functionality.
 
+Note that when an action is aliased, none of the singleton methods are copied
+across and these will have to be regenerated in the new action object.
 
 ## Contributing
 
