@@ -12,7 +12,7 @@ module Mysh
     COMMANDS.add('vls <mask>', desc) do |args|
       mask = args.shift || /./
 
-      puts format_items(VersionLS.vls(mask)).join("\n")
+      puts VersionLS.vls(mask).mysh_bulletize.join("\n")
       puts
     end
 

@@ -1,24 +1,15 @@
 # coding: utf-8
 
-require_relative 'format/bullets'
+#* internal/format.rb - Some formatting facilities for mysh.
+module Mysh
 
-#The mysh internal command class level report formatting.
-class Object
+  #Assume an 80 column working area for formatting.
+  PAGE_WIDTH = 80
 
-  private
-
-  #Display an array of items.
-  def display_items(items)
-    items.puts_mysh_bullets
-    puts
-  end
-
-  #Format an array of items.
-  #<br>Endemic Code Smells
-  #* :reek:FeatureEnvy :reek:UtilityFunction
-  def format_items(items)
-    items.mysh_bulletize
-  end
+  #Assume an 80 column working area for formatting.
+  PAGE_LENGTH = 55
 
 end
 
+require_relative 'format/bullets'
+require_relative 'format/columns'
