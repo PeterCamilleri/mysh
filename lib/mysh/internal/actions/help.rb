@@ -42,3 +42,6 @@ module Mysh
 
 end
 
+#Load up the extra help actions!
+Dir[Mysh::Action::ACTIONS_PATH + 'help/*.rb'].each {|file| require file }
+
