@@ -11,6 +11,13 @@ class MyShellTester < Minitest::Test
   #Track mini-test progress.
   include MinitestVisible
 
+  #Evaluate the string in a mysh context.
+  def mysh_eval(str)
+    @mysh_binding ||= binding
+
+    @mysh_binding.eval(str)
+  end
+
   def test_that_module_entities_exists
     assert_equal(String, Mysh::VERSION.class)
 
