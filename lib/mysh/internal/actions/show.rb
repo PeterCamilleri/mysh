@@ -9,7 +9,7 @@ module Mysh
     # The base help command.
     desc = 'Display a text file with optional embedded handlebars.'
 
-    show = COMMANDS.add('show <file>', desc) do |args|
+    COMMANDS.add('show <file>', desc) do |args|
       file_name = args.shift
 
       @exec_binding = binding
