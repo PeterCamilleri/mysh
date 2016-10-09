@@ -6,7 +6,6 @@ module Mysh
   #* internal/actions/vls.rb -- The mysh module version ls command.
   class Action
 
-    # The base help command.
     desc = 'Display the loaded modules, matching the optional mask, ' +
            'that have version info.'
 
