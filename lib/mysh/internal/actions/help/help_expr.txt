@@ -16,9 +16,9 @@ string parameters.
 
 A few special methods exist:
 
-=reset      Reset the execution environment to the default state.
-=result     Returns the result of the previous expression.
-=x.lineage  Get the class lineage of the object x.
+reset      Reset the execution environment to the default state.
+result     Returns the result of the previous expression.
+x.lineage  Get the class lineage of the object or class x.
 
 
 Also included are a number of math methods. See '? math' for more on these.

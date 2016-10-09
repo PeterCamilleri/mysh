@@ -1,4 +1,4 @@
-mysh (MY ruby SHell) version: {{ Mysh::VERSION }}
+mysh version: {{ Mysh::VERSION }}
 
 The mysh is a shell program inspired by the Ruby programming language in the
 same way the csh was inspired by the "C" programming language.
