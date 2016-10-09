@@ -65,8 +65,8 @@ module Mysh
       nil
     end
 
-    #A proxy for instance_eval.
-    def instance_eval(str)
+    #Evaluate the string in the my shell context.
+    def mysh_eval(str)
       exec_binding.eval(str)
     end
   end

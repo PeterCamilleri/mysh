@@ -17,6 +17,7 @@ module Mysh
     #Setup an internal action.
     def initialize(name, description, &action)
       @name, @description, @action = name, description.in_array, action
+      @exec_binding = mysh_binding
     end
 
     #Execute the action.
@@ -27,6 +28,18 @@ module Mysh
     #Get information about the action.
     def action_info
       [@name].concat(@description)
+    end
+
+    private
+
+    #Create a binding for mysh to execute expressions in.
+    def mysh_binding
+      binding
+    end
+
+    #Evaluate the string in the my shell context.
+    def mysh_eval(str)
+      @exec_binding.eval(str)
     end
 
   end

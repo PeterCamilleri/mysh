@@ -7,7 +7,7 @@ module Mysh
   class Action
 
     # The base help command.
-    desc = 'Display a text file with optional handlebars.'
+    desc = 'Display a text file with optional embedded handlebars.'
 
     show = COMMANDS.add('show <file>', desc) do |args|
       file_name = args.shift
@@ -19,10 +19,6 @@ module Mysh
       else
         puts "Error: A text file must be specified."
       end
-    end
-
-    show.define_singleton_method(:instance_eval) do |str|
-      @exec_binding.eval(str)
     end
 
   end
