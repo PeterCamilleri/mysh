@@ -128,7 +128,7 @@ class Array
   #* An array of arrays of strings
   def mysh_columnize(page_length, page_width)
     index, pages, limit = 0, [], self.length
-    builder = XfOOrth::ColumnizedPage.new(page_length, page_width)
+    builder = Mysh::ColumnizedPage.new(page_length, page_width)
 
     while index < limit
       index += 1 - (left_over = builder.add(self[index]))
