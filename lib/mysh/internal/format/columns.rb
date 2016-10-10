@@ -32,7 +32,7 @@ module Mysh
     #* :reek:NestedIterators :reek:TooManyStatements
     def render
       results = []
-      widths  = @page_data.map {|column| column.foorth_column_width}
+      widths  = @page_data.map {|column| column.mysh_column_width}
 
       (0...rows).each do |column_index|
         results << @page_data.each_with_index.map do |column, index|
@@ -77,7 +77,7 @@ module Mysh
         0
       else
         @page_data.inject(@page_data.length-1) do |sum, column|
-          sum + column.foorth_column_width
+          sum + column.mysh_column_width
         end
       end
     end
@@ -116,8 +116,8 @@ end
 #Support for displaying an array in neat columns.
 class Array
   #Print out the array with efficient columns.
-  def puts_foorth_columnized(page_length, page_width)
-    foorth_columnize(page_length, page_width).each do |page|
+  def puts_mysh_columnized(page_length, page_width)
+    mysh_columnize(page_length, page_width).each do |page|
       puts page
       puts
     end
@@ -126,7 +126,7 @@ class Array
   #Convert the array to strings with efficient columns.
   #<br>
   #* An array of arrays of strings
-  def foorth_columnize(page_length, page_width)
+  def mysh_columnize(page_length, page_width)
     index, pages, limit = 0, [], self.length
     builder = XfOOrth::ColumnizedPage.new(page_length, page_width)
 
@@ -139,7 +139,7 @@ class Array
   end
 
   #Get the widest element of an array.
-  def foorth_column_width
+  def mysh_column_width
     (self.max_by {|item| item.length}).length
   end
 end
