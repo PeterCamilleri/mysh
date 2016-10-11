@@ -29,18 +29,18 @@ module Mysh
 
     #Render the page as an array of strings.
     def render
-      results, widths = [], get_widths
+      results, column_widths = [], get_column_widths
 
-      rows.times { |row_index| results << render_row(row_index, widths)}
+      rows.times { |row_index| results << render_row(row_index, column_widths)}
 
-      @page_data = []
+      @page_data.clear
       results
     end
 
     private
 
     #Get the widths of all columns
-    def get_widths
+    def get_column_widths
       @page_data.map {|column| column.mysh_column_width}
     end
 
@@ -81,9 +81,8 @@ module Mysh
       if empty?
         0
       else
-
         #The starting point, @page_data.length-1, represents the spaces needed
-        #between the columns.
+        #between the columns. So N columns means N-1 spaces.
         @page_data.inject(@page_data.length-1) do |sum, column|
           sum + column.mysh_column_width
         end
@@ -134,7 +133,7 @@ class Array
   end
 
   #Convert the array to strings with efficient columns.
-  #<br>
+  #<br>Returns
   #* An array of arrays of strings
   def mysh_columnize(page_length = Mysh::PAGE_LENGTH,
                      page_width  = Mysh::PAGE_WIDTH)
@@ -151,6 +150,8 @@ class Array
   end
 
   #Get the widest element of an array.
+  #<br>Returns
+  #* The width of the widest string in the array.
   def mysh_column_width
     (self.max_by {|item| item.length}).length
   end
