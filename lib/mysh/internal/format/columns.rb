@@ -18,8 +18,8 @@ module Mysh
       item = raw_item.to_s
       fail "Item too large to fit." unless item.length < @page_width
 
-      if (slot = find_next_column)
-        @page_data[slot] << item
+      if (column = find_next_column)
+        @page_data[column] << item
       else
         @page_data << [item]
       end
@@ -28,23 +28,28 @@ module Mysh
     end
 
     #Render the page as an array of strings.
-    #<br>Endemic Code Smells
-    #* :reek:NestedIterators :reek:TooManyStatements
     def render
-      results = []
-      widths  = @page_data.map {|column| column.mysh_column_width}
+      results, widths = [], get_widths
 
-      (0...rows).each do |column_index|
-        results << @page_data.each_with_index.map do |column, index|
-          column[column_index].to_s.ljust(widths[index])
-        end.join(" ").freeze
-      end
+      rows.times { |row_index| results << render_row(row_index, widths)}
 
       @page_data = []
       results
     end
 
     private
+
+    #Get the widths of all columns
+    def get_widths
+      @page_data.map {|column| column.mysh_column_width}
+    end
+
+    #Render a single row of data.
+    def render_row(row_index, widths)
+      @page_data.each_with_index.map do |column, index|
+        column[row_index].to_s.ljust(widths[index])
+      end.join(" ").freeze
+    end
 
     #Make sure the page fits within its boundaries.
     #<br>Returns
@@ -76,6 +81,9 @@ module Mysh
       if empty?
         0
       else
+
+        #The starting point, @page_data.length-1, represents the spaces needed
+        #between the columns.
         @page_data.inject(@page_data.length-1) do |sum, column|
           sum + column.mysh_column_width
         end
@@ -116,7 +124,9 @@ end
 #Support for displaying an array in neat columns.
 class Array
   #Print out the array with efficient columns.
-  def puts_mysh_columnized(page_length, page_width)
+  def puts_mysh_columnized(page_length = Mysh::PAGE_LENGTH,
+                           page_width  = Mysh::PAGE_WIDTH)
+
     mysh_columnize(page_length, page_width).each do |page|
       puts page
       puts
@@ -126,7 +136,9 @@ class Array
   #Convert the array to strings with efficient columns.
   #<br>
   #* An array of arrays of strings
-  def mysh_columnize(page_length, page_width)
+  def mysh_columnize(page_length = Mysh::PAGE_LENGTH,
+                     page_width  = Mysh::PAGE_WIDTH)
+
     index, pages, limit = 0, [], self.length
     builder = Mysh::ColumnizedPage.new(page_length, page_width)
 

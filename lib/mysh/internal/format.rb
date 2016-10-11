@@ -6,8 +6,8 @@ module Mysh
   #Assume an 80 column working area for formatting.
   PAGE_WIDTH = 80
 
-  #Assume an 80 column working area for formatting.
-  PAGE_LENGTH = 55
+  #Assume an in infinite page length for formatting.
+  PAGE_LENGTH = false
 
 end
 
