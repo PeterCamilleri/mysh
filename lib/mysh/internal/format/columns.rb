@@ -123,8 +123,6 @@ end
 #Support for displaying an array in neat columns.
 class Array
   #Print out the array with efficient columns.
-  #<br>Endemic Code Smells
-  #* :reek:DataClump
   def puts_mysh_columns(page_length = Mysh::PAGE_LENGTH,
                         page_width  = Mysh::PAGE_WIDTH)
 
@@ -134,8 +132,6 @@ class Array
   #Convert the array to strings with efficient columns.
   #<br>Returns
   #* An array of strings
-  #<br>Endemic Code Smells
-  #* :reek:DataClump
   def format_mysh_columns(page_length = Mysh::PAGE_LENGTH,
                           page_width  = Mysh::PAGE_WIDTH)
 
@@ -151,8 +147,6 @@ class Array
   #Convert the array to strings with efficient columns.
   #<br>Returns
   #* An array of pages, that is, arrays of strings.
-  #<br>Endemic Code Smells
-  #* :reek:DataClump
   def mysh_columnize(page_length = Mysh::PAGE_LENGTH,
                      page_width  = Mysh::PAGE_WIDTH)
 
