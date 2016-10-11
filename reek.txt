@@ -1,1 +1,3 @@
-0 total warnings
+lib/mysh/internal/format/columns.rb -- 1 warning:
+  [128, 139, 156]:DataClump: Array takes parameters [page_length, page_width] to 3 methods [https://github.com/troessner/reek/blob/master/docs/Data-Clump.md]
+1 total warning
