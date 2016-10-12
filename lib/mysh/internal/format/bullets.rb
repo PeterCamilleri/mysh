@@ -12,7 +12,7 @@ module Mysh
       @bullet_data = []
     end
 
-    #Add an item to this page.
+    #Add items to these bullet points.
     def add(bullet, *items)
       items.each do |item|
         @bullet_data << [bullet.to_s, item]
@@ -20,7 +20,7 @@ module Mysh
       end
     end
 
-    #Render the page as an array of strings.
+    #Render the bullet points as an array of strings.
     def render
       @key_length, results = get_key_length, []
 
