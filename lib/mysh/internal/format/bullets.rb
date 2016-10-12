@@ -34,46 +34,21 @@ module Mysh
 
     private
 
-    #How large is the largest bullet?
+    #Allowing for a trailing space, how large is the largest bullet?
     def get_key_length
-      (@bullet_data.max_by {|line| line[0].length})[0].length
+      (@bullet_data.max_by {|line| line[0].length})[0].length + 1
     end
 
     #Render one bullet point.
-    #<br>Endemic Code Smells
-    #* :re ek:DuplicateMethodCall :re ek:TooManyStatements
     def render_bullet(key, item)
-      result   = []
-      input    = item.split(' ').each
-      temp     = key.ljust(len = @key_length)
-      desc_len = @page_width - @key_length - 1
+      result = []
 
-      loop do
-
-        word_len = (word = ' ' + input.next).length
-
-        if (len += word_len) >= @page_width && word_len < desc_len
-          result << temp
-          temp = blank_key + word
-          len  = temp.length
-        else
-          temp << word
-        end
-
-        while len >= @page_width
-          result << temp.slice!(0, @page_width - 1)
-          temp = blank_key + ' ' + temp
-          len  = temp.length
-        end
-
+      item.format_description(@page_width - @key_length - 1).map do |desc_line|
+        result << key.ljust(@key_length) + desc_line
+        key = ""
       end
 
-      result << temp
-    end
-
-    #Generate a blank bullet key
-    def blank_key
-      ' ' * @key_length
+      result
     end
 
   end

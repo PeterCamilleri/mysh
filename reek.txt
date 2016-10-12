@@ -1,7 +1,7 @@
 lib/mysh/internal/format/array.rb -- 1 warning:
   [9, 18, 33]:DataClump: Array takes parameters [page_length, page_width] to 3 methods [https://github.com/troessner/reek/blob/master/docs/Data-Clump.md]
-lib/mysh/internal/format/bullets.rb -- 3 warnings:
-  [56, 71]:DuplicateMethodCall: Mysh::BulletPoints#render_bullet calls result << temp 2 times [https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md]
-  [58, 66]:DuplicateMethodCall: Mysh::BulletPoints#render_bullet calls temp.length 2 times [https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md]
-  [45]:TooManyStatements: Mysh::BulletPoints#render_bullet has approx 14 statements [https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md]
+lib/mysh/internal/format/string.rb -- 3 warnings:
+  [14, 23]:DuplicateMethodCall: String#format_description calls result << build 2 times [https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md]
+  [11, 17, 20]:FeatureEnvy: String#format_description refers to build more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md]
+  [7]:TooManyStatements: String#format_description has approx 9 statements [https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md]
 4 total warnings
