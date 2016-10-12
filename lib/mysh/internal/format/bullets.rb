@@ -13,20 +13,10 @@ module Mysh
     end
 
     #Add an item to this page.
-    #<br>Endemic Code Smells
-    #* :re ek:FeatureEnvy  :re ek:TooManyStatements
-    def add(raw_bullet = "*", *raw_item)
-
-      if raw_item.empty?
-        bullet = ["*"]
-        items = raw_bullet.in_array
-      else
-        bullet = [raw_bullet]
-        items = raw_item.in_array
-      end
-
-      items.each_index do |index|
-        @bullet_data << [(bullet[index] || "").to_s, items[index].to_s]
+    def add(bullet, *items)
+      items.each do |item|
+        @bullet_data << [bullet.to_s, item.to_s]
+        bullet = ""
       end
     end
 
