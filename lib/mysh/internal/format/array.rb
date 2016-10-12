@@ -14,32 +14,13 @@ class Array
 
   #Convert the array to strings with efficient columns.
   #<br>Returns
-  #* An array of strings
-  def format_mysh_columns(page_width  = Mysh::PAGE_WIDTH)
-
-    result = (pages = mysh_columnize(page_width)).shift
-
-    pages.each do |page|
-      (result << "").concat(page)
-    end
-
-    result
-  end
-
-  #Convert the array to strings with efficient columns.
-  #<br>Returns
   #* An array of pages, that is, arrays of strings.
-  def mysh_columnize(page_width = Mysh::PAGE_WIDTH)
-    index, pages, limit = 0, [], self.length
-
+  def format_mysh_columns(page_width = Mysh::PAGE_WIDTH)
     builder = Mysh::ColumnizedPage.new(Mysh::PAGE_LENGTH, page_width)
 
-    while index < limit
-      index += 1 - (left_over = builder.add(self[index]))
-      pages << builder.render if (left_over > 0) || (index == limit)
-    end
+    self.each {|item| builder.add(item)}
 
-    pages
+    builder.render
   end
 
   #Get the widest element of an array.
