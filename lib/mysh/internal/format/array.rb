@@ -6,10 +6,9 @@ class Array
   # Columns ========================================================
 
   #Print out the array with efficient columns.
-  def puts_mysh_columns(page_length = Mysh::PAGE_LENGTH,
-                        page_width  = Mysh::PAGE_WIDTH)
+  def puts_mysh_columns(page_width  = Mysh::PAGE_WIDTH)
 
-    puts format_mysh_columns(page_length, page_width)
+    puts format_mysh_columns(page_width)
   end
 
   #Convert the array to strings with efficient columns.
@@ -22,6 +21,8 @@ class Array
 
     builder.render
   end
+
+  alias :format_description :format_mysh_columns
 
   #Get the widest element of an array.
   #<br>Returns

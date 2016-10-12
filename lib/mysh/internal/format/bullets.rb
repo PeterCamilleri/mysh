@@ -15,7 +15,7 @@ module Mysh
     #Add an item to this page.
     def add(bullet, *items)
       items.each do |item|
-        @bullet_data << [bullet.to_s, item.to_s]
+        @bullet_data << [bullet.to_s, item]
         bullet = ""
       end
     end
@@ -43,7 +43,7 @@ module Mysh
     def render_bullet(key, item)
       result = []
 
-      item.format_description(@page_width - @key_length - 1).map do |desc_line|
+      item.format_description(@page_width - @key_length - 1).each do |desc_line|
         result << key.ljust(@key_length) + desc_line
         key = ""
       end
