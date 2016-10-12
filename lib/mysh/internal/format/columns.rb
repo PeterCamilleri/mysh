@@ -48,7 +48,7 @@ module Mysh
     def render_row(row_index, widths)
       @page_data.each_with_index.map do |column, index|
         column[row_index].to_s.ljust(widths[index])
-      end.join(" ").freeze
+      end.join(" ")
     end
 
     #Make sure the page fits within its boundaries.
