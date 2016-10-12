@@ -1,3 +1,10 @@
+lib/mysh/internal/format/bullets.rb -- 6 warnings:
+  [69, 78]:DuplicateMethodCall: Mysh::BulletPoints#render_bullet calls result << temp 2 times [https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md]
+  [65, 71]:DuplicateMethodCall: Mysh::BulletPoints#render_bullet calls temp.length 2 times [https://github.com/troessner/reek/blob/master/docs/Duplicate-Method-Call.md]
+  [27, 28]:FeatureEnvy: Mysh::BulletPoints#add refers to items more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md]
+  [19, 24]:FeatureEnvy: Mysh::BulletPoints#add refers to raw_item more than self (maybe move it to another class?) [https://github.com/troessner/reek/blob/master/docs/Feature-Envy.md]
+  [17]:TooManyStatements: Mysh::BulletPoints#add has approx 6 statements [https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md]
+  [54]:TooManyStatements: Mysh::BulletPoints#render_bullet has approx 14 statements [https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md]
 lib/mysh/internal/format/columns.rb -- 1 warning:
-  [128, 139, 156]:DataClump: Array takes parameters [page_length, page_width] to 3 methods [https://github.com/troessner/reek/blob/master/docs/Data-Clump.md]
-1 total warning
+  [126, 135, 150]:DataClump: Array takes parameters [page_length, page_width] to 3 methods [https://github.com/troessner/reek/blob/master/docs/Data-Clump.md]
+7 total warnings

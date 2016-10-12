@@ -13,7 +13,7 @@ module Mysh
 
     #Add an item to this page.
     #<br>Endemic Code Smells
-    #* :reek:FeatureEnvy  :reek:TooManyStatements
+    #* :re ek:FeatureEnvy  :re ek:TooManyStatements
     def add(raw_bullet = "*", *raw_item)
 
       if raw_item.empty?
@@ -50,7 +50,7 @@ module Mysh
 
     #Render one bullet point.
     #<br>Endemic Code Smells
-    #* :reek:DuplicateMethodCall :reek:TooManyStatements
+    #* :re ek:DuplicateMethodCall :re ek:TooManyStatements
     def render_bullet(key, item)
       result, pass_one = [], true
       input  = item.split(' ').each
@@ -85,26 +85,5 @@ module Mysh
 
   end
 
-end
-
-#Bullet point support in the Array class.
-class Array
-  #Print out the array as bullet points.
-  def puts_mysh_bullets
-    puts mysh_bulletize
-  end
-
-  #Convert the array to strings with bullet points.
-  #<br>
-  #* An array of arrays of strings
-  def mysh_bulletize
-    builder = Mysh::BulletPoints.new
-
-    self.each do |pair|
-      builder.add(*pair)
-    end
-
-    builder.render
-  end
 end
 
