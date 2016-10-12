@@ -62,8 +62,8 @@ class Array
   #Convert the array to strings with bullet points.
   #<br>
   #* An array of strings
-  def mysh_bulletize
-    builder = Mysh::BulletPoints.new
+  def mysh_bulletize(page_width = Mysh::PAGE_WIDTH)
+    builder = Mysh::BulletPoints.new(page_width)
 
     self.each do |pair|
       builder.add(*pair)

@@ -7,7 +7,8 @@ module Mysh
   class BulletPoints
 
     #Prepare a blank slate.
-    def initialize
+    def initialize(page_width)
+      @page_width  = page_width
       @bullet_data = []
     end
 
@@ -52,27 +53,29 @@ module Mysh
     #<br>Endemic Code Smells
     #* :re ek:DuplicateMethodCall :re ek:TooManyStatements
     def render_bullet(key, item)
-      result, pass_one = [], true
-      input  = item.split(' ').each
-      temp   = key.ljust(len = @key_length)
+      result   = []
+      input    = item.split(' ').each
+      temp     = key.ljust(len = @key_length)
+      desc_len = @page_width - @key_length - 1
 
       loop do
-        word = ' ' + input.next
 
-        while len >= PAGE_WIDTH
-          result << temp.slice!(0, PAGE_WIDTH - 1)
-          temp = blank_key + ' ' + temp
-          len  = temp.length
-        end
+        word_len = (word = ' ' + input.next).length
 
-        if ((len += word.length) >= PAGE_WIDTH) && !pass_one
+        if (len += word_len) >= @page_width && word_len < desc_len
           result << temp
           temp = blank_key + word
           len  = temp.length
         else
           temp << word
-          pass_one = false
         end
+
+        while len >= @page_width
+          result << temp.slice!(0, @page_width - 1)
+          temp = blank_key + ' ' + temp
+          len  = temp.length
+        end
+
       end
 
       result << temp
