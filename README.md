@@ -19,7 +19,7 @@ Since that name was available, it would seem that no one had yet written a
 shell program at this level of narcissism.
 
 The mysh is available as both a stand-alone CLI program and for use as a
-command shell within Ruby applications and Rails web sites.
+command shell within Ruby applications and (eventually) Rails web sites.
 
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
