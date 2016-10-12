@@ -19,7 +19,7 @@ Since that name was available, it would seem that no one had yet written a
 shell program at this level of narcissism.
 
 The mysh is available as both a stand-alone CLI program and for use as a
-command shell within Ruby applications and Rails web sites.
+command shell within Ruby applications and (eventually) Rails web sites.
 
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
@@ -75,8 +75,6 @@ A few noteworthy methods exist that facilitate use of Ruby expressions:
 reset      Reset the execution environment to the default state.
 result     Returns the result of the previous expression.
 x.lineage  Get the class lineage of the object x.
-vls "mask" List modules with version info. The optional mask string value is
-           used to filter for modules containing that string.
 ```
 
 The Ruby expression execution environment has direct access to many advanced
@@ -127,15 +125,18 @@ Internal commands are recognized by name and are executed by mysh directly.
 The following set of commands are supported:
 
 ```
-!         Display the mysh command history.
-?         Display help information for mysh.
-cd <dir>  Change directory to the optional <dir> parameter
-          and then display the current working directory.
-exit      Exit mysh.
-help      Display help information for mysh.
-history   Display the mysh command history.
-pwd       Display the current working directory.
-quit      Exit mysh.
+!            Display the mysh command history.
+? <topic>    Display help information for mysh with an optional topic.
+cd <dir>     Change directory to the optional <dir> parameter and then display
+             the current working directory.
+exit         Exit mysh.
+help <topic> Display help information for mysh with an optional topic.
+history      Display the mysh command history.
+pwd          Display the current working directory.
+quit         Exit mysh.
+show <file>  Display a text file with optional embedded handlebars.
+vls <mask>   Display the loaded modules, matching the optional mask, that have
+             version info.
 ```
 Of note is the command "help help" which provides a list of available topics.
 
@@ -238,7 +239,13 @@ module Mysh
   end
 end
 ```
+#### Add Method Return Values
+Both the add and add_alias methods return the newly created action instance.
+This may be useful, for example, if it is desired to add singleton methods to
+the action in order to extend functionality.
 
+Note that when an action is aliased, none of the singleton methods are copied
+across and these will have to be regenerated in the new action object.
 
 ## Contributing
 

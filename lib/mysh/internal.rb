@@ -7,5 +7,5 @@ require_relative 'internal/manage'
 require_relative 'internal/format'
 require_relative 'internal/decorate'
 
-#Load up the internal commands!
+#Load up the internal actions!
 Dir[Mysh::Action::ACTIONS_PATH + '*.rb'].each {|file| require file }

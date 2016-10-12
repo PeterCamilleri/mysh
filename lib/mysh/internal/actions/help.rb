@@ -7,24 +7,24 @@ module Mysh
   class Action
 
     # Help topics
-    HELP = ActionPool.new do |args|
+    HELP = ActionPool.new("HELP") do |args|
       puts "No help found for #{args[0].inspect}."
     end
 
     HELP.add("", "General help on mysh.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help.txt')
+      show_handlebar_file(ACTIONS_PATH + 'help/help.txt')
     end
 
     HELP.add("math", "Help on mysh math functions.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help_math.txt')
+      show_handlebar_file(ACTIONS_PATH + 'help/help_math.txt')
     end
 
     HELP.add("=", "Help on mysh ruby expressions.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help_expr.txt')
+      show_handlebar_file(ACTIONS_PATH + 'help/help_expr.txt')
     end
 
     HELP.add("help", "Help on mysh help.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help_help.txt')
+      show_handlebar_file(ACTIONS_PATH + 'help/help_help.txt')
     end
 
     HELP.add_alias('?', 'help')
@@ -41,4 +41,7 @@ module Mysh
   end
 
 end
+
+#Load up the extra help actions!
+Dir[Mysh::Action::ACTIONS_PATH + 'help/*.rb'].each {|file| require file }
 

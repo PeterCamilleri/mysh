@@ -1,0 +1,11 @@
+This is a sample show file.
+
+{{ a = 5 #}}a = {{ a.to_s }}
+Args = {{ args.inspect }}
+
+{{ count = 100 #}}
+
+{{ [["Numbers", Array.new(count){|i| (i+1)} ],
+    ["Squares", Array.new(count){|i| (i+1)*(i+1)} ],
+    ["Cubes",   Array.new(count){|i| (i+1)*(i+1)*(i+1)} ]].mysh_bulletize.join("\n") }}
+

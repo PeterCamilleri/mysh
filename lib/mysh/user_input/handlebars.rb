@@ -35,7 +35,7 @@ class Object
     str.gsub(/{{.*?}}/m) do |match|
       code   = match[2...-2]
       silent = code.end_with?("#")
-      result = instance_eval(code)
+      result = mysh_eval(code)
 
       (result unless silent).to_s
     end

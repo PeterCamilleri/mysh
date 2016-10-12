@@ -5,28 +5,41 @@ module Mysh
 
   #The mysh internal action class.
   class Action
-    #The name of the command.
+    #The name of the action.
     attr_reader :name
 
-    #The description of the command.
+    #The description of the action.
     attr_reader :description
 
-    #The action of the command.
+    #The action of the action.
     attr_reader :action
 
-    #Setup an internal command
+    #Setup an internal action.
     def initialize(name, description, &action)
       @name, @description, @action = name, description.in_array, action
+      @exec_binding = mysh_binding
     end
 
-    #Execute the command.
+    #Execute the action.
     def execute(args)
       instance_exec(args, &@action)
     end
 
-    #Get information about the command.
+    #Get information about the action.
     def action_info
       [@name].concat(@description)
+    end
+
+    private
+
+    #Create a binding for mysh to execute expressions in.
+    def mysh_binding
+      binding
+    end
+
+    #Evaluate the string in the my shell context.
+    def mysh_eval(str)
+      @exec_binding.eval(str)
     end
 
   end
