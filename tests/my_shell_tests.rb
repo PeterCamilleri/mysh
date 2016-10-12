@@ -87,20 +87,18 @@ class MyShellTester < Minitest::Test
 
     assert_equal(result, (1..100).to_a.format_mysh_columns)
 
+    data =
+      [["key_largo", "/long_folder_name_one/long_folder_name_two/long_folder_name_three/fine_descriptive_name"],
+       ["key_west",  "Semper ubi sub ubi. Semper ubi sub ubi. Semper ubi sub ubi. Semper ubi sub ubi. "]
+      ]
+
     result =
       ["key_largo /long_folder_name_one/long_folder_name_two/long_folder_name_three/fin",
        "          e_descriptive_name",
        "key_west  Semper ubi sub ubi. Semper ubi sub ubi. Semper ubi sub ubi. Semper",
        "          ubi sub ubi."]
 
-    data =
-      [["key_largo", "/long_folder_name_one/long_folder_name_two/long_folder_name_three/fine_descriptive_name"],
-       ["key_west",  "Semper ubi sub ubi. Semper ubi sub ubi. Semper ubi sub ubi. Semper ubi sub ubi. "]
-      ]
-
     assert_equal(result, data.mysh_bulletize)
-
-
   end
 
 end

@@ -5,37 +5,36 @@ class String
 
   #Create a bullet point description from this string.
   def format_description(max_width)
-    input, build, len, result = split(' ').each, "", 0, []
+    do_format_description(split(' ').each, max_width)
+  end
+
+  #Do the formatting legwork.
+  def do_format_description(input, max_width)
+    result, build = [], ""
 
     loop do
-      word_len = (word = (build.empty? ? "" : " ") + input.next).length
-
-      if (len += word_len) >= max_width && word_len < max_width
-        result << build
-        build, len = word[1..-1], word_len-1
-      else
-        build << word
-      end
-
-      len = build.split_if_huge(max_width, result).length
+      build = build.split_if_over(input.next, max_width, result)
+                   .split_if_huge(max_width, result)
     end
 
     result << build
   end
 
+  #Split if adding a word goes over a little.
   def split_if_over(word, max_width, buffer)
+    word.prepend(" ") unless self.empty?
     word_len = word.length
 
     if (length + word_len) >= max_width && word_len < max_width
-      result << build
-      build, len = word[1..-1], word_len-1
+      buffer << self
+      word.lstrip
     else
-      build << word
+      self + word
     end
 
   end
 
-  #Carve up a overlong line of text.
+  #Split up a overlong blob of text.
   def split_if_huge(max_width, buffer)
     while length >= max_width
       buffer << slice!(0, max_width)
