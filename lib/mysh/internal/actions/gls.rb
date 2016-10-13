@@ -45,8 +45,8 @@ module Mysh
 
     #The long-winded gem list report.
     gls.define_singleton_method(:long_report) do
-      report = @specs.inject([]) do |report, spec|
-        report.concat(info(spec))
+      report = @specs.inject([]) do |buffer, spec|
+        buffer.concat(info(spec))
       end
 
       #puts report

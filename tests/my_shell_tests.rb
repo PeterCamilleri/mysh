@@ -79,6 +79,11 @@ class MyShellTester < Minitest::Test
   end
 
   def test_some_formatting
+    assert_equal(["1 4", "2 5", "3  "], [1,2,3,4,5].format_description(5))
+    assert_equal(["1 2", "3 4", "5"],   "1 2 3 4 5".format_description(5))
+    assert_equal([], [].format_description(5))
+    assert_equal([], nil.format_description(5))
+
     result =
       ["1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97 ",
        "2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98 ",

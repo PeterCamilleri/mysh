@@ -16,4 +16,5 @@ require_relative 'format/columns'
 require_relative 'format/array'
 require_relative 'format/string'
 require_relative 'format/object'
+require_relative 'format/nil'
 
