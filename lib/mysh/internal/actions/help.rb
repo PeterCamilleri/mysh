@@ -23,6 +23,10 @@ module Mysh
       show_handlebar_file(ACTIONS_PATH + 'help/help_expr.txt')
     end
 
+    HELP.add("gls", "Help on gls internal mysh command.") do |args|
+      show_handlebar_file(ACTIONS_PATH + 'help/help_gls.txt')
+    end
+
     HELP.add("help", "Help on mysh help.") do |args|
       show_handlebar_file(ACTIONS_PATH + 'help/help_help.txt')
     end
