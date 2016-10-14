@@ -14,37 +14,30 @@ class String
   #<br>Returns
   #* An array of strings.
   def do_format_description(input, max_width)
-    result, build = [], ""
+    buffer, build = [], ""
 
-    #Grab "words" of input, splitting off lines as needed.
-    loop do
-      build = build.split_if_over(input.next, max_width, result)
-                   .split_if_huge(max_width, result)
+    loop do  #Grab "words" of input, splitting off lines as needed.
+      build = build.split_if_over(input.next, max_width, buffer)
+                   .split_if_huge(max_width, buffer)
     end
 
-    #Return the accumulated lines of text plus a last line of "unclaimed" text.
-    result << build
+    buffer << build  #Return the buffer the line of "unclaimed" text.
   end
 
   #Split if adding a word goes over a little.
   #<br>Returns
   #* A string.
   def split_if_over(word, max_width, buffer)
-
-    #Add a space separator unless this is the first word in the line.
-    word.prepend(" ") unless empty?
+    word.prepend(" ") unless empty? #Add a space except for the first word.
 
     word_len = word.length
 
     if (length + word_len) >= max_width && word_len < max_width
-      buffer << self
-
-      #Since we start a new line, remove the space.
-      word.lstrip
+      buffer << self  #Line done, add to buffer.
+      word.lstrip     #Start of a new line, remove the leading space.
     else
       self + word
     end
-
   end
 
   #Split up a overlong blob of text.
@@ -57,7 +50,6 @@ class String
       buffer << slice!(0, max_width)
     end
 
-    #Return the remaining text that's not too long.
     self
   end
 end
