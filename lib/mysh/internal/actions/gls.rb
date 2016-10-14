@@ -29,7 +29,7 @@ module Mysh
 
     end
 
-    #Determine which of the loaded gems are of interest.
+    #Determine which of the loaded gem specs are of interest.
     gls.define_singleton_method(:gather_gems) do
       @specs = Gem.loaded_specs
                   .values
@@ -68,8 +68,6 @@ module Mysh
       ]
 
     end
-
-
 
   end
 
