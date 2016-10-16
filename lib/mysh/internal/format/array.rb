@@ -16,7 +16,7 @@ class Array
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
   def format_mysh_columns(page_width = Mysh::PAGE_WIDTH)
-    builder = Mysh::ColumnizedPage.new(Mysh::PAGE_LENGTH, page_width)
+    builder = Mysh::ColumnizedPage.new(page_width)
 
     each {|item| builder.add(item)}
 

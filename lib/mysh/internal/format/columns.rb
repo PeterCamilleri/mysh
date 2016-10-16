@@ -6,8 +6,8 @@ module Mysh
   #A class to display data in columns.
   class ColumnizedPage
     #Prepare a blank page.
-    def initialize(page_length, page_width)
-      @page_length, @page_width = page_length, page_width
+    def initialize(page_width)
+      @page_width = page_width
       @page_data = []
     end
 
@@ -52,24 +52,19 @@ module Mysh
     end
 
     #Make sure the page fits within its boundaries.
-    #<br>Returns
-    #* The number if items that did not fit in the page.
     def adjust_configuration
       while total_width >= @page_width
-        return @page_data.pop.length if rows == @page_length
         add_a_row
       end
-
-      0
     end
 
     #Add a row to the page, moving items as needed.
     def add_a_row
-      target = rows + 1
+      new_rows = rows + 1
       pool, @page_data = @page_data.flatten, []
 
       until pool.empty?
-        @page_data << pool.shift(target)
+        @page_data << pool.shift(new_rows)
       end
     end
 
