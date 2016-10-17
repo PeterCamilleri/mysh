@@ -6,16 +6,19 @@ require 'vls'
 module Mysh
 
   #* internal/actions/vls.rb -- The mysh module version ls command.
-  class Action
+  class VlsCommand < Action
 
-    desc = 'Display the loaded modules, matching the optional mask, ' +
-           'that have version info.'
-
-    COMMANDS.add('vls <mask>', desc) do |args|
+    #Execute the vls command.
+    def execute(args)
       puts VersionLS.vls(args[0] || /./).mysh_bulletize.join("\n"), ""
     end
 
   end
+
+  desc = 'Display the loaded modules, matching the optional mask, that ' +
+         'have version info.'
+
+  COMMANDS.add_action(VlsCommand.new('vls <mask>', desc))
 
 end
 

@@ -23,6 +23,17 @@ module Mysh
       @pool[index]
     end
 
+    #Add an action to the pool.
+    def add_action(action)
+      split_name = action.name.split[0] || ""
+
+      if @pool.has_key?(split_name)
+        fail "Add error: Action #{split_name.inspect} already exists in #{pool_name}."
+      end
+
+      @pool[split_name] = action
+    end
+
     #Add a action.
     def add(name, description, &action)
       split_name = name.split[0] || ""
