@@ -12,10 +12,7 @@ module Mysh
            'that have version info.'
 
     COMMANDS.add('vls <mask>', desc) do |args|
-      mask = args.shift || /./
-
-      puts VersionLS.vls(mask).mysh_bulletize.join("\n")
-      puts
+      puts VersionLS.vls(args[0] || /./).mysh_bulletize.join("\n"), ""
     end
 
   end
