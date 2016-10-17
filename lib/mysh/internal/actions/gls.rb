@@ -7,7 +7,7 @@ module Mysh
   class GlsCommand < Action
 
     #Execute the gls command.
-    def execute(args)
+    def call(args)
       process_args(args)
       gather_gems
       send(@report)

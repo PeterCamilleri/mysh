@@ -27,7 +27,7 @@ class MyShellTester < Minitest::Test
     assert_equal(Class,  Mysh::ExecHost.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
-    assert_equal(Mysh::ActionPool, Mysh::Action::HELP.class)
+    assert_equal(Mysh::ActionPool, Mysh::HELP.class)
   end
 
   def test_for_internal_commands

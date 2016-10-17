@@ -9,7 +9,7 @@ module Mysh
   class VlsCommand < Action
 
     #Execute the vls command.
-    def execute(args)
+    def call(args)
       puts VersionLS.vls(args[0] || /./).mysh_bulletize.join("\n"), ""
     end
 

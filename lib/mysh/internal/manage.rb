@@ -19,7 +19,7 @@ module Mysh
       action, args = parse_command(str.chomp)
 
       if (action)
-        action.execute(args)
+        action.call(args)
         :internal
       end
     end

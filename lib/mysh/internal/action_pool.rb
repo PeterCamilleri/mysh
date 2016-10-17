@@ -12,10 +12,7 @@ module Mysh
     #Create a new action pool
     def initialize(pool_name, &default_action)
       @pool_name, @pool = pool_name, {}
-
-      if default_action
-        @pool.default = Action.new("", "", &default_action)
-      end
+      @pool.default = default_action if default_action
     end
 
     #Get a action.

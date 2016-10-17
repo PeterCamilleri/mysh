@@ -7,7 +7,7 @@ module Mysh
   class ShowCommand < Action
 
     #Execute the show command.
-    def execute(args)
+    def call(args)
       file_name = args.shift
 
       @exec_binding = binding

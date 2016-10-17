@@ -3,44 +3,52 @@
 #* internal/actions/help.rb -- The mysh internal help command.
 module Mysh
 
+  # Help topics
+  HELP = ActionPool.new("HELP") do |args|
+    puts "No help found for #{args[0].inspect}."
+  end
+
   #* help.rb -- The mysh internal help command.
-  class Action
+  class HelpCommand < Action
 
-    # Help topics
-    HELP = ActionPool.new("HELP") do |args|
-      puts "No help found for #{args[0].inspect}."
+    #Execute a help command by routing it to a sub-command.
+    def call(args)
+      HELP[args[0] || ""].call(args)
     end
 
-    HELP.add("", "General help on mysh.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help.txt')
+  end
+
+  # The base help command.
+  desc = 'Display help information for mysh with an optional topic.'
+  COMMANDS.add_action(HelpCommand.new('help <topic>', desc))
+  COMMANDS.add_action(HelpCommand.new('? <topic>', desc))
+
+
+  #* help.rb -- The mysh internal help sub commands.
+  class HelpSubCommand < Action
+
+    #Setup a help command.
+    def initialize(name, description, file_name)
+      super(name, description)
+      @file_name = file_name
     end
 
-    HELP.add("math", "Help on mysh math functions.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_math.txt')
+    #Execute a help command.
+    def call(args)
+      show_handlebar_file(ACTIONS_PATH + 'help/' + @file_name)
     end
 
-    HELP.add("=", "Help on mysh ruby expressions.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_expr.txt')
+    help = [['',     'General help on mysh.',              'help.txt'],
+            ['math', 'Help on mysh math functions.',       'help_math.txt'],
+            ['=',    'Help on mysh ruby expressions.',     'help_expr.txt'],
+            ['gls',  'Help on gls internal mysh command.', 'help_expr.txt'],
+            ['help', 'Help on mysh help.',                 'help_help.txt'],
+            ['?',    'Help on mysh help.',                 'help_help.txt']
+           ]
+
+    help.each do |parms|
+      HELP.add_action(HelpSubCommand.new(*parms))
     end
-
-    HELP.add("gls", "Help on gls internal mysh command.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_gls.txt')
-    end
-
-    HELP.add("help", "Help on mysh help.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_help.txt')
-    end
-
-    HELP.add_alias('?', 'help')
-
-    # The base help command.
-    desc = 'Display help information for mysh with an optional topic.'
-
-    COMMANDS.add('help <topic>', desc) do |args|
-      HELP[args[0] || ""].execute(args)
-    end
-
-    COMMANDS.add_alias('? <topic>', 'help')
 
   end
 
