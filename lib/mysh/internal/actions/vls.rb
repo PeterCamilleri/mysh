@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'vls'
+
 #* internal/actions/vls.rb -- The mysh module version ls command.
 module Mysh
 

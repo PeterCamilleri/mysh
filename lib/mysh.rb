@@ -3,8 +3,6 @@
 # mysh -- MY SHell -- a Ruby/Rails inspired command line shell.
 
 require 'English'
-require 'mini_readline'
-require 'vls'
 require 'in_array'
 
 require_relative 'mysh/user_input'
@@ -15,11 +13,6 @@ require_relative 'mysh/version'
 
 #The MY SHell module. A container for its functionality.
 module Mysh
-
-  class << self
-    #The input text source.
-    attr_reader :input
-  end
 
   #The actual shell method.
   def self.run
@@ -58,7 +51,6 @@ module Mysh
 
 end
 
-#Some test code to run a shell if this file is run directly.
 if __FILE__ == $0
-  Mysh.run
+  Mysh.run  #Run a shell if this file is run directly.
 end

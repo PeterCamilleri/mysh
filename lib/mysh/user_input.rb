@@ -1,11 +1,18 @@
 # coding: utf-8
 
+require 'mini_readline'
+
 require_relative 'user_input/smart_source'
 require_relative 'user_input/parse'
 require_relative 'user_input/handlebars'
 
 #* user_input.rb -- Get a command from the user.
 module Mysh
+
+  class << self
+    #The input text source.
+    attr_reader :input
+  end
 
   #Get one command from the user.
   def self.get_command
@@ -35,5 +42,4 @@ module Mysh
   end
 
 end
-
 
