@@ -11,9 +11,6 @@ module Mysh
     #The description of the action.
     attr_reader :description
 
-    #The action of the action.
-    attr_reader :action
-
     #Setup an internal action.
     def initialize(name, description)
       @name, @description = name, description.in_array
