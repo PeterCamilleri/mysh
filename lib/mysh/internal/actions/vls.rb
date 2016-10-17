@@ -18,8 +18,5 @@ module Mysh
   #Add the vls command to the library.
   desc = 'Display the loaded modules, matching the optional mask, that ' +
          'have version info.'
-
   COMMANDS.add_action(VlsCommand.new('vls <mask>', desc))
-
 end
-

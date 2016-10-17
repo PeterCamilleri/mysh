@@ -23,8 +23,5 @@ module Mysh
 
   #Add the show command to the library.
   desc = 'Display a text file with optional embedded handlebars.'
-
   COMMANDS.add_action(ShowCommand.new('show', desc))
-
 end
-

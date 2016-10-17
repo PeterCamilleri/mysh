@@ -4,19 +4,19 @@
 module Mysh
 
   #* internal/actions/gls.rb -- The mysh gem ls command.
-  class Action
+  class GlsCommand < Action
 
-    desc = 'Display the loaded ruby gems. See help gls for more.'
-
-    #The Gem LS command.
-    gls = COMMANDS.add('gls <-l> <mask>', desc) do |args|
+    #Execute the gls command.
+    def execute(args)
       process_args(args)
       gather_gems
       send(@report)
     end
 
+    private
+
     #Process the gls command's arguments.
-    gls.define_singleton_method(:process_args) do |args|
+    def process_args (args)
       @report, @mask = :short_report, /./
 
       args.each do |arg|
@@ -30,7 +30,7 @@ module Mysh
     end
 
     #Determine which of the loaded gem specs are of interest.
-    gls.define_singleton_method(:gather_gems) do
+    def gather_gems
       @specs = Gem.loaded_specs
                   .values
                   .select {|spec| !(spec.name.partition(@mask)[1]).empty?}
@@ -38,23 +38,21 @@ module Mysh
     end
 
     #The brief gem list report.
-    gls.define_singleton_method(:short_report) do
-      puts @specs.map {|spec| spec.name}.format_mysh_columns.join("\n")
-      puts
+    def short_report
+      puts @specs.map {|spec| spec.name}.format_mysh_columns.join("\n"), ""
     end
 
     #The long-winded gem list report.
-    gls.define_singleton_method(:long_report) do
+    def long_report
       report = @specs.inject([]) do |buffer, spec|
         buffer.concat(info(spec))
       end
 
-      #puts report
       puts report.mysh_bulletize.join("\n")
     end
 
     #Get detailed information on a gem specification.
-    gls.define_singleton_method(:info) do |spec|
+    def info(spec)
       [["name",        spec.name],
        ["version",     spec.version],
        ["date",        spec.date],
@@ -64,12 +62,11 @@ module Mysh
        ["authors",     spec.authors],
        ["email",       spec.email],
        ["homepage",    spec.homepage],
-       ["", ""]
-      ]
-
+       ["", ""]]
     end
 
   end
 
+  desc = 'Display the loaded ruby gems. See ? gls for more.'
+  COMMANDS.add_action(GlsCommand.new('gls <-l> <mask>', desc))
 end
-
