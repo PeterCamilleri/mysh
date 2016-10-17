@@ -4,12 +4,10 @@
 module Mysh
 
   #* internal/actions/show.rb -- The mysh show command.
-  class Action
+  class ShowCommand < Action
 
-    # The base help command.
-    desc = 'Display a text file with optional embedded handlebars.'
-
-    COMMANDS.add('show <file>', desc) do |args|
+    #Execute the show command.
+    def execute(args)
       file_name = args.shift
 
       @exec_binding = binding
@@ -22,6 +20,11 @@ module Mysh
     end
 
   end
+
+  #Add the show command to the library.
+  desc = 'Display a text file with optional embedded handlebars.'
+
+  COMMANDS.add_action(ShowCommand.new('show', desc))
 
 end
 
