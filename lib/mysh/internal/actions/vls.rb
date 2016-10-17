@@ -15,6 +15,7 @@ module Mysh
 
   end
 
+  #Add the vls command to the library.
   desc = 'Display the loaded modules, matching the optional mask, that ' +
          'have version info.'
 
