@@ -31,26 +31,6 @@ module Mysh
       @pool[split_name] = action
     end
 
-    #Add a action.
-    def add(name, description, &action)
-      split_name = name.split[0] || ""
-
-      if @pool.has_key?(split_name)
-        fail "Add error: Action #{split_name.inspect} already exists in #{pool_name}."
-      end
-
-      @pool[split_name] = Action.new(name, description, &action)
-    end
-
-    #Add an alias for an existing action.
-    def add_alias(new_name, old_name)
-      unless (action = @pool[old_name.split[0]])
-        fail "Alias error: Action #{old_name.inspect} not found in #{pool_name}"
-      end
-
-      add(new_name, action.description, &action.action)
-    end
-
     #Get information on all actions.
     def actions_info
       @pool
@@ -61,6 +41,4 @@ module Mysh
 
   end
 
-
 end
-
