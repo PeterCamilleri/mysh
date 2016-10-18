@@ -14,14 +14,18 @@ class String
   #<br>Returns
   #* An array of strings.
   def do_format_description(input, max_width)
-    buffer, build = [], ""
+    buffer, build, empty = [], "", false
 
     loop do  #Grab "words" of input, splitting off lines as needed.
-      build = build.split_if_over(input.next, max_width, buffer)
-                   .split_if_huge(max_width, buffer)
+      empty = (build = build.split_if_over(input.next, max_width, buffer)
+                            .split_if_huge(max_width, buffer)).empty?
     end
 
-    buffer << build  #Return the buffer the line of "unclaimed" text.
+    unless empty
+      buffer << build
+    end
+
+    buffer
   end
 
   #Split if adding a word goes over a little.
