@@ -1,1 +1,3 @@
-0 total warnings
+lib/mysh/internal/actions/help.rb -- 1 warning:
+  [15]:UtilityFunction: Mysh::HelpCommand#call doesn't depend on instance state (maybe move it to another class?) [https://github.com/troessner/reek/blob/master/docs/Utility-Function.md]
+1 total warning

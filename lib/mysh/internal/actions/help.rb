@@ -12,6 +12,8 @@ module Mysh
   class HelpCommand < Action
 
     #Execute a help command by routing it to a sub-command.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def call(args)
       HELP[args[0] || ""].call(args)
     end

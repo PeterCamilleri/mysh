@@ -7,7 +7,7 @@ module Mysh
   class HistoryCommand < Action
 
     #Execute the history command.
-    def call(args)
+    def call(_args)
       history = Mysh.input.history
 
       #The history command should not be part of the history.

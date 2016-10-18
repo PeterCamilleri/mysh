@@ -52,6 +52,8 @@ module Mysh
     end
 
     #Get detailed information on a gem specification.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def info(spec)
       [["name",        spec.name],
        ["version",     spec.version],

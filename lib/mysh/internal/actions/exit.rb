@@ -7,7 +7,7 @@ module Mysh
   class ExitCommand < Action
 
     #Execute the exit command.
-    def call(args)
+    def call(_args)
       raise MiniReadlineEOI
     end
 
