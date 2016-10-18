@@ -1,12 +1,12 @@
 # coding: utf-8
 
-#* internal/actions/show.rb -- The mysh show command.
+#* internal/actions/type.rb -- The mysh type command.
 module Mysh
 
-  #* internal/actions/show.rb -- The mysh show command.
-  class ShowCommand < Action
+  #* internal/actions/type.rb -- The mysh type command.
+  class TypeCommand < Action
 
-    #Execute the show command.
+    #Execute the type command.
     def call(args)
       file_name = args.shift
 
@@ -21,7 +21,7 @@ module Mysh
 
   end
 
-  #Add the show command to the library.
+  #Add the type command to the library.
   desc = 'Display a text file with optional embedded handlebars.'
-  COMMANDS.add_action(ShowCommand.new('show', desc))
+  COMMANDS.add_action(TypeCommand.new('type', desc))
 end
