@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.summary       = Mysh::SUMMARY
   spec.description   = "mysh -- a Ruby inspired command shell " +
                        "for CLI and application use."
-  spec.homepage      = "http://teuthida-technologies.com/"
+  spec.homepage      = "https://github.com/PeterCamilleri/mysh"
 
   spec.license       = "MIT"
 
