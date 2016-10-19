@@ -1,6 +1,7 @@
-mysh Ruby expression support summary:
+Help: mysh Ruby expression support summary:
 
-All command lines that begin with = are evaluated as Ruby expressions.
+All command lines that begin with = are evaluated as Ruby expressions. The
+results of this evaluation are displayed.
 
 Notes:
 

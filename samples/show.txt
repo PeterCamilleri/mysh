@@ -7,5 +7,5 @@ Args = {{ args.inspect }}
 
 {{ [["Numbers", Array.new(count){|i| (i+1)} ],
     ["Squares", Array.new(count){|i| (i+1)*(i+1)} ],
-    ["Cubes",   Array.new(count){|i| (i+1)*(i+1)*(i+1)} ]].mysh_bulletize.join("\n") }}
+    ["Cubes",   Array.new(count){|i| (i+1)*(i+1)*(i+1)} ]].mysh_bulletize }}
 

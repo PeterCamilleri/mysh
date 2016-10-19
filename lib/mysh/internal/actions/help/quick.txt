@@ -1,0 +1,25 @@
+Help: mysh quick commands summary:
+
+In mysh, some commands are identified by a single character, making them easy
+and quick to enter. Since these commands are always a single character long,
+it is not necessary (but still acceptable) to place a space between the command
+and any parameter.
+
+To be processed as quick, the character must be first in the line.
+
+The supported quick commands are:
+
+Quick Long     Command
+Form  Form     Description
+===== =======  ===========
+  !   history  Display the mysh command history, or if an index is specified,
+               retrieve the command with that index value.
+
+  =            All command lines that begin with = are evaluated as Ruby
+               expressions. The results of this evaluation are displayed.
+
+  ?   help     Display help information for mysh with an optional topic.
+
+  @   show     The show (or @) command is used to inspect various aspects of
+               the mysh environment specified by the item parameter.
+

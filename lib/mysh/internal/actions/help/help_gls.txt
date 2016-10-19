@@ -1,0 +1,41 @@
+Help: mysh gls command summary:
+
+The gls command is used to display information about the loaded ruby gems. The
+usage template for this command is:
+
+mysh>gls <options> <mask>
+
+Where:
+
+ <options> is one of:
+   "-l" -- display detailed information on the selected gems.
+   none -- display only the names of the selected gems.
+
+ <mask> is an optional, case-sensitive pattern for filtering out the gems
+        displayed. If omitted, all gems are displayed.
+
+Examples:
+
+mysh>gls
+actionpack    erubis        mini_readline rails-deprecated_sanitizer tzinfo
+actionview    i18n          minitest      rails-dom-testing          vls
+activesupport in_array      nokogiri      rails-html-sanitizer
+bigdecimal    json          psych         railties
+builder       loofah        rack          thor
+crass         mini_portile2 rack-test     thread_safe
+
+mysh>gls -l vls
+name        vls
+version     0.4.0
+date        2016-10-08 00:00:00 UTC
+summary     A version listing utility.
+description A CLI and Rails console utility that lists the versions of modules
+            used by the specified gems/ruby files or Rails project.
+executables vls
+authors     Peter Camilleri
+email       peter.c.camilleri@gmail.com
+homepage    http://teuthida-technologies.com/
+
+A complete guide to the gem specification's properties may be found at:
+http://guides.rubygems.org/specification-reference/
+

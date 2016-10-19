@@ -1,47 +1,34 @@
 # coding: utf-8
 
-#* internal/actions/help.rb -- The mysh internal help command.
+#* mysh/internal/actions/help.rb -- The mysh internal help command.
 module Mysh
 
-  #* help.rb -- The mysh internal help command.
-  class Action
+  # Help action pool of topics.
+  HELP = ActionPool.new("HELP") do |args|
+    puts "No help found for #{args[0].inspect}."
+  end
 
-    # Help topics
-    HELP = ActionPool.new("HELP") do |args|
-      puts "No help found for #{args[0].inspect}."
+  #* mysh/internal/actions/help.rb -- The mysh internal help command.
+  class HelpCommand < Action
+
+    #Execute a help command by routing it to a sub-command.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
+    def call(args)
+      HELP[args[0] || ""].call(args)
     end
-
-    HELP.add("", "General help on mysh.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help.txt')
-    end
-
-    HELP.add("math", "Help on mysh math functions.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_math.txt')
-    end
-
-    HELP.add("=", "Help on mysh ruby expressions.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_expr.txt')
-    end
-
-    HELP.add("help", "Help on mysh help.") do |args|
-      show_handlebar_file(ACTIONS_PATH + 'help/help_help.txt')
-    end
-
-    HELP.add_alias('?', 'help')
-
-    # The base help command.
-    desc = 'Display help information for mysh with an optional topic.'
-
-    COMMANDS.add('help <topic>', desc) do |args|
-      HELP[args[0] || ""].execute(args)
-    end
-
-    COMMANDS.add_alias('? <topic>', 'help')
 
   end
 
+  # The base help command.
+  desc = 'Display help information for mysh with an optional topic.'
+  COMMANDS.add_action(HelpCommand.new('help <topic>', desc))
+  #The help command action object.
+  HELP_COMMAND = HelpCommand.new('?<topic>', desc)
+  COMMANDS.add_action(HELP_COMMAND)
 end
+
+require_relative 'help/sub_help'
 
 #Load up the extra help actions!
 Dir[Mysh::Action::ACTIONS_PATH + 'help/*.rb'].each {|file| require file }
-

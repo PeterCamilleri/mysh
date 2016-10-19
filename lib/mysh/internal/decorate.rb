@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/decorate.rb -- mysh internal file name beauty treatments.
+#* mysh/internal/decorate.rb -- mysh internal file name beauty treatments.
 module Mysh
 
-  #The mysh internal file name beauty treatments.
+  #* mysh/internal/decorate.rb -- The mysh internal file name beauty treatments.
   class Action
 
     #Make the file name fit the local system.

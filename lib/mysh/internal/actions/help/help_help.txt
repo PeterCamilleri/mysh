@@ -1,9 +1,12 @@
-mysh Help command summary:
+Help: mysh help command summary:
 
-The help (or ?) command is used to get either general help about mysh
-or an optional specified topic.
+The help (or ?) command is used to get either general help about mysh or an
+optional specified topic.
+
+If the longer form, help is used, a space is required before the topic. If the
+quick form, ? is used, the space is optional.
 
 The available help topics are:
 
-{{ HELP.actions_info.mysh_bulletize.join("\n") }}
+{{ HELP.actions_info.mysh_bulletize }}
 

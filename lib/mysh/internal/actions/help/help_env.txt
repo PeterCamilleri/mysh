@@ -1,0 +1,14 @@
+Help: mysh show env command summary:
+
+The show env (or @env) command is used to display useful information about the
+current execution environment. This includes:
+
+user  - The current user name.
+home  - The current home directory.
+name  - The path/name of the mysh program currently executing.
+shell - The path/name of the system command shell.
+host  - The name of the host computer.
+os    - The current operating system.
+
+path  - An easy-to-read, formatted version of the current search path.
+

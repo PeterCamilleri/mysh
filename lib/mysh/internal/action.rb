@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal/action.rb -- The framework of mysh internal actions.
+#* mysh/internal/action.rb -- The framework of mysh internal actions.
 module Mysh
 
   #The mysh internal action class.
@@ -11,18 +11,10 @@ module Mysh
     #The description of the action.
     attr_reader :description
 
-    #The action of the action.
-    attr_reader :action
-
     #Setup an internal action.
-    def initialize(name, description, &action)
-      @name, @description, @action = name, description.in_array, action
+    def initialize(name, description)
+      @name, @description = name, description.in_array
       @exec_binding = mysh_binding
-    end
-
-    #Execute the action.
-    def execute(args)
-      instance_exec(args, &@action)
     end
 
     #Get information about the action.

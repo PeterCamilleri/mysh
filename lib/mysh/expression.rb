@@ -5,7 +5,7 @@ require 'mathn'
 
 require_relative 'expression/lineage'
 
-#* expression.rb -- mysh ruby expression processor.
+#* mysh/expression.rb -- The mysh ruby expression processor.
 module Mysh
 
   #The mysh ruby expression processor.
@@ -68,14 +68,6 @@ module Mysh
     #Evaluate the string in the my shell context.
     def mysh_eval(str)
       exec_binding.eval(str)
-    end
-  end
-
-  #Try to execute the string as a ruby expression.
-  def self.try_execute_ruby_expression(str)
-    if str.start_with?('=')
-      @exec_host.execute(str)
-      :expression
     end
   end
 

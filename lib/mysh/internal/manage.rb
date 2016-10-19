@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal/manage.rb -- Manage mysh internal commands.
+#* mysh/internal/manage.rb -- Manage mysh internal commands.
 module Mysh
 
   #Set up the command action pool.
@@ -19,7 +19,7 @@ module Mysh
       action, args = parse_command(str.chomp)
 
       if (action)
-        action.execute(args)
+        action.call(args)
         :internal
       end
     end

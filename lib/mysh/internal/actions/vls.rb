@@ -1,22 +1,22 @@
 # coding: utf-8
 
-#* internal/actions/vls.rb -- The mysh module version ls command.
+require 'vls'
+
+#* mysh/internal/actions/vls.rb -- The mysh module vls (Version LS) command.
 module Mysh
 
-  #* internal/actions/vls.rb -- The mysh module version ls command.
-  class Action
+  #* mysh/internal/actions/vls.rb -- The mysh module vls (Version LS) command.
+  class VlsCommand < Action
 
-    desc = 'Display the loaded modules, matching the optional mask, ' +
-           'that have version info.'
-
-    COMMANDS.add('vls <mask>', desc) do |args|
-      mask = args.shift || /./
-
-      puts VersionLS.vls(mask).mysh_bulletize.join("\n")
-      puts
+    #Execute the vls command.
+    def call(args)
+      puts VersionLS.vls(args[0] || /./).mysh_bulletize, ""
     end
 
   end
 
+  #Add the vls command to the library.
+  desc = 'Display the loaded modules, matching the optional mask, that ' +
+         'have version info.'
+  COMMANDS.add_action(VlsCommand.new('vls <mask>', desc))
 end
-
