@@ -38,5 +38,5 @@ module Mysh
   end
 
   desc = 'Get information about the current shell environment.'
-  HELP.add_action(EnvInfoCommand.new('env', desc))
+  SHOW.add_action(EnvInfoCommand.new('env', desc))
 end

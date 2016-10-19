@@ -1,0 +1,12 @@
+mysh show command summary:
+
+The show (or @) command is used to inspect various aspects of the mysh
+environment specified by the item parameter.
+
+If the longer form, show is used, a space is required before the topic. If the
+quick form, @ is used, the space is optional.
+
+The available show items are:
+
+{{ SHOW.actions_info.mysh_bulletize.join("\n") }}
+

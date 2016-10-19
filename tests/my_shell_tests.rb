@@ -34,8 +34,8 @@ class MyShellTester < Minitest::Test
     assert(Mysh::COMMANDS['exit'], "The exit command is missing.")
     assert(Mysh::COMMANDS['quit'], "The quit command is missing.")
 
-    assert(Mysh::COMMANDS['history'], "The history command is missing.")
-    assert(Mysh::COMMANDS['!'], "The ! command is missing.")
+    assert(Mysh::COMMANDS['history'],  "The history command is missing.")
+    assert(Mysh::COMMANDS['!<index>'], "The ! command is missing.")
 
     assert(Mysh::COMMANDS['help'], "The help command is missing.")
     assert(Mysh::COMMANDS['?<topic>'], "The ? command is missing.")

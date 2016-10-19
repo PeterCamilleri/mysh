@@ -13,13 +13,17 @@ module Mysh
       #The history command should not be part of the history.
       history.pop
 
-      puts history
+      history.each_with_index do |item, index|
+        puts "#{index+1}: #{item}"
+      end
     end
 
   end
 
   #Add the history commands to the library.
-  desc = 'Display the mysh command history.'
-  COMMANDS.add_action(HistoryCommand.new('history', desc))
-  COMMANDS.add_action(HistoryCommand.new('!',       desc))
+  desc = 'Display the mysh command history, or if an index is specified, ' +
+         'retrieve the command with that index value.'
+  COMMANDS.add_action(HistoryCommand.new('history <index>', desc))
+  HISTORY_COMMAND = HistoryCommand.new('!<index>', desc)
+  COMMANDS.add_action(HISTORY_COMMAND)
 end

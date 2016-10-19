@@ -19,12 +19,14 @@ module Mysh
 
   end
 
-  help = [['',     'General help on mysh.',              'help.txt'],
-          ['math', 'Help on mysh math functions.',       'help_math.txt'],
-          ['=',    'Help on mysh ruby expressions.',     'help_expr.txt'],
-          ['gls',  'Help on gls internal mysh command.', 'help_gls.txt'],
-          ['help', 'This help on mysh help.',            'help_help.txt'],
-          ['?',    'This help on mysh help.',            'help_help.txt']
+  help = [['',     'General help on mysh.',               'help.txt'     ],
+          ['show', 'Help on the mysh show command.',      'help_show.txt'],
+          ['@',    'Help on the mysh show command.',      'help_show.txt'],
+          ['math', 'Help on mysh math functions.',        'help_math.txt'],
+          ['=',    'Help on mysh ruby expressions.',      'help_expr.txt'],
+          ['gls',  'Help on gls internal mysh command.',  'help_gls.txt' ],
+          ['help', 'This help on the mysh help command.', 'help_help.txt'],
+          ['?',    'This help on the mysh help command.', 'help_help.txt']
          ]
 
   help.each do |parms|
