@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/gls.rb -- The mysh gem ls command.
+#* mysh/internal/actions/gls.rb -- The mysh gls (gem ls) command.
 module Mysh
 
-  #* internal/actions/gls.rb -- The mysh gem ls command.
+  #* mysh/internal/actions/gls.rb -- The mysh gls (gem ls) command.
   class GlsCommand < Action
 
     #Execute the gls command.

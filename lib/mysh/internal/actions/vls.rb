@@ -2,10 +2,10 @@
 
 require 'vls'
 
-#* internal/actions/vls.rb -- The mysh module version ls command.
+#* mysh/internal/actions/vls.rb -- The mysh module vls (Version LS) command.
 module Mysh
 
-  #* internal/actions/vls.rb -- The mysh module version ls command.
+  #* mysh/internal/actions/vls.rb -- The mysh module vls (Version LS) command.
   class VlsCommand < Action
 
     #Execute the vls command.

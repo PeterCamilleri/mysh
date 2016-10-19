@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/cd.rb -- The mysh internal cd command.
+#* mysh/internal/actions/cd.rb -- The mysh internal cd command.
 module Mysh
 
-  #* cd.rb -- The mysh internal cd command.
+  #* mysh/internal/actions/cd.rb -- The mysh internal cd command.
   class CdCommand < Action
 
     #Execute the cd command.

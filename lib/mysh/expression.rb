@@ -5,7 +5,7 @@ require 'mathn'
 
 require_relative 'expression/lineage'
 
-#* expression.rb -- mysh ruby expression processor.
+#* mysh/expression.rb -- The mysh ruby expression processor.
 module Mysh
 
   #The mysh ruby expression processor.

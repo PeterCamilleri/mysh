@@ -1,14 +1,14 @@
 # coding: utf-8
 
-#* internal/actions/help.rb -- The mysh internal help command.
+#* mysh/internal/actions/help.rb -- The mysh internal help command.
 module Mysh
 
-  # Help topics
+  # Help action pool of topics.
   HELP = ActionPool.new("HELP") do |args|
     puts "No help found for #{args[0].inspect}."
   end
 
-  #* help.rb -- The mysh internal help command.
+  #* mysh/internal/actions/help.rb -- The mysh internal help command.
   class HelpCommand < Action
 
     #Execute a help command by routing it to a sub-command.
@@ -23,6 +23,7 @@ module Mysh
   # The base help command.
   desc = 'Display help information for mysh with an optional topic.'
   COMMANDS.add_action(HelpCommand.new('help <topic>', desc))
+  #The help command action object.
   HELP_COMMAND = HelpCommand.new('?<topic>', desc)
   COMMANDS.add_action(HELP_COMMAND)
 end

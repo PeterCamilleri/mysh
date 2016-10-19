@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal/format.rb - Some formatting facilities for mysh.
+#* mysh/internal/format.rb - Some formatting facilities for mysh.
 module Mysh
 
   #Assume an 80 column working area for formatting.

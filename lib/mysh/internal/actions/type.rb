@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/type.rb -- The mysh type command.
+#* mysh/internal/actions/type.rb -- The mysh type command.
 module Mysh
 
-  #* internal/actions/type.rb -- The mysh type command.
+  #* mysh/internal/actions/type.rb -- The mysh type command.
   class TypeCommand < Action
 
     #Execute the type command.

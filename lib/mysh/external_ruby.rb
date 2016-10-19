@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* external_ruby.rb -- Support for executing Ruby files with the ruby interpreter.
+#* mysh/external_ruby.rb -- Support for executing Ruby files with the ruby interpreter.
 module Mysh
 
   #Try to execute as a Ruby program.

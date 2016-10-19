@@ -1,14 +1,14 @@
 # coding: utf-8
 
-#* internal/actions/help.rb -- The mysh internal help command.
+#* mysh/internal/actions/show.rb -- The mysh internal show command.
 module Mysh
 
   #Show items.
   SHOW = ActionPool.new("SHOW") do |args|
-    puts "No show data found for #{args[0].inspect}."
+    puts "No show data found for #{args[0].inspect}. See ?@ for more."
   end
 
-  #* show.rb -- The mysh internal show command.
+  #* mysh/internal/actions/show.rb -- The mysh internal show command.
   class ShowCommand < Action
 
     #Execute a help command by routing it to a sub-command.
@@ -27,6 +27,7 @@ module Mysh
   # The base help command.
   desc = 'Display information about a part of mysh. See ?@ for more.'
   COMMANDS.add_action(ShowCommand.new('show <item>', desc))
+  #The show command action object.
   SHOW_COMMAND = ShowCommand.new('@<item>', desc)
   COMMANDS.add_action(SHOW_COMMAND)
 end

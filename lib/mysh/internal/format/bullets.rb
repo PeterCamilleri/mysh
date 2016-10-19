@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/format/bullets.rb - Print out bullet points.
+#* mysh/internal/format/bullets.rb - Print out bullet points.
 module Mysh
 
-  #A class to display data in bullet points.
+  #* mysh/internal/format/bullets.rb - A class to display data in bullet points.
   class BulletPoints
 
     #Prepare a blank slate.

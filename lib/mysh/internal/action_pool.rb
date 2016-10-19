@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal/action_pool.rb -- A managed hash of mysh actions.
+#* mysh/internal/action_pool.rb -- A managed hash of mysh actions.
 module Mysh
 
   #* A managed hash of mysh actions.

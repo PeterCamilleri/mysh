@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/format/bullets.rb - Print out data in neat columns.
+#* mysh/internal/format/columns.rb - Print out data in neat columns.
 module Mysh
 
-  #A class to display data in columns.
+  #* mysh/internal/format/columns.rb - A class to display data in columns.
   class ColumnizedPage
     #Prepare a blank page.
     def initialize(page_width)

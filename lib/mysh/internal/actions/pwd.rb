@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/pwd.rb -- The mysh internal pwd command.
+#* mysh/internal/actions/pwd.rb -- The mysh internal pwd command.
 module Mysh
 
-  #* pwd.rb -- The mysh internal pwd command.
+  #* mysh/internal/actions/pwd.rb -- The mysh internal pwd command.
   class PwdCommand < Action
 
     #Execute the cd command.

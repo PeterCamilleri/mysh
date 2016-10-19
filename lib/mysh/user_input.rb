@@ -6,7 +6,7 @@ require_relative 'user_input/smart_source'
 require_relative 'user_input/parse'
 require_relative 'user_input/handlebars'
 
-#* user_input.rb -- Get a command from the user.
+#* mysh/user_input.rb -- Get some text from the user.
 module Mysh
 
   class << self

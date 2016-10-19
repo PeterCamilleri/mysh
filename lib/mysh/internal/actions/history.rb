@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/history.rb -- The mysh internal history command.
+#* mysh/internal/actions/history.rb -- The mysh internal history command.
 module Mysh
 
-  #* history.rb -- The mysh internal history command.
+  #* mysh/internal/actions/history.rb -- The mysh internal history command.
   class HistoryCommand < Action
 
     #Execute the history command.
@@ -24,6 +24,7 @@ module Mysh
   desc = 'Display the mysh command history, or if an index is specified, ' +
          'retrieve the command with that index value.'
   COMMANDS.add_action(HistoryCommand.new('history <index>', desc))
+  #The history command action object.
   HISTORY_COMMAND = HistoryCommand.new('!<index>', desc)
   COMMANDS.add_action(HISTORY_COMMAND)
 end

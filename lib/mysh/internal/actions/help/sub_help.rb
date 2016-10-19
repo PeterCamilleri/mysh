@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/help.rb -- The mysh internal help command.
+#* mysh/internal/actions/help/sub_help.rb -- The mysh internal help sub commands.
 module Mysh
 
-  #* help.rb -- The mysh internal help sub commands.
+  #* mysh/internal/actions/help/sub_help.rb -- The mysh internal help sub commands.
   class HelpSubCommand < Action
 
     #Setup a help command.

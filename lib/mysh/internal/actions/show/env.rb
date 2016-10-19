@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* internal/actions/help/shell.rb -- Get help on the shell environment.
+#* mysh/internal/actions/show/env.rb -- Get help on the mysh environment.
 module Mysh
 
-  #* internal/actions/help/shell.rb -- Get help on the shell environment.
+  #* mysh/internal/actions/show/env.rb -- Get help on the mysh environment.
   class EnvInfoCommand < Action
 
     #Execute the ? shell command.

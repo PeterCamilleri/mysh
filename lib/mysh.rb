@@ -12,7 +12,7 @@ require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
 require_relative 'mysh/version'
 
-#The MY SHell module. A container for its functionality.
+#The Mysh (MY SHell) module. A container for mysh and its functionality.
 module Mysh
 
   #The actual shell method.

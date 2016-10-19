@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* internal/quick.rb -- The mysh internal quick commands.
+#* mysh/internal/quick.rb -- The mysh internal quick commands.
 module Mysh
 
   #Try to execute the string as a quick command.
