@@ -1,4 +1,4 @@
-mysh version: {{ Mysh::VERSION }}
+Help: mysh version: {{ Mysh::VERSION }}
 
 The mysh is a shell program inspired by the Ruby programming language in the
 same way the csh was inspired by the "C" programming language.
@@ -6,7 +6,7 @@ same way the csh was inspired by the "C" programming language.
 In mysh, commands fall into one of three broad categories. There are:
 
 1) "=" expressions: Any line beginning with an "=" will be evaluated as a Ruby
-   language expression. For more see the '? =' or '? math' commands.
+   language expression. For more see the '?=' or '?math' commands.
 
 2) Internal mysh commands are processed within mysh itself. The following set
    of commands are supported:
@@ -23,5 +23,5 @@ In mysh, commands fall into one of three broad categories. There are:
 Note: If an internal command has the same name as an external command, adding a
       leading space will force the use of the external command.
 
-Help on help: For a list of all help topics see the '? ?' command.
+Help on help: For a list of all help topics see the '??' command.
 

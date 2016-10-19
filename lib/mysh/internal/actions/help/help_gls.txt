@@ -1,4 +1,4 @@
-mysh gls command summary:
+Help: mysh gls command summary:
 
 The gls command is used to display information about the loaded ruby gems. The
 usage template for this command is:
@@ -35,4 +35,7 @@ executables vls
 authors     Peter Camilleri
 email       peter.c.camilleri@gmail.com
 homepage    http://teuthida-technologies.com/
+
+A complete guide to the gem specification's properties may be found at:
+http://guides.rubygems.org/specification-reference/
 

@@ -1,4 +1,4 @@
-mysh Help command summary:
+Help: mysh help command summary:
 
 The help (or ?) command is used to get either general help about mysh or an
 optional specified topic.

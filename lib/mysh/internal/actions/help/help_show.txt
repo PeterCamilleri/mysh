@@ -1,4 +1,4 @@
-mysh show command summary:
+Help: mysh show command summary:
 
 The show (or @) command is used to inspect various aspects of the mysh
 environment specified by the item parameter.
