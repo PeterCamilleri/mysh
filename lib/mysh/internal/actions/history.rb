@@ -20,16 +20,13 @@ module Mysh
 
     #Deal with history index arguments
     def pull_index
-      index = Integer(@args[0]) - 1
+      index = @args[0].to_i
 
-      if (0...@history.length) === index
-        Mysh.input.instance_options[:initial] = @history[index]
+      if (1..@history.length) === index
+        Mysh.input.instance_options[:initial] = @history[index-1]
       else
         false
       end
-
-    rescue ArgumentError, TypeError
-      false
     end
 
     #Clear the history buffer.
