@@ -39,7 +39,7 @@ module Mysh
 
     #The brief gem list report.
     def short_report
-      puts @specs.map {|spec| spec.name}.format_mysh_columns.join("\n"), ""
+      puts @specs.map {|spec| spec.name}.format_mysh_columns, ""
     end
 
     #The long-winded gem list report.

@@ -12,10 +12,10 @@ class Array
 
   #Convert the array to strings with efficient columns.
   #<br>Returns
-  #* An array of pages, that is, arrays of strings.
+  #* An array of strings.
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
-  def format_mysh_columns(page_width = Mysh::PAGE_WIDTH)
+  def raw_mysh_columns(page_width)
     builder = Mysh::ColumnizedPage.new(page_width)
 
     each {|item| builder.add(item)}
@@ -23,7 +23,16 @@ class Array
     builder.render
   end
 
-  alias :format_description :format_mysh_columns
+  alias :format_description :raw_mysh_columns
+
+  #Convert the array to strings with efficient columns.
+  #<br>Returns
+  #* A string.
+  #<br>Endemic Code Smells
+  #* :reek:FeatureEnvy -- false positive.
+  def format_mysh_columns(page_width = Mysh::PAGE_WIDTH)
+    raw_mysh_columns(page_width).join("\n")
+  end
 
   #Get the widest element of an array.
   #<br>Returns
@@ -42,7 +51,7 @@ class Array
 
   #Convert the array to strings with bullet points.
   #<br>Returns
-  #* An array of strings.
+  #* A string.
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
   def mysh_bulletize(page_width = Mysh::PAGE_WIDTH)
