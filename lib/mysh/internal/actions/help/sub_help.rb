@@ -19,16 +19,19 @@ module Mysh
 
   end
 
-  help = [['',     'General help on mysh.',               'help.txt'     ],
-          ['show', 'Help on the mysh show command.',      'help_show.txt'],
-          ['@',    'Help on the mysh show command.',      'help_show.txt'],
-          ['env',  'Help on the mysh show env command.',  'help_env.txt' ],
-          ['ruby', 'Help on the mysh show ruby command.', 'help_ruby.txt'],
-          ['math', 'Help on mysh math functions.',        'help_math.txt'],
-          ['=',    'Help on mysh ruby expressions.',      'help_expr.txt'],
-          ['gls',  'Help on gls internal mysh command.',  'help_gls.txt' ],
-          ['help', 'This help on the mysh help command.', 'help_help.txt'],
-          ['?',    'This help on the mysh help command.', 'help_help.txt']
+  help = [['',        'General help on mysh.',               'help.txt'     ],
+          ['show',    'Help on the show command.',           'help_show.txt'],
+          ['@',       'Help on the show command.',           'help_show.txt'],
+          ['env',     'Help on the show env command.',       'help_env.txt' ],
+          ['ruby',    'Help on the show ruby command.',      'help_ruby.txt'],
+          ['math',    'Help on math functions.',             'help_math.txt'],
+          ['=',       'Help on ruby expressions.',           'help_expr.txt'],
+          ['quick',   'Help on quick commands.',             'quick.txt'    ],
+          ['gls',     'Help on gls internal mysh command.',  'help_gls.txt' ],
+          ['!',       'This help on the history command.',   'history.txt'  ],
+          ['history', 'This help on the history command.',   'history.txt'  ],
+          ['help',    'This help on the help command.',      'help_help.txt'],
+          ['?',       'This help on the help command.',      'help_help.txt']
          ]
 
   help.each do |parms|

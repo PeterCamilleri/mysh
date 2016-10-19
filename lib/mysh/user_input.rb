@@ -16,8 +16,9 @@ module Mysh
 
   #Get one command from the user.
   def self.get_command
-    input = @input.readline(prompt: 'mysh>')
-    get_command_extra(input)
+    initial_input = @input.readline(prompt: 'mysh>')
+    @input.instance_options[:initial] = ""
+    get_command_extra(initial_input)
   end
 
   private
