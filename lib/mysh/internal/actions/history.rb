@@ -33,7 +33,6 @@ module Mysh
     def clear_history
       if @args[0] == 'clear'
         @history.clear
-        true
       else
         false
       end
