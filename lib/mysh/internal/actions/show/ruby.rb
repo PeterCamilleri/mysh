@@ -39,6 +39,7 @@ module Mysh
 
   end
 
-  desc = 'Get information about the current ruby environment.'
+  desc = 'Get information about the current ruby environment. ' +
+         'See ?ruby for more.'
   SHOW.add_action(RubyInfoCommand.new('ruby', desc))
 end

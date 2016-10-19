@@ -1,0 +1,17 @@
+Help: mysh show ruby command summary:
+
+The show ruby (or @ruby) command is used to display useful information about
+the current ruby environment. This includes:
+
+location    - The path/name of the current ruby interpreter.
+description - A comprehensive summary of the version and other such data.
+version     - The version of ruby.
+patch       - Its patch level.
+revision    - Its revision level.
+date        - The date of its release.
+platform    - The target platform.
+copyright   - The legal ownership of the software.
+engine      - The internal engine in the software.
+
+$:          - An easy-to-read, formatted version of $: or the ruby search path.
+

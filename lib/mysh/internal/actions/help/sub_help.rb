@@ -22,6 +22,8 @@ module Mysh
   help = [['',     'General help on mysh.',               'help.txt'     ],
           ['show', 'Help on the mysh show command.',      'help_show.txt'],
           ['@',    'Help on the mysh show command.',      'help_show.txt'],
+          ['env',  'Help on the mysh show env command.',  'help_env.txt' ],
+          ['ruby', 'Help on the mysh show ruby command.', 'help_ruby.txt'],
           ['math', 'Help on mysh math functions.',        'help_math.txt'],
           ['=',    'Help on mysh ruby expressions.',      'help_expr.txt'],
           ['gls',  'Help on gls internal mysh command.',  'help_gls.txt' ],

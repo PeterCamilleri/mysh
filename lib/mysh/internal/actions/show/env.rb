@@ -37,6 +37,7 @@ module Mysh
 
   end
 
-  desc = 'Get information about the current shell environment.'
+  desc = 'Get information about the current shell environment. ' +
+         'See ?env for more.'
   SHOW.add_action(EnvInfoCommand.new('env', desc))
 end

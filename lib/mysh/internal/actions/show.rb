@@ -25,7 +25,7 @@ module Mysh
   end
 
   # The base help command.
-  desc = 'Display information about a part of mysh.'
+  desc = 'Display information about a part of mysh. See ?@ for more.'
   COMMANDS.add_action(ShowCommand.new('show <item>', desc))
   SHOW_COMMAND = ShowCommand.new('@<item>', desc)
   COMMANDS.add_action(SHOW_COMMAND)

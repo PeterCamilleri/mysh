@@ -69,6 +69,6 @@ module Mysh
 
   end
 
-  desc = 'Display the loaded ruby gems. See ? gls for more.'
+  desc = 'Display the loaded ruby gems. See ?gls for more.'
   COMMANDS.add_action(GlsCommand.new('gls <-l> <mask>', desc))
 end
