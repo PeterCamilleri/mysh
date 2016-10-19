@@ -27,7 +27,12 @@ module Mysh
        ["date",        RUBY_RELEASE_DATE],
        ["platform",    RUBY_PLATFORM],
        ["copyright",   RUBY_COPYRIGHT],
-       ["engine",      RUBY_ENGINE]]
+       ["engine",      RUBY_ENGINE],
+       ["host",        RbConfig::CONFIG['host']],
+       ["host cpu",    RbConfig::CONFIG['host_cpu']],
+       ["host os",     RbConfig::CONFIG['host_os']],
+       ["host vendor", RbConfig::CONFIG['host_vendor']]
+      ]
     end
 
     #Get the path.
