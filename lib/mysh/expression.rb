@@ -71,14 +71,6 @@ module Mysh
     end
   end
 
-  #Try to execute the string as a ruby expression.
-  def self.try_execute_ruby_expression(str)
-    if str.start_with?('=')
-      @exec_host.execute(str)
-      :expression
-    end
-  end
-
   #Reset the state of the execution hosting environment.
   def self.reset_host
     @exec_host = ExecHost.new(self)

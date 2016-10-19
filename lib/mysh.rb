@@ -6,6 +6,7 @@ require 'English'
 require 'in_array'
 
 require_relative 'mysh/user_input'
+require_relative 'mysh/quick'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
@@ -43,7 +44,7 @@ module Mysh
 
   #Try to execute a single line of input.
   def self.try_execute_command(input)
-    try_execute_ruby_expression(input)  ||
+    try_execute_quick_command(input)    ||
     try_execute_internal_command(input) ||
     try_execute_external_ruby(input)    ||
     system(input)

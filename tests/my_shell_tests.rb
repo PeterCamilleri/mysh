@@ -38,7 +38,7 @@ class MyShellTester < Minitest::Test
     assert(Mysh::COMMANDS['!'], "The ! command is missing.")
 
     assert(Mysh::COMMANDS['help'], "The help command is missing.")
-    assert(Mysh::COMMANDS['?'], "The ? command is missing.")
+    assert(Mysh::COMMANDS['?<topic>'], "The ? command is missing.")
 
     assert(Mysh::COMMANDS['cd'], "The cd command is missing.")
     assert(Mysh::COMMANDS['pwd'], "The pwd command is missing.")

@@ -23,8 +23,8 @@ module Mysh
           ['math', 'Help on mysh math functions.',       'help_math.txt'],
           ['=',    'Help on mysh ruby expressions.',     'help_expr.txt'],
           ['gls',  'Help on gls internal mysh command.', 'help_gls.txt'],
-          ['help', 'Help on mysh help.',                 'help_help.txt'],
-          ['?',    'Help on mysh help.',                 'help_help.txt']
+          ['help', 'This help on mysh help.',            'help_help.txt'],
+          ['?',    'This help on mysh help.',            'help_help.txt']
          ]
 
   help.each do |parms|

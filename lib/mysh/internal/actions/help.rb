@@ -23,8 +23,8 @@ module Mysh
   # The base help command.
   desc = 'Display help information for mysh with an optional topic.'
   COMMANDS.add_action(HelpCommand.new('help <topic>', desc))
-  COMMANDS.add_action(HelpCommand.new('? <topic>', desc))
-
+  HELP_COMMAND = HelpCommand.new('?<topic>', desc)
+  COMMANDS.add_action(HELP_COMMAND)
 end
 
 require_relative 'help/sub_help'
