@@ -48,7 +48,7 @@ module Mysh
         buffer.concat(info(spec))
       end
 
-      puts report.mysh_bulletize.join("\n")
+      puts report.mysh_bulletize
     end
 
     #Get detailed information on a gem specification.

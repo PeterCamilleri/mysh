@@ -8,5 +8,5 @@ quick form, ? is used, the space is optional.
 
 The available help topics are:
 
-{{ HELP.actions_info.mysh_bulletize.join("\n") }}
+{{ HELP.actions_info.mysh_bulletize }}
 

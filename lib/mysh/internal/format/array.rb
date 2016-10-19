@@ -50,7 +50,7 @@ class Array
 
     each {|pair| builder.add(*pair)}
 
-    builder.render
+    builder.render.join("\n")
   end
 
 end

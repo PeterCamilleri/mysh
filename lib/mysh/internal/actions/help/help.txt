@@ -11,7 +11,7 @@ In mysh, commands fall into one of three broad categories. There are:
 2) Internal mysh commands are processed within mysh itself. The following set
    of commands are supported:
 
-{{ Mysh::COMMANDS.actions_info.mysh_bulletize.join("\n") }}
+{{ Mysh::COMMANDS.actions_info.mysh_bulletize }}
 
 3) All other commands are executed by the system using the standard shell or
    the appropriate ruby interpreter. If the command has a '.rb' extension, it
