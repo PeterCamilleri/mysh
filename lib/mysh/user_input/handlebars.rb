@@ -23,7 +23,7 @@ class Object
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
   def eval_handlebars(str)
-    do_process_handlebars(str).gsub(/\\\S/) {|found| found[1]}
+    do_process_handlebars(str).gsub(/\\[\{\}]/) {|found| found[1]}
   end
 
   private
