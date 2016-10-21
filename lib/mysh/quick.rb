@@ -4,10 +4,14 @@
 module Mysh
 
   #Try to execute the string as a quick command.
+  #<br>Endemic Code Smells
+  #* :reek:UtilityFunction :reek:FeatureEnvy :reek:TooManyStatements
   def self.try_execute_quick_command(str)
+    target_args = parse_args(str[1...-1])
+
     case str[0]
     when '!'
-      HISTORY_COMMAND.call(parse_args(str[1...-1]))
+      HISTORY_COMMAND.call(target_args)
       :history
 
     when '='
@@ -15,11 +19,11 @@ module Mysh
       :expression
 
     when '?'
-      HELP_COMMAND.call(parse_args(str[1...-1]))
+      HELP_COMMAND.call(target_args)
       :help
 
     when '@'
-      SHOW_COMMAND.call(parse_args(str[1...-1]))
+      SHOW_COMMAND.call(target_args)
       :show
 
     else

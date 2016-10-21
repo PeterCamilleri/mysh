@@ -15,18 +15,21 @@ module Mysh
   end
 
   #Get one command from the user.
-  def self.get_command
-    initial_input = @input.readline(prompt: 'mysh>')
+  def self.get_command(root="")
+    initial_input = @input.readline(prompt: root + '>')
     @input.instance_options[:initial] = ""
-    get_command_extra(initial_input)
+    get_command_extra(initial_input, root)
+
+  rescue MiniReadlineEOI
+    (@mysh_running = nil).to_s
   end
 
   private
 
   #Get any continuations of the inputs
-  def self.get_command_extra(str)
+  def self.get_command_extra(str, root)
     if /\\\s*$/ =~ str
-      parms = {prompt: 'mysh\\', prefix: str[0] }
+      parms = {prompt: root + '\\', prefix: str[0] }
       get_command_extra($PREMATCH + "\n" + @input.readline(parms))
     else
       str

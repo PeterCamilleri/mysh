@@ -13,7 +13,7 @@ module Mysh
 
     #Execute a help command by routing it to a sub-command.
     #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    #* :reek:UtilityFunction :reek:FeatureEnvy
     def call(args)
       if args.empty?
         puts "An item is needed for the show command."

@@ -45,11 +45,16 @@ Or install it yourself as:
 
 ## Usage
 
-The mysh gem includes a simple executable called mysh. When run, the user is
-presented with a command prompt:
+The mysh gem includes a simple executable called mysh. Command entry is a
+typical cli. For more information, see the mini_readline gem at
+( https://github.com/PeterCamilleri/mini_readline )
 
-    $ mysh
-    mysh>
+When running mysh, the user is presented with a command prompt:
+
+```
+$ mysh
+mysh>
+```
 
 Then start entering some commands! This prompt can be used to execute four
 sorts of commands:
@@ -76,6 +81,26 @@ reset      Reset the execution environment to the default state.
 result     Returns the result of the previous expression.
 x.lineage  Get the class lineage of the object x.
 ```
+For example:
+```
+mysh>=a=42
+42
+mysh>=a
+42
+mysh>=result
+42
+mysh>=a.lineage
+"Fixnum instance < Fixnum < Integer < Numeric < Object < BasicObject"
+mysh>=reset
+
+mysh>=a
+NameError: undefined local variable or method `a' for #<Mysh::ExecHost:0x1d71e18 @owner=Mysh>
+mysh>=result
+
+mysh>
+```
+
+
 
 The Ruby expression execution environment has direct access to many advanced
 Math functions. For example, to compute the cosine of 3.141592653589793 use:
@@ -125,31 +150,51 @@ Internal commands are recognized by name and are executed by mysh directly.
 The following set of commands are supported:
 
 ```
-!            Display the mysh command history.
-? <topic>    Display help information for mysh with an optional topic.
-cd <dir>     Change directory to the optional <dir> parameter and then display
-             the current working directory.
-exit         Exit mysh.
-help <topic> Display help information for mysh with an optional topic.
-history      Display the mysh command history.
-pwd          Display the current working directory.
-quit         Exit mysh.
-show <file>  Display a text file with optional embedded handlebars.
-vls <mask>   Display the loaded modules, matching the optional mask, that have
-             version info.
+!<index>        Display the mysh command history, or if an index is specified,
+                retrieve the command with that index value.
+?<topic>        Display help information for mysh with an optional topic.
+@<item>         Display information about a part of mysh. See ?@ for more.
+cd <dir>        Change directory to the optional <dir> parameter and then
+                display the current working directory.
+exit            Exit mysh.
+gls <-l> <mask> Display the loaded ruby gems. See ?gls for more.
+help <topic>    Display help information for mysh with an optional topic.
+history <index> Display the mysh command history, or if an index is specified,
+                retrieve the command with that index value.
+pwd             Display the current working directory.
+quit            Exit mysh.
+show <item>     Display information about a part of mysh. See ?@ for more.
+type            Display a text file with optional embedded handlebars.
+vls <mask>      Display the loaded modules, matching the optional mask, that
+                have version info.
 ```
 Of note is the command "help help" which provides a list of available topics.
 
-    The help (or ?) command is used to get either general help about mysh
-    or an optional specified topic.
+```
+Help: mysh help command summary:
 
-    The available help topics are:
+The help (or ?) command is used to get either general help about mysh or an
+optional specified topic.
 
-         General help on mysh.
-    =    Help on mysh ruby expressions.
-    ?    Help on mysh help.
-    help Help on mysh help.
-    math Help on mysh math functions.
+If the longer form, help is used, a space is required before the topic. If the
+quick form, ? is used, the space is optional.
+
+The available help topics are:
+
+        General help on mysh.
+!       This help on the history command.
+=       Help on ruby expressions.
+?       This help on the help command.
+@       Help on the show command.
+env     Help on the show env command.
+gls     Help on gls internal mysh command.
+help    This help on the help command.
+history This help on the history command.
+math    Help on math functions.
+quick   Help on quick commands.
+ruby    Help on the show ruby command.
+show    Help on the show command.
+```
 
 #### External commands:
 
@@ -184,19 +229,25 @@ located at:
 
 A survey of the contents of that folder will reveal the nature of these files.
 
-New internal commands may also be added in code via the the add method of the
-InternalCommand class of the Mysh module. The code to do this would look
+New internal commands may also be added in code via the the add_action method
+of the InternalCommand class of the Mysh module. The code to do this would look
 something like this:
 
 ```ruby
 module Mysh
-  class Action
+  class NewCommand < Action
 
-    add(command_name, command_description) do |args|
-      # Action block goes here
+    #This method is called when the command is executed.
+    def call(args)
     end
 
+
   end
+
+  desc = "A succinct description of what this command does."
+  command_name = 'new <item>'
+  COMMANDS.add_action(NewCommand.new(command_name, desc))
+
 end
 ```
 
@@ -206,16 +257,19 @@ separated with spaces. The command is the first word of this string. For
 example a command_name of:
 
 ```
-"cd <dst>"
+"new <item>"
 ```
 
-will create a command called "cd" with a title of "cd &#60;dst&#62;"
+will create a command called "new" with a title of "new &#60;item&#62;"
 
 * command_description is a string or an array of strings that describe the
 command. This serves as the descriptive help for the command. The help display
 code handles matters like word wrap automatically.
-* The args parameter to the action block is an array of zero or more arguments
-that were entered with the command.
+
+#### About command args
+
+The call method take one parameter called args. The args parameter is an array
+of zero or more arguments that were entered with the command.
 
 So if a command is given
 
@@ -224,28 +278,6 @@ So if a command is given
 the args array will contain:
 
     ["abc", "this is a string", "23", "--launch", "--all"]
-
-#### Adding Command Aliases
-
-Commands sometimes have more than one possible name. This is supported with
-the add_alias method:
-
-```ruby
-module Mysh
-  class Action
-
-    add_alias(new_name, old_name)
-
-  end
-end
-```
-#### Add Method Return Values
-Both the add and add_alias methods return the newly created action instance.
-This may be useful, for example, if it is desired to add singleton methods to
-the action in order to extend functionality.
-
-Note that when an action is aliased, none of the singleton methods are copied
-across and these will have to be regenerated in the new action object.
 
 ## Contributing
 
