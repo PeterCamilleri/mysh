@@ -7,7 +7,7 @@ module Mysh
   #<br>Endemic Code Smells
   #* :reek:UtilityFunction :reek:FeatureEnvy :reek:TooManyStatements
   def self.try_execute_quick_command(str)
-    target_args = parse_args(str[1...-1])
+    target_args = parse_args(str[1...-1] || "")
 
     case str[0]
     when '!'

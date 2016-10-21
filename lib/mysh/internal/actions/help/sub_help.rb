@@ -30,6 +30,7 @@ module Mysh
           ['gls',     'Help on gls internal mysh command.',  'help_gls.txt' ],
           ['!',       'This help on the history command.',   'history.txt'  ],
           ['history', 'This help on the history command.',   'history.txt'  ],
+          ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'  ],
           ['help',    'This help on the help command.',      'help_help.txt'],
           ['?',       'This help on the help command.',      'help_help.txt']
          ]

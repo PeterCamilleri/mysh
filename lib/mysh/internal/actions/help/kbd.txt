@@ -1,0 +1,31 @@
+Help: mysh keyboard mappings:
+
+The mysh shell uses the mini_readline gem to supports an interactive command
+line experience. The user interface is mapped through the keyboard, based on
+the current operating platform.
+
+The keyboard (and alias) mappings are listed below:
+
+Editor Action    | Windows Key       Alias  | Mac/Linux Key      Alias
+-----------------+--------------------------+---------------------------
+Enter            | Enter                    | Enter
+Left             | Left Arrow               | Left Arrow,        Ctrl-b
+Word Left        | Ctrl Left Arrow          | Ctrl Left Arrow     Alt-b
+Right            | Right Arrow              | Right Arrow        Ctrl-f
+Word Right       | Ctrl Right Arrow         | Ctrl Right Arrow    Alt-f
+Go to start      | Home                     | Home               Ctrl-a
+Go to end        | End                      | End                Ctrl-E
+Previous History | Up Arrow                 | Up Arrow           Ctrl-r
+Next History     | Down Arrow               | Down Arrow
+Erase Left       | Backspace         Ctrl-h | Backspace          Ctrl-h
+Erase All Left   |                          | Ctrl-u
+Erase Right      | Delete    Ctrl-Backspace | Delete     Ctrl-Backspace
+Erase All Right  |                          | Ctrl-k
+Erase All        | Escape                   | Ctrl-l
+Auto-complete    | Tab               Ctrl-i | Tab                Ctrl-i
+Quick exit mysh  | Ctrl-z                   | Alt-z
+
+Notes:
+  Windows keys are aliased through the numeric key pad unless NumLock is on.
+  Mac/Linux mappings may use Escape letter if Alt-letter is unavailable.
+
