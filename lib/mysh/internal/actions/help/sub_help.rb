@@ -33,6 +33,7 @@ module Mysh
           ['!',       'This help on the history command.',   'history.txt'],
           ['history', 'This help on the history command.',   'history.txt'],
           ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'    ],
+          ['{{',      'Help on mysh handlebars.',            'hbar.txt'   ],
           ['help',    'This help on the help command.',      'h_o_h.txt'  ],
           ['?',       'This help on the help command.',      'h_o_h.txt'  ]
          ]

@@ -168,7 +168,8 @@ type            Display a text file with optional embedded handlebars.
 vls <mask>      Display the loaded modules, matching the optional mask, that
                 have version info.
 ```
-Of note is the command "help help" which provides a list of available topics.
+Of note is the command "help help" or "??" which provides a list of all
+available help topics.
 
 ```
 Help: mysh help command summary:
@@ -190,10 +191,12 @@ env     Help on the show env command.
 gls     Help on gls internal mysh command.
 help    This help on the help command.
 history This help on the history command.
+kbd     Help on mysh keyboard mapping.
 math    Help on math functions.
 quick   Help on quick commands.
 ruby    Help on the show ruby command.
 show    Help on the show command.
+{{      Help on mysh handlebars.
 ```
 
 #### External commands:
