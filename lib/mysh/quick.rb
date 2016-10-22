@@ -12,8 +12,6 @@ module Mysh
   QUICK['@'] = lambda {|str| SHOW_COMMAND.quick_parse_and_call(str) }
 
   #Try to execute the string as a quick command.
-  #<br>Endemic Code Smells
-  #* :re ek:TooManyStatements
   def self.try_execute_quick_command(str)
     QUICK[str[0]].call(str)
   end
