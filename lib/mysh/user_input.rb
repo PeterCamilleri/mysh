@@ -21,7 +21,8 @@ module Mysh
     get_command_extra(initial_input, root)
 
   rescue MiniReadlineEOI
-    (@mysh_running = nil).to_s
+    @mysh_running = false
+    "\n"
   end
 
   private

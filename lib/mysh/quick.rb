@@ -5,26 +5,23 @@ module Mysh
 
   #Try to execute the string as a quick command.
   #<br>Endemic Code Smells
-  #* :reek:UtilityFunction :reek:FeatureEnvy :reek:TooManyStatements
+  #* :reek:TooManyStatements
   def self.try_execute_quick_command(str)
-    target_args = parse_args(str[1...-1] || "")
+    arg_str = str[1...-1]
 
     case str[0]
     when '!'
-      HISTORY_COMMAND.call(target_args)
-      :history
+      HISTORY_COMMAND.parse_and_call(arg_str)
 
     when '='
       @exec_host.execute(str)
       :expression
 
     when '?'
-      HELP_COMMAND.call(target_args)
-      :help
+      HELP_COMMAND.parse_and_call(arg_str)
 
     when '@'
-      SHOW_COMMAND.call(target_args)
-      :show
+      SHOW_COMMAND.parse_and_call(arg_str)
 
     else
       false
