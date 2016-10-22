@@ -7,21 +7,19 @@ module Mysh
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
   def self.try_execute_quick_command(str)
-    arg_str = str[1...-1]
-
     case str[0]
     when '!'
-      HISTORY_COMMAND.parse_and_call(arg_str)
+      HISTORY_COMMAND.quick_parse_and_call(str)
 
     when '='
       @exec_host.execute(str)
       :expression
 
     when '?'
-      HELP_COMMAND.parse_and_call(arg_str)
+      HELP_COMMAND.quick_parse_and_call(str)
 
     when '@'
-      SHOW_COMMAND.parse_and_call(arg_str)
+      SHOW_COMMAND.quick_parse_and_call(str)
 
     else
       false
