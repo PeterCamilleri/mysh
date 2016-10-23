@@ -30,6 +30,6 @@ mysh>echo \{\{ "not embedded" #\}\} \{\{ "embedded" \}\}
  embedded
 
 Finally, it may be that it is desired to embed braces into a text file or
-the command line. In that case preceed the brace with a baclslash character
+the command line. In that case precede the brace with a baclslash character
 like: \\{  or \\}
 
