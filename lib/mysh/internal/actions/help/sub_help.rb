@@ -19,19 +19,23 @@ module Mysh
 
   end
 
-  help = [['',        'General help on mysh.',               'help.txt'     ],
-          ['show',    'Help on the show command.',           'help_show.txt'],
-          ['@',       'Help on the show command.',           'help_show.txt'],
-          ['env',     'Help on the show env command.',       'help_env.txt' ],
-          ['ruby',    'Help on the show ruby command.',      'help_ruby.txt'],
-          ['math',    'Help on math functions.',             'help_math.txt'],
-          ['=',       'Help on ruby expressions.',           'help_expr.txt'],
-          ['quick',   'Help on quick commands.',             'quick.txt'    ],
-          ['gls',     'Help on gls internal mysh command.',  'help_gls.txt' ],
-          ['!',       'This help on the history command.',   'history.txt'  ],
-          ['history', 'This help on the history command.',   'history.txt'  ],
-          ['help',    'This help on the help command.',      'help_help.txt'],
-          ['?',       'This help on the help command.',      'help_help.txt']
+  #Add help topics here. Don't sweat the order; they get sorted by name.
+  #        Name        Description                            Help File
+  help = [['',        'General help on mysh.',               'help.txt'   ],
+          ['show',    'Help on the show command.',           'show.txt'   ],
+          ['@',       'Help on the show command.',           'show.txt'   ],
+          ['env',     'Help on the show env command.',       'env.txt'    ],
+          ['ruby',    'Help on the show ruby command.',      'ruby.txt'   ],
+          ['math',    'Help on math functions.',             'math.txt'   ],
+          ['=',       'Help on ruby expressions.',           'expr.txt'   ],
+          ['quick',   'Help on quick commands.',             'quick.txt'  ],
+          ['gls',     'Help on gls internal mysh command.',  'gls.txt'    ],
+          ['!',       'This help on the history command.',   'history.txt'],
+          ['history', 'This help on the history command.',   'history.txt'],
+          ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'    ],
+          ['{{',      'Help on mysh handlebars.',            'hbar.txt'   ],
+          ['help',    'This help on the help command.',      'h_o_h.txt'  ],
+          ['?',       'This help on the help command.',      'h_o_h.txt'  ]
          ]
 
   help.each do |parms|

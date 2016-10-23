@@ -17,6 +17,12 @@ module Mysh
       @exec_binding = mysh_binding
     end
 
+    #Parse the string and call the action.
+    def quick_parse_and_call(str)
+      call(Mysh.parse_args(str[1...-1]))
+      :action
+    end
+
     #Get information about the action.
     def action_info
       [@name].concat(@description)

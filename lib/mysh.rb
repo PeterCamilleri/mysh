@@ -20,7 +20,7 @@ module Mysh
     setup
 
     while @mysh_running do
-      execute_a_command
+      execute_a_command(@exec_host.eval_handlebars(get_command("mysh")))
     end
   end
 
@@ -32,8 +32,8 @@ module Mysh
   end
 
   #Execute a single line of input.
-  def self.execute_a_command
-    try_execute_command(@exec_host.eval_handlebars(get_command))
+  def self.execute_a_command(str)
+    try_execute_command(str)
 
   rescue MiniReadlineEOI
     @mysh_running = false
