@@ -55,6 +55,8 @@ class Array
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
   def mysh_bulletize(page_width = Mysh::PAGE_WIDTH)
+    return "" if empty?
+
     builder = Mysh::BulletPoints.new(page_width)
 
     each {|pair| builder.add(*pair)}
