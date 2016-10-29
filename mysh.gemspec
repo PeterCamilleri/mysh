@@ -27,10 +27,10 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rake",             "~> 10.0"
   spec.add_development_dependency 'reek',             "~> 3.0"
   spec.add_development_dependency 'minitest',         "~> 5.7"
-  spec.add_development_dependency 'minitest_visible', ">= 0.1.1"
+  spec.add_development_dependency 'minitest_visible', ">= 0.1.2"
   spec.add_development_dependency 'rdoc',             "~> 4.0.1"
 
-  spec.add_runtime_dependency     'mini_readline',    ">= 0.6.0"
-  spec.add_runtime_dependency     'vls',              ">= 0.3.9"
-  spec.add_runtime_dependency     'in_array'
+  spec.add_runtime_dependency     'mini_readline',    ">= 0.6.11"
+  spec.add_runtime_dependency     'vls',              ">= 0.4.1"
+  spec.add_runtime_dependency     'in_array',         ">= 0.1.7"
 end

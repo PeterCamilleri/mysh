@@ -17,15 +17,17 @@ module Mysh
 
     #Get the info
     def info
-      [["user",  ENV['USER']],
-       ["home",  ENV['HOME']],
-       ["name",  decorate($PROGRAM_NAME)],
-       ["shell", ENV['SHELL']    || ENV['ComSpec']],
-       ["host",  ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
-       ["os",    ENV['OS']],
-       ["term",  ENV['TERM']],
-       ["disp",  ENV['DISPLAY']],
-       ["edit",  ENV['EDITOR']]]
+      [["user",     ENV['USER']],
+       ["home",     ENV['HOME']],
+       ["name",     decorate($PROGRAM_NAME)],
+       ["shell",    ENV['SHELL']    || ENV['ComSpec']],
+       ["host",     ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
+       ["os",       ENV['OS']],
+       ["platform", MiniReadline::TERM_PLATFORM],
+       ["java",     MiniReadline::TERM_JAVA != nil],
+       ["term",     ENV['TERM']],
+       ["disp",     ENV['DISPLAY']],
+       ["edit",     ENV['EDITOR']]]
     end
 
     #Get the path.

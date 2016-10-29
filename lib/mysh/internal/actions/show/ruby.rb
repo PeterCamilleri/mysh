@@ -22,6 +22,7 @@ module Mysh
       [["location",    decorate(RbConfig.ruby)],
        ["description", RUBY_DESCRIPTION],
        ["version",     RUBY_VERSION],
+       ["jversion",    (JRUBY_VERSION rescue nil)],
        ["patch",       RUBY_PATCHLEVEL],
        ["revision",    RUBY_REVISION],
        ["date",        RUBY_RELEASE_DATE],

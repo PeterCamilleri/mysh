@@ -115,6 +115,9 @@ class MyShellTester < Minitest::Test
        "pie       3.141592653589793"
 
     assert_equal(result, data.mysh_bulletize)
+
+    assert_equal("", [].mysh_bulletize)
+
   end
 
 end

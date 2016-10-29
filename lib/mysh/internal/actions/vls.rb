@@ -10,7 +10,14 @@ module Mysh
 
     #Execute the vls command.
     def call(args)
-      puts VersionLS.vls(args[0] || /./).mysh_bulletize, ""
+      filter  = args[0] || /./
+      results = VersionLS.vls(filter)
+
+      if results.empty?
+        puts "No modules found for filter #{filter.inspect}.", ""
+      else
+        puts results.mysh_bulletize, ""
+      end
     end
 
   end
