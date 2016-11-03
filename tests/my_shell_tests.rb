@@ -118,6 +118,10 @@ class MyShellTester < Minitest::Test
 
     assert_equal("", [].mysh_bulletize)
 
+    data = ["apple", "cherry", "victory"]
+    result = "* apple\n* cherry\n* victory"
+    assert_equal(result, data.mysh_bulletize)
+
   end
 
 end

@@ -45,8 +45,8 @@ class Array
   # Bullets ========================================================
 
   #Print out the array as bullet points.
-  def puts_mysh_bullets
-    puts mysh_bulletize
+  def puts_mysh_bullets(page_width = Mysh::PAGE_WIDTH)
+    puts mysh_bulletize(page_width)
   end
 
   #Convert the array to strings with bullet points.
@@ -59,9 +59,18 @@ class Array
 
     builder = Mysh::BulletPoints.new(page_width)
 
-    each {|pair| builder.add(*pair)}
+    each {|pair| builder.add(*pair.prepare_bullet_data)}
 
     builder.render.join("\n")
+  end
+
+  #Get data ready for being in a bullet point.
+  def prepare_bullet_data
+    if length < 2
+      ["*", self[0]]
+    else
+      self
+    end
   end
 
 end
