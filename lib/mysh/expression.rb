@@ -9,18 +9,23 @@ require_relative 'expression/lineage'
 module Mysh
 
   #Reset the state of the execution hosting environment.
+  #<br>Endemic Code Smells
+  # :reek:TooManyStatements -- False positive
   def self.reset_host
     exec_class = Class.new do
 
       include Math
 
       #Set up a new execution environment
+      #<br>Endemic Code Smells
+      # :reek:ModuleInitialize -- False positive turned off in mysh.reek
       def initialize
         $exec_result  = nil
         $exec_binding = binding
       end
 
-      #Do the actual work of executing an expression.
+      #Do the actual work of executing an expression. Recall that the str
+      #parameter begins with an '=' character.
       def execute(str)
         pp $exec_binding.eval("$exec_result" + str)
         :expression
