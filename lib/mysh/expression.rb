@@ -20,24 +20,26 @@ module Mysh
       #<br>Endemic Code Smells
       # :reek:ModuleInitialize -- False positive turned off in mysh.reek
       def initialize
-        $exec_result  = nil
-        $exec_binding = binding
+        $mysh_exec_result  = nil
+        $mysh_exec_binding = binding
       end
 
-      #Do the actual work of executing an expression. Recall that the str
-      #parameter begins with an '=' character.
-      def execute(str)
-        pp $exec_binding.eval("$exec_result" + str)
-        :expression
+      #Do the actual work of executing an expression.
+      #<br>Note:
+      #* The expression string always begins with an '=' character.
+      def execute(expression)
+        pp $mysh_exec_binding.eval("$mysh_exec_result" + expression)
       rescue Interrupt, StandardError, ScriptError => err
         puts "#{err.class.to_s}: #{err}"
+      ensure
+        return :expression
       end
 
       private
 
       #Get the previous result
       def result
-         $exec_result
+         $mysh_exec_result
       end
 
       #Reset the state of the execution host.
@@ -48,6 +50,6 @@ module Mysh
 
     end
 
-    $exec_host = exec_class.new
+    $mysh_exec_host = exec_class.new
   end
 end

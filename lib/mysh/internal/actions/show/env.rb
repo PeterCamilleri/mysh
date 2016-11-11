@@ -9,8 +9,8 @@ module Mysh
     #Execute the ? shell command.
     def call(_args)
       puts "Key mysh environment information.", ""
-      puts info.mysh_bulletize, "",
-           path.mysh_bulletize, ""
+      puts info.format_mysh_bullets, "",
+           path.format_mysh_bullets, ""
     end
 
     private

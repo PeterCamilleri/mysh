@@ -112,13 +112,13 @@ class MyShellTester < Minitest::Test
        "          4 9 14 19 24 29 34 39 44 49 54 59 64 69 74 79 84 89 94 99\n" +
        "pie       3.141592653589793"
 
-    assert_equal(result, data.mysh_bulletize)
+    assert_equal(result, data.format_mysh_bullets)
 
-    assert_equal("", [].mysh_bulletize)
+    assert_equal("", [].format_mysh_bullets)
 
     data = ["apple", "cherry", "victory"]
     result = "* apple\n* cherry\n* victory"
-    assert_equal(result, data.mysh_bulletize)
+    assert_equal(result, data.format_mysh_bullets)
 
   end
 

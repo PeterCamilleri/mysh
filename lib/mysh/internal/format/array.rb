@@ -46,7 +46,7 @@ class Array
 
   #Print out the array as bullet points.
   def puts_mysh_bullets(page_width = Mysh::PAGE_WIDTH)
-    puts mysh_bulletize(page_width)
+    puts format_mysh_bullets(page_width)
   end
 
   #Convert the array to strings with bullet points.
@@ -54,7 +54,7 @@ class Array
   #* A string.
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
-  def mysh_bulletize(page_width = Mysh::PAGE_WIDTH)
+  def format_mysh_bullets(page_width = Mysh::PAGE_WIDTH)
     return "" if empty?
 
     builder = Mysh::BulletPoints.new(page_width)

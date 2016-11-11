@@ -7,7 +7,7 @@ module Mysh
   QUICK = Hash.new(lambda {|_str| false})
 
   QUICK['!'] = lambda {|str| HISTORY_COMMAND.quick_parse_and_call(str) }
-  QUICK['='] = lambda {|str| $exec_host.execute(str) }
+  QUICK['='] = lambda {|str| $mysh_exec_host.execute(str) }
   QUICK['?'] = lambda {|str| HELP_COMMAND.quick_parse_and_call(str) }
   QUICK['@'] = lambda {|str| SHOW_COMMAND.quick_parse_and_call(str) }
 

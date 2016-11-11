@@ -16,7 +16,7 @@ module Mysh
       if results.empty?
         puts "No modules found for filter #{filter.inspect}.", ""
       else
-        puts results.mysh_bulletize, ""
+        puts results.format_mysh_bullets, ""
       end
     end
 
