@@ -20,7 +20,7 @@ module Mysh
     setup
 
     while @mysh_running do
-      execute_a_command(@exec_host.eval_handlebars(get_command("mysh")))
+      execute_a_command($exec_host.eval_handlebars(get_command("mysh")))
     end
   end
 
