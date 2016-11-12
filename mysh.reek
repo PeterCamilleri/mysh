@@ -42,7 +42,7 @@ LongYieldList:
   exclude: []
   max_params: 3
 ModuleInitialize:
-  enabled: false
+  enabled: true
   exclude: []
 NestedIterators:
   enabled: true

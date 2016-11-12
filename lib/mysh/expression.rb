@@ -6,6 +6,8 @@ require 'mathn'
 require_relative 'expression/lineage'
 
 #* mysh/expression.rb -- The mysh ruby expression processor.
+#<br>Endemic Code Smells
+#* :reek:ModuleInitialize
 module Mysh
 
   #Reset the state of the execution hosting environment.
@@ -17,8 +19,6 @@ module Mysh
       include Math
 
       #Set up a new execution environment
-      #<br>Endemic Code Smells
-      #* :reek:ModuleInitialize -- False positive turned off in mysh.reek
       def initialize
         $mysh_exec_result  = nil
         $mysh_exec_binding = binding
