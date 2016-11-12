@@ -18,7 +18,7 @@ module Mysh
 
       #Set up a new execution environment
       #<br>Endemic Code Smells
-      # :reek:ModuleInitialize -- False positive turned off in mysh.reek
+      #* :reek:ModuleInitialize -- False positive turned off in mysh.reek
       def initialize
         $mysh_exec_result  = nil
         $mysh_exec_binding = binding
