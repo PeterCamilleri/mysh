@@ -6,6 +6,12 @@ module Mysh
   #* mysh/internal/actions/gls.rb -- The mysh gls (gem ls) command.
   class GlsCommand < Action
 
+    #Set up this command.
+    def initialize(*args)
+      super
+      @report = @mask = @specs = nil
+    end
+
     #Execute the gls command.
     def call(args)
       process_args(args)

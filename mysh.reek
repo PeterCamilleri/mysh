@@ -25,7 +25,7 @@ FeatureEnvy:
   enabled: true
   exclude: []
 InstanceVariableAssumption:
-  enabled: false
+  enabled: true
   exclude: []
 IrresponsibleModule:
   enabled: true

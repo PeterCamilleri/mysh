@@ -8,9 +8,10 @@ module Mysh
 
     #Create a new file/folder auto-data source. NOP
     def initialize(options)
-      @prefix = options[:prefix]
-      @auto_source = MiniReadline::AutoFileSource.new(options)
-      @quote_source = MiniReadline::QuotedFileFolderSource.new(options)
+      @prefix        = options[:prefix]
+      @auto_source   = MiniReadline::AutoFileSource.new(options)
+      @quote_source  = MiniReadline::QuotedFileFolderSource.new(options)
+      @active_source = nil
     end
 
     #Construct a new data list for auto-complete
