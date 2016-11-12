@@ -18,7 +18,7 @@ module Mysh
     unless str[0] == ' '
       action, args = parse_command(str.chomp)
 
-      if (action)
+      if action
         action.call(args)
         :internal
       end
