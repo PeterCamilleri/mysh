@@ -8,5 +8,5 @@ quick form, @ is used, the space is optional.
 
 The available show items are:
 
-{{ SHOW.actions_info.mysh_bulletize }}
+{{ SHOW.actions_info.format_mysh_bullets }}
 

@@ -24,7 +24,6 @@ class MyShellTester < Minitest::Test
     assert_equal(Module, Mysh.class)
     assert_equal(Class,  Mysh::Action.class)
     assert_equal(Class,  Mysh::ActionPool.class)
-    assert_equal(Class,  Mysh::ExecHost.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
     assert_equal(Mysh::ActionPool, Mysh::HELP.class)
@@ -62,19 +61,18 @@ class MyShellTester < Minitest::Test
 
     assert_equal(["1", "2", "3"], Mysh.parse_args("1 2 3"))
 
-    assert_equal(["1", "Trump", "loses", "election", "3"],
-                 Mysh.parse_args("1 Trump loses election 3"))
+    assert_equal(["1", "Trump", "impeached", "3"],
+                 Mysh.parse_args("1 Trump impeached 3"))
 
-    assert_equal(["1", "Trump loses election", "3"],
-                 Mysh.parse_args('1 "Trump loses election" 3'))
-
+    assert_equal(["1", "Trump impeached", "3"],
+                 Mysh.parse_args('1 "Trump impeached" 3'))
   end
 
   def test_the_lineage_method
-    assert_equal("String instance < String < Object < BasicObject",
+    assert_equal("Hello of String < Object < BasicObject",
                  "Hello".lineage)
 
-    assert_equal("Fixnum instance < Fixnum < Integer < Numeric < Object < BasicObject",
+    assert_equal("4 of Fixnum < Integer < Numeric < Object < BasicObject",
                  (4).lineage)
   end
 
@@ -114,13 +112,13 @@ class MyShellTester < Minitest::Test
        "          4 9 14 19 24 29 34 39 44 49 54 59 64 69 74 79 84 89 94 99\n" +
        "pie       3.141592653589793"
 
-    assert_equal(result, data.mysh_bulletize)
+    assert_equal(result, data.format_mysh_bullets)
 
-    assert_equal("", [].mysh_bulletize)
+    assert_equal("", [].format_mysh_bullets)
 
     data = ["apple", "cherry", "victory"]
     result = "* apple\n* cherry\n* victory"
-    assert_equal(result, data.mysh_bulletize)
+    assert_equal(result, data.format_mysh_bullets)
 
   end
 

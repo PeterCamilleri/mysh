@@ -25,7 +25,8 @@ See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
 By the way. The briefest look at the code will reveal that mysh has grown to be
-way more than 25 lines long. Gotta love dem features!
+way more than 25 lines long. As Thomas Edison once said: 1% inspiration, 99%
+perspiration. Enjoy!
 
 ## Installation
 
@@ -90,11 +91,11 @@ mysh>=a
 mysh>=result
 42
 mysh>=a.lineage
-"Fixnum instance < Fixnum < Integer < Numeric < Object < BasicObject"
+"42 of Fixnum < Integer < Numeric < Object < BasicObject"
 mysh>=reset
 
 mysh>=a
-NameError: undefined local variable or method `a' for #<Mysh::ExecHost:0x1d71e18 @owner=Mysh>
+NameError: undefined local variable or method `a' for #<#<Class:0x1c57a10>:0x1c57938>
 mysh>=result
 
 mysh>
@@ -284,6 +285,8 @@ the args array will contain:
 
 ## Contributing
 
+All participation is welcomed. There are two fabulous plans to choose from:
+
 #### Plan A
 
 1. Fork it ( https://github.com/PeterCamilleri/mysh/fork )
@@ -297,4 +300,6 @@ the args array will contain:
 
 Go to the GitHub repository at (https://github.com/PeterCamilleri/mysh) and
 raise an issue calling attention to some aspect that could use some TLC or a
-suggestion or an idea.
+suggestion or an idea or a comment.
+
+This is a low pressure environment. All are welcome!
