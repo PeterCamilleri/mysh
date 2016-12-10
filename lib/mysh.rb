@@ -10,6 +10,7 @@ require_relative 'mysh/quick'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
+require_relative 'mysh/shell_variables'
 require_relative 'mysh/version'
 
 #The Mysh (MY SHell) module. A container for mysh and its functionality.
