@@ -3,13 +3,45 @@
 #* mysh/shell_variables/shell_variable_commands.rb -- Commands for shell vars.
 module Mysh
 
+  VAR_EXP = %r{(?<name>   [a-z][a-z0-9_]*){0}
+               (?<equals> =){0}
+               (?<value>  \S.*){0}
+               (\$) (\g<name> \s* (\g<equals> \s* \g<value>?)?)?}x
+
   #Process a command that manipulates the shell variables.
   def self.shell_variable_command(str)
-    puts str
+    #Parse the expression.
+    match = VAR_EXP.match(str.chomp)
+    name, equals, value = match[:name], match[:equals], match[:value]
+
+    if value
+      assign_value(name, equals, value)
+    elsif equals
+      erase_value(name)
+    elsif name
+      show_value(name)
+    else
+      show_all_values
+    end
 
     true
   end
 
+  def self.assign_value(name, equals, value)
+    puts "Set value #{name} #{equals} #{value}"
+  end
 
+  def self.erase_value(name)
+    puts "Erase value #{name}"
+  end
+
+  def self.show_value(name)
+    puts "Show value #{name}"
+  end
+
+  def self.show_all_values
+    puts "Show all values"
+  end
 
 end
+
