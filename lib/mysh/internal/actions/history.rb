@@ -6,6 +6,12 @@ module Mysh
   #* mysh/internal/actions/history.rb -- The mysh internal history command.
   class HistoryCommand < Action
 
+    #Set up this command.
+    def initialize(*args)
+      super
+      @args = @history = nil
+    end
+
     #Execute the history command.
     def call(args)
       @args, @history = args, Mysh.input.history

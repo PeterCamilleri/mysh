@@ -10,6 +10,7 @@ module Mysh
     def initialize(page_width)
       @page_width  = page_width
       @bullet_data = []
+      @key_length  = nil
     end
 
     #Add items to these bullet points.

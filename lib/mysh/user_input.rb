@@ -31,7 +31,7 @@ module Mysh
   def self.get_command_extra(str, root)
     if /\\\s*$/ =~ str
       parms = {prompt: root + '\\', prefix: str[0] }
-      get_command_extra($PREMATCH + "\n" + @input.readline(parms))
+      get_command_extra($PREMATCH + "\n" + @input.readline(parms), root)
     else
       str
     end
