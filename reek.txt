@@ -1,1 +1,3 @@
-0 total warnings
+lib/mysh/shell_variables/shell_variable_commands.rb -- 1 warning:
+  [12]:TooManyStatements: Mysh#self.shell_variable_command has approx 7 statements [https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md]
+1 total warning

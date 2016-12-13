@@ -16,6 +16,8 @@ module Mysh
     private
 
     #Get the info
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def info
       [["user",     ENV['USER']],
        ["home",     ENV['HOME']],

@@ -34,7 +34,8 @@ module Mysh
 
   #Execute a single line of input.
   def self.execute_a_command(str)
-    try_execute_command($mysh_exec_host.eval_handlebars(str))
+    str = $mysh_exec_host.eval_handlebars(str) unless str.start_with?("$")
+    try_execute_command(str)
 
   rescue MiniReadlineEOI
     @mysh_running = false
