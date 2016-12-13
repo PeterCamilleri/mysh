@@ -2,12 +2,11 @@
 
 require 'pp'
 require 'mathn'
-
 require_relative 'expression/lineage'
 
 #* mysh/expression.rb -- The mysh ruby expression processor.
 #<br>Endemic Code Smells
-#* :reek:ModuleInitialize
+#* :reek:ModuleInitialize -- False positive
 module Mysh
 
   #Reset the state of the execution hosting environment.
@@ -52,7 +51,6 @@ module Mysh
       def mysh_eval(str)
         $mysh_exec_binding.eval(str)
       end
-
     end
 
     $mysh_exec_host = exec_class.new
