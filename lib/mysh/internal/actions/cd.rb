@@ -9,7 +9,7 @@ module Mysh
     #Execute the cd command.
     def call(args)
       Dir.chdir(args[0]) unless args.empty?
-      puts Mysh.decorate(Dir.pwd)
+      puts Dir.pwd.decorate
     rescue => err
       puts "Error: #{err}"
     end

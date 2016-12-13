@@ -19,7 +19,7 @@ module Mysh
     def info
       [["user",     ENV['USER']],
        ["home",     ENV['HOME']],
-       ["name",     Mysh.decorate($PROGRAM_NAME)],
+       ["name",     $PROGRAM_NAME.decorate],
        ["shell",    ENV['SHELL']    || ENV['ComSpec']],
        ["host",     ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
        ["os",       ENV['OS']],
