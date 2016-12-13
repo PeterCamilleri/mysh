@@ -3,35 +3,30 @@
 #* mysh/internal/decorate.rb -- mysh internal file name beauty treatments.
 module Mysh
 
-  #* mysh/internal/decorate.rb -- The mysh internal file name beauty treatments.
-  class Action
+  #Make the file name fit the local system.
+  def self.decorate(name)
+    dress_up_quotes(dress_up_slashes(name))
+  end
 
-    #Make the file name fit the local system.
-    def decorate(name)
-      dress_up_quotes(dress_up_slashes(name))
-    end
+  private
 
-    private
+  #Dress up slashes and backslashes.
+  def self.dress_up_slashes(name)
+    backslash? ? name.gsub("/", "\\") : name
+  end
 
-    #Dress up slashes and backslashes.
-    def dress_up_slashes(name)
-      backslash? ? name.gsub("/", "\\") : name
-    end
+  #Dress up in quotes if needed.
+  #<br>Endemic Code Smells
+  #* :reek:UtilityFunction
+  def self.dress_up_quotes(name)
+    name[' '] ? "\"#{name}\"" : name
+  end
 
-    #Dress up in quotes if needed.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
-    def dress_up_quotes(name)
-      name[' '] ? "\"#{name}\"" : name
-    end
-
-    #Does this file name use backslashes?
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
-    def backslash?
-      MiniReadline::PLATFORM == :windows
-    end
-
+  #Does this file name use backslashes?
+  #<br>Endemic Code Smells
+  #* :reek:UtilityFunction
+  def self.backslash?
+    MiniReadline::PLATFORM == :windows
   end
 
 end
