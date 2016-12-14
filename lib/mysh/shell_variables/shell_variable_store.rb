@@ -26,6 +26,11 @@ module Mysh
       value
     end
 
+    #Does this entry exist?
+    def self.has_key?(index)
+      @store.has_key?(index)
+    end
+
   end
 
 end
