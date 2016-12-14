@@ -45,13 +45,20 @@ module Mysh
   end
 
   #Try to execute a single line of input. Does not handle exceptions.
-  def self.try_execute_command(str)
-    str = $mysh_exec_host.eval_handlebars(str) unless str.start_with?("$")
+  def self.try_execute_command(input)
+    unless input.start_with?("$")
+      input = input.gsub(Value::PARSE) do |str|
+                sym = str.to_sym
+                MNV.key?(sym) ? MNV.get_value(sym).get_value : "?#{str}?"
+              end
 
-    try_execute_quick_command(str)    ||
-    try_execute_internal_command(str) ||
-    try_execute_external_ruby(str)    ||
-    system(str)
+      input = $mysh_exec_host.eval_handlebars(input)
+    end
+
+    try_execute_quick_command(input)    ||
+    try_execute_internal_command(input) ||
+    try_execute_external_ruby(input)    ||
+    system(input)
   end
 
 end

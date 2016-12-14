@@ -15,5 +15,15 @@ module Mysh
   #Set up some default values.
   MNV[:$debug] = "false"
 
+  MNV[:$d] = "{{ Time.now.strftime(\"$date_fmt\") }}"
+  MNV[:$h] = "{{ ENV['HOME'] }}"
+  MNV[:$t] = "{{ Time.now.strftime(\"$time_fmt\") }}"
+  MNV[:$u] = "{{ ENV['USER'] }}"
+  MNV[:$w] = "{{ Dir.pwd.decorate }}"
+
+  MNV[:$date_fmt] = "%Y-%m-%d"
+  MNV[:$time_fmt] = "%H:%M %z"
+
+
 
 end
