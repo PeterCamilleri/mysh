@@ -41,6 +41,11 @@ module Mysh
       @store.key?(index)
     end
 
+    #Get all the keys
+    def self.keys
+      @store.keys
+    end
+
   end
 
 end

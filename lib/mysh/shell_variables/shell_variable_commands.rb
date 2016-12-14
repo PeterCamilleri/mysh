@@ -40,7 +40,10 @@ module Mysh
   end
 
   def self.show_all_values
-    puts "Show all values"
+    puts MNV.keys
+            .sort
+            .map {|sym| [sym.to_s, MNV.get_source(sym)]}
+            .format_mysh_bullets
   end
 
 end

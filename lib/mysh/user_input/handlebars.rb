@@ -10,6 +10,7 @@ class Object
     puts eval_handlebar_file(name)
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error in file: #{name}\n#{err.class}: #{err}"
+    puts err.backtrace if MNV[:$debug]
   end
 
   #Expand a file with embedded ruby handlebars.

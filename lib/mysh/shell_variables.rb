@@ -12,5 +12,8 @@ module Mysh
   #Set up some essential entries.
   MNV[:$$] = "$"
 
+  #Set up some default values.
+  MNV[:$debug] = "false"
+
 
 end

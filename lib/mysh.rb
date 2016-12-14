@@ -40,7 +40,8 @@ module Mysh
     @mysh_running = false
 
   rescue Interrupt, StandardError, ScriptError => err
-    puts err, err.backtrace
+    puts err
+    puts err.backtrace if MNV[:$debug]
   end
 
   #Try to execute a single line of input. Does not handle exceptions.
