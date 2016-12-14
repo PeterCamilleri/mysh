@@ -125,7 +125,7 @@ class MyShellTester < Minitest::Test
   end
 
   def test_mysh_variables
-
+    assert_equal("", MNV[:test])
 
 
 

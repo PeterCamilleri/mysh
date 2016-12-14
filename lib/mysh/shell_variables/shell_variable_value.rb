@@ -6,6 +6,17 @@ module Mysh
   #The holder of mysh variable values.
   class Value
 
+    #Set up this variable
+    def initialize
+      @value = ""
+    end
+
+    #Get the value of this variable.
+    def get_value
+      @value
+    end
+
+
   end
 
 
