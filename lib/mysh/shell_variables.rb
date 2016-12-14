@@ -14,6 +14,7 @@ module Mysh
 
   #Set up some default values.
   MNV[:$debug] = "false"
+  MNV[:$pre_prompt] = "$w"
 
   MNV[:$d] = "{{ Time.now.strftime(\"$date_fmt\") }}"
   MNV[:$h] = "{{ ENV['HOME'] }}"
@@ -23,7 +24,5 @@ module Mysh
 
   MNV[:$date_fmt] = "%Y-%m-%d"
   MNV[:$time_fmt] = "%H:%M %z"
-
-
 
 end
