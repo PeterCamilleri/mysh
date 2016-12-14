@@ -23,7 +23,7 @@ module Mysh
       $mysh_exec_host.eval_handlebars(@value.gsub(PARSE) do |str|
         sym = str.to_sym
         if MNV.has_key?(sym)
-          MNV.store[sym].get_value(loop_check)
+          MNV.get_value(sym).get_value(loop_check)
         else
           "?#{str}?"
         end
