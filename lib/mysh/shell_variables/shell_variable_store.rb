@@ -10,7 +10,7 @@ module Mysh
 
     #Get the value of a variable.
     def self.[](index)
-      @store[index].get_value
+      @store[index].get_value.extract_mysh_types
     end
 
     #Set the value of a variable.
