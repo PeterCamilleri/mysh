@@ -32,9 +32,8 @@ module Mysh
     @mysh_running = true
   end
 
-  #Execute a single line of input.
+  #Execute a single line of input and handle exceptions.
   def self.execute_a_command(str)
-    str = $mysh_exec_host.eval_handlebars(str) unless str.start_with?("$")
     try_execute_command(str)
 
   rescue MiniReadlineEOI
@@ -44,12 +43,14 @@ module Mysh
     puts err, err.backtrace
   end
 
-  #Try to execute a single line of input.
-  def self.try_execute_command(input)
-    try_execute_quick_command(input)    ||
-    try_execute_internal_command(input) ||
-    try_execute_external_ruby(input)    ||
-    system(input)
+  #Try to execute a single line of input. Does not handle exceptions.
+  def self.try_execute_command(str)
+    str = $mysh_exec_host.eval_handlebars(str) unless str.start_with?("$")
+
+    try_execute_quick_command(str)    ||
+    try_execute_internal_command(str) ||
+    try_execute_external_ruby(str)    ||
+    system(str)
   end
 
 end
