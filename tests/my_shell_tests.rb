@@ -159,6 +159,12 @@ class MyShellTester < Minitest::Test
     assert_equal("off", MNV.get_source(:test))
     assert(MNV.has_key?(:test), "MNV[:test] should exist.")
 
+    Mysh.try_execute_command("$a = foo")
+    Mysh.try_execute_command("$b = bar")
+    Mysh.try_execute_command("$test = $a$b")
+    assert_equal("foobar", MNV[:test])
+    assert_equal("$a$b", MNV.get_source(:test))
+
   end
 
 end

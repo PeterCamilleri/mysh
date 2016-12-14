@@ -6,6 +6,12 @@ module Mysh
   #The holder of mysh variables.
   module MNV
 
+    class << self
+      #Access to the low level variable store.
+      attr_reader :store
+    end
+
+    #Set up the storage hash.
     @store = Hash.new { |_hash, _key| Value.new }
 
     #Get the value of a variable.

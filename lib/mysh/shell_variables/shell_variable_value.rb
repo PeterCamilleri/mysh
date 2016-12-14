@@ -11,9 +11,18 @@ module Mysh
       @value = ""
     end
 
+    #A regular expression for parsing embedded variables.
+    PARSE_EXPR = /((\$[a-z][a-z0-9_]*)|(\$\$))(?=[^a-z0-9_]|$)/
+
     #Get the value of this variable.
-    def get_value
-      @value
+    def get_value(loop_check={})
+      my_id = self.object_id
+      fail "Mysh variable looping error." if loop_check[my_id]
+      loop_check[my_id] = self
+
+      @value.gsub(PARSE_EXPR) do |str|
+        str == '$$' ? '$' : MNV.store[str[1..-1].to_sym].get_value(loop_check)
+      end
     end
 
     #Get the source code of this variable.
