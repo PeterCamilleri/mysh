@@ -8,7 +8,4 @@ require_relative 'shell_variables/object'
 #* mysh/shell_variables.rb -- Adds support for mysh scripting variables.
 module Mysh
 
-
-
-
 end

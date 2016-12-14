@@ -13,9 +13,6 @@ module Mysh
       @store[index].get_value
     end
 
-
   end
 
-
 end
-

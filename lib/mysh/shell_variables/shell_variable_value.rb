@@ -16,9 +16,7 @@ module Mysh
       @value
     end
 
-
   end
-
 
 end
 
