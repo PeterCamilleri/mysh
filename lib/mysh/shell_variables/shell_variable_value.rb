@@ -7,12 +7,12 @@ module Mysh
   class Value
 
     #Set up this variable
-    def initialize
-      @value = ""
+    def initialize(value="")
+      @value = value
     end
 
     #A regular expression for parsing embedded variables.
-    PARSE_EXPR = /((\$[a-z][a-z0-9_]*)|(\$\$))(?=[^a-z0-9_]|$)/
+    PARSE = /((\$[a-z][a-z0-9_]*)|(\$\$))(?=[^a-z0-9_]|$)/
 
     #Get the value of this variable.
     def get_value(loop_check={})
@@ -20,9 +20,9 @@ module Mysh
       fail "Mysh variable looping error." if loop_check[my_id]
       loop_check[my_id] = self
 
-      @value.gsub(PARSE_EXPR) do |str|
-        str == '$$' ? '$' : MNV.store[str[1..-1].to_sym].get_value(loop_check)
-      end
+      $mysh_exec_host.eval_handlebars(@value.gsub(PARSE) do |str|
+        MNV.store[str[1..-1].to_sym].get_value(loop_check)
+      end)
     end
 
     #Get the source code of this variable.

@@ -9,4 +9,8 @@ require_relative 'shell_variables/string'
 #* mysh/shell_variables.rb -- Adds support for mysh scripting variables.
 module Mysh
 
+  #Set up some essential defaults
+  MNV["$".to_sym] = "$"
+
+
 end

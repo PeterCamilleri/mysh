@@ -125,6 +125,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_mysh_variables
+    Mysh.reset_host
+
     assert_equal("", MNV[:test])
     assert_equal("", MNV.get_source(:test))
     refute(MNV.has_key?(:test), "MNV[:test] should not exist.")
@@ -164,6 +166,17 @@ class MyShellTester < Minitest::Test
     Mysh.try_execute_command("$test = $a$b")
     assert_equal("foobar", MNV[:test])
     assert_equal("$a$b", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$test = $$")
+    assert_equal("$", MNV[:test])
+    assert_equal("$$", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$bad = $bad")
+    assert_raises { MNV[:bad] }
+
+    MNV[:test] = "{{(1..9).to_a.join}}"
+    assert_equal("123456789", MNV[:test])
+    assert_equal("{{(1..9).to_a.join}}", MNV.get_source(:test))
 
   end
 
