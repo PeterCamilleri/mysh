@@ -37,8 +37,8 @@ module Mysh
     end
 
     #Does this entry exist?
-    def self.has_key?(index)
-      @store.has_key?(index)
+    def self.key?(index)
+      @store.key?(index)
     end
 
   end

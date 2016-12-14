@@ -22,11 +22,7 @@ module Mysh
 
       $mysh_exec_host.eval_handlebars(@value.gsub(PARSE) do |str|
         sym = str.to_sym
-        if MNV.has_key?(sym)
-          MNV.get_value(sym).get_value(loop_check)
-        else
-          "?#{str}?"
-        end
+        MNV.key?(sym) ? MNV.get_value(sym).get_value(loop_check) : "?#{str}?"
       end)
     end
 
@@ -39,7 +35,6 @@ module Mysh
     def set_value(value)
       @value = value
     end
-
 
   end
 

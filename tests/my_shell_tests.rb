@@ -129,37 +129,37 @@ class MyShellTester < Minitest::Test
 
     assert_equal("", MNV[:$test])
     assert_equal("", MNV.get_source(:$test))
-    refute(MNV.has_key?(:$test), "MNV[:$test] should not exist.")
+    refute(MNV.key?(:$test), "MNV[:$test] should not exist.")
 
     MNV[:$test] = "test 1 2 3"
     assert_equal("test 1 2 3", MNV[:$test])
     assert_equal("test 1 2 3", MNV.get_source(:$test))
-    assert(MNV.has_key?(:$test), "MNV[:$test] should exist.")
+    assert(MNV.key?(:$test), "MNV[:$test] should exist.")
 
     MNV[:$test] = ""
     assert_equal("", MNV[:$test])
     assert_equal("", MNV.get_source(:$test))
-    refute(MNV.has_key?(:$test), "MNV[:$test] should not exist.")
+    refute(MNV.key?(:$test), "MNV[:$test] should not exist.")
 
     Mysh.try_execute_command("$test = new value")
     assert_equal("new value", MNV[:$test])
     assert_equal("new value", MNV.get_source(:$test))
-    assert(MNV.has_key?(:$test), "MNV[:$test] should exist.")
+    assert(MNV.key?(:$test), "MNV[:$test] should exist.")
 
     Mysh.try_execute_command("$test =")
     assert_equal("", MNV[:$test])
     assert_equal("", MNV.get_source(:$test))
-    refute(MNV.has_key?(:$test), "MNV[:$test] should not exist.")
+    refute(MNV.key?(:$test), "MNV[:$test] should not exist.")
 
     Mysh.try_execute_command("$test = true")
     assert_equal(true, MNV[:$test])
     assert_equal("true", MNV.get_source(:$test))
-    assert(MNV.has_key?(:$test), "MNV[:$test] should exist.")
+    assert(MNV.key?(:$test), "MNV[:$test] should exist.")
 
     Mysh.try_execute_command("$test = off")
     assert_equal(false, MNV[:$test])
     assert_equal("off", MNV.get_source(:$test))
-    assert(MNV.has_key?(:$test), "MNV[:$test] should exist.")
+    assert(MNV.key?(:$test), "MNV[:$test] should exist.")
 
     Mysh.try_execute_command("$a = foo")
     Mysh.try_execute_command("$b = bar")
