@@ -26,6 +26,11 @@ module Mysh
       value
     end
 
+    #Get the source code of a variable.
+    def self.get_source(index)
+      @store[index].get_source
+    end
+
     #Does this entry exist?
     def self.has_key?(index)
       @store.has_key?(index)

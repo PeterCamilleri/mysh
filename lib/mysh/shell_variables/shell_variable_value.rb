@@ -16,6 +16,11 @@ module Mysh
       @value
     end
 
+    #Get the source code of this variable.
+    def get_source
+      @value
+    end
+
     #Set the value of this variable.
     def set_value(value)
       @value = value

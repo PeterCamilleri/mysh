@@ -36,7 +36,7 @@ module Mysh
   end
 
   def self.show_value(name)
-    puts "#{name} = #{MNV[name.to_sym].to_s}"
+    puts "#{name} = #{MNV.get_source(name.to_sym)}"
   end
 
   def self.show_all_values
