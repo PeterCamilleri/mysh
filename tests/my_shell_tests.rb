@@ -126,21 +126,27 @@ class MyShellTester < Minitest::Test
 
   def test_mysh_variables
     assert_equal("", MNV[:test])
+    assert_equal("", MNV.get_source(:test))
     refute(MNV.has_key?(:test), "MNV[:test] should not exist.")
 
     MNV[:test] = "test 1 2 3"
     assert_equal("test 1 2 3", MNV[:test])
+    assert_equal("test 1 2 3", MNV.get_source(:test))
     assert(MNV.has_key?(:test), "MNV[:test] should exist.")
 
     MNV[:test] = ""
+    assert_equal("", MNV[:test])
+    assert_equal("", MNV.get_source(:test))
     refute(MNV.has_key?(:test), "MNV[:test] should not exist.")
 
     Mysh.try_execute_command("$test = new value")
     assert_equal("new value", MNV[:test])
+    assert_equal("new value", MNV.get_source(:test))
     assert(MNV.has_key?(:test), "MNV[:test] should exist.")
 
     Mysh.try_execute_command("$test =")
     assert_equal("", MNV[:test])
+    assert_equal("", MNV.get_source(:test))
     refute(MNV.has_key?(:test), "MNV[:test] should not exist.")
 
   end
