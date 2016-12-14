@@ -28,11 +28,11 @@ module Mysh
   end
 
   def self.assign_value(name, equals, value)
-    puts "Set value #{name} #{equals} #{value}"
+    MNV[name.to_sym] = value
   end
 
   def self.erase_value(name)
-    puts "Erase value #{name}"
+    MNV[name.to_sym] = ""
   end
 
   def self.show_value(name)

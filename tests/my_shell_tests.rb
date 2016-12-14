@@ -135,6 +135,14 @@ class MyShellTester < Minitest::Test
     MNV[:test] = ""
     refute(MNV.has_key?(:test), "MNV[:test] should not exist.")
 
+    Mysh.try_execute_command("$test = new value")
+    assert_equal("new value", MNV[:test])
+    assert(MNV.has_key?(:test), "MNV[:test] should exist.")
+
+    Mysh.try_execute_command("$test =")
+    assert_equal("", MNV[:test])
+    refute(MNV.has_key?(:test), "MNV[:test] should not exist.")
+
   end
 
 end
