@@ -13,6 +13,19 @@ module Mysh
       @store[index].get_value
     end
 
+    #Set the value of a variable.
+    def self.[]=(index, value)
+      unless value.empty?
+        mysh_value = @store[index]
+        mysh_value.set_value(value)
+        @store[index] = mysh_value
+      else
+        @store.delete(index)
+      end
+
+      value
+    end
+
   end
 
 end

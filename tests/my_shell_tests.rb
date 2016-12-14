@@ -126,6 +126,8 @@ class MyShellTester < Minitest::Test
 
   def test_mysh_variables
     assert_equal("", MNV[:test])
+    MNV[:test] = "test 1 2 3"
+    assert_equal("test 1 2 3", MNV[:test])
 
 
 

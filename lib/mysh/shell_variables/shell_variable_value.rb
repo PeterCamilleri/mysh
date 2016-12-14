@@ -16,6 +16,12 @@ module Mysh
       @value
     end
 
+    #Set the value of this variable.
+    def set_value(value)
+      @value = value
+    end
+
+
   end
 
 end
