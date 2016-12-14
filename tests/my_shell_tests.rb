@@ -24,6 +24,7 @@ class MyShellTester < Minitest::Test
     assert_equal(Module, Mysh.class)
     assert_equal(Class,  Mysh::Action.class)
     assert_equal(Class,  Mysh::ActionPool.class)
+    assert_equal(Module, Mysh::MNV.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
     assert_equal(Mysh::ActionPool, Mysh::HELP.class)
@@ -119,6 +120,13 @@ class MyShellTester < Minitest::Test
     data = ["apple", "cherry", "victory"]
     result = "* apple\n* cherry\n* victory"
     assert_equal(result, data.format_mysh_bullets)
+
+  end
+
+  def test_mysh_variables
+
+
+
 
   end
 
