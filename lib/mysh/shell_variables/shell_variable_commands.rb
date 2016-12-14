@@ -3,10 +3,10 @@
 #* mysh/shell_variables/shell_variable_commands.rb -- Commands for shell vars.
 module Mysh
 
-  VAR_EXP = %r{(?<name>   [a-z][a-z0-9_]*){0}
+  VAR_EXP = %r{(?<name>   \$[a-z][a-z0-9_]*){0}
                (?<equals> =){0}
                (?<value>  \S.*){0}
-               (\$) (\g<name> \s* (\g<equals> \s* \g<value>?)?)?}x
+               (\g<name> \s* (\g<equals> \s* \g<value>?)?)?}x
 
   #Process a command that manipulates the shell variables.
   def self.shell_variable_command(str)

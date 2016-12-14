@@ -10,7 +10,7 @@ require_relative 'shell_variables/string'
 module Mysh
 
   #Set up some essential defaults
-  MNV["$".to_sym] = "$"
+  MNV["$$".to_sym] = "$"
 
 
 end
