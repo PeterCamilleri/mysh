@@ -55,7 +55,7 @@ module Mysh
       input = $mysh_exec_host.eval_handlebars(input)
     end
 
-    puts input if MNV[:debug]
+    puts "=> #{input}" if MNV[:debug]
 
     try_execute_quick_command(input)    ||
     try_execute_internal_command(input) ||
