@@ -16,7 +16,7 @@ module Mysh
 
   #Get one command from the user.
   def self.get_command(root="")
-    puts MNV[:$pre_prompt] if MNV.key?(:$pre_prompt)
+    puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
 
     initial_input = @input.readline(prompt: root + '>')
     @input.instance_options[:initial] = ""

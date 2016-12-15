@@ -21,7 +21,7 @@ module Mysh
       loop_check[my_id] = self
 
       $mysh_exec_host.eval_handlebars(@value.gsub(PARSE) do |str|
-        sym = str.to_sym
+        sym = str[1..-1].to_sym
         MNV.key?(sym) ? MNV.get_value(sym).get_value(loop_check) : "?#{str}?"
       end)
     end

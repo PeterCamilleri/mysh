@@ -12,7 +12,7 @@ module Mysh
       puts Dir.pwd.decorate
     rescue => err
       puts "Error: #{err}"
-      puts err.backtrace if MNV[:$debug]
+      puts err.backtrace if MNV[:debug]
     end
 
   end

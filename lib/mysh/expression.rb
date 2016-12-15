@@ -30,7 +30,7 @@ module Mysh
         pp $mysh_exec_binding.eval("$mysh_exec_result" + expression)
       rescue Interrupt, StandardError, ScriptError => err
         puts "#{err.class.to_s}: #{err}"
-        puts err.backtrace if MNV[:$debug]
+        puts err.backtrace if MNV[:debug]
       ensure
         return :expression
       end

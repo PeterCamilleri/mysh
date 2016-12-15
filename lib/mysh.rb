@@ -41,19 +41,21 @@ module Mysh
 
   rescue Interrupt, StandardError, ScriptError => err
     puts err
-    puts err.backtrace if MNV[:$debug]
+    puts err.backtrace if MNV[:debug]
   end
 
   #Try to execute a single line of input. Does not handle exceptions.
   def self.try_execute_command(input)
     unless input.start_with?("$")
       input = input.gsub(Value::PARSE) do |str|
-                sym = str.to_sym
+                sym = str[1..-1].to_sym
                 MNV.key?(sym) ? MNV[sym].to_s : "?#{str}?"
               end
 
       input = $mysh_exec_host.eval_handlebars(input)
     end
+
+    puts input if MNV[:debug]
 
     try_execute_quick_command(input)    ||
     try_execute_internal_command(input) ||
