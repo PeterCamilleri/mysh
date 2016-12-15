@@ -15,6 +15,8 @@ module Mysh
   end
 
   #Get one command from the user.
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
   def self.get_command(root="")
     puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
 

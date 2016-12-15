@@ -9,13 +9,15 @@ module Mysh
                \$ (\g<name> \s* (\g<equals> \s* \g<value>?)?)?}x
 
   #Process a command that manipulates the shell variables.
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
   def self.shell_variable_command(str)
     #Parse the expression.
     match = VAR_EXP.match(str.chomp)
     name, equals, value = match[:name], match[:equals], match[:value]
 
     if value
-      assign_value(name, equals, value)
+      assign_value(name, value)
     elsif equals
       erase_value(name)
     elsif name
@@ -27,7 +29,7 @@ module Mysh
     true
   end
 
-  def self.assign_value(name, equals, value)
+  def self.assign_value(name, value)
     MNV[name.to_sym] = value
   end
 
