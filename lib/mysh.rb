@@ -51,7 +51,7 @@ module Mysh
     unless input.start_with?("$")
       input = input.gsub(Keeper::PARSE) do |str|
                 sym = str[1..-1].to_sym
-                MNV.key?(sym) ? MNV[sym].to_s : "?#{str}?"
+                MNV.key?(sym) ? MNV[sym].to_s : str
               end
 
       input = $mysh_exec_host.eval_handlebars(input)

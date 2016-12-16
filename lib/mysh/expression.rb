@@ -35,6 +35,11 @@ module Mysh
         return :expression
       end
 
+      #Return a simple message for less convoluted error messages.
+      def inspect
+        "$mysh_exec_host"
+      end
+
       private
 
       #Get the previous result

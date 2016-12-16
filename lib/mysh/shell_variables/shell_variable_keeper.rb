@@ -12,7 +12,7 @@ module Mysh
     end
 
     #A regular expression for parsing embedded variables.
-    PARSE = /((\$[a-z][a-z0-9_]*)|(\$\$))(?=[^a-z0-9_]|$)/
+    PARSE = /(\$\$)|(\$[a-z][a-z0-9_]*)(?=[^a-z0-9_]|$)/
 
     #Get the value of this variable.
     #<br>Endemic Code Smells
@@ -24,7 +24,7 @@ module Mysh
 
       $mysh_exec_host.eval_handlebars(@value.gsub(PARSE) do |str|
         sym = str[1..-1].to_sym
-        MNV.key?(sym) ? MNV.get_keeper(sym).get_value(loop_check) : "?#{str}?"
+        MNV.key?(sym) ? MNV.get_keeper(sym).get_value(loop_check) : str
       end)
     end
 

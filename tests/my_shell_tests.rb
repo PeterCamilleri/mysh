@@ -167,9 +167,9 @@ class MyShellTester < Minitest::Test
     assert_equal("foobar", MNV[:test])
     assert_equal("$a$b", MNV.get_source(:test))
 
-    Mysh.try_execute_command("$test = $$")
-    assert_equal("$", MNV[:test])
-    assert_equal("$$", MNV.get_source(:test))
+    Mysh.try_execute_command("$test = $$foo")
+    assert_equal("$foo", MNV[:test])
+    assert_equal("$$foo", MNV.get_source(:test))
 
     Mysh.try_execute_command("$bad = $bad")
     assert_raises { MNV[:bad] }
@@ -179,7 +179,7 @@ class MyShellTester < Minitest::Test
     assert_equal("{{(1..9).to_a.join}}", MNV.get_source(:test))
 
     Mysh.try_execute_command("$test = $whats_all_this")
-    assert_equal("?$whats_all_this?", MNV[:test])
+    assert_equal("$whats_all_this", MNV[:test])
     assert_equal("$whats_all_this", MNV.get_source(:test))
 
     Mysh.try_execute_command("$bad = {{ MNV[:bad] }}")
