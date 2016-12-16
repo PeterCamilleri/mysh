@@ -4,7 +4,7 @@
 module Mysh
 
   #The holder of mysh variable values.
-  class Value
+  class Keeper
 
     #Set up this variable
     def initialize(value="")
@@ -24,7 +24,7 @@ module Mysh
 
       $mysh_exec_host.eval_handlebars(@value.gsub(PARSE) do |str|
         sym = str[1..-1].to_sym
-        MNV.key?(sym) ? MNV.get_value(sym).get_value(loop_check) : "?#{str}?"
+        MNV.key?(sym) ? MNV.get_keeper(sym).get_value(loop_check) : "?#{str}?"
       end)
     end
 

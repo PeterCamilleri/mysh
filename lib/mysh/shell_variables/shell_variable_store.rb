@@ -6,11 +6,26 @@ module Mysh
   #The holder of mysh variables.
   module MNV
     #Set up the storage hash.
-    @store = Hash.new { |_hash, _key| Value.new }
+    @store = Hash.new { |_hash, _key| Keeper.new }
+
+    #The shared loop checker for programmatic access.
+    @loop_check = nil
 
     #Get the value of a variable.
+    #<br>Endemic Code Smells
+    #* :reek:TooManyStatements
     def self.[](index)
-      @store[index].get_value.extract_mysh_types
+      keeper = get_keeper(index)
+
+      if @loop_check
+        keeper.get_value(@loop_check)
+      else
+        begin
+          keeper.get_value(@loop_check = {})
+        ensure
+          @loop_check = nil
+        end
+      end.extract_mysh_types
     end
 
     #Set the value of a variable.
@@ -26,8 +41,8 @@ module Mysh
       value
     end
 
-    #Get the value object of a variable.
-    def self.get_value(index)
+    #Get the value keeper of a variable.
+    def self.get_keeper(index)
       @store[index]
     end
 

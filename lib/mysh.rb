@@ -49,7 +49,7 @@ module Mysh
   #* :reek:TooManyStatements
   def self.try_execute_command(input)
     unless input.start_with?("$")
-      input = input.gsub(Value::PARSE) do |str|
+      input = input.gsub(Keeper::PARSE) do |str|
                 sym = str[1..-1].to_sym
                 MNV.key?(sym) ? MNV[sym].to_s : "?#{str}?"
               end

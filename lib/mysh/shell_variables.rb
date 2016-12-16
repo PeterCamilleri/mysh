@@ -2,7 +2,7 @@
 
 require_relative 'shell_variables/shell_variable_commands'
 require_relative 'shell_variables/shell_variable_store'
-require_relative 'shell_variables/shell_variable_value'
+require_relative 'shell_variables/shell_variable_keeper'
 require_relative 'shell_variables/object'
 require_relative 'shell_variables/string'
 
@@ -16,9 +16,9 @@ module Mysh
   MNV[:debug] = "false"
   MNV[:pre_prompt] = "$w"
 
-  MNV[:d] = "{{ Time.now.strftime(\"$date_fmt\") }}"
+  MNV[:d] = "{{ Time.now.strftime(MNV[:date_fmt]) }}"
   MNV[:h] = "{{ ENV['HOME'].decorate }}"
-  MNV[:t] = "{{ Time.now.strftime(\"$time_fmt\") }}"
+  MNV[:t] = "{{ Time.now.strftime(MNV[:time_fmt]) }}"
   MNV[:u] = "{{ ENV['USER'] }}"
   MNV[:w] = "{{ Dir.pwd.decorate }}"
 

@@ -25,7 +25,7 @@ class MyShellTester < Minitest::Test
     assert_equal(Class,  Mysh::Action.class)
     assert_equal(Class,  Mysh::ActionPool.class)
     assert_equal(Module, Mysh::MNV.class)
-    assert_equal(Class,  Mysh::Value.class)
+    assert_equal(Class,  Mysh::Keeper.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
     assert_equal(Mysh::ActionPool, Mysh::HELP.class)
@@ -181,6 +181,12 @@ class MyShellTester < Minitest::Test
     Mysh.try_execute_command("$test = $whats_all_this")
     assert_equal("?$whats_all_this?", MNV[:test])
     assert_equal("$whats_all_this", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$bad = {{ MNV[:bad] }}")
+    assert_raises { MNV[:bad] }
+    assert_raises { MNV[:bad] } #Yes test this twice!
+    assert_raises { Mysh.try_execute_command("=$bad") }
+    assert_raises { Mysh.try_execute_command("=$bad") } #And this too!
 
   end
 
