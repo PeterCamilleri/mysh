@@ -23,6 +23,6 @@ module Mysh
   MNV[:w] = "{{ Dir.pwd.decorate }}"
 
   MNV[:date_fmt] = "%Y-%m-%d"
-  MNV[:time_fmt] = "%H:%M %z"
+  MNV[:time_fmt] = "%H:%M"
 
 end
