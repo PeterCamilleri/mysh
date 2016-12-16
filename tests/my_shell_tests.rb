@@ -190,6 +190,7 @@ class MyShellTester < Minitest::Test
 
     Mysh.try_execute_command("$bad = OK")
     assert_equal("OK", MNV[:bad])
+    assert_equal("OK", MNV[:bad]) #And this too!
   end
 
 end

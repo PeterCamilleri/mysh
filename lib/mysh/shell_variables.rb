@@ -13,7 +13,8 @@ module Mysh
   MNV['$'.to_sym] = "$"
 
   #Set up some default values.
-  MNV[:debug] = "false"
+  MNV[:debug]      = "false"
+  MNV[:prompt]     = "mysh"
   MNV[:pre_prompt] = "$w"
 
   MNV[:d] = "{{ Time.now.strftime(MNV[:date_fmt]) }}"
