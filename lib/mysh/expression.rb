@@ -28,11 +28,7 @@ module Mysh
       #* The expression string always begins with an '=' character.
       def execute(expression)
         pp $mysh_exec_binding.eval("$mysh_exec_result" + expression)
-      rescue Interrupt, StandardError, ScriptError => err
-        puts "#{err.class.to_s}: #{err}"
-        puts err.backtrace if MNV[:debug]
-      ensure
-        return :expression
+        :expression
       end
 
       #Return a simple message for less convoluted error messages.
