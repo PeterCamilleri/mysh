@@ -31,11 +31,11 @@ module Mysh
     #Set the value of a variable.
     def self.[]=(index, value)
       unless value.empty?
-        mysh_value = @store[index]
-        mysh_value.set_value(value)
-        @store[index] = mysh_value
+        keeper = get_keeper(index)
+        keeper.set_value(value)
+        set_keeper(index, keeper)
       else
-        @store.delete(index)
+        delete_keeper(index)
       end
 
       value
@@ -44,6 +44,16 @@ module Mysh
     #Get the value keeper of a variable.
     def self.get_keeper(index)
       @store[index]
+    end
+
+    #Set the value keeper of a variable.
+    def self.set_keeper(index, keeper)
+      @store[index] = keeper
+    end
+
+    #Delete the value keeper of a variable.
+    def self.delete_keeper(index)
+      @store.delete(index)
     end
 
     #Get the source code of a variable.
