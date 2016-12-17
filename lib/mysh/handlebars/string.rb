@@ -4,11 +4,11 @@
 class String
 
   #Evaluate any variable substitutions in the input.
-  def eval_handlebars
+  def eval_handlebars(evaluator=$mysh_exec_host)
     gsub(/{{.*?}}/m) do |match|
       code   = match[2...-2]
       silent = code.end_with?("#")
-      result = $mysh_exec_host.mysh_eval(code)
+      result = evaluator.mysh_eval(code)
 
       (result unless silent).to_s
     end

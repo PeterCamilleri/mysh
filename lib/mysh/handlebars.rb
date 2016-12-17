@@ -8,8 +8,8 @@ class Object
   #Show a file with embedded ruby handlebars.
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
-  def show_handlebar_file(name)
-    puts eval_handlebar_file(name)
+  def show_handlebar_file(name, evaluator)
+    puts eval_handlebar_file(name, evaluator)
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error in file: #{name}\n#{err.class}: #{err}"
     puts err.backtrace if MNV[:debug]
@@ -18,11 +18,8 @@ class Object
   #Expand a file with embedded ruby handlebars.
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
-  def eval_handlebar_file(name)
-    IO.read(name)
-      .eval_variables
-      .eval_handlebars
-      .eval_quoted_braces
+  def eval_handlebar_file(name, evaluator)
+    IO.read(name).eval_variables.eval_handlebars(evaluator).eval_quoted_braces
   end
 
 end

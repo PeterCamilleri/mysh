@@ -13,7 +13,7 @@ module Mysh
       @exec_binding = binding
 
       if file_name
-        show_handlebar_file(file_name)
+        show_handlebar_file(file_name, self)
       else
         puts "Error: A text file must be specified."
       end
