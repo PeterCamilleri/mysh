@@ -15,8 +15,6 @@ module Mysh
     PARSE = /(\$\$)|(\$[a-z][a-z0-9_]*)(?=[^a-z0-9_]|$)/
 
     #Get the value of this variable.
-    #<br>Endemic Code Smells
-    #* :reek:TooManyStatements
     def get_value(loop_check={})
       my_id = self.object_id
       fail "Mysh variable looping error." if loop_check[my_id]

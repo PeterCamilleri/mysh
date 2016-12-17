@@ -18,6 +18,8 @@ class Object
   #Expand a file with embedded ruby handlebars.
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
+  #<br>Endemic Code Smells
+  #* :reek:UtilityFunction
   def eval_handlebar_file(name, evaluator)
     IO.read(name).eval_variables.eval_handlebars(evaluator).eval_quoted_braces
   end
