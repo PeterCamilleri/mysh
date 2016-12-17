@@ -11,9 +11,6 @@ module Mysh
       @value = value
     end
 
-    #A regular expression for parsing embedded variables.
-    PARSE = /(\$\$)|(\$[a-z][a-z0-9_]*)(?=[^a-z0-9_]|$)/
-
     #Get the value of this variable.
     def get_value(loop_check={})
       my_id = self.object_id

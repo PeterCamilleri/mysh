@@ -14,9 +14,12 @@ class String
     end
   end
 
+  #A regular expression for parsing embedded variables.
+  MYSH_VARIABLE_PARSE = /(\$\$)|(\$[a-z][a-z0-9_]*)(?=[^a-z0-9_]|$)/
+
   #Evaluate any variable substitutions in the input.
   def eval_variables
-    self.gsub(Mysh::Keeper::PARSE) do |str|
+    self.gsub(MYSH_VARIABLE_PARSE) do |str|
       sym = str[1..-1].to_sym
       MNV.key?(sym) ? MNV[sym].to_s : str
     end
