@@ -36,8 +36,6 @@ module Mysh
         "$mysh_exec_host"
       end
 
-      private
-
       #Get the previous result
       def result
          $mysh_exec_result

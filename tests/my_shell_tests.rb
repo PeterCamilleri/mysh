@@ -48,14 +48,16 @@ class MyShellTester < Minitest::Test
   end
 
   def test_handlebars
+    Mysh.reset_host
+
     assert_equal("ABC 123 DEF",
-                 eval_handlebars("ABC {{ (1..3).to_a.join }} DEF"))
+                 "ABC {{ (1..3).to_a.join }} DEF".eval_handlebars)
 
-    assert_equal("ABC", eval_handlebars("{{ 'ABC'  }}"))
-    assert_equal("",    eval_handlebars("{{ 'ABC' #}}"))
+    assert_equal("ABC", "{{ 'ABC'  }}".eval_handlebars)
+    assert_equal("",    "{{ 'ABC' #}}".eval_handlebars)
 
-    assert_equal("{{ 'ABC' }}", eval_handlebars("\\{\\{ 'ABC' \\}\\}"))
-    assert_equal("{{A}}", eval_handlebars("{{ '{'+'{A}'+'}' }}"))
+    assert_equal("{{ 'ABC' }}", "\\{\\{ 'ABC' \\}\\}".eval_quoted_braces)
+    assert_equal("{{A}}", "{{ '{'+'{A}'+'}' }}".eval_handlebars.eval_quoted_braces)
   end
 
   def test_command_parsing

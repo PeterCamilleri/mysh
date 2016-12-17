@@ -10,6 +10,7 @@ require_relative 'mysh/quick'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
+require_relative 'mysh/handlebars'
 require_relative 'mysh/shell_variables'
 require_relative 'mysh/version'
 
@@ -40,7 +41,7 @@ module Mysh
     @mysh_running = false
 
   rescue Interrupt, StandardError, ScriptError => err
-    puts err
+    puts "Error #{err.class}: #{err}"
     puts err.backtrace if MNV[:debug]
   end
 
@@ -49,12 +50,7 @@ module Mysh
   #* :reek:TooManyStatements
   def self.try_execute_command(input)
     unless input.start_with?("$")
-      input = input.gsub(Keeper::PARSE) do |str|
-                sym = str[1..-1].to_sym
-                MNV.key?(sym) ? MNV[sym].to_s : str
-              end
-
-      input = $mysh_exec_host.eval_handlebars(input)
+      input = input.eval_variables.eval_handlebars.eval_quoted_braces
     end
 
     puts "=> #{input}" if MNV[:debug]

@@ -14,4 +14,12 @@ class String
     end
   end
 
+  #Evaluate any variable substitutions in the input.
+  def eval_variables
+    self.gsub(Mysh::Keeper::PARSE) do |str|
+      sym = str[1..-1].to_sym
+      MNV.key?(sym) ? MNV[sym].to_s : str
+    end
+  end
+
 end
