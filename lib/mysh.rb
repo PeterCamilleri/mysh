@@ -46,8 +46,6 @@ module Mysh
   end
 
   #Try to execute a single line of input. Does not handle exceptions.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
   def self.try_execute_command(input)
     unless input.start_with?("$")
       input = input.eval_variables.eval_handlebars.eval_quoted_braces
