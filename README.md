@@ -8,25 +8,22 @@ Inspired by the excellent article "Writing a Shell in 25 Lines of Ruby Code"
 I thought it would be fun to experiment with that concept and see if it could
 be taken further.
 
-Many years ago, a popular shell program was modeled after
-the 'C' programming language. It went by the name csh for C-shell (by the C
-shore :-) Instead of 'C', my shell would be based on Ruby (were you shocked?)!
-The obvious name rsh for Ruby-shell was already in use by the Remote-shell. So,
-given the limited scope of this effort, and not wanting to do a lot of typing
-all the time, I chose the name mysh for MY-SHell.
+Many years ago, a popular shell program was modeled after the 'C' programming
+language. It went by the name csh for C-shell (by the C shore :-) Instead of
+'C', my shell would be based on Ruby (were you shocked?)! The obvious name rsh
+for Ruby-shell was already in use by the Remote-shell. So, given the limited
+scope of this effort, and not wanting to do a lot of typing all the time, I
+chose the name mysh for MY-SHell.
 
 Since that name was available, it would seem that no one had yet written a
 shell program at this level of narcissism.
 
 The mysh is available as both a stand-alone CLI program and for use as a
-command shell within Ruby applications and (eventually) Rails web sites.
+command shell within Ruby applications and (maybe? eventually? someday?) Rails
+web sites.
 
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
-
-By the way. The briefest look at the code will reveal that mysh has grown to be
-way more than 25 lines long. As Thomas Edison once said: 1% inspiration, 99%
-perspiration. Enjoy!
 
 ## Installation
 
@@ -46,24 +43,129 @@ Or install it yourself as:
 
 ## Usage
 
-The mysh gem includes a simple executable called mysh. Command entry is a
-typical cli. For more information, see the mini_readline gem at
-( https://github.com/PeterCamilleri/mini_readline )
+The mysh gem includes a simple executable called mysh. The template for running
+the mysh is:
 
-When running mysh, the user is presented with a command prompt:
+```
+mysh <args>
+```
+
+Where args are currently a work in progress and not available at this time.
+
+When mysh is run, the user is presented with a command prompt:
 
 ```
 $ mysh
+/cygdrive/c/Sites/mysh
 mysh>
+
 ```
+Now the user (that's you) may enter commands that hopefully increase the level
+of awesome coolness in the known universe. Entropy does not take vacations so
+hop to it! :-)
 
-Then start entering some commands! This prompt can be used to execute four
-sorts of commands:
+###REPL
 
-* Ruby expressions, which are preceded by the equal (=) sign.
-* Internal commands that are processed directly by mysh
-* External ruby source files that are passed on to the Ruby interpreter.
-* External commands that are passed on to the standard command shell.
+Now for a little more detail. The mysh program is built around a design pattern
+called REPL. This stands for Read Eval Print and Loop and is used in may
+utilities like irb, pry and the rails console. To better use mysh, it is good
+to understand each of these four operating steps.
+
+####READ
+
+The first step is just to get input from the user. For interactive sessions
+this is done using the mini_readline gem. The user is prompted and input is
+obtained. There is a twist here. Just what constitutes a unit of input?
+Normally an input is one line entered by the user. Like this:
+
+```
+mysh> ls *.rb
+```
+In mysh, the user is able to chain together multiple lines and have them
+treated as a single input. So for the following scenario:
+```
+mysh>line one\
+mysh\line two\
+mysh\line three
+```
+The input string will be:
+```
+"line one\nline two\nline three\n"
+```
+Note that while the prompt is user configurable, it will always end with '>'
+for the initial line and '\\' for subsequent lines.
+
+For more information about the mini_readline gem please see
+https://github.com/PeterCamilleri/mini_readline or
+https://rubygems.org/gems/mini_readline
+
+####EVAL
+
+Once input has been obtained from the user, that input is then evaluated. This
+evaluation has two phases: pre-processing and processing.
+
+#####Input Preprocessing
+
+During pre-processing, the input is scanned for macro-like substitutions that
+have been placed into the input. There are three steps to this phase:
+
+1. Replacing mysh variables with their values. This process is recursive in
+that these variables also undergo the full pre-processing treatment before
+being inserted into the user command.
+2. Replacing embedded ruby "handlebars" with the results of their execution.
+3. Replacing '\\{' and '\\}' with '{' and '}' respectively.
+
+#####Command Processing
+
+Once input has been obtained and massaged adequately, it's time to actually
+do some work. In mysh there is a hierarchy of four types of commands. These
+command types serve as a simple command path for determining what action is to
+be taken for the input. The four types are:
+
+1. Quick Commands - These commands are recognized by having a signature first
+character in the input. These signature characters are:
+  * ! to access the mysh command history buffer.
+  * $ to access or update mysh variables.
+  * = to evaluate an expression of Ruby code.
+  * ? to access the mysh help subsystem.
+  * @ to get information about the system, its environment, and the ruby
+  installation
+
+2. Internal Commands - These commands are recognized by having the first word
+in the input match a word stored in an internal hash of command actions.
+3. External Ruby Commands - These commands are recognized by having the first
+word in the input have the extension (*.rb) of a ruby source file.
+4. External Commands - Any command not matching any of the above is sent to the
+system shell for execution.
+
+Notes:
+* The recursive pre-processing steps have checks on them to detect loops and
+other forms of bad behavior before they do nasty things like blow up the stack.
+* The mysh variables are also used to control many aspects of the mysh and are
+covered in their own section below.
+* The embedded ruby "handlebars" also get their own section below.
+
+####PRINT
+
+####LOOP
+
+The processing of input continues (looping) until it doesn't. This occurs when
+a command to stop looping is entered or the mini_readline gem signals
+end-of-input condition. The commands that do this are:
+
+* exit - exit the current mysh level.
+* quit - terminate the mysh program.
+
+Work-in-progress - mysh only has one level at this time so these two commands
+do exactly the same thing... for now!
+
+An end-of-input condition is signaled by the user by entering Ctrl-z (in
+windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
+more information on the keyboard mappings used by mysh.
+
+
+===================================================
+
 
 #### Ruby expressions:
 
