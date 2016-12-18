@@ -33,7 +33,7 @@ module Mysh
 
       #Return a simple message for less convoluted error messages.
       def inspect
-        "$mysh_exec_host"
+        "exec_host"
       end
 
       #Get the previous result

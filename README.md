@@ -198,7 +198,7 @@ mysh>=a.lineage
 mysh>=reset
 
 mysh>=a
-NameError: undefined local variable or method `a' for $mysh_exec_host:#<Class:0x1ba8720>
+NameError: undefined local variable or method `a' for exec_host:#<Class:0x1ba8720>
 mysh>=result
 
 mysh>
