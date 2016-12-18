@@ -126,7 +126,8 @@ be taken for the input. The four types are:
 character in the input. These signature characters are:
   * ! to access the mysh command history buffer.
   * $ to access or update mysh variables.
-  * = to evaluate an expression of Ruby code.
+  * = to evaluate an expression of Ruby code. For more information see Ruby
+  Expressions below.
   * ? to access the mysh help subsystem.
   * @ to get information about the system, its environment, and the ruby
   installation
@@ -147,6 +148,71 @@ covered in their own section below.
 
 ####PRINT
 
+Once the command is run, some results are expected most of the time. For Ruby
+expressions, this is handled by the pretty print gem 'pp' applied to the value
+returned by the expression just evaluated. For other types of command, the
+command itself generates any required output.
+
+To assist in the creation of well formatted output, the mysh environment
+provides a number of "helper" methods in the Array and String classes. These
+are:
+
+* String#decorate - given a string with a file path/name value, express that
+string in a manner compatible with the current operating environment.
+* Array#format_mysh_columns - take an array and convert it to a string with nice
+regular columns.
+* Array#puts_mysh_columns - as above, but print the string.
+* Array#format_mysh_bullets - take an array and convert it to a string with nice
+bullet points. The appearance of each point depends on its structure. See below:
+* Array#puts_mysh_bullets - as above, but print the string.
+
+This must all be confusing. Some examples may help:
+
+```
+mysh>=puts "lib/mysh/expression/lineage.rb".decorate
+lib\mysh\expression\lineage.rb
+
+mysh>=(1..100).to_a.puts_mysh_columns
+1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97
+2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98
+3 7 11 15 19 23 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 95 99
+4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100
+
+mysh>=["foo", "bar "*30, "some "*25, "stuff"].puts_mysh_bullets
+* foo
+* bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar
+  bar bar bar bar bar bar bar bar bar bar bar
+* some some some some some some some some some some some some some some some
+  some some some some some some some some some some
+* stuff
+
+mysh>=[["foo", "bar "*20], ["sna", "foo young "*10 ] ].puts_mysh_bullets
+foo bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar
+    bar bar
+sna foo young foo young foo young foo young foo young foo young foo young foo
+    young foo young foo young
+
+mysh>=[["foo", 1,2,3]].puts_mysh_bullets
+foo 1
+    2
+    3
+
+mysh>=[[(1..100).to_a]].puts_mysh_bullets
+* 1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97
+  2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98
+  3 7 11 15 19 23 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 95 99
+  4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100
+
+mysh>=[["foo", (1..100).to_a], ["baz", "yes"]].puts_mysh_bullets
+foo 1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97
+    2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98
+    3 7 11 15 19 23 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 95 99
+    4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100
+baz yes
+
+```
+
+
 ####LOOP
 
 The processing of input continues (looping) until it doesn't. This occurs when
@@ -164,10 +230,9 @@ windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
 more information on the keyboard mappings used by mysh.
 
 
-===================================================
+## Ruby Expressions:
 
-
-#### Ruby expressions:
+Just a few reminders:
 
 * Any line beginning with an equals "=" sign will be evaluated as a Ruby
   expression. This allows the mysh command line to serve as a programming,
@@ -203,9 +268,6 @@ mysh>=result
 
 mysh>
 ```
-
-
-
 The Ruby expression execution environment has direct access to many advanced
 Math functions. For example, to compute the cosine of 3.141592653589793 use:
 ```
@@ -247,7 +309,7 @@ tanh(x)    |Float |The hyperbolic tangent of x (in radians).
 E          |Float |The value e (2.718281828459045)
 PI         |Float |The value &#960; (3.141592653589793)
 
-#### Internal mysh commands:
+## Internal mysh Commands:
 
 Internal commands are recognized by name and are executed by mysh directly.
 
@@ -303,7 +365,7 @@ show    Help on the show command.
 {{      Help on mysh handlebars.
 ```
 
-#### External commands:
+#### External Commands:
 
 All other commands are executed by the system using the standard shell or
 the appropriate ruby interpreter.
