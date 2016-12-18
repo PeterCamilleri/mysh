@@ -173,7 +173,8 @@ more information on the keyboard mappings used by mysh.
   expression. This allows the mysh command line to serve as a programming,
   debugging and super-calculator environment.
 * Expressions ending with a backslash character "\" are continued on the next
-  line. The prompt changes to "mysh\" to indicate that this is going on.
+  line. The prompt changes to end with a "\" character to indicate that this is
+  going on.
 * The results are displayed using the pretty-print facility.
 * Auto-complete always places any file names in quotes so they can be used
   as string parameters.
