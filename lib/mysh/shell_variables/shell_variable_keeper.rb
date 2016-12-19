@@ -17,7 +17,7 @@ module Mysh
       fail "Mysh variable looping error." if loop_check[my_id]
       loop_check[my_id] = self
 
-      @value.eval_variables.eval_handlebars.eval_quoted_braces
+      @value.preprocess
     end
 
     #Get the source code of this variable.

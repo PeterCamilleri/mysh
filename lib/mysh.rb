@@ -12,6 +12,7 @@ require_relative 'mysh/internal'
 require_relative 'mysh/external_ruby'
 require_relative 'mysh/handlebars'
 require_relative 'mysh/shell_variables'
+require_relative 'mysh/pre_processor'
 require_relative 'mysh/version'
 
 #The Mysh (MY SHell) module. A container for mysh and its functionality.
@@ -48,7 +49,7 @@ module Mysh
   #Try to execute a single line of input. Does not handle exceptions.
   def self.try_execute_command(input)
     unless input.start_with?("$")
-      input = input.eval_variables.eval_handlebars.eval_quoted_braces
+      input = input.preprocess
     end
 
     puts "=> #{input}" if MNV[:debug]

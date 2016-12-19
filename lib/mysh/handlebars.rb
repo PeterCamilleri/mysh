@@ -8,7 +8,7 @@ class Object
   #Show a file with embedded ruby handlebars.
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
-  def show_handlebar_file(name, evaluator=$mysh_exec_host)
+  def show_handlebar_file(name, evaluator)
     puts eval_handlebar_file(name, evaluator)
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error in file: #{name}\n#{err.class}: #{err}"
@@ -21,7 +21,7 @@ class Object
   #<br>Endemic Code Smells
   #* :reek:UtilityFunction
   def eval_handlebar_file(name, evaluator)
-    IO.read(name).eval_variables.eval_handlebars(evaluator).eval_quoted_braces
+    IO.read(name).preprocess(evaluator)
   end
 
 end
