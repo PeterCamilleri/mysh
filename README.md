@@ -124,20 +124,25 @@ be taken for the input. The four types are:
 
 1. Quick Commands - These commands are recognized by having a signature first
 character in the input. These signature characters are:
-  * ! to access the mysh command history buffer.
-  * $ to access or update mysh variables.
+  * ! to access the mysh command history buffer. For more information see
+  Command History below.
+  * $ to access or update mysh variables. For more information see Shell
+  Variables below.
   * = to evaluate an expression of Ruby code. For more information see Ruby
   Expressions below.
-  * ? to access the mysh help subsystem.
+  * ? to access the mysh help subsystem. For more information see Shell Help
+  below.
   * @ to get information about the system, its environment, and the ruby
-  installation
+  installation. For more information see Shell Info below.
 
 2. Internal Commands - These commands are recognized by having the first word
-in the input match a word stored in an internal hash of command actions.
+in the input match a word stored in an internal hash of command actions. For
+more information see Interanl Commands below.
 3. External Ruby Commands - These commands are recognized by having the first
-word in the input have the extension (*.rb) of a ruby source file.
+word in the input have the extension (*.rb) of a ruby source file. For more
+information see External Ruby Commands below.
 4. External Commands - Any command not matching any of the above is sent to the
-system shell for execution.
+system shell for execution. For more information see External Commands below.
 
 Notes:
 * The recursive pre-processing steps have checks on them to detect loops and
@@ -149,9 +154,9 @@ covered in their own section below.
 ####PRINT
 
 Once the command is run, some results are expected most of the time. For Ruby
-expressions, this is handled by the pretty print gem 'pp' applied to the value
-returned by the expression just evaluated. For other types of command, the
-command itself generates any required output.
+expressions, this is handled by the pretty print gem. The 'pp' function is
+given the value returned by the expression just evaluated. For other types
+of command, the command itself generates any required output.
 
 To assist in the creation of well formatted output, the mysh environment
 provides a number of "helper" methods in the Array and String classes. These
