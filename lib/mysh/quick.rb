@@ -10,7 +10,7 @@ module Mysh
   QUICK['='] = lambda {|str| $mysh_exec_host.execute(str) }
   QUICK['?'] = lambda {|str| HELP_COMMAND.quick_parse_and_call(str) }
   QUICK['@'] = lambda {|str| SHOW_COMMAND.quick_parse_and_call(str) }
-  QUICK['$'] = lambda {|str| Mysh.shell_variable_command(str) }
+  QUICK['$'] = lambda {|str| VARS_COMMAND.call(str) }
 
   #Try to execute the string as a quick command.
   def self.try_execute_quick_command(str)

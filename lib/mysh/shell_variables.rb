@@ -1,6 +1,5 @@
 # coding: utf-8
 
-require_relative 'shell_variables/shell_variable_commands'
 require_relative 'shell_variables/shell_variable_store'
 require_relative 'shell_variables/shell_variable_keeper'
 require_relative 'shell_variables/object'
