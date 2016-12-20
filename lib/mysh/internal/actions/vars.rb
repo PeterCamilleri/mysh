@@ -3,7 +3,7 @@
 #* mysh/internal/actions/vars.rb -- The mysh internal variables commands.
 module Mysh
 
-  #* mysh/internal/actions/show.rb -- The mysh internal show command.
+  #* mysh/internal/actions/vars.rb -- The mysh internal variable commands.
   class VarsCommand < Action
 
     VAR_EXP = %r{(?<name>   [a-z][a-z0-9_]*){0}
@@ -11,35 +11,35 @@ module Mysh
                  (?<value>  \S.*){0}
                  \$ (\g<name> \s* (\g<equals> \s* \g<value>?)?)?}x
 
-    #Execute a command against the internal mysh varaibles.
+    #Setup an internal action.
+    def initialize(name, description)
+      @name = @equals = @value = nil
+      super(name, description)
+    end
+
+    #Execute a command against the internal mysh variables.
     def call(str)
       #Parse the expression.
       match = VAR_EXP.match(str.chomp)
-      name, equals, value = match[:name], match[:equals], match[:value]
+      @name, @equals, @value = match[:name], match[:equals], match[:value]
 
-      if value
-        assign_value(name, value)
-      elsif equals
-        erase_value(name)
-      elsif name
-        show_value(name)
-      else
-        show_all_values
-      end
+      do_command
 
       true
     end
 
-    def assign_value(name, value)
-      MNV[name.to_sym] = value
-    end
+    def do_command
+      sym = @name.to_sym if @name
 
-    def erase_value(name)
-      MNV[name.to_sym] = ""
-    end
-
-    def show_value(name)
-      puts "#{name} = #{MNV.get_source(name.to_sym)}"
+      if @value
+        MNV[sym] = @value
+      elsif @equals
+        MNV[sym] = ""
+      elsif @name
+        puts "#{@name} = #{MNV.get_source(sym)}"
+      else
+        show_all_values
+      end
     end
 
     def show_all_values
