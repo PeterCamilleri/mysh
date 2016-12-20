@@ -234,6 +234,42 @@ An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
 more information on the keyboard mappings used by mysh.
 
+### Handlebars
+
+In mysh, it is possible to embed snippets of ruby into text files, in shell
+variables or on the command line through the use of handlebars. Handlebars
+look like this:
+
+    {{ code goes here  }}
+
+Lets see a simple example of putting the result of a calculation into the
+command line:
+
+    mysh>echo {{ (1..10).map {|i| i.to_s}.join(" ") }}  > foo.txt
+    mysh>type foo.txt
+    1 2 3 4 5 6 7 8 9 10
+
+Handlebars work by evaluating the ruby code within the {{  }} sequence in
+the appropriate execution environment. For the command line, this is the same
+environment used for the '=' quick execution command. For example:
+
+    mysh>=a="A very long string indeed!"
+    "A very long string indeed!"
+    mysh>echo {{ a }}
+    A very long string indeed!
+
+The value returned by expression is coverted to a string (if needed) and then
+inserted in place of the handlebar expression. There are, however, times when
+it is not desired to insert anything in the place of the code snippet. For
+those cases, simply end the expression with a '#' character. For example:
+
+    mysh>echo {{ "not embedded" #}}{{ "embedded" }}
+    embedded
+
+Finally, it may be that it is desired to embed braces into a text file or
+the command line. In that case precede the brace with a backslash character
+like: \{  or \}
+
 ### Command History
 
 wip
