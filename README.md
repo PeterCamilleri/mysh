@@ -229,18 +229,26 @@ An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
 more information on the keyboard mappings used by mysh.
 
+### Command History
 
-## Ruby Expressions:
+wip
 
-Just a few reminders:
+### Shell Variables
+
+wip
+
+### Ruby Expressions:
+
+In mysh, ruby code may be executed at any time from command prompt. This allows
+the mysh command line to serve as a programming, debugging and super-calculator
+environment. Just a few reminders:
 
 * Any line beginning with an equals "=" sign will be evaluated as a Ruby
-  expression. This allows the mysh command line to serve as a programming,
-  debugging and super-calculator environment.
+  expression.
 * Expressions ending with a backslash character "\" are continued on the next
   line. The prompt changes to end with a "\" character to indicate that this is
   going on.
-* The results are displayed using the pretty-print facility.
+* The results of the expression are displayed using the pretty-print facility.
 * Auto-complete always places any file names in quotes so they can be used
   as string parameters.
 
@@ -309,31 +317,10 @@ tanh(x)    |Float |The hyperbolic tangent of x (in radians).
 E          |Float |The value e (2.718281828459045)
 PI         |Float |The value &#960; (3.141592653589793)
 
-## Internal mysh Commands:
+### Shell Help
 
-Internal commands are recognized by name and are executed by mysh directly.
+wip
 
-The following set of commands are supported:
-
-```
-!<index>        Display the mysh command history, or if an index is specified,
-                retrieve the command with that index value.
-?<topic>        Display help information for mysh with an optional topic.
-@<item>         Display information about a part of mysh. See ?@ for more.
-cd <dir>        Change directory to the optional <dir> parameter and then
-                display the current working directory.
-exit            Exit mysh.
-gls <-l> <mask> Display the loaded ruby gems. See ?gls for more.
-help <topic>    Display help information for mysh with an optional topic.
-history <index> Display the mysh command history, or if an index is specified,
-                retrieve the command with that index value.
-pwd             Display the current working directory.
-quit            Exit mysh.
-show <item>     Display information about a part of mysh. See ?@ for more.
-type            Display a text file with optional embedded handlebars.
-vls <mask>      Display the loaded modules, matching the optional mask, that
-                have version info.
-```
 Of note is the command "help help" or "??" which provides a list of all
 available help topics.
 
@@ -365,7 +352,42 @@ show    Help on the show command.
 {{      Help on mysh handlebars.
 ```
 
-#### External Commands:
+### Shell Info
+
+wip
+
+### Internal Shell Commands:
+
+Internal commands are recognized by name and are executed by mysh directly.
+
+The following set of commands are supported:
+
+```
+!<index>        Display the mysh command history, or if an index is specified,
+                retrieve the command with that index value.
+$<name>=value   Set/query mysh variables. See ?$ for more.
+?<topic>        Display help information for mysh with an optional topic.
+@<item>         Display information about a part of mysh. See ?@ for more.
+cd <dir>        Change directory to the optional <dir> parameter and then
+                display the current working directory.
+exit            Exit mysh.
+gls <-l> <mask> Display the loaded ruby gems. See ?gls for more.
+help <topic>    Display help information for mysh with an optional topic.
+history <index> Display the mysh command history, or if an index is specified,
+                retrieve the command with that index value.
+pwd             Display the current working directory.
+quit            Exit mysh.
+show <item>     Display information about a part of mysh. See ?@ for more.
+type            Display a text file with optional embedded handlebars.
+vls <mask>      Display the loaded modules, matching the optional mask, that
+                have version info.
+```
+
+### External Ruby Commands
+
+wip
+
+### External Commands:
 
 All other commands are executed by the system using the standard shell or
 the appropriate ruby interpreter.
