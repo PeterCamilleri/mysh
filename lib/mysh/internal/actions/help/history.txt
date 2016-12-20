@@ -10,7 +10,7 @@ the quick form, ! is used, the space is optional.
 Quick   Long           Command
 Form    Form           Description
 =====   =======        ===========
-!       history        Display the history buffer.
+!       history        Display the entire history buffer.
 
 !5      history 5      Retrieve history entry 5 and present this to the user
                        as the next command.

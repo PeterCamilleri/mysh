@@ -272,7 +272,18 @@ like: \{  or \}
 
 ### Command History
 
-wip
+The history (or !) command is used to allow the user greater control over the
+history of commands that have been entered. The action taken by the history
+command is controlled by an optional parameter.
+
+If the longer form, show is used, a space is required before the parameter. If
+the quick form, ! is used, the space is optional.
+
+Quick Form | Long Form    |  Command Description
+-----------|--------------|--------------------------------
+!          | history      | Display the entire history buffer.
+!5         | history 5    | Retrieve history entry 5 and present this to the user as the next command.
+!clear     | history clear| Clear the command history.
 
 ### Shell Variables
 
