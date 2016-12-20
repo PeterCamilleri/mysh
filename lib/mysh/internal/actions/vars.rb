@@ -6,6 +6,7 @@ module Mysh
   #* mysh/internal/actions/vars.rb -- The mysh internal variable commands.
   class VarsCommand < Action
 
+    #The mysh variable parsing regex.
     VAR_EXP = %r{(?<name>   [a-z][a-z0-9_]*){0}
                  (?<equals> =){0}
                  (?<value>  \S.*){0}
@@ -19,15 +20,13 @@ module Mysh
 
     #Execute a command against the internal mysh variables.
     def call(str)
-      #Parse the expression.
       match = VAR_EXP.match(str.chomp)
       @name, @equals, @value = match[:name], match[:equals], match[:value]
-
       do_command
-
       true
     end
 
+    #Do the actual work here.
     def do_command
       sym = @name.to_sym if @name
 
@@ -42,6 +41,7 @@ module Mysh
       end
     end
 
+    #Display all variables neatly.
     def show_all_values
       puts MNV.keys
               .sort
