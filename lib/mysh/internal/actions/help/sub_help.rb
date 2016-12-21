@@ -14,7 +14,7 @@ module Mysh
 
     #Execute a help command.
     def call(_args)
-      show_handlebar_file(ACTIONS_PATH + 'help/' + @file_name)
+      show_handlebar_file(ACTIONS_PATH + 'help/' + @file_name, self)
     end
 
   end
@@ -22,6 +22,7 @@ module Mysh
   #Add help topics here. Don't sweat the order; they get sorted by name.
   #        Name        Description                            Help File
   help = [['',        'General help on mysh.',               'help.txt'   ],
+          ['$',       'Help on mysh variables.',             'vars.txt'   ],
           ['show',    'Help on the show command.',           'show.txt'   ],
           ['@',       'Help on the show command.',           'show.txt'   ],
           ['env',     'Help on the show env command.',       'env.txt'    ],
@@ -30,8 +31,8 @@ module Mysh
           ['=',       'Help on ruby expressions.',           'expr.txt'   ],
           ['quick',   'Help on quick commands.',             'quick.txt'  ],
           ['gls',     'Help on gls internal mysh command.',  'gls.txt'    ],
-          ['!',       'This help on the history command.',   'history.txt'],
-          ['history', 'This help on the history command.',   'history.txt'],
+          ['!',       'Help on the history command.',        'history.txt'],
+          ['history', 'Help on the history command.',        'history.txt'],
           ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'    ],
           ['{{',      'Help on mysh handlebars.',            'hbar.txt'   ],
           ['help',    'This help on the help command.',      'h_o_h.txt'  ],

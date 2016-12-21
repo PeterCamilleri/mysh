@@ -9,7 +9,7 @@ module Mysh
 
     if cmd && File.extname(cmd) == '.rb'
       new_command = "#{RbConfig.ruby} #{str}"
-      puts "=> #{new_command}"
+      puts "=> #{new_command}"  if MNV[:debug]
       system(new_command)
       :ruby_exec
     end

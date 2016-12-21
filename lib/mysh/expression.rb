@@ -2,12 +2,11 @@
 
 require 'pp'
 require 'mathn'
-
 require_relative 'expression/lineage'
 
 #* mysh/expression.rb -- The mysh ruby expression processor.
 #<br>Endemic Code Smells
-#* :reek:ModuleInitialize
+#* :reek:ModuleInitialize -- False positive
 module Mysh
 
   #Reset the state of the execution hosting environment.
@@ -29,13 +28,13 @@ module Mysh
       #* The expression string always begins with an '=' character.
       def execute(expression)
         pp $mysh_exec_binding.eval("$mysh_exec_result" + expression)
-      rescue Interrupt, StandardError, ScriptError => err
-        puts "#{err.class.to_s}: #{err}"
-      ensure
-        return :expression
+        :expression
       end
 
-      private
+      #Return a simple message for less convoluted error messages.
+      def inspect
+        "exec_host"
+      end
 
       #Get the previous result
       def result
@@ -48,6 +47,10 @@ module Mysh
         nil
       end
 
+      #Evaluate the string in the my shell context.
+      def mysh_eval(str)
+        $mysh_exec_binding.eval(str)
+      end
     end
 
     $mysh_exec_host = exec_class.new

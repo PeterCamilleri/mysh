@@ -19,7 +19,7 @@ module Mysh
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def info
-      [["location",    decorate(RbConfig.ruby)],
+      [["location",    RbConfig.ruby.decorate],
        ["description", RUBY_DESCRIPTION],
        ["version",     RUBY_VERSION],
        ["jversion",    (JRUBY_VERSION rescue nil)],

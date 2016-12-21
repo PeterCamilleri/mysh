@@ -8,7 +8,7 @@ module Mysh
 
     #Execute the cd command.
     def call(_args)
-      puts decorate(Dir.pwd)
+      puts Dir.pwd.decorate
     end
 
   end

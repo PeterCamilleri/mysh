@@ -24,6 +24,8 @@ class MyShellTester < Minitest::Test
     assert_equal(Module, Mysh.class)
     assert_equal(Class,  Mysh::Action.class)
     assert_equal(Class,  Mysh::ActionPool.class)
+    assert_equal(Module, Mysh::MNV.class)
+    assert_equal(Class,  Mysh::Keeper.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
     assert_equal(Mysh::ActionPool, Mysh::HELP.class)
@@ -46,14 +48,16 @@ class MyShellTester < Minitest::Test
   end
 
   def test_handlebars
+    Mysh.reset_host
+
     assert_equal("ABC 123 DEF",
-                 eval_handlebars("ABC {{ (1..3).to_a.join }} DEF"))
+                 "ABC {{ (1..3).to_a.join }} DEF".eval_handlebars)
 
-    assert_equal("ABC", eval_handlebars("{{ 'ABC'  }}"))
-    assert_equal("",    eval_handlebars("{{ 'ABC' #}}"))
+    assert_equal("ABC", "{{ 'ABC'  }}".eval_handlebars)
+    assert_equal("",    "{{ 'ABC' #}}".eval_handlebars)
 
-    assert_equal("{{ 'ABC' }}", eval_handlebars("\\{\\{ 'ABC' \\}\\}"))
-    assert_equal("{{A}}", eval_handlebars("{{ '{'+'{A}'+'}' }}"))
+    assert_equal("{{ 'ABC' }}", "\\{\\{ 'ABC' \\}\\}".eval_quoted_braces)
+    assert_equal("{{A}}", "{{ '{'+'{A}'+'}' }}".eval_handlebars.eval_quoted_braces)
   end
 
   def test_command_parsing
@@ -120,6 +124,75 @@ class MyShellTester < Minitest::Test
     result = "* apple\n* cherry\n* victory"
     assert_equal(result, data.format_mysh_bullets)
 
+  end
+
+  def test_mysh_variables
+    Mysh.reset_host
+
+    assert_equal("", MNV[:test])
+    assert_equal("", MNV.get_source(:test))
+    refute(MNV.key?(:test), "MNV[:test] should not exist.")
+
+    MNV[:test] = "test 1 2 3"
+    assert_equal("test 1 2 3", MNV[:test])
+    assert_equal("test 1 2 3", MNV.get_source(:test))
+    assert(MNV.key?(:test), "MNV[:test] should exist.")
+
+    MNV[:test] = ""
+    assert_equal("", MNV[:test])
+    assert_equal("", MNV.get_source(:test))
+    refute(MNV.key?(:test), "MNV[:test] should not exist.")
+
+    Mysh.try_execute_command("$test = new value")
+    assert_equal("new value", MNV[:test])
+    assert_equal("new value", MNV.get_source(:test))
+    assert(MNV.key?(:test), "MNV[:test] should exist.")
+
+    Mysh.try_execute_command("$test =")
+    assert_equal("", MNV[:test])
+    assert_equal("", MNV.get_source(:test))
+    refute(MNV.key?(:test), "MNV[:test] should not exist.")
+
+    Mysh.try_execute_command("$test = true")
+    assert(MNV[:test])
+    assert_equal("true", MNV.get_source(:test))
+    assert(MNV.key?(:test), "MNV[:test] should exist.")
+
+    Mysh.try_execute_command("$test = off")
+    assert_equal(false, MNV[:test])
+    assert_equal("off", MNV.get_source(:test))
+    assert(MNV.key?(:test), "MNV[:test] should exist.")
+
+    Mysh.try_execute_command("$a = foo")
+    Mysh.try_execute_command("$b = bar")
+    Mysh.try_execute_command("$test = $a$b")
+    assert_equal("foobar", MNV[:test])
+    assert_equal("$a$b", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$test = $$foo")
+    assert_equal("$foo", MNV[:test])
+    assert_equal("$$foo", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$bad = $bad")
+    assert_raises { MNV[:bad] }
+
+    MNV[:test] = "{{(1..9).to_a.join}}"
+    assert_equal("123456789", MNV[:test])
+    assert_equal("{{(1..9).to_a.join}}", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$test = $whats_all_this")
+    assert_equal("$whats_all_this", MNV[:test])
+    assert_equal("$whats_all_this", MNV.get_source(:test))
+
+    Mysh.try_execute_command("$bad = {{ MNV[:bad] }}")
+    assert_raises { MNV[:bad] }
+    assert_raises { MNV[:bad] } #Yes test this twice!
+    assert_raises { Mysh.try_execute_command("=$bad") }
+    assert_raises { Mysh.try_execute_command("=$bad") } #And this too!
+
+    Mysh.try_execute_command("$bad = OK")
+    assert_equal("OK", MNV[:bad])
+    assert_equal("OK", MNV[:bad]) #And this too!
   end
 
 end
