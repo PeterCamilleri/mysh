@@ -287,7 +287,46 @@ Quick Form | Long Form    |  Command Description
 
 ### Shell Variables
 
-wip
+In mysh, variables are kept that control the behavior of the shell. This simple
+command is used to set, delete, and display these variables. The basic method
+for setting a variable is:
+
+    $name=value
+
+Where:
+* name is a word matching the regex: /[a-z][a-z0-9_]*/. Lower case only.
+* value is a string, with embedded variables and handlebars.
+
+To erase the value of a variable, use:
+
+    $name=
+
+To display the name/value of a variable, use:
+
+    $name
+
+To display all variable names/values use:
+
+    $
+
+As an escapement, the string $$ maps to a single $.
+
+Some variables that are used in mysh are:
+
+Variable    | Description
+------------|--------------------------------------------
+$d          | The current date.
+$date_fmt   | The format for the date: "%Y-%m-%d"
+$debug      | Does the shell display additional debugging info (true/false)
+$h          | The home folder's path
+$pre_prompt | A prompt string displayed before the actual command prompt. Delete the pre_prompt variable to disable pre-prompting.
+$prompt     | The user prompt.
+$t          | The current time.
+$time_fmt   | The format for the time: "%H:%M"
+$u          | The current user.
+$w          | The current working directory's path.
+
+
 
 ### Ruby Expressions:
 
@@ -388,14 +427,15 @@ quick form, ? is used, the space is optional.
 The available help topics are:
 
         General help on mysh.
-!       This help on the history command.
+!       Help on the history command.
+$       Help on mysh variables.
 =       Help on ruby expressions.
 ?       This help on the help command.
 @       Help on the show command.
 env     Help on the show env command.
 gls     Help on gls internal mysh command.
 help    This help on the help command.
-history This help on the history command.
+history Help on the history command.
 kbd     Help on mysh keyboard mapping.
 math    Help on math functions.
 quick   Help on quick commands.
