@@ -491,34 +491,36 @@ $:          | An easy-to-read, formatted version of $: or the ruby search path.
 
 ### Internal Shell Commands:
 
-Internal commands are recognized by name and are executed by mysh directly.
+Internal commands are recognized by name and are executed by mysh directly. The
+complete list of internal commands is given in the default help command ("?").
+Some commands, not already covered in other sections include:
 
-The following set of commands are supported:
-
-```
-!<index>        Display the mysh command history, or if an index is specified,
-                retrieve the command with that index value.
-$<name>=value   Set/query mysh variables. See ?$ for more.
-?<topic>        Display help information for mysh with an optional topic.
-@<item>         Display information about a part of mysh. See ?@ for more.
-cd <dir>        Change directory to the optional <dir> parameter and then
-                display the current working directory.
-exit            Exit mysh.
-gls <-l> <mask> Display the loaded ruby gems. See ?gls for more.
-help <topic>    Display help information for mysh with an optional topic.
-history <index> Display the mysh command history, or if an index is specified,
-                retrieve the command with that index value.
-pwd             Display the current working directory.
-quit            Exit mysh.
-show <item>     Display information about a part of mysh. See ?@ for more.
-type            Display a text file with optional embedded handlebars.
-vls <mask>      Display the loaded modules, matching the optional mask, that
-                have version info.
-```
+Command        | Description
+---------------|----------------------------------------------------
+cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
+exit           | Exit mysh.
+gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
+history {index}| Display the mysh command history, or if an index is specified, retrieve the command with that index value.
+pwd            | Display the current working directory.
+quit           | Exit mysh.
+type           | Display a text file with optional embedded handlebars.
+vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
 ### External Ruby Commands
 
-wip
+Any command that ends with a ".rb" extension will be sent as the target of the
+ruby interpreter. So for example, let's run the test.rb file located in the
+samples folder:
+
+```
+mysh>$debug = on
+mysh>samples/test.rb 1 2 $d $t
+=> samples/test.rb 1 2 2016-12-21 13:43
+=> C:/RailsInstaller/Ruby2.1.0/bin/ruby.exe samples/test.rb 1 2 2016-12-21 13:43
+Running sample file.
+args = ["1", "2", "2016-12-21", "13:43"]
+mysh>
+```
 
 ### External Commands:
 
