@@ -525,13 +525,12 @@ mysh>
 ### External Commands:
 
 All other commands are executed by the system using the standard shell or
-the appropriate ruby interpreter.
+the appropriate ruby interpreter. In effect, the system method is the action of
+last resort for mysh commands.
 
 Notes:
 * If an internal command has the same name as an external command, adding a
   leading space will force the use of the external command.
-* If the command has a '.rb' extension, it is executed by the appropriate ruby
-  interpreter. The interpreter used is the one specified by RbConfig.ruby
 
 ## Embedding mysh in an application.
 
@@ -540,7 +539,7 @@ The mysh can also be used from within a Ruby application:
 ```ruby
 require "mysh"
 
-#Some stuff omitted.
+#Some application stuff omitted.
 
 Mysh.run
 ```
@@ -566,7 +565,6 @@ module Mysh
     #This method is called when the command is executed.
     def call(args)
     end
-
 
   end
 
