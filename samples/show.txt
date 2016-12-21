@@ -1,4 +1,4 @@
-This is a sample show file.
+This is a sample show file. $d $t
 
 {{ a = 5 #}}a = {{ a.to_s }}
 Args = {{ args.inspect }}

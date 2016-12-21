@@ -4,7 +4,6 @@ require 'mini_readline'
 
 require_relative 'user_input/smart_source'
 require_relative 'user_input/parse'
-require_relative 'user_input/handlebars'
 
 #* mysh/user_input.rb -- Get some text from the user.
 module Mysh
@@ -15,10 +14,14 @@ module Mysh
   end
 
   #Get one command from the user.
-  def self.get_command(root="")
-    initial_input = @input.readline(prompt: root + '>')
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
+  def self.get_command
+    puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
+
+    initial_input = @input.readline(prompt: MNV[:prompt] + '>')
     @input.instance_options[:initial] = ""
-    get_command_extra(initial_input, root)
+    get_command_extra(initial_input)
 
   rescue MiniReadlineEOI
     @mysh_running = false
@@ -28,10 +31,10 @@ module Mysh
   private
 
   #Get any continuations of the inputs
-  def self.get_command_extra(str, root)
+  def self.get_command_extra(str)
     if /\\\s*$/ =~ str
-      parms = {prompt: root + '\\', prefix: str[0] }
-      get_command_extra($PREMATCH + "\n" + @input.readline(parms), root)
+      parms = {prompt: MNV[:post_prompt] + '\\', prefix: str[0] }
+      get_command_extra($PREMATCH + "\n" + @input.readline(parms))
     else
       str
     end

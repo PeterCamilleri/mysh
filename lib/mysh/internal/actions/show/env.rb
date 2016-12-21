@@ -16,10 +16,12 @@ module Mysh
     private
 
     #Get the info
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def info
       [["user",     ENV['USER']],
        ["home",     ENV['HOME']],
-       ["name",     decorate($PROGRAM_NAME)],
+       ["name",     $PROGRAM_NAME.decorate],
        ["shell",    ENV['SHELL']    || ENV['ComSpec']],
        ["host",     ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
        ["os",       ENV['OS']],

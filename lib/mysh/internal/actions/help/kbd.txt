@@ -28,4 +28,5 @@ Quick exit mysh  | Ctrl-z                   | Alt-z
 Notes:
   Windows keys are aliased through the numeric key pad unless NumLock is on.
   Mac/Linux mappings may use Escape letter if Alt-letter is unavailable.
+  Cygwin systems use the Mac/Linux mappings.
 
