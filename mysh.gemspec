@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'minitest_visible', ">= 0.1.2"
   spec.add_development_dependency 'rdoc',             "~> 4.0.1"
 
-  spec.add_runtime_dependency     'mini_readline',    ">= 0.6.11"
+  spec.add_runtime_dependency     'mini_readline',    ">= 0.7.2"
   spec.add_runtime_dependency     'vls',              ">= 0.4.1"
   spec.add_runtime_dependency     'in_array',         ">= 0.1.7"
 end
