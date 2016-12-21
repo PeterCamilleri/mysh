@@ -5,9 +5,7 @@ class String
 
   #Extract common mysh data from this string.
   def extract_mysh_types
-    if self =~ /true|yes|on/i
-      true
-    elsif self =~ /false|no|off/i
+    if self =~ /false|no|off/i
       false
     else
       self
