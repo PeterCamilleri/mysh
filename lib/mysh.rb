@@ -23,7 +23,7 @@ module Mysh
     setup
 
     while @mysh_running do
-      execute_a_command(get_command(MNV[:prompt]))
+      execute_a_command(get_command)
     end
   end
 

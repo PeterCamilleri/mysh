@@ -319,6 +319,7 @@ $d          | The current date.
 $date_fmt   | The format for the date: "%Y-%m-%d"
 $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
+$post_prompt| The prompt used when a line is continued with a trailing \\ character.
 $pre_prompt | A prompt string displayed before the actual command prompt. Delete the pre_prompt variable to disable pre-prompting.
 $prompt     | The user prompt.
 $t          | The current time.
