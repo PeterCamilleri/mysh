@@ -411,43 +411,83 @@ PI         |Float |The value &#960; (3.141592653589793)
 
 ### Shell Help
 
-wip
-
-Of note is the command "help help" or "??" which provides a list of all
-available help topics.
-
-```
-Help: mysh help command summary:
-
 The help (or ?) command is used to get either general help about mysh or an
-optional specified topic.
+optional specified topic. If the longer form, help is used, a space is required
+before the topic. If the quick form, ? is used, the space is optional. Of note
+is the command "help help" or "??" which provides a list of all available help
+topics. These are:
 
-If the longer form, help is used, a space is required before the topic. If the
-quick form, ? is used, the space is optional.
+Topic      | Description
+-----------|----------------------------------------------------
+           | General help on mysh.
+!          | Help on the history command.
+$          | Help on mysh variables.
+=          | Help on ruby expressions.
+?          | This help on the help command.
+@          | Help on the show command.
+env        | Help on the show env command.
+gls        | Help on gls internal mysh command.
+help       | This help on the help command.
+history    | Help on the history command.
+kbd        | Help on mysh keyboard mapping.
+math       | Help on math functions.
+quick      | Help on quick commands.
+ruby       | Help on the show ruby command.
+show       | Help on the show command.
+{{         | Help on mysh handlebars.
 
-The available help topics are:
-
-        General help on mysh.
-!       Help on the history command.
-$       Help on mysh variables.
-=       Help on ruby expressions.
-?       This help on the help command.
-@       Help on the show command.
-env     Help on the show env command.
-gls     Help on gls internal mysh command.
-help    This help on the help command.
-history Help on the history command.
-kbd     Help on mysh keyboard mapping.
-math    Help on math functions.
-quick   Help on quick commands.
-ruby    Help on the show ruby command.
-show    Help on the show command.
-{{      Help on mysh handlebars.
-```
 
 ### Shell Info
 
-wip
+The show (or @) command is used to inspect various aspects of the mysh
+environment specified by the item parameter. If the longer form, show is used,
+a space is required before the topic. If the quick form, @ is used, the space
+is optional. Currently, mysh supports two areas on inquiry: the environment and
+ruby:
+
+##### Environment (@env)
+
+This command displays useful information about the current operating
+environment.
+
+Topic    | Description
+---------|----------------------------------------------------
+user     | The current user name.
+home     | The current home directory.
+name     | The path/name of the mysh program currently executing.
+shell    | The path/name of the system command shell.
+host     | The name of the host computer.
+os       | The current operating system.
+platform | The operating platform detected by the low-level terminal gem.
+java     | Is the current platform powered by Java?
+term     | What terminal is defined by the system, if one is defined.
+disp     | What display is defined by the system, if one is defined.
+edit     | What editor is defined by the system, if one is defined.
+path     | An easy-to-read, formatted version of the current search path.
+
+
+##### Ruby (@ruby)
+
+This command displays useful information about the currently running ruby
+language system.
+
+Topic       | Description
+------------|----------------------------------------------------
+location    | The path/name of the current ruby interpreter.
+description | A comprehensive summary of the version and other such data.
+version     | The version of ruby.
+patch       | Its patch level.
+revision    | Its revision level.
+date        | The date of its release.
+platform    | The target platform.
+copyright   | The legal ownership of the software.
+engine      | The internal engine in the software.
+host        | A summary of the host operating environment.
+host cpu    | A (crude) approximation of the installed cpu.
+host os     | The current operating system.
+host vendor | The current environment vendor/genre.
+$:          | An easy-to-read, formatted version of $: or the ruby search path.
+
 
 ### Internal Shell Commands:
 
