@@ -14,26 +14,27 @@ module Mysh
     #Get the initial line of command input.
     def get_command
       puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
-
-      parms = {prompt: MNV[:prompt] + '>'}
-      Mysh.input.readline(parms)
-    rescue MiniReadlineEOI
-      @eoi = true
-      "\n"
+      get(prompt: MNV[:prompt] + '>')
     end
 
     #Get additional lines of continued commands.
     def get_command_extra(str)
-      parms = {prompt: MNV[:post_prompt] + '\\', prefix: str[0]}
-      Mysh.input.readline(parms)
-    rescue MiniReadlineEOI
-      @eoi = true
-      "\n"
+      get(prompt: MNV[:post_prompt] + '\\', prefix: str[0])
     end
 
     #Have we reached the end of input?
     def eoi?
       @eoi
+    end
+
+    private
+
+    #Get some actual user input!
+    def get(parms={})
+      Mysh.input.readline(parms)
+    rescue MiniReadlineEOI
+      @eoi = true
+      "\n"
     end
 
   end

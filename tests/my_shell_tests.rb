@@ -48,8 +48,6 @@ class MyShellTester < Minitest::Test
   end
 
   def test_handlebars
-    Mysh.reset_host
-
     assert_equal("ABC 123 DEF",
                  "ABC {{ (1..3).to_a.join }} DEF".eval_handlebars)
 
@@ -127,8 +125,6 @@ class MyShellTester < Minitest::Test
   end
 
   def test_mysh_variables
-    Mysh.reset_host
-
     assert_equal("", MNV[:test])
     assert_equal("", MNV.get_source(:test))
     refute(MNV.key?(:test), "MNV[:test] should not exist.")
