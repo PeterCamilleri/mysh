@@ -2,8 +2,8 @@
 
 require 'mini_readline'
 
-require_relative 'user_input/smart_source'
-require_relative 'user_input/parse'
+require_relative 'sources/smart_auto_complete'
+require_relative 'sources/parse'
 
 #* mysh/user_input.rb -- Get some text from the user.
 module Mysh
