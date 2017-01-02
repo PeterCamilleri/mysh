@@ -5,6 +5,7 @@
 require 'English'
 require 'in_array'
 
+require_relative 'mysh/exceptions'
 require_relative 'mysh/user_input'
 require_relative 'mysh/quick'
 require_relative 'mysh/expression'

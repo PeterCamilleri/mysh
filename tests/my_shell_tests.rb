@@ -191,4 +191,10 @@ class MyShellTester < Minitest::Test
     assert_equal("OK", MNV[:bad]) #And this too!
   end
 
+  def test_executing_some_strings
+    Mysh.process_string("$c=43\n$d=99")
+    assert_equal("43", MNV[:c])
+    assert_equal("99", MNV[:d])
+  end
+
 end

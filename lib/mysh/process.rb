@@ -3,9 +3,14 @@
 #* mysh/process.rb -- The mysh command processors.
 module Mysh
 
-  #Process from the console
+  #Process from the console.
   def self.process_console
     process_source(Console.new)
+  end
+
+  #Process from a string.
+  def self.process_string(str)
+    process_source(StringSource.new(str))
   end
 
   #Process commands from a source.
@@ -13,6 +18,7 @@ module Mysh
     until source.eoi? do
       execute_a_command(get_command(source))
     end
+  rescue MyshExit
   end
 
   #Execute a single line of input and handle exceptions.

@@ -3,6 +3,7 @@
 require 'mini_readline'
 
 require_relative 'sources/console'
+require_relative 'sources/string'
 
 require_relative 'sources/smart_auto_complete'
 require_relative 'sources/parse'
