@@ -13,6 +13,11 @@ module Mysh
     process_source(StringSource.new(str))
   end
 
+  #Process from a file.
+  def self.process_file(name)
+    process_source(StringSource.new(IO.read(name)))
+  end
+
   #Process commands from a source.
   def self.process_source(source)
     until source.eoi? do
