@@ -8,12 +8,11 @@ module Mysh
 
     #Execute the exit command.
     def call(_args)
-      raise MiniReadlineEOI
+      raise MyshExit
     end
 
   end
 
   #Add the exit command to the library.
-  COMMANDS.add_action(ExitCommand.new('exit', 'Exit mysh.'))
-  COMMANDS.add_action(ExitCommand.new('quit', 'Exit mysh.'))
+  COMMANDS.add_action(ExitCommand.new('exit', 'Exit the current mysh level.'))
 end
