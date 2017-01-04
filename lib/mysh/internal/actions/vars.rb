@@ -43,10 +43,10 @@ module Mysh
 
     #Display all variables neatly.
     def show_all_values
-      puts MNV.keys
-              .sort
-              .map {|sym| ["$" + sym.to_s, MNV.get_source(sym)]}
-              .format_mysh_bullets
+      puts (MNV.keys - ['$'.to_sym])
+             .sort
+             .map {|sym| ["$" + sym.to_s, MNV.get_source(sym)]}
+             .format_mysh_bullets
     end
 
   end
