@@ -302,9 +302,7 @@ To display the name/value of a variable, use:
 
     $name
 
-To display all variable names/values use:
-
-    $
+To display all variable names/values use just enter a single $ sign.
 
 As an escapement, the string $$ maps to a single $.
 
