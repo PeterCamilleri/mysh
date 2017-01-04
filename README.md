@@ -265,7 +265,7 @@ those cases, simply end the expression with a '#' character. For example:
 
 Finally, it may be that it is desired to embed braces into a text file or
 the command line. In that case precede the brace with a backslash character
-like: \{  or \}
+like: \\{  or \\}
 
 ### Command History
 
