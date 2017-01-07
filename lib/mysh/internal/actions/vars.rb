@@ -23,7 +23,7 @@ module Mysh
       match = VAR_EXP.match(str.chomp)
       @name, @equals, @value = match[:name], match[:equals], match[:value]
       do_command
-      true
+      :internal
     end
 
     #Do the actual work here.
