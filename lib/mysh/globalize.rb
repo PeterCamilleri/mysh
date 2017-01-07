@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#Monkey patches for Mysh variables
+#Monkey patches for mysh global entities.
 class Object
 
   #Make the environment variable store accessible everywhere.

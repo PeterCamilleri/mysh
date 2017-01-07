@@ -15,6 +15,8 @@ require_relative 'mysh/handlebars'
 require_relative 'mysh/shell_variables'
 require_relative 'mysh/pre_processor'
 require_relative 'mysh/process'
+require_relative 'mysh/globalize'
+
 require_relative 'mysh/version'
 
 #The Mysh (MY SHell) module. A container for mysh and its functionality.
