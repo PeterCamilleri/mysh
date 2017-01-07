@@ -19,8 +19,8 @@ module Mysh
 
     #Parse the string and call the action.
     def quick_parse_and_call(str)
-      call(Mysh.parse_args(str[1...-1]))
-      :action
+      call(Mysh.parse_args(str[1..-1].chomp))
+      :internal
     end
 
     #Get information about the action.
