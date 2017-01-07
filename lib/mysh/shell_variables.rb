@@ -2,7 +2,6 @@
 
 require_relative 'shell_variables/shell_variable_store'
 require_relative 'shell_variables/shell_variable_keeper'
-require_relative 'shell_variables/globalize'
 require_relative 'shell_variables/evaluate'
 
 #* mysh/shell_variables.rb -- Adds support for mysh scripting variables.
