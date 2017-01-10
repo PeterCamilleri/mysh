@@ -139,7 +139,7 @@ character in the input. These signature characters are:
 
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
-more information see Interanl Commands below.
+more information see Internal Commands below.
 3. External Ruby Commands - These commands are recognized by having the first
 word in the input have the extension (*.rb) of a ruby source file. For more
 information see External Ruby Commands below.
