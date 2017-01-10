@@ -9,6 +9,7 @@ module Mysh
   QUICK['!'] = lambda {|str| HISTORY_COMMAND.quick_parse_and_call(str) }
   QUICK['#'] = lambda {|str| MYSH_COMMENT.call(str) }
   QUICK['$'] = lambda {|str| VARS_COMMAND.call(str) }
+  QUICK['%'] = lambda {|str| TIMED_COMMAND.call(str) }
   QUICK['='] = lambda {|str| $mysh_exec_host.execute(str) }
   QUICK['?'] = lambda {|str| HELP_COMMAND.quick_parse_and_call(str) }
   QUICK['@'] = lambda {|str| SHOW_COMMAND.quick_parse_and_call(str) }
