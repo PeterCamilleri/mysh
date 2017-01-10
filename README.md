@@ -128,6 +128,7 @@ character in the input. These signature characters are:
   Command History below.
   * $ to access or update mysh variables. For more information see Shell
   Variables below.
+  * % to execute a command and then display the elapsed execution time.
   * = to evaluate an expression of Ruby code. For more information see Ruby
   Expressions below.
   * ? to access the mysh help subsystem. For more information see Shell Help
