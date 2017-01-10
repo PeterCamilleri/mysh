@@ -126,6 +126,7 @@ be taken for the input. The four types are:
 character in the input. These signature characters are:
   * ! to access the mysh command history buffer. For more information see
   Command History below.
+  * \# a comment. Performs no operation.
   * $ to access or update mysh variables. For more information see Shell
   Variables below.
   * % to execute a command and then display the elapsed execution time.
