@@ -47,12 +47,25 @@ The mysh gem includes a simple executable called mysh. The template for running
 the mysh is:
 
 ```
-mysh <args>
+mysh <options>
 ```
 
-Where args are currently a work in progress and not available at this time.
+Where the available options are:
 
-When mysh is run, the user is presented with a command prompt:
+Option               | Short Form | Description
+---------------------|------------|---------------------------
+--debug              | -d         | Turn on mysh debugging.
+--no-debug           | -nd        | Turn off mysh debugging.
+--help               | -? -h      | Display mysh usage info and exit.
+--post-prompt "str"  | -pp "str"  | Set the mysh line continuation prompt to "str".
+--no-post-prompt     | -npp       | Turn off mysh line continuation prompting.
+--pre-prompt "str"   | -pr "str"  | Set the mysh pre prompt to "str".
+--no-pre-prompt      | -npr       | Turn off mysh pre prompting.
+--prompt "str"       | -p "str"   | Set the mysh prompt to "str".
+--no-prompt          | -np        | Turn off mysh prompting.
+--quit               |            | Quit out of the mysh program.
+
+<br>When mysh is run, the user is presented with a command prompt:
 
 ```
 $ mysh
@@ -431,6 +444,7 @@ math       | Help on math functions.
 quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 show       | Help on the show command.
+usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
 
 

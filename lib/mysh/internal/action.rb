@@ -33,6 +33,11 @@ module Mysh
       @exec_binding.eval(str)
     end
 
+    #Get the name without any argument descriptions.
+    def short_name
+      name.split[0] || ""
+    end
+
     private
 
     #Create a binding for mysh to execute expressions in.

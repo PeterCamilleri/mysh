@@ -28,6 +28,7 @@ module Mysh
           ['env',     'Help on the show env command.',       'env.txt'    ],
           ['ruby',    'Help on the show ruby command.',      'ruby.txt'   ],
           ['math',    'Help on math functions.',             'math.txt'   ],
+          ['usage',   'Help on mysh usage.',                 'usage.txt'  ],
           ['=',       'Help on ruby expressions.',           'expr.txt'   ],
           ['quick',   'Help on quick commands.',             'quick.txt'  ],
           ['gls',     'Help on gls internal mysh command.',  'gls.txt'    ],

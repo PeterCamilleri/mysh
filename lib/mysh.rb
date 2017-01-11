@@ -23,7 +23,11 @@ require_relative 'mysh/version'
 module Mysh
 
   #The actual shell method.
-  def self.run
+  def self.run(args=[])
+    process_command_args(args, :pre_boot)
+    # to do --- booting!!!
+    process_command_args(args, :post_boot)
+
     process_console
   end
 
@@ -31,5 +35,5 @@ module Mysh
 end
 
 if __FILE__ == $0
-  Mysh.run  #Run a shell if this file is run directly.
+  Mysh.run(ARGV)  #Run a shell if this file is run directly.
 end
