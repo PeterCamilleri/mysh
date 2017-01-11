@@ -26,7 +26,7 @@ module Mysh
   #* mysh/internal/actions/prompt.rb -- The mysh prompt command no prompt.
   class NoPromptOption < CommandOption
 
-    #Execute the prompt command line option.
+    #Execute the no prompt command line option.
     def post_boot(_args)
       MNV[:prompt] = ""
     end

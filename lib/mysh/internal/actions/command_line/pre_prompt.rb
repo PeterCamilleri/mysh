@@ -3,7 +3,7 @@
 #* mysh/internal/actions/prompt.rb -- The mysh help command prompt.
 module Mysh
 
-  #* mysh/internal/actions/prompt.rb -- The mysh prompt command prompt.
+  #* mysh/internal/actions/pre_prompt.rb -- The mysh pre_prompt command.
   class PrepromptOption < CommandOption
 
     #Skip over the argument for pre_boot.
@@ -18,15 +18,15 @@ module Mysh
 
   end
 
-  #Add the prompt command line option to the library.
+  #Add the pre prompt command line option to the library.
   desc = 'Set the mysh pre prompt to "str".'
   COMMAND_LINE.add_action(PrepromptOption.new('--pre-prompt "str"', desc))
   COMMAND_LINE.add_action(PrepromptOption.new('-pr "str"', desc))
 
-  #* mysh/internal/actions/prompt.rb -- The mysh prompt command no prompt.
+  #* mysh/internal/actions/pre_prompt.rb -- The mysh command no pre_prompt.
   class NoPrepromptOption < CommandOption
 
-    #Execute the prompt command line option.
+    #Execute the no pre_prompt command line option.
     def post_boot(_args)
       MNV[:pre_prompt] = ""
     end
