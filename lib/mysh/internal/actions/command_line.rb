@@ -9,6 +9,9 @@ module Mysh
   #* mysh/internal/actions/command_line.rb -- The mysh internal command line option.
   class CommandOption < Action
 
+    #Execute a pre-boot command line option.
+    def call(_args); end
+
     #Execute a post-boot command line option.
     def post_boot(_args); end
 

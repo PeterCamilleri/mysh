@@ -13,7 +13,7 @@ module Mysh
 
   end
 
-  #Add the help command line option to the library.
+  #Add the usage command line option to the library.
   desc = 'Display mysh usage info and exit.'
 
   USAGE = UsageOption.new('--help', desc)
