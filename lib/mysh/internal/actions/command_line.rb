@@ -16,6 +16,16 @@ module Mysh
     def post_boot(_args); end
 
     alias :call :pre_boot
+
+    #Get an argument for an option.
+    def get_arg(read_point)
+      result = read_point.next
+      fail if COMMAND_LINE.exists?(result)
+      result
+    rescue
+      fail "Error in #{name.inspect}: Missing argument: #{result.inspect}"
+    end
+
   end
 
   #Execute command line options.

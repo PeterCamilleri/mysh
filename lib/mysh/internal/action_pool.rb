@@ -20,6 +20,11 @@ module Mysh
       @pool[index]
     end
 
+    #Does this action exist?
+    def exists?(index)
+      @pool.has_key?(index)
+    end
+
     #Add an action to the pool.
     def add_action(action)
       split_name = action.name.split[0] || ""
