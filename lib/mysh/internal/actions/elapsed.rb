@@ -12,7 +12,7 @@ module Mysh
       Mysh.try_execute_command(str[1..-1])
       end_time = Time.now
 
-      puts "Elapsed execution time = #{end_time - start_time} seconds."
+      puts "Elapsed execution time = #{"%.3f" % (end_time - start_time)} seconds."
       :internal
     end
 
