@@ -19,9 +19,9 @@ module Mysh
   end
 
   #Add the prompt command line option to the library.
-  desc = 'Set the mysh prompt to <str>.'
-  COMMAND_LINE.add_action(PromptOption.new('--prompt <str>', desc))
-  COMMAND_LINE.add_action(PromptOption.new('-p <str>', desc))
+  desc = 'Set the mysh prompt to "str".'
+  COMMAND_LINE.add_action(PromptOption.new('--prompt "str"', desc))
+  COMMAND_LINE.add_action(PromptOption.new('-p "str"', desc))
 
   #* mysh/internal/actions/prompt.rb -- The mysh prompt command no prompt.
   class NoPromptOption < CommandOption
