@@ -47,12 +47,23 @@ The mysh gem includes a simple executable called mysh. The template for running
 the mysh is:
 
 ```
-mysh <args>
+mysh <options>
 ```
 
-Where args are currently a work in progress and not available at this time.
+Where the available options are:
 
-When mysh is run, the user is presented with a command prompt:
+Option     | Description
+-----------|---------------------------------------
+--debug    | Turn on mysh debugging.
+--help     | Display mysh usage info and exit.
+--no-debug | Turn off mysh debugging.
+-?         | Display mysh usage info and exit.
+-d         | Turn on mysh debugging.
+-h         | Display mysh usage info and exit.
+-nd        | Turn off mysh debugging.
+
+
+<br>When mysh is run, the user is presented with a command prompt:
 
 ```
 $ mysh

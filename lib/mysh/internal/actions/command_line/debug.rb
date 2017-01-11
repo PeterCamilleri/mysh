@@ -32,5 +32,4 @@ module Mysh
   desc = 'Turn off mysh debugging.'
   COMMAND_LINE.add_action(NoDebugOption.new('--no-debug', desc))
   COMMAND_LINE.add_action(NoDebugOption.new('-nd', desc))
-
 end
