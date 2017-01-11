@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* mysh/internal/actions/prompt.rb -- The mysh help command prompt.
+#* mysh/internal/actions/prompt.rb -- The mysh post prompt command.
 module Mysh
 
   #* mysh/internal/actions/post_prompt.rb -- The mysh post prompt command.

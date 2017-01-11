@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/prompt.rb -- The mysh help command prompt.
+#* mysh/internal/actions/prompt.rb -- The mysh prompt command.
 module Mysh
 
-  #* mysh/internal/actions/prompt.rb -- The mysh prompt command prompt.
+  #* mysh/internal/actions/prompt.rb -- The mysh prompt command.
   class PromptOption < CommandOption
 
     #Skip over the argument for pre_boot.
