@@ -23,7 +23,7 @@ module Mysh
       fail if COMMAND_LINE.exists?(result)
       result
     rescue
-      fail "Error in #{name.inspect}: Missing argument: #{result.inspect}"
+      fail "Error in #{short_name.inspect}: Invalid argument: #{result.inspect}"
     end
 
   end
