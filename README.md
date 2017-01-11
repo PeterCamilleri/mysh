@@ -444,6 +444,7 @@ math       | Help on math functions.
 quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 show       | Help on the show command.
+usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
 
 
