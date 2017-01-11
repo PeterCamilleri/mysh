@@ -19,7 +19,7 @@ module Mysh
   end
 
   #Add the post prompt command line option to the library.
-  desc = 'Set the mysh post prompt to "str".'
+  desc = 'Set the mysh line continuation prompt to "str".'
   COMMAND_LINE.add_action(PostpromptOption.new('--post-prompt "str"', desc))
   COMMAND_LINE.add_action(PostpromptOption.new('-pp "str"', desc))
 
