@@ -24,7 +24,8 @@ module Mysh
 
   #The actual shell method.
   def self.run(args=[])
-    process_command_args(args, :call)
+    process_command_args(args, :pre_boot)
+    # to do --- booting!!!
     process_command_args(args, :post_boot)
 
     process_console

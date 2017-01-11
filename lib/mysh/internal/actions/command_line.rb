@@ -10,11 +10,12 @@ module Mysh
   class CommandOption < Action
 
     #Execute a pre-boot command line option.
-    def call(_args); end
+    def pre_boot(_args); end
 
     #Execute a post-boot command line option.
     def post_boot(_args); end
 
+    alias :call :pre_boot
   end
 
   #Execute command line options.

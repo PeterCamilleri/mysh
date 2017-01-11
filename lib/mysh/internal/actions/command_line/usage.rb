@@ -7,7 +7,7 @@ module Mysh
   class UsageOption < CommandOption
 
     #Execute the help command line option. (Punt to error handler with no msg)
-    def call(_args)
+    def pre_boot(_args)
       raise ""
     end
 
