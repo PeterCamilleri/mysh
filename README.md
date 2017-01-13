@@ -512,10 +512,10 @@ cd {dir}       | Change directory to the optional dir parameter and then display
 exit           | Exit mysh.
 gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
 history {index}| The mysh command history. If an index is specified, get the command with that index value.
-load {file}    | Load a ruby program {file} into the mysh environment.
+load file      | Load a ruby program file into the mysh environment.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
-type {file}    | Display a text {file} with support for optional embedded handlebars and mysh variables.
+type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
 ### External Ruby Commands
