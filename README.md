@@ -515,6 +515,7 @@ history {index}| The mysh command history. If an index is specified, get the com
 load file      | Load a ruby program file into the mysh environment.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
+say <stuff>    | Display the text in the command arguments.
 type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
