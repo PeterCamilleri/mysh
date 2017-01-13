@@ -153,10 +153,14 @@ character in the input. These signature characters are:
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
 more information see Internal Commands below.
-3. External Ruby Commands - These commands are recognized by having the first
+3. External mysh scripts - These commands are recognized by having the first
+word in the input have the extension (*.mysh) of a mysh script file. A mysh
+script file is executed exactly as if the user had typed in each line by hand
+at the console.
+4. External Ruby Commands - These commands are recognized by having the first
 word in the input have the extension (*.rb) of a ruby source file. For more
 information see External Ruby Commands below.
-4. External Commands - Any command not matching any of the above is sent to the
+5. External Commands - Any command not matching any of the above is sent to the
 system shell for execution. For more information see External Commands below.
 
 Notes:
@@ -518,6 +522,19 @@ quit           | Exit mysh.
 say <stuff>    | Display the text in the command arguments.
 type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
+
+Note that the load command applied to a mysh script file acts exactly the same
+as if the script file were executed directly from the command line. As a
+result of this:
+
+```
+myfile.mysh
+```
+and
+```
+load myfile.mysh
+```
+do the same thing.
 
 ### External Ruby Commands
 
