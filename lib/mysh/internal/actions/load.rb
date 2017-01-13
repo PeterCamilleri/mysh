@@ -20,6 +20,6 @@ module Mysh
   end
 
   #Add the load command to the library.
-  desc = 'Load a ruby program into the mysh environment.'
-  COMMANDS.add_action(LoadCommand.new('load', desc))
+  desc = 'Load a ruby program {file} into the mysh environment.'
+  COMMANDS.add_action(LoadCommand.new('load {file}', desc))
 end
