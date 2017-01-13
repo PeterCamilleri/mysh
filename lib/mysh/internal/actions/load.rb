@@ -10,16 +10,18 @@ module Mysh
     def call(args)
       file_name = args.shift
 
-      if file_name
-        load file_name
+      if !file_name
+        puts "Error: A file must be specified."
+      elsif File.extname(file_name) == '.mysh'
+        Mysh.process_file(file_name)
       else
-        puts "Error: A Ruby file must be specified."
+        load file_name
       end
     end
 
   end
 
   #Add the load command to the library.
-  desc = 'Load a ruby program file into the mysh environment.'
+  desc = 'Load a ruby program or mysh script file into the mysh environment.'
   COMMANDS.add_action(LoadCommand.new('load file', desc))
 end
