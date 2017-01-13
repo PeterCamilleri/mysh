@@ -511,7 +511,7 @@ Command        | Description
 cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
 exit           | Exit mysh.
 gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
-history {index}| Display the mysh command history, or if an index is specified, retrieve the command with that index value.
+history {index}| The mysh command history. If an index is specified, get the command with that index value.
 load {file}    | Load a ruby program {file} into the mysh environment.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
