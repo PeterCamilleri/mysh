@@ -516,7 +516,7 @@ cd {dir}       | Change directory to the optional dir parameter and then display
 exit           | Exit mysh.
 gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
 history {index}| The mysh command history. If an index is specified, get the command with that index value.
-load file      | Load a ruby program or mysh script file into the mysh environment.
+load file      | Load a ruby program, mysh script, or text file into the mysh environment.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
 say <stuff>    | Display the text in the command arguments.
@@ -534,7 +534,16 @@ and
 ```
 load myfile.mysh
 ```
-do the same thing.
+do the same thing. In addition:
+```
+type myfile.txt
+```
+and
+```
+load myfile.txt
+```
+are also equivalent.
+
 
 ### External Ruby Commands
 
