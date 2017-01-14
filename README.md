@@ -583,6 +583,10 @@ require "mysh"
 Mysh.run
 ```
 
+The run command takes an optional array of command line style options similar
+in nature to the ARGV ruby constant. If omitted, mysh is run with no optional
+parameters.
+
 #### Adding New Commands
 
 It is possible to add new internal commands to the mysh CLI. This may done
