@@ -585,7 +585,7 @@ Mysh.run
 
 The run command takes an optional array of command line style options similar
 in nature to the ARGV ruby constant. If omitted, mysh is run with no optional
-parameters.
+parameters. These parameters are documented in the Usage section above.
 
 #### Adding New Commands
 
