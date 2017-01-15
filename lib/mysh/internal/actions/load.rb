@@ -11,7 +11,7 @@ module Mysh
       file_name = args.shift
 
       if file_name
-        @exec_binding, file_ext = File.extname(file_name), binding
+        file_ext, @exec_binding = File.extname(file_name), binding
 
         if file_ext == '.mysh'
           Mysh.process_file(file_name)

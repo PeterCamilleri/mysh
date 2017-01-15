@@ -52,18 +52,19 @@ mysh <options>
 
 Where the available options are:
 
-Option               | Short Form | Description
----------------------|------------|---------------------------
---debug              | -d         | Turn on mysh debugging.
---no-debug           | -nd        | Turn off mysh debugging.
---help               | -? -h      | Display mysh usage info and exit.
---post-prompt "str"  | -pp "str"  | Set the mysh line continuation prompt to "str".
---no-post-prompt     | -npp       | Turn off mysh line continuation prompting.
---pre-prompt "str"   | -pr "str"  | Set the mysh pre prompt to "str".
---no-pre-prompt      | -npr       | Turn off mysh pre prompting.
---prompt "str"       | -p "str"   | Set the mysh prompt to "str".
---no-prompt          | -np        | Turn off mysh prompting.
---quit               |            | Quit out of the mysh program.
+Option               | Short Form  | Description
+---------------------|-------------|---------------------------
+--debug              | -d          | Turn on mysh debugging.
+--no-debug           | -nd         | Turn off mysh debugging.
+--help               | -? -h       | Display mysh usage info and exit.
+--load filename      | -l filename | Load the specified file into the mysh.
+--post-prompt "str"  | -pp "str"   | Set the mysh line continuation prompt to "str".
+--no-post-prompt     | -npp        | Turn off mysh line continuation prompting.
+--pre-prompt "str"   | -pr "str"   | Set the mysh pre prompt to "str".
+--no-pre-prompt      | -npr        | Turn off mysh pre prompting.
+--prompt "str"       | -p "str"    | Set the mysh prompt to "str".
+--no-prompt          | -np         | Turn off mysh prompting.
+--quit               |             | Quit out of the mysh program.
 
 <br>When mysh is run, the user is presented with a command prompt:
 
