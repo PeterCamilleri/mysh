@@ -8,7 +8,7 @@ module Mysh
 
   #Parse a command string for use by commands.
   def self.parse_command(str)
-    result = Mysh.parse_args(str.chomp)
+    result = parse_args(str.chomp)
 
     [COMMANDS[result.shift], result]
   end

@@ -530,20 +530,15 @@ result of this:
 
 ```
 myfile.mysh
-```
-and
-```
 load myfile.mysh
 ```
 do the same thing. In addition:
 ```
+myfile.txt
+load myfile.txt
 type myfile.txt
 ```
-and
-```
-load myfile.txt
-```
-are also equivalent.
+are also all equivalent.
 
 
 ### External Ruby Commands

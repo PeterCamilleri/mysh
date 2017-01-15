@@ -5,9 +5,10 @@ module Mysh
 
   #Try to execute as a Ruby program.
   def self.try_execute_external_ruby(str)
+    file_name, *args = parse_args(str.chomp)
 
-    if (cmd = str.split[0])
-      ext = File.extname(cmd)
+    if (file_name)
+      ext = File.extname(file_name)
 
       if ext == '.rb'
         new_command = "#{RbConfig.ruby} #{str}"
@@ -15,8 +16,12 @@ module Mysh
         system(new_command)
         :ruby_exec
       elsif ext == '.mysh'
-        Mysh.process_file(cmd)
+        Mysh.process_file(file_name)
         :mysh_script
+      elsif ext == '.txt'
+        exec_host = BindingWrapper.new(binding)
+        show_handlebar_file(file_name, exec_host)
+        :internal
       end
     end
   end
