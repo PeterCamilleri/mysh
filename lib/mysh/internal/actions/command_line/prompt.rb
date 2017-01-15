@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/prompt.rb -- The mysh prompt command.
+#* mysh/internal/actions/command_line/prompt.rb -- The mysh prompt command.
 module Mysh
 
-  #* mysh/internal/actions/prompt.rb -- The mysh prompt command.
+  #* mysh/internal/actions/command_line/prompt.rb -- The mysh prompt command.
   class PromptOption < CommandOption
 
     #Skip over the argument for pre_boot.
@@ -23,7 +23,7 @@ module Mysh
   COMMAND_LINE.add_action(PromptOption.new('--prompt "str"', desc))
   COMMAND_LINE.add_action(PromptOption.new('-p "str"', desc))
 
-  #* mysh/internal/actions/prompt.rb -- The mysh prompt command no prompt.
+  #* mysh/internal/actions/command_line/prompt.rb -- The mysh prompt command no prompt.
   class NoPromptOption < CommandOption
 
     #Execute the no prompt command line option.

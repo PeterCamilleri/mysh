@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/usage.rb -- The mysh help command usage.
+#* mysh/internal/actions/command_line/usage.rb -- The mysh help command usage.
 module Mysh
 
-  #* mysh/internal/actions/usage.rb -- The mysh help command usage.
+  #* mysh/internal/actions/command_line/usage.rb -- The mysh help command usage.
   class UsageOption < CommandOption
 
     #Execute the help command line option. (Punt to error handler with no msg)

@@ -57,6 +57,8 @@ Option               | Short Form  | Description
 --debug              | -d          | Turn on mysh debugging.
 --no-debug           | -nd         | Turn off mysh debugging.
 --help               | -? -h       | Display mysh usage info and exit.
+--init filename      | -i filename | Initialize mysh by loading the specified file.
+--no-init            | -ni         | Do not load a file to initialize mysh.
 --load filename      | -l filename | Load the specified file into the mysh.
 --post-prompt "str"  | -pp "str"   | Set the mysh line continuation prompt to "str".
 --no-post-prompt     | -npp        | Turn off mysh line continuation prompting.
@@ -72,11 +74,31 @@ Option               | Short Form  | Description
 $ mysh
 /cygdrive/c/Sites/mysh
 mysh>
-
 ```
+
 Now the user (that's you) may enter commands that hopefully increase the level
 of awesome coolness in the known universe. Entropy does not take vacations so
 hop to it! :-)
+
+Now that we've launched mysh, what exactly does it do? This can be summarized
+in just two words: Boot and REPL.
+
+###Boot
+
+The boot/initialization  process of mysh is somewhat modeled after (inspired
+by) that of the famous bash shell. On startup:
+
+1. Process pre-boot options. Some command line options are processed early.
+These are --help, -h, -?, --init, -i, --no-init, -ni, and --quit. See above
+for details on these.
+2. Try to load and execute the mysh init file. There are two possible files
+for this role. They are the ~/mysh_init.mysh and ~/mysh_init.rb files. If
+both files should be present, the .mysh file is processed and the .rb is
+ignored. NOTE: If an init file should be specified with the --init (-i)
+option, or disabled with the --no-init (-ni) option, this step is skipped.
+3. The rest of the command line options are processed at this time. Again,
+see above for details.
+
 
 ###REPL
 

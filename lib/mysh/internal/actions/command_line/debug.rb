@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/debug.rb -- The mysh help command debug.
+#* mysh/internal/actions/command_line/debug.rb -- The mysh help command debug.
 module Mysh
 
-  #* mysh/internal/actions/debug.rb -- The mysh help command debug.
+  #* mysh/internal/actions/command_line/debug.rb -- The mysh help command debug.
   class DebugOption < CommandOption
 
     #Execute the help command line option.
@@ -18,7 +18,7 @@ module Mysh
   COMMAND_LINE.add_action(DebugOption.new('--debug', desc))
   COMMAND_LINE.add_action(DebugOption.new('-d', desc))
 
-  #* mysh/internal/actions/debug.rb -- The mysh help command no debug.
+  #* mysh/internal/actions/command_line/debug.rb -- The mysh help command no debug.
   class NoDebugOption < CommandOption
 
     #Execute the help command line option.

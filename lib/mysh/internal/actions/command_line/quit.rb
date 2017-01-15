@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/quit.rb -- The mysh quit command.
+#* mysh/internal/actions/command_line/quit.rb -- The mysh quit command.
 module Mysh
 
-  #* mysh/internal/actions/quit.rb -- The mysh quit command.
+  #* mysh/internal/actions/command_line/quit.rb -- The mysh quit command.
   class QuitOption < CommandOption
 
     #Execute the quit command line option.
