@@ -22,6 +22,7 @@ module Mysh
   end
 
   #Add the type command to the library.
-  desc = 'Display a text file with optional embedded handlebars.'
-  COMMANDS.add_action(TypeCommand.new('type', desc))
+  desc = 'Display a text file with support for optional embedded ' +
+         'handlebars and mysh variables.'
+  COMMANDS.add_action(TypeCommand.new('type file', desc))
 end

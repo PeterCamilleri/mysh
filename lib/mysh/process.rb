@@ -46,7 +46,7 @@ module Mysh
     try_execute_quick_command(input)    ||
     try_execute_internal_command(input) ||
     try_execute_external_ruby(input)    ||
-    system(input)
+    (system(input) ? :system : :error)
   end
 
 end

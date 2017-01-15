@@ -153,10 +153,14 @@ character in the input. These signature characters are:
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
 more information see Internal Commands below.
-3. External Ruby Commands - These commands are recognized by having the first
+3. External mysh scripts - These commands are recognized by having the first
+word in the input have the extension (*.mysh) of a mysh script file. A mysh
+script file is executed exactly as if the user had typed in each line by hand
+at the console.
+4. External Ruby Commands - These commands are recognized by having the first
 word in the input have the extension (*.rb) of a ruby source file. For more
 information see External Ruby Commands below.
-4. External Commands - Any command not matching any of the above is sent to the
+5. External Commands - Any command not matching any of the above is sent to the
 system shell for execution. For more information see External Commands below.
 
 Notes:
@@ -511,11 +515,35 @@ Command        | Description
 cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
 exit           | Exit mysh.
 gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
-history {index}| Display the mysh command history, or if an index is specified, retrieve the command with that index value.
+history {index}| The mysh command history. If an index is specified, get the command with that index value.
+load file      | Load a ruby program, mysh script, or text file into the mysh environment.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
-type           | Display a text file with optional embedded handlebars.
+say <stuff>    | Display the text in the command arguments.
+type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
+
+Note that the load command applied to a mysh script file acts exactly the same
+as if the script file were executed directly from the command line. As a
+result of this:
+
+```
+myfile.mysh
+```
+and
+```
+load myfile.mysh
+```
+do the same thing. In addition:
+```
+type myfile.txt
+```
+and
+```
+load myfile.txt
+```
+are also equivalent.
+
 
 ### External Ruby Commands
 
@@ -554,6 +582,10 @@ require "mysh"
 
 Mysh.run
 ```
+
+The run command takes an optional array of command line style options similar
+in nature to the ARGV ruby constant. If omitted, mysh is run with no optional
+parameters. These parameters are documented in the Usage section above.
 
 #### Adding New Commands
 
