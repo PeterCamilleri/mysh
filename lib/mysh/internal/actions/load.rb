@@ -23,13 +23,11 @@ module Mysh
           load file_name
           :internal
         else
-          puts "Error: Unknown file type: #{file_name.inspect}"
-          :error
+          fail "Error: Unknown file type: #{file_name.inspect}"
         end
 
       else
-        puts "Error: A file must be specified."
-        :error
+        fail "Error: A load file must be specified."
       end
 
     end
