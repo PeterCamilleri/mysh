@@ -154,14 +154,11 @@ character in the input. These signature characters are:
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
 more information see Internal Commands below.
-3. External mysh scripts - These commands are recognized by having the first
-word in the input have the extension (*.mysh) of a mysh script file. A mysh
-script file is executed exactly as if the user had typed in each line by hand
-at the console.
-4. External Ruby Commands - These commands are recognized by having the first
-word in the input have the extension (*.rb) of a ruby source file. For more
-information see External Ruby Commands below.
-5. External Commands - Any command not matching any of the above is sent to the
+3. External mysh files - These commands are recognized by having the first
+word in the input have a recognized extension. That is (*.rb) of a ruby source
+file, (*.mysh) for a mysh script file and (*.txt) for a text file. For more
+information see External Mysh Commands below.
+4. External Commands - Any command not matching any of the above is sent to the
 system shell for execution. For more information see External Commands below.
 
 Notes:
@@ -541,11 +538,18 @@ type myfile.txt
 are also all equivalent.
 
 
-### External Ruby Commands
+### External Mysh Commands
 
-Any command that ends with a ".rb" extension will be sent as the target of the
-ruby interpreter. So for example, let's run the test.rb file located in the
-samples folder:
+These commands are recognized by having the first word in the input have a
+recognized extension. These are:
+
+Extension      | Description
+---------------|----------------------------------------------------
+.rb            | A ruby source file executed via a new instance of the compiler.
+.mysh          | A mysh script file. Commands in this file are executed as if the user typed them in at the console.
+.txt           | A text file. The file (with any embedded code and veriables) is displayed on the console.
+
+Here is a sample session with an external Ruby program.
 
 ```
 mysh>$debug = on
