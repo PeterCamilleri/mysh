@@ -535,8 +535,7 @@ myfile.txt
 load myfile.txt
 type myfile.txt
 ```
-are also all equivalent.
-
+are also all equivalent. See External Mysh Commands below for more info.
 
 ### External Mysh Commands
 
