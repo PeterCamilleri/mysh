@@ -85,8 +85,9 @@ with just two words: Boot and REPL.
 
 ###Boot
 
-The boot/initialization  process of mysh is somewhat modeled after (inspired
-by) that of the famous bash shell. On startup:
+When mysh starts up, it, like most programs must first get itself initialized
+and acclimated to its environment. The boot/initialization  process of mysh is
+somewhat modeled after (inspired by) that of the famous bash shell. On startup:
 
 1. Process pre-boot options. Some command line options are processed early.
 These are --help, -h, -?, --init, -i, --no-init, -ni, and --quit. See above
@@ -102,10 +103,11 @@ see above for details.
 
 ###REPL
 
-Now for a little more detail. The mysh program is built around a design pattern
-called REPL. This stands for Read Eval Print and Loop and is used in may
-utilities like irb, pry and the rails console. To better use mysh, it is good
-to understand each of these four operating steps.
+Now for a little more detail about what happens after booting up. The mysh
+program is built around a design pattern called REPL. This stands for Read Eval
+Print and Loop and is used in may utilities like irb, pry and the rails
+console. To better use mysh, it is good to understand each of these four
+operating steps.
 
 ####READ
 
