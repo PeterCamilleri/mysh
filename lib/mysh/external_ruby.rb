@@ -5,7 +5,8 @@ module Mysh
 
   #Try to execute as a Ruby program.
   def self.try_execute_external_ruby(str)
-    file_name, *args = parse_args(str.chomp)
+    args = parse_args(str.chomp)
+    file_name = args.shift
 
     if (file_name)
       ext = File.extname(file_name)
