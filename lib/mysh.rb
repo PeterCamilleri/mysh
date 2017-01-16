@@ -6,6 +6,7 @@ require 'English'
 require 'in_array'
 
 require_relative 'mysh/exceptions'
+require_relative 'mysh/binding_wrapper'
 require_relative 'mysh/user_input'
 require_relative 'mysh/quick'
 require_relative 'mysh/expression'
@@ -16,6 +17,7 @@ require_relative 'mysh/shell_variables'
 require_relative 'mysh/pre_processor'
 require_relative 'mysh/process'
 require_relative 'mysh/globalize'
+require_relative 'mysh/init'
 
 require_relative 'mysh/version'
 
@@ -25,7 +27,7 @@ module Mysh
   #The actual shell method.
   def self.run(args=[])
     process_command_args(args, :pre_boot)
-    # to do --- booting!!!
+    mysh_load_init
     process_command_args(args, :post_boot)
 
     process_console

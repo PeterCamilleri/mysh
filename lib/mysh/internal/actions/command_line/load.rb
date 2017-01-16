@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/load.rb -- The mysh load command.
+#* mysh/internal/actions/command_line/load.rb -- The mysh load command.
 module Mysh
 
-  #* mysh/internal/actions/load.rb -- The mysh load command.
+  #* mysh/internal/actions/command_line/load.rb -- The mysh load command.
   class LoadOption < CommandOption
 
     #Skip over the argument for pre_boot.

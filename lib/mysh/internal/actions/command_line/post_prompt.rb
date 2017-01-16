@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/prompt.rb -- The mysh post prompt command.
+#* mysh/internal/actions/command_line/prompt.rb -- The mysh post prompt command.
 module Mysh
 
-  #* mysh/internal/actions/post_prompt.rb -- The mysh post prompt command.
+  #* mysh/internal/actions/command_line/post_prompt.rb -- The mysh post prompt command.
   class PostpromptOption < CommandOption
 
     #Skip over the argument for pre_boot.
@@ -23,7 +23,7 @@ module Mysh
   COMMAND_LINE.add_action(PostpromptOption.new('--post-prompt "str"', desc))
   COMMAND_LINE.add_action(PostpromptOption.new('-pp "str"', desc))
 
-  #* mysh/internal/actions/post_prompt.rb -- The mysh command no post prompt.
+  #* mysh/internal/actions/command_line/post_prompt.rb -- The mysh command no post prompt.
   class NoPostpromptOption < CommandOption
 
     #Execute the no post prompt command line option.

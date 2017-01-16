@@ -57,6 +57,8 @@ Option               | Short Form  | Description
 --debug              | -d          | Turn on mysh debugging.
 --no-debug           | -nd         | Turn off mysh debugging.
 --help               | -? -h       | Display mysh usage info and exit.
+--init filename      | -i filename | Initialize mysh by loading the specified file.
+--no-init            | -ni         | Do not load a file to initialize mysh.
 --load filename      | -l filename | Load the specified file into the mysh.
 --post-prompt "str"  | -pp "str"   | Set the mysh line continuation prompt to "str".
 --no-post-prompt     | -npp        | Turn off mysh line continuation prompting.
@@ -72,18 +74,40 @@ Option               | Short Form  | Description
 $ mysh
 /cygdrive/c/Sites/mysh
 mysh>
-
 ```
+
 Now the user (that's you) may enter commands that hopefully increase the level
 of awesome coolness in the known universe. Entropy does not take vacations so
 hop to it! :-)
 
+Now that we've launched mysh, what exactly does it do? This can be summarized
+with just two words: Boot and REPL.
+
+###Boot
+
+When mysh starts up, it, like most programs must first get itself initialized
+and acclimated to its environment. The boot/initialization  process of mysh is
+somewhat modeled after (inspired by) that of the famous bash shell. On startup:
+
+1. Process pre-boot options. Some command line options are processed early.
+These are --help, -h, -?, --init, -i, --no-init, -ni, and --quit. See above
+for details on these.
+2. Try to load and execute the mysh init file. There are two possible files
+for this role. They are the ~/mysh_init.mysh and ~/mysh_init.rb files. If
+both files should be present, the .mysh file is processed and the .rb is
+ignored. NOTE: If an init file should be specified with the --init (-i)
+option, or disabled with the --no-init (-ni) option, this step is skipped.
+3. The rest of the command line options are processed at this time. Again,
+see above for details.
+
+
 ###REPL
 
-Now for a little more detail. The mysh program is built around a design pattern
-called REPL. This stands for Read Eval Print and Loop and is used in may
-utilities like irb, pry and the rails console. To better use mysh, it is good
-to understand each of these four operating steps.
+Now for a little more detail about what happens after booting up. The mysh
+program is built around a design pattern called REPL. This stands for Read Eval
+Print and Loop and is used in may utilities like irb, pry and the rails
+console. To better use mysh, it is good to understand each of these four
+operating steps.
 
 ####READ
 
@@ -154,14 +178,11 @@ character in the input. These signature characters are:
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
 more information see Internal Commands below.
-3. External mysh scripts - These commands are recognized by having the first
-word in the input have the extension (*.mysh) of a mysh script file. A mysh
-script file is executed exactly as if the user had typed in each line by hand
-at the console.
-4. External Ruby Commands - These commands are recognized by having the first
-word in the input have the extension (*.rb) of a ruby source file. For more
-information see External Ruby Commands below.
-5. External Commands - Any command not matching any of the above is sent to the
+3. External mysh files - These commands are recognized by having the first
+word in the input have a recognized extension. That is (*.rb) of a ruby source
+file, (*.mysh) for a mysh script file and (*.txt) for a text file. For more
+information see External Mysh Commands below.
+4. External Commands - Any command not matching any of the above is sent to the
 system shell for execution. For more information see External Commands below.
 
 Notes:
@@ -530,27 +551,28 @@ result of this:
 
 ```
 myfile.mysh
-```
-and
-```
 load myfile.mysh
 ```
 do the same thing. In addition:
 ```
+myfile.txt
+load myfile.txt
 type myfile.txt
 ```
-and
-```
-load myfile.txt
-```
-are also equivalent.
+are also all equivalent. See External Mysh Commands below for more info.
 
+### External Mysh Commands
 
-### External Ruby Commands
+These commands are recognized by having the first word in the input have a
+recognized extension. These are:
 
-Any command that ends with a ".rb" extension will be sent as the target of the
-ruby interpreter. So for example, let's run the test.rb file located in the
-samples folder:
+Extension      | Description
+---------------|----------------------------------------------------
+.rb            | A ruby source file executed via a new instance of the compiler.
+.mysh          | A mysh script file. Commands in this file are executed as if the user typed them in at the console.
+.txt           | A text file. The file (with any embedded code and veriables) is displayed on the console.
+
+Here is a sample session with an external Ruby program.
 
 ```
 mysh>$debug = on
