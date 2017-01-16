@@ -81,7 +81,7 @@ of awesome coolness in the known universe. Entropy does not take vacations so
 hop to it! :-)
 
 Now that we've launched mysh, what exactly does it do? This can be summarized
-in just two words: Boot and REPL.
+with just two words: Boot and REPL.
 
 ###Boot
 
