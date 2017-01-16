@@ -27,6 +27,8 @@ module Mysh
   class NoPromptOption < CommandOption
 
     #Execute the no prompt command line option.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def post_boot(_args)
       MNV[:prompt] = ""
     end

@@ -7,6 +7,8 @@ module Mysh
   class TimedCommand < Action
 
     #Execute the elapsed command.
+    #<br>Endemic Code Smells
+    #* :reek:DuplicateMethodCall -- needed due to time side effects.
     def call(str)
       start_time = Time.now
       Mysh.try_execute_command(str[1..-1])

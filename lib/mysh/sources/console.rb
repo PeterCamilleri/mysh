@@ -31,8 +31,8 @@ module Mysh
 
     #Get some actual user input!
     def get(parms={})
-      result = Mysh.input.readline(parms)
-      Mysh.input.instance_options[:initial] = ""
+      result = (input = Mysh.input).readline(parms)
+      input.instance_options[:initial] = ""
       result
     rescue MiniReadlineEOI
       @eoi = true

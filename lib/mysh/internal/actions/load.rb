@@ -7,6 +7,8 @@ module Mysh
   class LoadCommand < Action
 
     #Execute the load command.
+    #<br>Endemic Code Smells
+    #* :reek:TooManyStatements
     def call(args)
       file_name = args.shift
 

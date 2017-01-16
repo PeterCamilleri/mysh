@@ -29,6 +29,8 @@ module Mysh
   end
 
   #Execute command line options.
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
   def self.process_command_args(args, phase)
     read_point = args.each
 

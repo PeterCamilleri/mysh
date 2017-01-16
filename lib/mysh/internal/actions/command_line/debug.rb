@@ -7,6 +7,8 @@ module Mysh
   class DebugOption < CommandOption
 
     #Execute the help command line option.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def post_boot(_args)
       MNV[:debug] = "on"
     end
@@ -22,6 +24,8 @@ module Mysh
   class NoDebugOption < CommandOption
 
     #Execute the help command line option.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def post_boot(_args)
       MNV[:debug] = "off"
     end

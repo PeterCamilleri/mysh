@@ -9,6 +9,8 @@ class Object
   private
 
   #The mysh equivalent of the system method.
+  #<br>Endemic Code Smells
+  #* :reek:UtilityFunction
   def mysh(str)
     Mysh.try_execute_command(str)
   end

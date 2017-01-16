@@ -12,6 +12,8 @@ module Mysh
     end
 
     #Execute the prompt command line option.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def post_boot(read_point)
       MNV[:post_prompt] = get_arg(read_point)
     end
@@ -27,6 +29,8 @@ module Mysh
   class NoPostpromptOption < CommandOption
 
     #Execute the no post prompt command line option.
+    #<br>Endemic Code Smells
+    #* :reek:UtilityFunction
     def post_boot(_args)
       MNV[:post_prompt] = ""
     end

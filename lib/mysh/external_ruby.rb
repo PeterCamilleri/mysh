@@ -4,6 +4,8 @@
 module Mysh
 
   #Try to execute as a Ruby program.
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
   def self.try_execute_external_ruby(str)
     args = parse_args(str.chomp)
     file_name = args.shift
