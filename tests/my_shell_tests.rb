@@ -48,8 +48,6 @@ class MyShellTester < Minitest::Test
   end
 
   def test_handlebars
-    Mysh.reset_host
-
     assert_equal("ABC 123 DEF",
                  "ABC {{ (1..3).to_a.join }} DEF".eval_handlebars)
 
@@ -127,8 +125,6 @@ class MyShellTester < Minitest::Test
   end
 
   def test_mysh_variables
-    Mysh.reset_host
-
     assert_equal("", MNV[:test])
     assert_equal("", MNV.get_source(:test))
     refute(MNV.key?(:test), "MNV[:test] should not exist.")
@@ -193,6 +189,12 @@ class MyShellTester < Minitest::Test
     Mysh.try_execute_command("$bad = OK")
     assert_equal("OK", MNV[:bad])
     assert_equal("OK", MNV[:bad]) #And this too!
+  end
+
+  def test_executing_some_strings
+    Mysh.process_string("$c=43\n$d=99")
+    assert_equal("43", MNV[:c])
+    assert_equal("99", MNV[:d])
   end
 
 end

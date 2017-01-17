@@ -20,7 +20,7 @@ module Mysh
       #Set up a new execution environment
       def initialize
         $mysh_exec_result  = nil
-        $mysh_exec_binding = binding
+        $mysh_exec_binding = mysh_binding
       end
 
       #Do the actual work of executing an expression.
@@ -36,6 +36,13 @@ module Mysh
         "exec_host"
       end
 
+      #Evaluate the string in the my shell context.
+      def mysh_eval(str)
+        $mysh_exec_binding.eval(str)
+      end
+
+      private
+
       #Get the previous result
       def result
          $mysh_exec_result
@@ -47,9 +54,9 @@ module Mysh
         nil
       end
 
-      #Evaluate the string in the my shell context.
-      def mysh_eval(str)
-        $mysh_exec_binding.eval(str)
+      #Create a binding for mysh to execute expressions in.
+      def mysh_binding
+        binding
       end
     end
 

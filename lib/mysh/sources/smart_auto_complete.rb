@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* mysh/user_input/smart_source.rb - An adaptive source for auto-complete.
+#* mysh/sources/smart_auto_complete.rb - An adaptive source for auto-complete.
 module Mysh
 
   #* array_source.rb - An array as the source for auto-complete.

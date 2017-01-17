@@ -47,29 +47,68 @@ The mysh gem includes a simple executable called mysh. The template for running
 the mysh is:
 
 ```
-mysh <args>
+mysh <options>
 ```
 
-Where args are currently a work in progress and not available at this time.
+Where the available options are:
 
-When mysh is run, the user is presented with a command prompt:
+Option               | Short Form  | Description
+---------------------|-------------|---------------------------
+--debug              | -d          | Turn on mysh debugging.
+--no-debug           | -nd         | Turn off mysh debugging.
+--help               | -? -h       | Display mysh usage info and exit.
+--init filename      | -i filename | Initialize mysh by loading the specified file.
+--no-init            | -ni         | Do not load a file to initialize mysh.
+--load filename      | -l filename | Load the specified file into the mysh.
+--post-prompt "str"  | -pp "str"   | Set the mysh line continuation prompt to "str".
+--no-post-prompt     | -npp        | Turn off mysh line continuation prompting.
+--pre-prompt "str"   | -pr "str"   | Set the mysh pre prompt to "str".
+--no-pre-prompt      | -npr        | Turn off mysh pre prompting.
+--prompt "str"       | -p "str"    | Set the mysh prompt to "str".
+--no-prompt          | -np         | Turn off mysh prompting.
+--quit               |             | Quit out of the mysh program.
+
+<br>When mysh is run, the user is presented with a command prompt:
 
 ```
 $ mysh
 /cygdrive/c/Sites/mysh
 mysh>
-
 ```
+
 Now the user (that's you) may enter commands that hopefully increase the level
 of awesome coolness in the known universe. Entropy does not take vacations so
 hop to it! :-)
 
+Now that we've launched mysh, what exactly does it do? This can be summarized
+with just two words: Boot and REPL.
+
+###Boot
+
+When mysh starts up, it, like most programs must first get itself initialized
+and acclimated to its environment. The boot/initialization  process of mysh is
+somewhat modeled after (well if I'm honest, more like inspired by) that of the
+famous bash shell. On startup:
+
+1. Process pre-boot options. Some command line options are processed early.
+These are --help, -h, -?, --init, -i, --no-init, -ni, and --quit. See above
+for details on these.
+2. Try to load and execute the mysh init file. There are two possible files
+for this role. They are the ~/mysh_init.mysh and ~/mysh_init.rb files. If
+both files should be present, the .mysh file is processed and the .rb is
+ignored. NOTE: If an init file should be specified with the --init (-i)
+option, or disabled with the --no-init (-ni) option, this step is skipped.
+3. The rest of the command line options are processed at this time. Again,
+see above for details.
+
+
 ###REPL
 
-Now for a little more detail. The mysh program is built around a design pattern
-called REPL. This stands for Read Eval Print and Loop and is used in may
-utilities like irb, pry and the rails console. To better use mysh, it is good
-to understand each of these four operating steps.
+Now for a little more detail about what happens after booting up. The mysh
+program is built around a design pattern called REPL. This stands for Read Eval
+Print and Loop and is used in may utilities like irb, pry and the rails
+console. To better use mysh, it is good to understand each of these four
+operating steps.
 
 ####READ
 
@@ -126,8 +165,10 @@ be taken for the input. The four types are:
 character in the input. These signature characters are:
   * ! to access the mysh command history buffer. For more information see
   Command History below.
+  * \# a comment. Performs no operation.
   * $ to access or update mysh variables. For more information see Shell
   Variables below.
+  * % to execute a command and then display the elapsed execution time.
   * = to evaluate an expression of Ruby code. For more information see Ruby
   Expressions below.
   * ? to access the mysh help subsystem. For more information see Shell Help
@@ -137,10 +178,11 @@ character in the input. These signature characters are:
 
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
-more information see Interanl Commands below.
-3. External Ruby Commands - These commands are recognized by having the first
-word in the input have the extension (*.rb) of a ruby source file. For more
-information see External Ruby Commands below.
+more information see Internal Commands below.
+3. External mysh files - These commands are recognized by having the first
+word in the input have a recognized extension. That is (*.rb) of a ruby source
+file, (*.mysh) for a mysh script file and (*.txt) for a text file. For more
+information see External Mysh Commands below.
 4. External Commands - Any command not matching any of the above is sent to the
 system shell for execution. For more information see External Commands below.
 
@@ -222,13 +264,10 @@ baz yes
 
 The processing of input continues (looping) until it doesn't. This occurs when
 a command to stop looping is entered or the mini_readline gem signals
-end-of-input condition. The commands that do this are:
+end-of-input condition. The (internal) commands that do this are:
 
 * exit - exit the current mysh level.
 * quit - terminate the mysh program.
-
-Work-in-progress - mysh only has one level at this time so these two commands
-do exactly the same thing... for now!
 
 An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
@@ -268,7 +307,7 @@ those cases, simply end the expression with a '#' character. For example:
 
 Finally, it may be that it is desired to embed braces into a text file or
 the command line. In that case precede the brace with a backslash character
-like: \{  or \}
+like: \\{  or \\}
 
 ### Command History
 
@@ -305,9 +344,7 @@ To display the name/value of a variable, use:
 
     $name
 
-To display all variable names/values use:
-
-    $
+To display all variable names/values use just enter a single $ sign.
 
 As an escapement, the string $$ maps to a single $.
 
@@ -319,7 +356,7 @@ $d          | The current date.
 $date_fmt   | The format for the date: "%Y-%m-%d"
 $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
-$post_prompt| The prompt used when a line is continued with a trailing \\ character.
+$post_prompt| The prompt used when a line is continued with a trailing \\ character. By default this is the same as the normal prompt.
 $pre_prompt | A prompt string displayed before the actual command prompt. Delete the pre_prompt variable to disable pre-prompting.
 $prompt     | The user prompt.
 $t          | The current time.
@@ -434,6 +471,7 @@ math       | Help on math functions.
 quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 show       | Help on the show command.
+usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
 
 
@@ -500,17 +538,42 @@ Command        | Description
 cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
 exit           | Exit mysh.
 gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
-history {index}| Display the mysh command history, or if an index is specified, retrieve the command with that index value.
+history {index}| The mysh command history. If an index is specified, get the command with that index value.
+load file      | Load a ruby program, mysh script, or text file into the mysh environment.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
-type           | Display a text file with optional embedded handlebars.
+say <stuff>    | Display the text in the command arguments.
+type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
-### External Ruby Commands
+Note that the load command applied to a mysh script file acts exactly the same
+as if the script file were executed directly from the command line. As a
+result of this:
 
-Any command that ends with a ".rb" extension will be sent as the target of the
-ruby interpreter. So for example, let's run the test.rb file located in the
-samples folder:
+```
+myfile.mysh
+load myfile.mysh
+```
+do the same thing. In addition:
+```
+myfile.txt
+load myfile.txt
+type myfile.txt
+```
+are also all equivalent. See External Mysh Commands below for more info.
+
+### External Mysh Commands
+
+These commands are recognized by having the first word in the input have a
+recognized extension. These are:
+
+Extension      | Description
+---------------|----------------------------------------------------
+.rb            | A ruby source file executed via a new instance of the compiler.
+.mysh          | A mysh script file. Commands in this file are executed as if the user typed them in at the console.
+.txt           | A text file. The file (with any embedded code and veriables) is displayed on the console.
+
+Here is a sample session with an external Ruby program.
 
 ```
 mysh>$debug = on
@@ -543,6 +606,10 @@ require "mysh"
 
 Mysh.run
 ```
+
+The run command takes an optional array of command line style options similar
+in nature to the ARGV ruby constant. If omitted, mysh is run with no optional
+parameters. These parameters are documented in the Usage section above.
 
 #### Adding New Commands
 

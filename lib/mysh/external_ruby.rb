@@ -4,16 +4,29 @@
 module Mysh
 
   #Try to execute as a Ruby program.
+  #<br>Endemic Code Smells
+  #* :reek:TooManyStatements
   def self.try_execute_external_ruby(str)
-    cmd = str.split[0]
+    args = parse_args(str.chomp)
+    file_name = args.shift
 
-    if cmd && File.extname(cmd) == '.rb'
-      new_command = "#{RbConfig.ruby} #{str}"
-      puts "=> #{new_command}"  if MNV[:debug]
-      system(new_command)
-      :ruby_exec
+    if (file_name)
+      ext = File.extname(file_name)
+
+      if ext == '.rb'
+        new_command = "#{RbConfig.ruby} #{str}"
+        puts "=> #{new_command}"  if MNV[:debug]
+        system(new_command)
+        :ruby_exec
+      elsif ext == '.mysh'
+        Mysh.process_file(file_name)
+        :mysh_script
+      elsif ext == '.txt'
+        exec_host = BindingWrapper.new(binding)
+        show_handlebar_file(file_name, exec_host)
+        :internal
+      end
     end
-
   end
 
 end

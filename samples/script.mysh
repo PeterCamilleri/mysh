@@ -1,0 +1,11 @@
+say This is a sample mysh script file.
+say
+
+say Let's try a gls!
+gls
+
+say Let's try a vls!
+vls
+
+say Let's try an @env!
+@env

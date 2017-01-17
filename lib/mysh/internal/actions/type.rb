@@ -15,13 +15,14 @@ module Mysh
       if file_name
         show_handlebar_file(file_name, self)
       else
-        puts "Error: A text file must be specified."
+        fail "A text file must be specified."
       end
     end
 
   end
 
   #Add the type command to the library.
-  desc = 'Display a text file with optional embedded handlebars.'
-  COMMANDS.add_action(TypeCommand.new('type', desc))
+  desc = 'Display a text file with support for optional embedded ' +
+         'handlebars and mysh variables.'
+  COMMANDS.add_action(TypeCommand.new('type file', desc))
 end

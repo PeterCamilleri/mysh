@@ -19,8 +19,8 @@ module Mysh
 
     #Parse the string and call the action.
     def quick_parse_and_call(str)
-      call(Mysh.parse_args(str[1...-1]))
-      :action
+      call(Mysh.parse_args(str[1..-1].chomp))
+      :internal
     end
 
     #Get information about the action.
@@ -31,6 +31,11 @@ module Mysh
     #Evaluate the string in the my shell context.
     def mysh_eval(str)
       @exec_binding.eval(str)
+    end
+
+    #Get the name without any argument descriptions.
+    def short_name
+      name.split[0] || ""
     end
 
     private

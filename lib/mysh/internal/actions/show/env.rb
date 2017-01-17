@@ -19,17 +19,19 @@ module Mysh
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def info
-      [["user",     ENV['USER']],
-       ["home",     ENV['HOME']],
-       ["name",     $PROGRAM_NAME.decorate],
-       ["shell",    ENV['SHELL']    || ENV['ComSpec']],
-       ["host",     ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
-       ["os",       ENV['OS']],
-       ["platform", MiniReadline::TERM_PLATFORM],
-       ["java",     MiniReadline::TERM_JAVA != nil],
-       ["term",     ENV['TERM']],
-       ["disp",     ENV['DISPLAY']],
-       ["edit",     ENV['EDITOR']]]
+      [["version",   Mysh::VERSION],
+       ["init file", $mysh_init_file],
+       ["user",      ENV['USER']],
+       ["home",      ENV['HOME']],
+       ["name",      $PROGRAM_NAME.decorate],
+       ["os shell",  ENV['SHELL']    || ENV['ComSpec']],
+       ["host",      ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
+       ["os",        ENV['OS']],
+       ["platform",  MiniReadline::TERM_PLATFORM],
+       ["java?",     MiniReadline::TERM_JAVA != nil],
+       ["term",      ENV['TERM']],
+       ["disp",      ENV['DISPLAY']],
+       ["edit",      ENV['EDITOR']]]
     end
 
     #Get the path.

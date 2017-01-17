@@ -39,7 +39,7 @@ module Mysh
     def gather_gems
       @specs = Gem.loaded_specs
                   .values
-                  .select {|spec| !(spec.name.partition(@mask)[1]).empty?}
+                  .select {|spec| spec.name[@mask]}
                   .sort   {|first, second| first.name <=> second.name}
     end
 

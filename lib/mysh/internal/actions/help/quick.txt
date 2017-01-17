@@ -15,6 +15,12 @@ Form  Form     Description
   !   history  Display the mysh command history, or if an index is specified,
                retrieve the command with that index value.
 
+  #            A comment.
+
+  $            A mysh variable statement. See ?$ for more info.
+
+  %            Execute a command and then report the elapsed time.
+
   =            All command lines that begin with = are evaluated as Ruby
                expressions. The results of this evaluation are displayed.
 
