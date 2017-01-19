@@ -52,21 +52,21 @@ mysh <options>
 
 Where the available options are:
 
-Option               | Short Form  | Description
----------------------|-------------|---------------------------
---debug              | -d          | Turn on mysh debugging.
---no-debug           | -nd         | Turn off mysh debugging.
---help               | -? -h       | Display mysh usage info and exit.
---init filename      | -i filename | Initialize mysh by loading the specified file.
---no-init            | -ni         | Do not load a file to initialize mysh.
---load filename      | -l filename | Load the specified file into the mysh.
---post-prompt "str"  | -pp "str"   | Set the mysh line continuation prompt to "str".
---no-post-prompt     | -npp        | Turn off mysh line continuation prompting.
---pre-prompt "str"   | -pr "str"   | Set the mysh pre prompt to "str".
---no-pre-prompt      | -npr        | Turn off mysh pre prompting.
---prompt "str"       | -p "str"    | Set the mysh prompt to "str".
---no-prompt          | -np         | Turn off mysh prompting.
---quit               |             | Quit out of the mysh program.
+Option               | Short Form(s)| Description             | Default
+---------------------|--------------|-------------------------|-----------
+--debug              | -d           | Turn on mysh debugging. | false
+--no-debug           | -nd          | Turn off mysh debugging.
+--help               | -? -h        | Display mysh usage info and exit.
+--init filename      | -i filename  | Initialize mysh by loading the specified file. | ~/mysh_init.mysh
+--no-init            | -ni          | Do not load a file to initialize mysh.
+--load filename      | -l filename  | Load the specified file into the mysh.
+--post-prompt "str"  | -pp "str"    | Set the mysh line continuation prompt to "str". | $prompt
+--no-post-prompt     | -npp         | Turn off mysh line continuation prompting.
+--pre-prompt "str"   | -pr "str"    | Set the mysh pre prompt to "str". | $w
+--no-pre-prompt      | -npr         | Turn off mysh pre prompting.
+--prompt "str"       | -p "str"     | Set the mysh prompt to "str". | mysh
+--no-prompt          | -np          | Turn off mysh prompting.
+--quit               |              | Quit out of the mysh program.
 
 <br>When mysh is run, the user is presented with a command prompt:
 
@@ -101,6 +101,14 @@ option, or disabled with the --no-init (-ni) option, this step is skipped.
 3. The rest of the command line options are processed at this time. Again,
 see above for details.
 
+It should be noted that in the event of a conflict in settings during the boot
+process, the last command/option encountered shall prevail. For example if the
+~/mysh_init.mysh contains the line:
+```
+$debug = on
+```
+and the command line has the -nd option, then debug mode will be disabled
+because the -nd command line option is processed after the mysh_init file.
 
 ###REPL
 
@@ -175,7 +183,6 @@ character in the input. These signature characters are:
   below.
   * @ to get information about the system, its environment, and the ruby
   installation. For more information see Shell Info below.
-
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
 more information see Internal Commands below.
@@ -333,8 +340,8 @@ for setting a variable is:
     $name=value
 
 Where:
-* name is a word matching the regex: /[a-z][a-z0-9_]*/. Lower case only.
-* value is a string, with embedded variables and handlebars.
+* name is a word matching the regex: /[a-z][a-z0-9_]*/. Note: lower case only.
+* value is some text, with optional embedded variables and handlebars.
 
 To erase the value of a variable, use:
 
@@ -490,6 +497,8 @@ environment.
 
 Topic    | Description
 ---------|----------------------------------------------------
+version  | The version of mysh in use.
+init file| The init file in use or &#60;none found&#62; or &#60;none&#62;.
 user     | The current user name.
 home     | The current home directory.
 name     | The path/name of the mysh program currently executing.
@@ -546,9 +555,11 @@ say <stuff>    | Display the text in the command arguments.
 type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
-Note that the load command applied to a mysh script file acts exactly the same
-as if the script file were executed directly from the command line. As a
-result of this:
+Notes:
+1. The notation {x} means that x is optional.
+2. The load command applied to a mysh script file acts exactly the same
+   as if the script file were executed directly from the command line. As a
+   result of this:
 
 ```
 myfile.mysh
