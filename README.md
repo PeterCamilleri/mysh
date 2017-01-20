@@ -673,7 +673,7 @@ will create a command called "new" with a title of "new &#60;item&#62;"
 command. This serves as the descriptive help for the command. The help display
 code handles matters like word wrap automatically.
 
-#### About command args
+###### About Command Arguments
 
 The call method take one parameter called args. The args parameter is an array
 of zero or more arguments that were entered with the command.
@@ -685,6 +685,35 @@ So if a command is given
 the args array will contain:
 
     ["abc", "this is a string", "23", "--launch", "--all"]
+
+###### Some Useful Helper Methods
+
+Within the mysh environment, there exists a number of methods designed to make
+life easier in adding new commands or in load ruby files or embedded into
+handlebars. Some of these more noteworthy methods are listed below:
+
+<br>**MNV[:name]**
+<br>Retrieve the mysh variable "$name"
+<br>
+<br>**MNV[:name]="value"**
+<br>Set/Update the mysh variable "$name". If the value is an empty string, the
+vairable is deleted.
+<br>
+<br>**mysh "string"**
+<br>Execute the string as a mysh command.
+<br>
+<br>**Mysh.parse_args("string")**
+<br>Parse the string into an array of arguments.
+<br>
+<br>**Mysh.input.readline(parms)**
+<br>Get a line of input from the console. See the mini_readline gem for info
+on the optional parms.
+<br>
+<br>**"string".preprocess(context=default_context)**
+<br>Process the string for embedded variables and handlebars. By default,
+execution takes place in the global expression binding. However, another
+BindingWrapper instance may be passed to access an alternative binding.
+
 
 #### Adding Help Topics
 
