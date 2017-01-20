@@ -713,6 +713,12 @@ on the optional parms.
 <br>Process the string for embedded variables and handlebars. By default,
 execution takes place in the global expression binding. However, another
 BindingWrapper instance may be passed to access an alternative binding.
+<br>**"string".decorate**
+<br>Given a string with a file spec, decorate that string so that it is more
+pleasing to the local environment. This is a great boon to writing effortless
+portable code.
+<br>
+
 
 
 #### Adding Help Topics

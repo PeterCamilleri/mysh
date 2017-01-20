@@ -21,7 +21,7 @@ module Mysh
         elsif file_ext == '.txt'
           show_handlebar_file(file_name, self)
           :internal
-        elsif ["", ".rb"].include?(file_ext)
+        elsif file_ext == '.rb'
           load file_name
           :internal
         else
