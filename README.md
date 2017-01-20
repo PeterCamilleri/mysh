@@ -697,7 +697,7 @@ handlebars. Some of these more noteworthy methods are listed below:
 <br>
 <br>**MNV[:name]="value"**
 <br>Set/Update the mysh variable "$name". If the value is an empty string, the
-vairable is deleted.
+variable is deleted.
 <br>
 <br>**mysh "string"**
 <br>Execute the string as a mysh command.
