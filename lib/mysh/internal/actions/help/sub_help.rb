@@ -14,7 +14,7 @@ module Mysh
 
     #Execute a help command.
     def call(_args)
-      mysh "load #{ACTIONS_PATH + 'help/' + @file_name}"
+      mysh "load #{(ACTIONS_PATH + 'help/' + @file_name).decorate}"
     end
 
   end

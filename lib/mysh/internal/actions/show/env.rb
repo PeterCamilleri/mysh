@@ -20,15 +20,15 @@ module Mysh
     #* :reek:UtilityFunction
     def info
       [["version",   Mysh::VERSION],
-       ["init file", $mysh_init_file],
+       ["init file", $mysh_init_file.decorate],
        ["user",      ENV['USER']],
-       ["home",      ENV['HOME']],
+       ["home",      (ENV['HOME'] || "").decorate],
        ["name",      $PROGRAM_NAME.decorate],
-       ["os shell",  ENV['SHELL']    || ENV['ComSpec']],
+       ["os shell",  (ENV['SHELL'] || ENV['ComSpec'] || "").decorate],
        ["host",      ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
        ["os",        ENV['OS']],
        ["platform",  MiniReadline::TERM_PLATFORM],
-       ["java?",     MiniReadline::TERM_JAVA != nil],
+       ["java?",     MiniReadline::TERM_JAVA ? true : false],
        ["term",      ENV['TERM']],
        ["disp",      ENV['DISPLAY']],
        ["edit",      ENV['EDITOR']]]
