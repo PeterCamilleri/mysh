@@ -98,11 +98,11 @@ famous bash shell. On startup:
 2. Process pre-boot command line options: Some command line options are
 processed early. These are --help, -h, -?, --init, -i, --no-init, and -ni.
 See Usage above for details on these.
-3. Try to load and execute the mysh init file. There are two possible files
-for this role. They are the ~/mysh_init.mysh and ~/mysh_init.rb files. If
-both files should be present, the .mysh file is processed and the .rb is
-ignored. NOTE: If an init file should be specified with the --init (-i)
-option, or disabled with the --no-init (-ni) option, this step is skipped.
+3. Try to load and execute the mysh_init file. There are three possible files
+for this role. They are ~/mysh_init.mysh, ~/mysh_init.rb, and ~/mysh_init.txt.
+In priority, ".mysh" > ".rb" > ".txt". <br>NOTE: If an init file should be
+specified with the --init option, or disabled with the --no-init option, this
+step is skipped.
 4. The rest of the command line options are processed at this time. Again,
 see Usage above for details.
 
@@ -713,6 +713,7 @@ on the optional parms.
 <br>Process the string for embedded variables and handlebars. By default,
 execution takes place in the global expression binding. However, another
 BindingWrapper instance may be passed to access an alternative binding.
+<br>
 <br>**"string".decorate**
 <br>Given a string with a file spec, decorate that string so that it is more
 pleasing to the local environment. This is a great boon to writing effortless
