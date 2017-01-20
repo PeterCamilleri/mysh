@@ -90,16 +90,17 @@ and acclimated to its environment. The boot/initialization  process of mysh is
 somewhat modeled after (well if I'm honest, more like inspired by) that of the
 famous bash shell. On startup:
 
-1. Process pre-boot options. Some command line options are processed early.
-These are --help, -h, -?, --init, -i, --no-init, -ni, and --quit. See above
-for details on these.
-2. Try to load and execute the mysh init file. There are two possible files
+1. Option values are initialized to their initial, default values.
+2. Process pre-boot command line options: Some command line options are
+processed early. These are --help, -h, -?, --init, -i, --no-init, and -ni.
+See Usage above for details on these.
+3. Try to load and execute the mysh init file. There are two possible files
 for this role. They are the ~/mysh_init.mysh and ~/mysh_init.rb files. If
 both files should be present, the .mysh file is processed and the .rb is
 ignored. NOTE: If an init file should be specified with the --init (-i)
 option, or disabled with the --no-init (-ni) option, this step is skipped.
-3. The rest of the command line options are processed at this time. Again,
-see above for details.
+4. The rest of the command line options are processed at this time. Again,
+see Usage above for details.
 
 It should be noted that in the event of a conflict in settings during the boot
 process, the last command/option encountered shall prevail. For example if the
