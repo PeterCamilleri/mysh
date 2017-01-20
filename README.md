@@ -25,6 +25,10 @@ web sites.
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
+Oh, and one other little thing. A survey of the mysh reveals that it currently
+contains 2291 lines of code. It seems that there has been some growth beyond
+the 25 lines in the original article.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -681,6 +685,27 @@ So if a command is given
 the args array will contain:
 
     ["abc", "this is a string", "23", "--launch", "--all"]
+
+#### Adding Help Topics
+
+In mysh, help topics are generally implemented as text files often augmented
+with embedded mysh variables and ruby code. It it noteworthy however that they
+can also be mysh script or ruby code files. The management of these help files
+is located in the file:
+```
+mysh/lib/mysh/internal/actions/help/sub_help.rb
+```
+In this file, you can locate a variable called "help". This is an array of
+arrays where each line describes a help topic. Within each line is a further
+array of three strings. Respectively these are:
+1. The name of the help item.
+2. A brief description of the help topic. This line is used in the help on help
+(??) topic.
+3. The name of the file, **with its extension**, that contains the actual help
+information.
+
+To add a new help topic, simply add the new help file to the help folder and
+and a corresponding line entry to to the help variable.
 
 ## Contributing
 
