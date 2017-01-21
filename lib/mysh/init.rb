@@ -12,13 +12,11 @@ module Mysh
     unless $mysh_init_file
 
       if (home = ENV['HOME'])
-        name_mysh = home + '/mysh_init.mysh'
-        name_rb   = home + '/mysh_init.rb'
-        name_txt  = home + '/mysh_init.txt'
+        names = [home + '/mysh_init.mysh',
+                 home + '/mysh_init.rb',
+                 home + '/mysh_init.txt']
 
-        $mysh_init_file = (File.file?(name_mysh) && name_mysh) ||
-                          (File.file?(name_rb)   && name_rb)   ||
-                          (File.file?(name_txt)  && name_txt)
+        $mysh_init_file = names.detect {|name| File.file?(name)}
       end
 
       if $mysh_init_file
