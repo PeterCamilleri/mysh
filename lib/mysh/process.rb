@@ -23,7 +23,7 @@ module Mysh
     until source.eoi? do
       execute_a_command(get_command(source))
     end
-  rescue MyshExit
+  rescue Interrupt, MyshExit
   end
 
   #Execute a single line of input and handle exceptions.
