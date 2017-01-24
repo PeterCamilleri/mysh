@@ -13,13 +13,13 @@ module Mysh
       file_name = args.shift
 
       if file_name
-        file_ext, @exec_binding = File.extname(file_name), binding
+        file_ext = File.extname(file_name)
 
         if file_ext == '.mysh'
           Mysh.process_file(file_name)
           :internal
         elsif file_ext == '.txt'
-          show_handlebar_file(file_name, self)
+          show_handlebar_file(file_name, BindingWrapper.new(binding))
           :internal
         elsif file_ext == '.rb'
           load file_name

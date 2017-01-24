@@ -9,7 +9,7 @@ class Object
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
   def show_handlebar_file(name, evaluator)
-    puts eval_handlebar_file(name, evaluator)
+    puts eval_handlebar_file(name, evaluator=$mysh_exec_host)
   end
 
   #Expand a file with embedded ruby handlebars.

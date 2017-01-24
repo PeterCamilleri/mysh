@@ -10,10 +10,8 @@ module Mysh
     def call(args)
       file_name = args.shift
 
-      @exec_binding = binding
-
       if file_name
-        show_handlebar_file(file_name, self)
+        show_handlebar_file(file_name, BindingWrapper.new(binding))
       else
         fail "A text file must be specified."
       end

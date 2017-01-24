@@ -22,8 +22,7 @@ module Mysh
         Mysh.process_file(file_name)
         :mysh_script
       elsif ext == '.txt'
-        exec_host = BindingWrapper.new(binding)
-        show_handlebar_file(file_name, exec_host)
+        show_handlebar_file(file_name, BindingWrapper.new(binding))
         :internal
       end
     end
