@@ -4,19 +4,15 @@
 module Mysh
 
   #A hash of quick command short cuts and their actions.
-  default = Action.new do |args|
-    false
-  end
+  QUICK = ActionPool.new("QUICK", Action.new {|_str| false })
 
-  QUICK = ActionPool.new("", default)
-
-  QUICK['!'] = lambda {|str| HISTORY_COMMAND.process_quick_command(str) }
-  QUICK['#'] = lambda {|str| MYSH_COMMENT.process_command(str) }
-  QUICK['$'] = lambda {|str| VARS_COMMAND.process_command(str) }
-  QUICK['%'] = lambda {|str| TIMED_COMMAND.process_command(str) }
-  QUICK['='] = lambda {|str| $mysh_exec_host.execute(str) }
-  QUICK['?'] = lambda {|str| HELP_COMMAND.process_quick_command(str) }
-  QUICK['@'] = lambda {|str| SHOW_COMMAND.process_quick_command(str) }
+  QUICK['!'] = Action.new {|str| HISTORY_COMMAND.process_quick_command(str) }
+  QUICK['#'] = Action.new {|str| MYSH_COMMENT.process_command(str) }
+  QUICK['$'] = Action.new {|str| VARS_COMMAND.process_command(str) }
+  QUICK['%'] = Action.new {|str| TIMED_COMMAND.process_command(str) }
+  QUICK['='] = Action.new {|str| $mysh_exec_host.execute(str) }
+  QUICK['?'] = Action.new {|str| HELP_COMMAND.process_quick_command(str) }
+  QUICK['@'] = Action.new {|str| SHOW_COMMAND.process_quick_command(str) }
 
   #Try to execute the string as a quick command.
   def self.try_execute_quick_command(str)

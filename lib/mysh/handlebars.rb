@@ -8,8 +8,8 @@ class Object
   #Show a file with embedded ruby handlebars.
   #<br>Note:
   #The message receiver is the evaluation host for the handlebar code.
-  def show_handlebar_file(name, evaluator)
-    puts eval_handlebar_file(name, evaluator=$mysh_exec_host)
+  def show_handlebar_file(name, evaluator = $mysh_exec_host)
+    puts eval_handlebar_file(name, evaluator)
   end
 
   #Expand a file with embedded ruby handlebars.
