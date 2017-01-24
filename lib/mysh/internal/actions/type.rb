@@ -7,7 +7,7 @@ module Mysh
   class TypeCommand < Action
 
     #Execute the type command.
-    def call(args)
+    def process_command(args)
       file_name = args.shift
 
       if file_name

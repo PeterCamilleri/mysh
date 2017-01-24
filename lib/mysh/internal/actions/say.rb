@@ -7,7 +7,7 @@ module Mysh
   class SayCommand < Action
 
     #Say something!
-    def call(args)
+    def process_command(args)
       puts args.join(' ')
       :internal
     end

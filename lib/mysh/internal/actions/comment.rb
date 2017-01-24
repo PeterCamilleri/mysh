@@ -7,7 +7,7 @@ module Mysh
   class MyshComment < Action
 
     #Ignore a comment.
-    def call(_args)
+    def process_command(_args)
       :internal
     end
 

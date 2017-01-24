@@ -7,7 +7,7 @@ module Mysh
   class ExitCommand < Action
 
     #Execute the exit command.
-    def call(_args)
+    def process_command(_args)
       raise MyshExit
     end
 

@@ -7,7 +7,7 @@ module Mysh
   class CdCommand < Action
 
     #Execute the cd command.
-    def call(args)
+    def process_command(args)
       Dir.chdir(args[0]) unless args.empty?
       puts Dir.pwd.decorate
     rescue => err

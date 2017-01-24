@@ -9,7 +9,7 @@ module Mysh
     #Execute the elapsed command.
     #<br>Endemic Code Smells
     #* :reek:DuplicateMethodCall -- needed due to time side effects.
-    def call(str)
+    def process_command(str)
       start_time = Time.now
       Mysh.try_execute_command(str[1..-1])
       end_time = Time.now

@@ -7,7 +7,7 @@ module Mysh
   class QuitCommand < Action
 
     #Execute the quit command.
-    def call(_args)
+    def process_command(_args)
       exit
     end
 

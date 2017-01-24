@@ -8,4 +8,11 @@ require_relative 'internal/format'
 require_relative 'internal/decorate'
 
 #Load up the internal actions!
-Dir[Mysh::Action::ACTIONS_PATH + '*.rb'].each {|file| require file }
+begin
+  current_file = ""
+
+  Dir[Mysh::Action::ACTIONS_PATH + '*.rb'].each {|file| require (current_file = file) }
+
+rescue
+  puts "Error loading #{current_file}"
+end

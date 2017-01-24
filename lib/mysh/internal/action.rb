@@ -12,13 +12,15 @@ module Mysh
     attr_reader :description
 
     #Setup an internal action.
-    def initialize(name, description)
+    def initialize(name = "", description = "", &action)
       @name, @description = name, description.in_array
+
+      define_singleton_method(:process_command, &action) if block_given?
     end
 
     #Parse the string and call the action.
     def process_quick_command(str)
-      call(Mysh.parse_args(str[1..-1].chomp))
+      process_command(Mysh.parse_args(str[1..-1].chomp))
       :internal
     end
 

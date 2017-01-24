@@ -13,7 +13,7 @@ module Mysh
     end
 
     #Execute the gls command.
-    def call(args)
+    def process_command(args)
       process_args(args)
       gather_gems
       send(@report)

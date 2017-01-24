@@ -9,7 +9,7 @@ module Mysh
   class VlsCommand < Action
 
     #Execute the vls command.
-    def call(args)
+    def process_command(args)
       filter  = args[0] || /./
       results = VersionLS.vls(filter)
 

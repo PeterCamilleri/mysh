@@ -7,7 +7,7 @@ module Mysh
   class PwdCommand < Action
 
     #Execute the cd command.
-    def call(_args)
+    def process_command(_args)
       puts Dir.pwd.decorate
     end
 

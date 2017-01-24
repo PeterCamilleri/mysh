@@ -9,7 +9,7 @@ module Mysh
     #Execute the load command.
     #<br>Endemic Code Smells
     #* :reek:TooManyStatements
-    def call(args)
+    def process_command(args)
       file_name = args.shift
 
       if file_name

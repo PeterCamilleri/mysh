@@ -13,7 +13,7 @@ module Mysh
     end
 
     #Execute the history command.
-    def call(args)
+    def process_command(args)
       @args, @history = args, Mysh.input.history
 
       #The history command should not be part of the history.
