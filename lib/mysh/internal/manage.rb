@@ -13,8 +13,8 @@ module Mysh
     [COMMANDS[result.shift], result]
   end
 
-  #Execute the action of an internal command.
-  def self.execute(str)
+  #Try to execute the string as an internal action.
+  def self.try_execute_internal_command(str)
     unless str[0] == ' '
       action, args = parse_command(str.chomp)
 
@@ -23,11 +23,6 @@ module Mysh
         :internal
       end
     end
-  end
-
-  #Try to execute the string as an internal action.
-  def self.try_execute_internal_command(str)
-    execute(str)
   end
 
 end
