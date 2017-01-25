@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/external_ruby.rb -- Support for executing Ruby files with the ruby interpreter.
+#* mysh/external.rb -- Support for executing external files.
 module Mysh
 
-  #Try to execute as a Ruby program.
+  #Try to execute an external file.
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
   def self.try_execute_external(str)
