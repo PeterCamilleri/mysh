@@ -3,18 +3,9 @@
 #* mysh/internal/actions/say.rb -- A mysh internal say command.
 module Mysh
 
-  #* mysh/internal/actions/say.rb -- A mysh internal say command.
-  class SayCommand < Action
-
-    #Say something!
-    def process_command(args)
-      puts args.join(' ')
-      :internal
-    end
-
-  end
-
   #Add says to the library.
   desc = 'Display the text in the command arguments.'
-  COMMANDS.add_action(SayCommand.new('say <stuff>', desc))
+  action = lambda {|args| puts args.join(' ')}
+
+  COMMANDS.add_action(Action.new('say <stuff>', desc, &action))
 end
