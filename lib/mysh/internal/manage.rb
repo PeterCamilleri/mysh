@@ -14,7 +14,7 @@ module Mysh
   end
 
   #Try to execute the string as an internal action.
-  def self.try_execute_internal_command(str)
+  def self.try_execute_internal(str)
     unless str[0] == ' '
       action, args = parse_command(str.chomp)
 

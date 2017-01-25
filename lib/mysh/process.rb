@@ -43,9 +43,9 @@ module Mysh
 
     puts "=> #{input}" if MNV[:debug]
 
-    try_execute_quick_command(input)    ||
-    try_execute_internal_command(input) ||
-    try_execute_external_ruby(input)    ||
+    try_execute_quick(input)    ||
+    try_execute_internal(input) ||
+    try_execute_external(input) ||
     (system(input) ? :system : :error)
   end
 

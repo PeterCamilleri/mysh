@@ -15,7 +15,7 @@ module Mysh
   QUICK['@'] = Action.new {|str| SHOW_COMMAND.process_quick_command(str) }
 
   #Try to execute the string as a quick command.
-  def self.try_execute_quick_command(str)
+  def self.try_execute_quick(str)
     QUICK[str[0]].process_command(str)
   end
 
