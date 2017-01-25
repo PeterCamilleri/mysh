@@ -19,7 +19,7 @@ module Mysh
     end
 
     #Execute a command against the internal mysh variables.
-    def call(str)
+    def process_command(str)
       match = VAR_EXP.match(str.chomp)
       @name, @equals, @value = match[:name], match[:equals], match[:value]
       do_command

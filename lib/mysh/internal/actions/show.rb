@@ -4,9 +4,11 @@
 module Mysh
 
   #Show items.
-  SHOW = ActionPool.new("SHOW") do |args|
+  default = Action.new do |args|
     puts "No show data found for #{args[0].inspect}. See ?@ for more."
   end
+
+  SHOW = ActionPool.new("SHOW", default)
 
   #* mysh/internal/actions/show.rb -- The mysh internal show command.
   class ShowCommand < Action
@@ -14,11 +16,11 @@ module Mysh
     #Execute a help command by routing it to a sub-command.
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction :reek:FeatureEnvy
-    def call(args)
+    def process_command(args)
       if args.empty?
         puts "An item is needed for the show command."
       else
-        SHOW[args[0]].call(args)
+        SHOW[args[0]].process_command(args)
       end
     end
 

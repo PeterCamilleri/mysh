@@ -15,7 +15,7 @@ module Mysh
     #Execute a post-boot command line option.
     def post_boot(_args); end
 
-    alias :call :pre_boot
+    alias :process_command :pre_boot
 
     #Get an argument for an option.
     def get_arg(read_point)
@@ -46,7 +46,7 @@ module Mysh
       puts "", msg, ""
     end
 
-    HELP["usage"].call([])
+    HELP["usage"].process_command([])
     exit
   end
 

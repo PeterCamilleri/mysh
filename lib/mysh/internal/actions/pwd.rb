@@ -3,16 +3,8 @@
 #* mysh/internal/actions/pwd.rb -- The mysh internal pwd command.
 module Mysh
 
-  #* mysh/internal/actions/pwd.rb -- The mysh internal pwd command.
-  class PwdCommand < Action
-
-    #Execute the cd command.
-    def call(_args)
-      puts Dir.pwd.decorate
-    end
-
-  end
-
   desc = 'Display the current working directory.'
-  COMMANDS.add_action(PwdCommand.new('pwd', desc))
+  action = lambda {|_args| puts Dir.pwd.decorate}
+
+  COMMANDS.add_action(Action.new('pwd', desc, &action))
 end
