@@ -7,7 +7,8 @@ module Mysh
   desc = 'Display a text file with support for optional embedded ' +
          'handlebars and mysh variables.'
 
-  action = lambda do |args|
+  action = lambda do |input|
+    args = input.args
     file_name = args.shift
 
     if file_name

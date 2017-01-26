@@ -10,7 +10,7 @@ module Mysh
   QUICK['#'] = Action.new {|input| MYSH_COMMENT.process_command(input)}
   QUICK['$'] = Action.new {|input| VARS_COMMAND.process_command(input)}
   QUICK['%'] = Action.new {|input| TIMED_COMMAND.process_command(input)}
-  QUICK['='] = Action.new {|input| $mysh_exec_host.execute(input)}
+  QUICK['='] = Action.new {|input| $mysh_exec_host.execute(input.cooked)}
   QUICK['?'] = Action.new {|input| HELP_COMMAND.process_quick_command(input)}
   QUICK['@'] = Action.new {|input| SHOW_COMMAND.process_quick_command(input)}
 

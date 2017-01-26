@@ -6,9 +6,9 @@ module Mysh
   #Add the elapsed commands to the library.
   desc = 'Execute a command and then display the elapsed time.'
 
-  action = lambda do |str|
+  action = lambda do |input|
     start_time = Time.now
-    Mysh.try_execute_command(str[1..-1])
+    Mysh.try_execute_command(input.body)
     end_time = Time.now
 
     puts "Elapsed execution time = #{"%.3f" % (end_time - start_time)} seconds."

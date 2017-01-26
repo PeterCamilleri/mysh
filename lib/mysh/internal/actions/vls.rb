@@ -9,8 +9,8 @@ module Mysh
   desc = 'Display the loaded modules, matching the optional mask, that ' +
          'have version info.'
 
-  action = lambda do |args|
-    filter  = args[0] || /./
+  action = lambda do |input|
+    filter  = input.parsed[1] || /./
     results = VersionLS.vls(filter)
 
     if results.empty?

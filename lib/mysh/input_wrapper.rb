@@ -40,6 +40,11 @@ module Mysh
       @parsed ||= Mysh.parse_args(self.cooked)
     end
 
+    #Get the parsed arguments
+    def args
+      parsed[1..-1]
+    end
+
   end
 
 end

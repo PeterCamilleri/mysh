@@ -7,7 +7,8 @@ module Mysh
   desc = "Load a ruby program, mysh script, " +
          "or text file into the mysh environment."
 
-  action = lambda do |args|
+  action = lambda do |input|
+    args = input.args
     file_name = args.shift
 
     if file_name
