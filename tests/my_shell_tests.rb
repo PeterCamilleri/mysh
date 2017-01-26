@@ -20,6 +20,7 @@ class MyShellTester < Minitest::Test
     assert_equal(Module, Mysh::MNV.class)
     assert_equal(Class,  Mysh::Keeper.class)
     assert_equal(Class,  Mysh::BindingWrapper.class)
+    assert_equal(Class,  Mysh::InputWrapper.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
     assert_equal(Mysh::ActionPool, Mysh::HELP.class)

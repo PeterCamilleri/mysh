@@ -7,6 +7,7 @@ require 'in_array'
 
 require_relative 'mysh/exceptions'
 require_relative 'mysh/binding_wrapper'
+require_relative 'mysh/input_wrapper'
 require_relative 'mysh/user_input'
 require_relative 'mysh/expression'
 require_relative 'mysh/internal'
