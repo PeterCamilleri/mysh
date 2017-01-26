@@ -10,7 +10,7 @@ module Mysh
          'have version info.'
 
   action = lambda do |input|
-    filter  = input.parsed[1] || /./
+    filter  = input.args[0] || /./
     results = VersionLS.vls(filter)
 
     if results.empty?
