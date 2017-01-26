@@ -19,8 +19,8 @@ module Mysh
     end
 
     #Parse the string and call the action.
-    def process_quick_command(str)
-      process_command(Mysh.parse_args(str[1..-1].chomp))
+    def process_quick_command(input)
+      process_command(input)
       :internal
     end
 

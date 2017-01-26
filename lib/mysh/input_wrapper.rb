@@ -16,12 +16,12 @@ module Mysh
     attr_reader :raw
 
     #Get the first raw character.
-    def nose
+    def head
       @raw[0] || ""
     end
 
     #Get the balance of the raw string.
-    def tail
+    def body
       @raw[1..-1] || ""
     end
 
@@ -37,7 +37,7 @@ module Mysh
 
     #Get the parsed command line.
     def parsed
-      @parsed ||= parse_args(self.cooked)
+      @parsed ||= Mysh.parse_args(self.cooked)
     end
 
   end

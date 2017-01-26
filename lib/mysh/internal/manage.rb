@@ -7,16 +7,16 @@ module Mysh
   COMMANDS = ActionPool.new("COMMANDS")
 
   #Parse a command string for use by commands.
-  def self.parse_command(str)
-    result = parse_args(str.chomp)
+  def self.parse_command(input)
+    result = input.parsed
 
     [COMMANDS[result.shift], result]
   end
 
   #Try to execute the string as an internal action.
-  def self.try_execute_internal(str)
-    unless str[0] == ' '
-      action, args = parse_command(str.chomp)
+  def self.try_execute_internal(input)
+    unless input.head == ' '
+      action, args = parse_command(input)
 
       if action
         action.process_command(args)

@@ -6,15 +6,15 @@ module Mysh
   #Try to execute an external file.
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
-  def self.try_execute_external(str)
-    args = parse_args(str.chomp)
+  def self.try_execute_external(input)
+    args = input.parsed
     file_name = args.shift
 
     if (file_name)
       ext = File.extname(file_name)
 
       if ext == '.rb'
-        new_command = "#{RbConfig.ruby} #{str}"
+        new_command = "#{RbConfig.ruby} #{input.cooked}"
         puts "=> #{new_command}"  if MNV[:debug]
         system(new_command)
         :ruby_exec

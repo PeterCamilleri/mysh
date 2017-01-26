@@ -36,12 +36,10 @@ module Mysh
   end
 
   #Try to execute a single line of input. Does not handle exceptions.
-  def self.try_execute_command(input)
-    unless input.start_with?("$")
-      input = input.preprocess
-    end
+  def self.try_execute_command(str)
+    input = InputWrapper.new(str)
 
-    puts "=> #{input}" if MNV[:debug]
+    puts "=> #{input.raw}" if MNV[:debug]
 
     try_execute_quick(input)    ||
     try_execute_internal(input) ||
