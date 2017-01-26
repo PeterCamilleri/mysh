@@ -20,8 +20,7 @@ module Mysh
 
     #Parse the string and call the action.
     def process_quick_command(input)
-      input.quick
-      process_command(input)
+      process_command(input.quick)
       :internal
     end
 
