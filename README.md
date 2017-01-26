@@ -673,7 +673,7 @@ will create a command called "new" with a title of "new &#60;item&#62;"
 command. This serves as the descriptive help for the command. The help display
 code handles matters like word wrap automatically.
 
-###### About Command Arguments
+###### About Command Arguments (needs work)
 
 The call method take one parameter called args. The args parameter is an array
 of zero or more arguments that were entered with the command.

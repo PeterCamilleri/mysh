@@ -5,7 +5,7 @@ module Mysh
 
   #Try to execute as a system program.
   def self.try_execute_system(input)
-    system(input.cooked) ? :system : :error
+    system(input.cooked + "\n") ? :system : :error
   end
 
 end
