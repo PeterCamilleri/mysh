@@ -46,7 +46,7 @@ module Mysh
     end
 
     def quick
-      @parsed = [head] + Mysh.parse_args(cooked[1..-1] || "")
+      @parsed = [head] + Mysh.parse_args(body.preprocess)
       self
     end
 
