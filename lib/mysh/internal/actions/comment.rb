@@ -5,7 +5,7 @@ module Mysh
 
   #Add comments to the library.
   desc = 'A mysh comment. No action taken'
-  action = lambda {|_args| :internal}
+  action = lambda {|_input| :internal}
 
   MYSH_COMMENT = Action.new('#<stuff>', desc, &action)
   COMMANDS.add_action(MYSH_COMMENT)

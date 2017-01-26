@@ -5,7 +5,7 @@ module Mysh
 
   #Add the exit command to the library.
   desc = 'Exit the current mysh level.'
-  action = lambda {|_args| raise MyshExit}
+  action = lambda {|_input| raise MyshExit}
 
   COMMANDS.add_action(Action.new('exit', desc, &action))
 end

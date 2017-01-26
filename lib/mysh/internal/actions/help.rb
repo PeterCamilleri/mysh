@@ -16,7 +16,8 @@ module Mysh
     #Execute a help command by routing it to a sub-command.
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
-    def process_command(args)
+    def process_command(input)
+      args = input.args
       HELP[args[0] || ""].process_command(args)
     end
 

@@ -7,7 +7,8 @@ module Mysh
   desc = 'Change directory to the optional <dir> parameter ' +
          'and then display the current working directory.'
 
-  action = lambda do |args|
+  action = lambda do |input|
+    args = input.args
     Dir.chdir(args[0]) unless args.empty?
     puts Dir.pwd.decorate
   end

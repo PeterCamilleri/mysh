@@ -4,19 +4,19 @@
 module Mysh
 
   #A hash of quick command short cuts and their actions.
-  QUICK = ActionPool.new("QUICK", Action.new {|_input| false })
+  QUICK = Hash.new(lambda {|_input| false })
 
-  QUICK['!'] = Action.new {|input| HISTORY_COMMAND.process_quick_command(input)}
-  QUICK['#'] = Action.new {|input| MYSH_COMMENT.process_command(input)}
-  QUICK['$'] = Action.new {|input| VARS_COMMAND.process_command(input)}
-  QUICK['%'] = Action.new {|input| TIMED_COMMAND.process_command(input)}
-  QUICK['='] = Action.new {|input| $mysh_exec_host.execute(input.cooked)}
-  QUICK['?'] = Action.new {|input| HELP_COMMAND.process_quick_command(input)}
-  QUICK['@'] = Action.new {|input| SHOW_COMMAND.process_quick_command(input)}
+  QUICK['!'] = lambda {|input| HISTORY_COMMAND.process_quick_command(input.quick)}
+  QUICK['#'] = lambda {|input| MYSH_COMMENT.process_command(input)}
+  QUICK['$'] = lambda {|input| VARS_COMMAND.process_command(input)}
+  QUICK['%'] = lambda {|input| TIMED_COMMAND.process_command(input)}
+  QUICK['='] = lambda {|input| $mysh_exec_host.execute(input.cooked)}
+  QUICK['?'] = lambda {|input| HELP_COMMAND.process_quick_command(input.quick)}
+  QUICK['@'] = lambda {|input| SHOW_COMMAND.process_quick_command(input.quick)}
 
   #Try to execute the inputing as a quick command.
   def self.try_execute_quick(input)
-    QUICK[input.head].process_command(input)
+    QUICK[input.head].call(input)
   end
 
 end

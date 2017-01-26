@@ -4,7 +4,7 @@
 module Mysh
 
   desc = 'Display the current working directory.'
-  action = lambda {|_args| puts Dir.pwd.decorate}
+  action = lambda {|_input| puts Dir.pwd.decorate}
 
   COMMANDS.add_action(Action.new('pwd', desc, &action))
 end

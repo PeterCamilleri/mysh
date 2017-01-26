@@ -12,13 +12,12 @@ module Mysh
 
   #The shared description.
   desc = "Display information about a part of mysh. See ?@ for more."
-  msg  = "An item is needed for the show command."
 
   action = lambda do |input|
     item = input.args[0]
 
     if item.empty?
-      puts msg
+      puts "An item is needed for the show command."
     else
       SHOW[item].process_command(input)
     end
@@ -26,18 +25,6 @@ module Mysh
 
   #The show command action object.
   COMMANDS.add_action(Action.new('show <item>', desc, &action))
-
-  #The quick show command action object.
-  action = lambda do |input|
-    item = input.body.split[0]
-
-    if item.empty?
-      puts msg
-    else
-      SHOW[item].process_command(input)
-    end
-  end
-
   SHOW_COMMAND = Action.new('@<item>', desc, &action)
   COMMANDS.add_action(SHOW_COMMAND)
 end

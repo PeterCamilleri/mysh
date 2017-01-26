@@ -9,7 +9,7 @@ module Mysh
     #Build an input wrapper.
     def initialize(raw)
       @raw = raw.chomp
-      @parsed = @cooked = nil
+      @quick = @args = @parsed = @cooked = nil
     end
 
     #Access the raw text.
@@ -37,12 +37,17 @@ module Mysh
 
     #Get the parsed command line.
     def parsed
-      @parsed ||= Mysh.parse_args(self.cooked)
+      @parsed ||= Mysh.parse_args(cooked)
     end
 
     #Get the parsed arguments
     def args
-      parsed[1..-1]
+      @args ||= parsed[1..-1]
+    end
+
+    def quick
+      @parsed = [head] + Mysh.parse_args(cooked[1..-1] || "")
+      self
     end
 
   end
