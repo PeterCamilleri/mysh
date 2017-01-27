@@ -649,9 +649,7 @@ enough to fit into a single lambda block of code. Like this template:
 ```ruby
 module Mysh
   command_name = 'new <item>'
-
   desc = "A succinct description of what this command does."
-
   action = lambda do |input|
     #Action packed stuff goes here!
   end
@@ -671,18 +669,15 @@ across multiple methods. Like this template:
 ```ruby
 module Mysh
   class NewCommand < Action
-
     #This method is called when the command is executed.
     def process_command(input)
       #Even more action packed stuff goes here!
     end
-
   end
 
   desc = "A succinct description of what this command does."
   command_name = 'new <item>'
   COMMANDS.add_action(NewCommand.new(command_name, desc))
-
 end
 ```
 
