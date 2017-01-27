@@ -45,6 +45,7 @@ module Mysh
       @args ||= parsed[1..-1]
     end
 
+    #Set up input for a quick style command.
     def quick
       @parsed = [head] + (@args = Mysh.parse_args(temp = body.preprocess))
       @cooked = head + temp
