@@ -686,9 +686,10 @@ module Mysh
 end
 ```
 
-**Command names:** The name of the command is a string with optional argument
-descriptions separated with spaces. The command is the first word of this
-string. For example a command_name of:
+###### Command names:
+The name of the command is a string with optional argument descriptions
+separated with spaces. The command is the first word of this string. For
+example a command_name of:
 
 ```
 "new <item>"
@@ -696,9 +697,10 @@ string. For example a command_name of:
 
 will create a command called "new" with a title of "new &#60;item&#62;"
 
-<br>**Command descriptions:** A string or an array of strings that describe
-the command. This serves as the descriptive help for the command. The help
-display code handles matters like word wrap automatically.
+###### Command descriptions:
+A string or an array of strings that describe the command. This serves as the
+descriptive help for the command. The help display code handles matters like
+word wrap automatically.
 
 ###### About Command Arguments
 
