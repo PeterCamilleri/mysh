@@ -638,15 +638,43 @@ located at:
 A survey of the contents of that folder will reveal the nature of these files.
 
 New internal commands may also be added in code via the the add_action method
-of the InternalCommand class of the Mysh module. The code to do this would look
-something like this:
+of the Action class of the Mysh module. There are two ways to do this:
+
+* The command may be created as an instance of the Action class with a command
+name, description and a block that contains the action to be performed by this
+command. This block takes one parameter, an input wrapper (see About Command
+Arguments below for details). This approach is best when the command is simple
+enough to fit into a single lambda block of code. Like this template:
+
+```ruby
+module Mysh
+  command_name = 'new <item>'
+
+  desc = "A succinct description of what this command does."
+
+  action = lambda do |input|
+    #Action packed stuff goes here!
+  end
+
+  COMMANDS.add_action(Action.new(command_name, desc, &action))
+end
+```
+
+
+* The command may be created as an instance of a sub-class of the Action class.
+In this case, only a name and description are needed as the sub-class should
+contain all the needed code. The action method is the process_command and this
+takes one parameter, an input wrapper (see About Command Arguments below for
+details). This approach is required when the command action needs to be spread
+across multiple methods. Like this template:
 
 ```ruby
 module Mysh
   class NewCommand < Action
 
     #This method is called when the command is executed.
-    def call(args)
+    def process_command(input)
+      #Even more action packed stuff goes here!
     end
 
   end
@@ -658,10 +686,9 @@ module Mysh
 end
 ```
 
-Where:
-* command_name is the name of the command with optional argument descriptions
-separated with spaces. The command is the first word of this string. For
-example a command_name of:
+**Command names:** The name of the command is a string with optional argument
+descriptions separated with spaces. The command is the first word of this
+string. For example a command_name of:
 
 ```
 "new <item>"
@@ -669,22 +696,25 @@ example a command_name of:
 
 will create a command called "new" with a title of "new &#60;item&#62;"
 
-* command_description is a string or an array of strings that describe the
-command. This serves as the descriptive help for the command. The help display
-code handles matters like word wrap automatically.
+<br>**Command descriptions:** A string or an array of strings that describe
+the command. This serves as the descriptive help for the command. The help
+display code handles matters like word wrap automatically.
 
-###### About Command Arguments (needs work)
+###### About Command Arguments
 
-The call method take one parameter called args. The args parameter is an array
-of zero or more arguments that were entered with the command.
+The process_command method take one parameter that is an instance of the
+InputWrapper class. This class provides several ways to access the parts of the
+command line. These are:
 
-So if a command is given
-
-    command abc "this is a string" 23 --launch --all
-
-the args array will contain:
-
-    ["abc", "this is a string", "23", "--launch", "--all"]
+Method  | Description
+--------|----------------
+raw     | The raw, unprocessed command line text.
+cooked  | The command line text with variables and handlebars expanded.
+head    | The first character of the raw text.
+body    | The raw text without the first character.
+command | The first word of the raw text. Usually the command.
+parsed  | The cooked text parsed into an array of strings.
+args    | The parsed array except for the first element, the command name.
 
 ###### Some Useful Helper Methods
 
