@@ -196,7 +196,7 @@ class MyShellTester < Minitest::Test
     wrapper = Mysh::InputWrapper.new '@last 45 "is finished" {{ 2+2 }} ever'
 
     assert_equal('@last 45 "is finished" {{ 2+2 }} ever', wrapper.raw)
-    assert_equal('@last 45 "is finished" 4 ever', wrapper.cooked)
+    assert_equal(' 45 "is finished" 4 ever', wrapper.cooked)
 
     assert_equal('@last', wrapper.command)
     assert_equal(' 45 "is finished" {{ 2+2 }} ever', wrapper.body)

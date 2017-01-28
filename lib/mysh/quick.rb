@@ -10,7 +10,7 @@ module Mysh
   QUICK['#'] = lambda {|input| MYSH_COMMENT.process_command(input)}
   QUICK['$'] = lambda {|input| VARS_COMMAND.process_command(input)}
   QUICK['%'] = lambda {|input| TIMED_COMMAND.process_command(input)}
-  QUICK['='] = lambda {|input| $mysh_exec_host.execute(input.cooked)}
+  QUICK['='] = lambda {|input| $mysh_exec_host.execute(Mysh.parse_args(input.raw))}
   QUICK['?'] = lambda {|input| HELP_COMMAND.process_quick_command(input)}
   QUICK['@'] = lambda {|input| SHOW_COMMAND.process_quick_command(input)}
 

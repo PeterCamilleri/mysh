@@ -25,11 +25,6 @@ module Mysh
       @raw[1..-1] || ""
     end
 
-    #Access the massaged text.
-    def cooked
-      @cooked ||= @raw.preprocess
-    end
-
     #Get the command word if it exists.
     def command
       @command ||= @raw.split[0] || ""
@@ -40,21 +35,26 @@ module Mysh
       @body ||= @raw[(command.length)..-1]
     end
 
-    #Get the parsed command line.
-    def parsed
-      @parsed ||= Mysh.parse_args(cooked)
+    #Access the massaged text.
+    def cooked
+      @cooked ||= body.preprocess
     end
 
     #Get the parsed arguments
     def args
-      @args ||= parsed[1..-1]
+      @args ||= Mysh.parse_args(cooked)
+    end
+
+    #Get the parsed command line.
+    def parsed
+      @parsed ||= [command] + args
     end
 
     #Set up input for a quick style command.
     def quick
-      body_cooked = (@body = quick_body).preprocess
-      @cooked = (@command = quick_command) + body_cooked
-      @parsed = [@command] + (@args = Mysh.parse_args(body_cooked))
+      @command = quick_command
+      @body    = quick_body
+      @cooked  = @args = @parsed = nil
       self
     end
 
