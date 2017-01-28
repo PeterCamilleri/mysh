@@ -27,6 +27,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_for_internal_commands
+    MNV[:dubug] = 'true'
+
     assert(Mysh::COMMANDS['exit'], "The exit command is missing.")
     assert(Mysh::COMMANDS['quit'], "The quit command is missing.")
 
@@ -43,6 +45,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_handlebars
+    MNV[:dubug] = 'true'
+
     assert_equal("ABC 123 DEF",
                  "ABC {{ (1..3).to_a.join }} DEF".eval_handlebars)
 
@@ -54,6 +58,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_command_parsing
+    MNV[:dubug] = 'true'
+
     assert_equal([], Mysh.parse_args(""))
 
     assert_equal(["1", "2", "3"], Mysh.parse_args("1 2 3"))
@@ -74,6 +80,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_some_formatting
+    MNV[:dubug] = 'true'
+
     assert_equal("1 4\n2 5\n3  ",       [1,2,3,4,5].format_mysh_columns(5))
     assert_equal(["1 4", "2 5", "3  "], [1,2,3,4,5].format_description(5))
 
@@ -120,6 +128,8 @@ class MyShellTester < Minitest::Test
   end
 
   def test_mysh_variables
+    MNV[:dubug] = 'true'
+
     assert_equal("", MNV[:test])
     assert_equal("", MNV.get_source(:test))
     refute(MNV.key?(:test), "MNV[:test] should not exist.")
@@ -187,19 +197,23 @@ class MyShellTester < Minitest::Test
   end
 
   def test_executing_some_strings
+    MNV[:dubug] = 'true'
+
     Mysh.process_string("$c=43\n$d=99")
     assert_equal("43", MNV[:c])
     assert_equal("99", MNV[:d])
   end
 
   def test_the_input_wrapper
+    MNV[:debug] = 'false'
+
     wrapper = Mysh::InputWrapper.new '@last 45 "is finished" {{ 2+2 }} ever'
 
     assert_equal('@last 45 "is finished" {{ 2+2 }} ever', wrapper.raw)
-    assert_equal(' 45 "is finished" 4 ever', wrapper.cooked)
+    assert_equal('@last 45 "is finished" 4 ever', wrapper.cooked)
 
-    assert_equal('@last', wrapper.command)
-    assert_equal(' 45 "is finished" {{ 2+2 }} ever', wrapper.body)
+    assert_equal('@last', wrapper.raw_command)
+    assert_equal(' 45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
 
     assert_equal('@', wrapper.quick_command)
     assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.quick_body)
@@ -209,8 +223,8 @@ class MyShellTester < Minitest::Test
 
     assert_equal(wrapper, wrapper.quick)
 
-    assert_equal('@', wrapper.command)
-    assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.body)
+    assert_equal('@', wrapper.raw_command)
+    assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
     assert_equal(["@", "last", "45", "is finished", "4", "ever"], wrapper.parsed)
     assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
   end

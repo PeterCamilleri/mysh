@@ -706,13 +706,21 @@ command line. These are:
 Method        | Description
 --------------|----------------
 raw           | The raw, unprocessed command line text.
-cooked        | The command line parameters with variables and handlebars expanded.
-command       | The first word of the raw text. Usually the command.
-body          | The raw text, except for the first word. Usually parameter text.
-quick_command | The first character of the raw text.
-quick_body    | The raw text without the first character.
+cooked        | The cooked command line text.
+raw_command   | The command portion of the raw text.
+quick_command | The quick command of the raw text.
+raw_body      | The raw text after the command.
+quick_body    | The raw text after the quick command.
+cooked_body   | The cooked text after the command.
 parsed        | The command and the parameters parsed into an array of strings.
 args          | The parameters parsed into an array of strings.
+
+Note: commands are not normally "cooked". Should this be required
+use the following code snippet:
+
+```ruby
+input.raw.preprocess
+```
 
 ###### Some Useful Helper Methods
 

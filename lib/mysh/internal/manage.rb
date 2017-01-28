@@ -9,7 +9,7 @@ module Mysh
   #Try to execute the string as an internal action.
   def self.try_execute_internal(input)
     unless input.quick_command == ' '
-      if (action = COMMANDS[input.command])
+      if (action = COMMANDS[input.raw_command])
         action.process_command(input)
         :internal
       end
