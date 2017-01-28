@@ -16,7 +16,7 @@ module Mysh
 
   #Try to execute the inputing as a quick command.
   def self.try_execute_quick(input)
-    QUICK[input.head].call(input)
+    QUICK[input.quick_command].call(input)
   end
 
 end

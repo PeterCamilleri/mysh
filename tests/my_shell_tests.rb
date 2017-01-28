@@ -192,4 +192,25 @@ class MyShellTester < Minitest::Test
     assert_equal("99", MNV[:d])
   end
 
+  def test_the_input_wrapper
+    wrapper = Mysh::InputWrapper.new '@last 45 "is finished" {{ 2+2 }} ever'
+
+    assert_equal('@last 45 "is finished" {{ 2+2 }} ever', wrapper.raw)
+    assert_equal('@last 45 "is finished" 4 ever', wrapper.cooked)
+
+    assert_equal('@last', wrapper.command)
+    assert_equal(' 45 "is finished" {{ 2+2 }} ever', wrapper.body)
+
+    assert_equal('@', wrapper.quick_command)
+    assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.quick_body)
+
+    assert_equal(["@last", "45", "is finished", "4", "ever"], wrapper.parsed)
+    assert_equal(["45", "is finished", "4", "ever"], wrapper.args)
+
+    assert_equal(wrapper, wrapper.quick)
+
+    assert_equal(["@", "last", "45", "is finished", "4", "ever"], wrapper.parsed)
+    assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
+  end
+
 end

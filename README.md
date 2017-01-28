@@ -703,15 +703,16 @@ The process_command method take one parameter that is an instance of the
 InputWrapper class. This class provides several ways to access the parts of the
 command line. These are:
 
-Method  | Description
---------|----------------
-raw     | The raw, unprocessed command line text.
-cooked  | The command line text with variables and handlebars expanded.
-head    | The first character of the raw text.
-body    | The raw text without the first character.
-command | The first word of the raw text. Usually the command.
-parsed  | The cooked text parsed into an array of strings.
-args    | The parsed array except for the first element, the command name.
+Method        | Description
+--------------|----------------
+raw           | The raw, unprocessed command line text.
+cooked        | The command line text with variables and handlebars expanded.
+command       | The first word of the raw text. Usually the command.
+body          | The raw text, except for the first word. Usually parameter text.
+quick_command | The first character of the raw text.
+quick_body    | The raw text without the first character.
+parsed        | The cooked text parsed into an array of strings.
+args          | The parsed array except for the first element, the command name.
 
 ###### Some Useful Helper Methods
 

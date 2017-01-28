@@ -8,7 +8,7 @@ module Mysh
 
   action = lambda do |input|
     start_time = Time.now
-    Mysh.try_execute_command(input.body)
+    Mysh.try_execute_command(input.quick_body)
     end_time = Time.now
 
     puts "Elapsed execution time = #{"%.3f" % (end_time - start_time)} seconds."

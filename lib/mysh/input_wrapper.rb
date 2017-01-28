@@ -16,12 +16,12 @@ module Mysh
     attr_reader :raw
 
     #Get the first raw character.
-    def head
+    def quick_command
       @raw[0] || ""
     end
 
     #Get the balance of the raw string.
-    def body
+    def quick_body
       @raw[1..-1] || ""
     end
 
@@ -33,6 +33,11 @@ module Mysh
     #Get the command word if it exists.
     def command
       @raw.split[0] || ""
+    end
+
+    #Get the parameter text.
+    def body
+      @raw[(command.length)..-1]
     end
 
     #Get the parsed command line.
@@ -47,8 +52,10 @@ module Mysh
 
     #Set up input for a quick style command.
     def quick
-      @parsed = [head] + (@args = Mysh.parse_args(temp = body.preprocess))
-      @cooked = head + temp
+      quick_cooked = quick_body.preprocess
+      @cooked = quick_command + quick_cooked
+      @args = Mysh.parse_args(quick_cooked)
+      @parsed = [quick_command] + @args
       self
     end
 
