@@ -9,7 +9,7 @@ module Mysh
     #Build an input wrapper.
     def initialize(raw)
       @raw = raw.chomp
-      @args = @parsed = @cooked = nil
+      @cooked = @command = @body = @args = @parsed = nil
     end
 
     #Access the raw text.
@@ -32,12 +32,12 @@ module Mysh
 
     #Get the command word if it exists.
     def command
-      @raw.split[0] || ""
+      @command ||= @raw.split[0] || ""
     end
 
     #Get the parameter text.
     def body
-      @raw[(command.length)..-1]
+      @body ||= @raw[(command.length)..-1]
     end
 
     #Get the parsed command line.
@@ -52,10 +52,9 @@ module Mysh
 
     #Set up input for a quick style command.
     def quick
-      quick_cooked = quick_body.preprocess
-      @cooked = quick_command + quick_cooked
-      @args = Mysh.parse_args(quick_cooked)
-      @parsed = [quick_command] + @args
+      body_cooked = (@body = quick_body).preprocess
+      @cooked = (@command = quick_command) + body_cooked
+      @parsed = [@command] + (@args = Mysh.parse_args(body_cooked))
       self
     end
 

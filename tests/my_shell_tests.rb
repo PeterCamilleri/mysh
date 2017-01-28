@@ -209,6 +209,8 @@ class MyShellTester < Minitest::Test
 
     assert_equal(wrapper, wrapper.quick)
 
+    assert_equal('@', wrapper.command)
+    assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.body)
     assert_equal(["@", "last", "45", "is finished", "4", "ever"], wrapper.parsed)
     assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
   end
