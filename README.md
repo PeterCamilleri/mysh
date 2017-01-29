@@ -755,7 +755,12 @@ BindingWrapper instance may be passed to access an alternative binding.
 pleasing to the local environment. This is a great boon to writing effortless
 portable code.
 <br>
-
+<br>**"string".preprocess(evaluator=$mysh_exec_host)**
+<br>Given a string, expand out any mysh variables and handlebars. Code is
+executed in the context of the evaluator. By default, this is the same as
+the evaluator used by mysh evaluation of ruby expressions. However, any
+binding can be wrapped in a BindingWrapper instance and used instead.
+<br>
 
 
 #### Adding Help Topics
