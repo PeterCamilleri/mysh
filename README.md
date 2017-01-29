@@ -681,7 +681,7 @@ module Mysh
 end
 ```
 
-###### Command names:
+##### Command names:
 The name of the command is a string with optional argument descriptions
 separated with spaces. The command is the first word of this string. For
 example a command_name of:
@@ -692,12 +692,12 @@ example a command_name of:
 
 will create a command called "new" with a title of "new &#60;item&#62;"
 
-###### Command descriptions:
+##### Command descriptions:
 A string or an array of strings that describe the command. This serves as the
 descriptive help for the command. The help display code handles matters like
 word wrap automatically.
 
-###### About Command Arguments
+##### About Command Arguments
 
 The process_command method take one parameter that is an instance of the
 InputWrapper class. This class provides several ways to access the parts of the
@@ -722,45 +722,46 @@ use the following code snippet:
 input.raw.preprocess
 ```
 
-###### Some Useful Helper Methods
+##### Some Useful Helper Methods
 
 Within the mysh environment, there exists a number of methods designed to make
 life easier in adding new commands or in load ruby files or embedded into
 handlebars. Some of these more noteworthy methods are listed below:
 
-<br>**MNV[:name]**
-<br>Retrieve the mysh variable "$name"
-<br>
-<br>**MNV[:name]="value"**
-<br>Set/Update the mysh variable "$name". If the value is an empty string, the
+###### MNV[:name]
+Retrieve the mysh variable "$name"
+
+###### MNV[:name]="value"
+Set/Update the mysh variable "$name". Note that the value is always a string,
+even for things like "true" and "false". If the value is an empty string, the
 variable is deleted.
-<br>
-<br>**mysh "string"**
-<br>Execute the string as a mysh command.
-<br>
-<br>**Mysh.parse_args("string")**
-<br>Parse the string into an array of arguments.
-<br>
-<br>**Mysh.input.readline(parms)**
-<br>Get a line of input from the console. See the mini_readline gem for info
+
+###### mysh "string"
+Execute the string as a mysh command.
+
+###### Mysh.parse_args("string")
+Parse the string into an array of arguments.
+
+###### Mysh.input.readline(parms)
+Get a line of input from the console. See the mini_readline gem for info
 on the optional parms.
-<br>
-<br>**"string".preprocess(context=default_context)**
-<br>Process the string for embedded variables and handlebars. By default,
+
+###### "string".preprocess(context=default_context)
+Process the string for embedded variables and handlebars. By default,
 execution takes place in the global expression binding. However, another
 BindingWrapper instance may be passed to access an alternative binding.
-<br>
-<br>**"string".decorate**
-<br>Given a string with a file spec, decorate that string so that it is more
+
+###### "string".decorate
+Given a string with a file spec, decorate that string so that it is more
 pleasing to the local environment. This is a great boon to writing effortless
 portable code.
-<br>
-<br>**"string".preprocess(evaluator=$mysh_exec_host)**
-<br>Given a string, expand out any mysh variables and handlebars. Code is
+
+###### "string".preprocess(evaluator=$mysh_exec_host)
+Given a string, expand out any mysh variables and handlebars. Code is
 executed in the context of the evaluator. By default, this is the same as
 the evaluator used by mysh evaluation of ruby expressions. However, any
 binding can be wrapped in a BindingWrapper instance and used instead.
-<br>
+
 
 
 #### Adding Help Topics
