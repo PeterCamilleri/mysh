@@ -706,13 +706,13 @@ command line. These are:
 Method        | Description
 --------------|----------------
 raw           | The raw, unprocessed command line text.
-cooked        | The cooked command line text.
+cooked        | The command line with variables and handlebars expanded.
 raw_command   | The command portion of the raw text.
 quick_command | The quick command of the raw text.
 raw_body      | The raw text after the command.
 quick_body    | The raw text after the quick command.
 cooked_body   | The cooked text after the command.
-parsed        | The command and the parameters parsed into an array of strings.
+parsed        | The command and parameters parsed into an array of strings.
 args          | The parameters parsed into an array of strings.
 
 Note: commands are not normally "cooked". Should this be required
