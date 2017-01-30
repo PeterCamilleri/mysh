@@ -123,6 +123,9 @@ Print and Loop and is used in may utilities like irb, pry and the rails
 console. To better use mysh, it is good to understand each of these four
 operating steps.
 
+For more information on REPLs please see:
+( https://en.wikipedia.org/wiki/Read-eval-print_loop )
+
 ####READ
 
 The first step is just to get input from the user. For interactive sessions
