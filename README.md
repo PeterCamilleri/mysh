@@ -746,23 +746,15 @@ Parse the string into an array of arguments.
 Get a line of input from the console. See the mini_readline gem for info
 on the optional parms.
 
-###### "string".preprocess(context=default_context)
+###### "string".preprocess(context=mysh_default_context)
 Process the string for embedded variables and handlebars. By default,
-execution takes place in the global expression binding. However, another
-BindingWrapper instance may be passed to access an alternative binding.
+any embedded ruby  is evaluated in the mysh global expression binding. However,
+another BindingWrapper instance may be passed to access an alternative binding.
 
 ###### "string".decorate
 Given a string with a file spec, decorate that string so that it is more
 pleasing to the local environment. This is a great boon to writing effortless
 portable code.
-
-###### "string".preprocess(evaluator=$mysh_exec_host)
-Given a string, expand out any mysh variables and handlebars. Code is
-executed in the context of the evaluator. By default, this is the same as
-the evaluator used by mysh evaluation of ruby expressions. However, any
-binding can be wrapped in a BindingWrapper instance and used instead.
-
-
 
 #### Adding Help Topics
 
