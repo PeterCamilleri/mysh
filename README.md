@@ -25,6 +25,10 @@ web sites.
 See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
+Oh, and one other little thing. A survey of the mysh reveals that it currently
+contains 2291 lines of code. It seems that there has been some growth beyond
+the 25 lines in the original article.
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -52,21 +56,21 @@ mysh <options>
 
 Where the available options are:
 
-Option               | Short Form  | Description
----------------------|-------------|---------------------------
---debug              | -d          | Turn on mysh debugging.
---no-debug           | -nd         | Turn off mysh debugging.
---help               | -? -h       | Display mysh usage info and exit.
---init filename      | -i filename | Initialize mysh by loading the specified file.
---no-init            | -ni         | Do not load a file to initialize mysh.
---load filename      | -l filename | Load the specified file into the mysh.
---post-prompt "str"  | -pp "str"   | Set the mysh line continuation prompt to "str".
---no-post-prompt     | -npp        | Turn off mysh line continuation prompting.
---pre-prompt "str"   | -pr "str"   | Set the mysh pre prompt to "str".
---no-pre-prompt      | -npr        | Turn off mysh pre prompting.
---prompt "str"       | -p "str"    | Set the mysh prompt to "str".
---no-prompt          | -np         | Turn off mysh prompting.
---quit               |             | Quit out of the mysh program.
+Option               | Short Form(s)| Description             | Default
+---------------------|--------------|-------------------------|-----------
+--debug              | -d           | Turn on mysh debugging. | false
+--no-debug           | -nd          | Turn off mysh debugging.
+--help               | -? -h        | Display mysh usage info and exit.
+--init filename      | -i filename  | Initialize mysh by loading the specified file. | ~/mysh_init.mysh
+--no-init            | -ni          | Do not load a file to initialize mysh.
+--load filename      | -l filename  | Load the specified file into the mysh.
+--post-prompt "str"  | -pp "str"    | Set the mysh line continuation prompt to "str". | $prompt
+--no-post-prompt     | -npp         | Turn off mysh line continuation prompting.
+--pre-prompt "str"   | -pr "str"    | Set the mysh pre prompt to "str". | $w
+--no-pre-prompt      | -npr         | Turn off mysh pre prompting.
+--prompt "str"       | -p "str"     | Set the mysh prompt to "str". | mysh
+--no-prompt          | -np          | Turn off mysh prompting.
+--quit               |              | Quit out of the mysh program.
 
 <br>When mysh is run, the user is presented with a command prompt:
 
@@ -90,17 +94,26 @@ and acclimated to its environment. The boot/initialization  process of mysh is
 somewhat modeled after (well if I'm honest, more like inspired by) that of the
 famous bash shell. On startup:
 
-1. Process pre-boot options. Some command line options are processed early.
-These are --help, -h, -?, --init, -i, --no-init, -ni, and --quit. See above
-for details on these.
-2. Try to load and execute the mysh init file. There are two possible files
-for this role. They are the ~/mysh_init.mysh and ~/mysh_init.rb files. If
-both files should be present, the .mysh file is processed and the .rb is
-ignored. NOTE: If an init file should be specified with the --init (-i)
-option, or disabled with the --no-init (-ni) option, this step is skipped.
-3. The rest of the command line options are processed at this time. Again,
-see above for details.
+1. Option values are initialized to their initial, default values.
+2. Process pre-boot command line options: Some command line options are
+processed early. These are --help, -h, -?, --init, -i, --no-init, and -ni.
+See Usage above for details on these.
+3. Try to load and execute the mysh_init file. There are three possible files
+for this role. They are ~/mysh_init.mysh, ~/mysh_init.rb, and ~/mysh_init.txt.
+In priority, ".mysh" > ".rb" > ".txt". <br>NOTE: If an init file should be
+specified with the --init option, or disabled with the --no-init option, this
+step is skipped.
+4. The rest of the command line options are processed at this time. Again,
+see Usage above for details.
 
+It should be noted that in the event of a conflict in settings during the boot
+process, the last command/option encountered shall prevail. For example if the
+~/mysh_init.mysh contains the line:
+```
+$debug = on
+```
+and the command line has the -nd option, then debug mode will be disabled
+because the -nd command line option is processed after the mysh_init file.
 
 ###REPL
 
@@ -109,6 +122,10 @@ program is built around a design pattern called REPL. This stands for Read Eval
 Print and Loop and is used in may utilities like irb, pry and the rails
 console. To better use mysh, it is good to understand each of these four
 operating steps.
+
+For more information on REPLs please see:
+(https://en.wikipedia.org/wiki/Read-eval-print_loop) and
+(https://repl.it/languages/ruby)
 
 ####READ
 
@@ -175,7 +192,6 @@ character in the input. These signature characters are:
   below.
   * @ to get information about the system, its environment, and the ruby
   installation. For more information see Shell Info below.
-
 2. Internal Commands - These commands are recognized by having the first word
 in the input match a word stored in an internal hash of command actions. For
 more information see Internal Commands below.
@@ -333,8 +349,8 @@ for setting a variable is:
     $name=value
 
 Where:
-* name is a word matching the regex: /[a-z][a-z0-9_]*/. Lower case only.
-* value is a string, with embedded variables and handlebars.
+* name is a word matching the regex: /[a-z][a-z0-9_]*/. Note: lower case only.
+* value is some text, with optional embedded variables and handlebars.
 
 To erase the value of a variable, use:
 
@@ -490,6 +506,8 @@ environment.
 
 Topic    | Description
 ---------|----------------------------------------------------
+version  | The version of mysh in use.
+init file| The init file in use or &#60;none found&#62; or &#60;none&#62;.
 user     | The current user name.
 home     | The current home directory.
 name     | The path/name of the mysh program currently executing.
@@ -546,9 +564,11 @@ say <stuff>    | Display the text in the command arguments.
 type file      | Display a text file with support for optional embedded handlebars and mysh variables.
 vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
-Note that the load command applied to a mysh script file acts exactly the same
-as if the script file were executed directly from the command line. As a
-result of this:
+Notes:
+1. The notation {x} means that x is optional.
+2. The load command applied to a mysh script file acts exactly the same
+   as if the script file were executed directly from the command line. As a
+   result of this:
 
 ```
 myfile.mysh
@@ -622,28 +642,51 @@ located at:
 A survey of the contents of that folder will reveal the nature of these files.
 
 New internal commands may also be added in code via the the add_action method
-of the InternalCommand class of the Mysh module. The code to do this would look
-something like this:
+of the Action class of the Mysh module. There are two ways to do this:
+
+* The command may be created as an instance of the Action class with a command
+name, description and a block that contains the action to be performed by this
+command. This block takes one parameter, an input wrapper (see About Command
+Arguments below for details). This approach is best when the command is simple
+enough to fit into a single lambda block of code. Like this template:
+
+```ruby
+module Mysh
+  command_name = 'new <item>'
+  desc = "A succinct description of what this command does."
+  action = lambda do |input|
+    #Action packed stuff goes here!
+  end
+
+  COMMANDS.add_action(Action.new(command_name, desc, &action))
+end
+```
+
+
+* The command may be created as an instance of a sub-class of the Action class.
+In this case, only a name and description are needed as the sub-class should
+contain all the needed code. The action method is the process_command and this
+takes one parameter, an input wrapper (see About Command Arguments below for
+details). This approach is required when the command action needs to be spread
+across multiple methods. Like this template:
 
 ```ruby
 module Mysh
   class NewCommand < Action
-
     #This method is called when the command is executed.
-    def call(args)
+    def process_command(input)
+      #Even more action packed stuff goes here!
     end
-
   end
 
   desc = "A succinct description of what this command does."
   command_name = 'new <item>'
   COMMANDS.add_action(NewCommand.new(command_name, desc))
-
 end
 ```
 
-Where:
-* command_name is the name of the command with optional argument descriptions
+##### Command names:
+The name of the command is a string with optional argument descriptions
 separated with spaces. The command is the first word of this string. For
 example a command_name of:
 
@@ -653,22 +696,90 @@ example a command_name of:
 
 will create a command called "new" with a title of "new &#60;item&#62;"
 
-* command_description is a string or an array of strings that describe the
-command. This serves as the descriptive help for the command. The help display
-code handles matters like word wrap automatically.
+##### Command descriptions:
+A string or an array of strings that describe the command. This serves as the
+descriptive help for the command. The help display code handles matters like
+word wrap automatically.
 
-#### About command args
+##### About Command Arguments
 
-The call method take one parameter called args. The args parameter is an array
-of zero or more arguments that were entered with the command.
+The process_command method take one parameter that is an instance of the
+InputWrapper class. This class provides several ways to access the parts of the
+command line. These are:
 
-So if a command is given
+Method        | Description
+--------------|----------------
+raw           | The raw, unprocessed command line text.
+cooked        | The command line with variables and handlebars expanded.
+raw_command   | The command portion of the raw text.
+quick_command | The quick command of the raw text.
+raw_body      | The raw text after the command.
+quick_body    | The raw text after the quick command.
+cooked_body   | The cooked text after the command.
+parsed        | The command and parameters parsed into an array of strings.
+args          | The parameters parsed into an array of strings.
 
-    command abc "this is a string" 23 --launch --all
+Note: commands are not normally "cooked". Should this be required
+use the following code snippet:
 
-the args array will contain:
+```ruby
+input.raw.preprocess
+```
 
-    ["abc", "this is a string", "23", "--launch", "--all"]
+##### Some Useful Helper Methods
+
+Within the mysh environment, there exists a number of methods designed to make
+life easier in adding new commands or in load ruby files or embedded into
+handlebars. Some of these more noteworthy methods are listed below:
+
+###### MNV[:name]
+Retrieve the mysh variable "$name"
+
+###### MNV[:name]="value"
+Set/Update the mysh variable "$name". Note that the value is always a string,
+even for things like "true" and "false". If the value is an empty string, the
+variable is deleted.
+
+###### mysh "string"
+Execute the string as a mysh command.
+
+###### Mysh.parse_args("string")
+Parse the string into an array of arguments.
+
+###### Mysh.input.readline(parms)
+Get a line of input from the console. See the mini_readline gem for info
+on the optional parms.
+
+###### "string".preprocess(context=mysh_default_context)
+Process the string for embedded variables and handlebars. By default,
+any embedded ruby  is evaluated in the mysh global expression binding. However,
+another BindingWrapper instance may be passed to access an alternative binding.
+
+###### "string".decorate
+Given a string with a file spec, decorate that string so that it is more
+pleasing to the local environment. This is a great boon to writing effortless
+portable code.
+
+#### Adding Help Topics
+
+In mysh, help topics are generally implemented as text files often augmented
+with embedded mysh variables and ruby code. It it noteworthy however that they
+can also be mysh script or ruby code files. The management of these help files
+is located in the file:
+```
+mysh/lib/mysh/internal/actions/help/sub_help.rb
+```
+In this file, you can locate a variable called "help". This is an array of
+arrays where each line describes a help topic. Within each line is a further
+array of three strings. Respectively these are:
+1. The name of the help item.
+2. A brief description of the help topic. This line is used in the help on help
+(??) topic.
+3. The name of the file, **with its extension**, that contains the actual help
+information.
+
+To add a new help topic, simply add the new help file to the help folder and
+and a corresponding line entry to to the help variable.
 
 ## Contributing
 
@@ -676,7 +787,7 @@ All participation is welcomed. There are two fabulous plans to choose from:
 
 #### Plan A
 
-1. Fork it ( https://github.com/PeterCamilleri/mysh/fork )
+1. Fork it (https://github.com/PeterCamilleri/mysh/fork)
 2. Switch to the development branch ('git branch development')
 3. Create your feature branch ('git checkout -b my-new-feature')
 4. Commit your changes ('git commit -am "Add some feature"')

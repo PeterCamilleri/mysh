@@ -15,12 +15,12 @@ module Mysh
     #Execute a post-boot command line option.
     def post_boot(_args); end
 
-    alias :call :pre_boot
+    alias :process_command :pre_boot
 
     #Get an argument for an option.
     def get_arg(read_point)
       result = read_point.next
-      fail if COMMAND_LINE.exists?(result)
+      fail if COMMAND_LINE.exists?(result) #An arg should not be a command!
       result
     rescue
       fail "Error in #{short_name.inspect}: Invalid argument: #{result.inspect}"
@@ -46,7 +46,7 @@ module Mysh
       puts "", msg, ""
     end
 
-    HELP["usage"].call([])
+    HELP["usage"].process_command(nil)
     exit
   end
 

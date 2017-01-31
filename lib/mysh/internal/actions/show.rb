@@ -4,31 +4,28 @@
 module Mysh
 
   #Show items.
-  SHOW = ActionPool.new("SHOW") do |args|
-    puts "No show data found for #{args[0].inspect}. See ?@ for more."
+  default = Action.new do |input|
+    puts "No show data found for #{input.raw.inspect}. See ?@ for more."
   end
 
-  #* mysh/internal/actions/show.rb -- The mysh internal show command.
-  class ShowCommand < Action
+  SHOW = ActionPool.new("SHOW", default)
 
-    #Execute a help command by routing it to a sub-command.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction :reek:FeatureEnvy
-    def call(args)
-      if args.empty?
-        puts "An item is needed for the show command."
-      else
-        SHOW[args[0]].call(args)
-      end
+  #The shared description.
+  desc = "Display information about a part of mysh. See ?@ for more."
+
+  action = lambda do |input|
+    item = input.args[0]
+
+    if item.empty?
+      puts "An item is needed for the show command."
+    else
+      SHOW[item].process_command(input)
     end
-
   end
 
-  # The base help command.
-  desc = 'Display information about a part of mysh. See ?@ for more.'
-  COMMANDS.add_action(ShowCommand.new('show <item>', desc))
   #The show command action object.
-  SHOW_COMMAND = ShowCommand.new('@<item>', desc)
+  COMMANDS.add_action(Action.new('show <item>', desc, &action))
+  SHOW_COMMAND = Action.new('@<item>', desc, &action)
   COMMANDS.add_action(SHOW_COMMAND)
 end
 

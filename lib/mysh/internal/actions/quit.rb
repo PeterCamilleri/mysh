@@ -3,16 +3,8 @@
 #* mysh/internal/actions/quit.rb -- The mysh internal quit command.
 module Mysh
 
-  #* mysh/internal/actions/quit.rb -- The mysh internal quit command.
-  class QuitCommand < Action
-
-    #Execute the quit command.
-    def call(_args)
-      exit
-    end
-
-  end
-
   #Add the quit command to the library.
-  COMMANDS.add_action(QuitCommand.new('quit', 'Quit out of the mysh.'))
+  desc = 'Quit out of the mysh.'
+
+  COMMANDS.add_action(Action.new('quit', desc) {|_input| exit })
 end

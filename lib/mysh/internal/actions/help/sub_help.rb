@@ -13,8 +13,8 @@ module Mysh
     end
 
     #Execute a help command.
-    def call(_args)
-      show_handlebar_file(ACTIONS_PATH + 'help/' + @file_name, self)
+    def process_command(_args)
+      mysh "load #{(ACTIONS_PATH + 'help/' + @file_name).decorate}"
     end
 
   end

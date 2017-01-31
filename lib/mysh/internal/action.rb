@@ -12,14 +12,15 @@ module Mysh
     attr_reader :description
 
     #Setup an internal action.
-    def initialize(name, description)
+    def initialize(name = "", description = "", &action)
       @name, @description = name, description.in_array
-      @exec_binding = mysh_binding
+
+      define_singleton_method(:process_command, &action) if block_given?
     end
 
     #Parse the string and call the action.
-    def quick_parse_and_call(str)
-      call(Mysh.parse_args(str[1..-1].chomp))
+    def process_quick_command(input)
+      process_command(input.quick)
       :internal
     end
 
@@ -28,21 +29,9 @@ module Mysh
       [@name].concat(@description)
     end
 
-    #Evaluate the string in the my shell context.
-    def mysh_eval(str)
-      @exec_binding.eval(str)
-    end
-
     #Get the name without any argument descriptions.
     def short_name
       name.split[0] || ""
-    end
-
-    private
-
-    #Create a binding for mysh to execute expressions in.
-    def mysh_binding
-      binding
     end
 
   end

@@ -9,18 +9,23 @@ module Mysh
   #Perform init phase processing.
   def self.mysh_load_init
 
-    unless $mysh_init_file || !(home = ENV['HOME'])
-      name_mysh = home + '/mysh_init.mysh'
-      name_rb = home + '/mysh_init.rb'
+    unless $mysh_init_file
 
-      if File.file?(name_mysh)
-        process_file($mysh_init_file = name_mysh)
-      elsif File.file?(name_rb)
-        load ($mysh_init_file = name_rb)
+      if (home = ENV['HOME'])
+        names = [home + '/mysh_init.mysh',
+                 home + '/mysh_init.rb',
+                 home + '/mysh_init.txt']
+
+        $mysh_init_file = names.detect {|name| File.file?(name)}
+      end
+
+      if $mysh_init_file
+        mysh "load #{$mysh_init_file.decorate}"
+      else
+        $mysh_init_file = '<none found>'
       end
     end
 
-    $mysh_init_file = '<none found>' unless $mysh_init_file
   end
 
 end

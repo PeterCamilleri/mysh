@@ -10,7 +10,7 @@ module Mysh
     attr_reader :pool_name
 
     #Create a new action pool
-    def initialize(pool_name, &default_action)
+    def initialize(pool_name, default_action = nil)
       @pool_name, @pool = pool_name, {}
       @pool.default = default_action
     end
