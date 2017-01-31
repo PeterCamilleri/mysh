@@ -1,20 +1,20 @@
 # coding: utf-8
 
-#* mysh/external_ruby.rb -- Support for executing Ruby files with the ruby interpreter.
+#* mysh/external.rb -- Support for executing external files.
 module Mysh
 
-  #Try to execute as a Ruby program.
+  #Try to execute an external file.
   #<br>Endemic Code Smells
   #* :reek:TooManyStatements
-  def self.try_execute_external_ruby(str)
-    args = parse_args(str.chomp)
+  def self.try_execute_external(input)
+    args = input.parsed
     file_name = args.shift
 
     if (file_name)
       ext = File.extname(file_name)
 
       if ext == '.rb'
-        new_command = "#{RbConfig.ruby} #{str}"
+        new_command = "#{RbConfig.ruby} #{input.cooked}"
         puts "=> #{new_command}"  if MNV[:debug]
         system(new_command)
         :ruby_exec
@@ -22,8 +22,7 @@ module Mysh
         Mysh.process_file(file_name)
         :mysh_script
       elsif ext == '.txt'
-        exec_host = BindingWrapper.new(binding)
-        show_handlebar_file(file_name, exec_host)
+        show_handlebar_file(file_name, BindingWrapper.new(binding))
         :internal
       end
     end

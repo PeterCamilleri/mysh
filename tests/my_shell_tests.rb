@@ -11,13 +11,6 @@ class MyShellTester < Minitest::Test
   #Track mini-test progress.
   include MinitestVisible
 
-  #Evaluate the string in a mysh context.
-  def mysh_eval(str)
-    @mysh_binding ||= binding
-
-    @mysh_binding.eval(str)
-  end
-
   def test_that_module_entities_exists
     assert_equal(String, Mysh::VERSION.class)
 
@@ -26,6 +19,8 @@ class MyShellTester < Minitest::Test
     assert_equal(Class,  Mysh::ActionPool.class)
     assert_equal(Module, Mysh::MNV.class)
     assert_equal(Class,  Mysh::Keeper.class)
+    assert_equal(Class,  Mysh::BindingWrapper.class)
+    assert_equal(Class,  Mysh::InputWrapper.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
     assert_equal(Mysh::ActionPool, Mysh::HELP.class)
@@ -195,6 +190,29 @@ class MyShellTester < Minitest::Test
     Mysh.process_string("$c=43\n$d=99")
     assert_equal("43", MNV[:c])
     assert_equal("99", MNV[:d])
+  end
+
+  def test_the_input_wrapper
+    wrapper = Mysh::InputWrapper.new '@last 45 "is finished" {{ 2+2 }} ever'
+
+    assert_equal('@last 45 "is finished" {{ 2+2 }} ever', wrapper.raw)
+    assert_equal('@last 45 "is finished" 4 ever', wrapper.cooked)
+
+    assert_equal('@last', wrapper.raw_command)
+    assert_equal(' 45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
+
+    assert_equal('@', wrapper.quick_command)
+    assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.quick_body)
+
+    assert_equal(["@last", "45", "is finished", "4", "ever"], wrapper.parsed)
+    assert_equal(["45", "is finished", "4", "ever"], wrapper.args)
+
+    assert_equal(wrapper, wrapper.quick)
+
+    assert_equal('@', wrapper.raw_command)
+    assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
+    assert_equal(["@", "last", "45", "is finished", "4", "ever"], wrapper.parsed)
+    assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
   end
 
 end

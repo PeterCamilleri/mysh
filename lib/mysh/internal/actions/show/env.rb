@@ -7,7 +7,7 @@ module Mysh
   class EnvInfoCommand < Action
 
     #Execute the ? shell command.
-    def call(_args)
+    def process_command(_args)
       puts "Key mysh environment information.", ""
       puts info.format_mysh_bullets, "",
            path.format_mysh_bullets, ""

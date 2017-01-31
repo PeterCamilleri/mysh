@@ -123,6 +123,10 @@ Print and Loop and is used in may utilities like irb, pry and the rails
 console. To better use mysh, it is good to understand each of these four
 operating steps.
 
+For more information on REPLs please see:
+(https://en.wikipedia.org/wiki/Read-eval-print_loop) and
+(https://repl.it/languages/ruby)
+
 ####READ
 
 The first step is just to get input from the user. For interactive sessions
@@ -638,28 +642,51 @@ located at:
 A survey of the contents of that folder will reveal the nature of these files.
 
 New internal commands may also be added in code via the the add_action method
-of the InternalCommand class of the Mysh module. The code to do this would look
-something like this:
+of the Action class of the Mysh module. There are two ways to do this:
+
+* The command may be created as an instance of the Action class with a command
+name, description and a block that contains the action to be performed by this
+command. This block takes one parameter, an input wrapper (see About Command
+Arguments below for details). This approach is best when the command is simple
+enough to fit into a single lambda block of code. Like this template:
+
+```ruby
+module Mysh
+  command_name = 'new <item>'
+  desc = "A succinct description of what this command does."
+  action = lambda do |input|
+    #Action packed stuff goes here!
+  end
+
+  COMMANDS.add_action(Action.new(command_name, desc, &action))
+end
+```
+
+
+* The command may be created as an instance of a sub-class of the Action class.
+In this case, only a name and description are needed as the sub-class should
+contain all the needed code. The action method is the process_command and this
+takes one parameter, an input wrapper (see About Command Arguments below for
+details). This approach is required when the command action needs to be spread
+across multiple methods. Like this template:
 
 ```ruby
 module Mysh
   class NewCommand < Action
-
     #This method is called when the command is executed.
-    def call(args)
+    def process_command(input)
+      #Even more action packed stuff goes here!
     end
-
   end
 
   desc = "A succinct description of what this command does."
   command_name = 'new <item>'
   COMMANDS.add_action(NewCommand.new(command_name, desc))
-
 end
 ```
 
-Where:
-* command_name is the name of the command with optional argument descriptions
+##### Command names:
+The name of the command is a string with optional argument descriptions
 separated with spaces. The command is the first word of this string. For
 example a command_name of:
 
@@ -669,58 +696,69 @@ example a command_name of:
 
 will create a command called "new" with a title of "new &#60;item&#62;"
 
-* command_description is a string or an array of strings that describe the
-command. This serves as the descriptive help for the command. The help display
-code handles matters like word wrap automatically.
+##### Command descriptions:
+A string or an array of strings that describe the command. This serves as the
+descriptive help for the command. The help display code handles matters like
+word wrap automatically.
 
-###### About Command Arguments
+##### About Command Arguments
 
-The call method take one parameter called args. The args parameter is an array
-of zero or more arguments that were entered with the command.
+The process_command method take one parameter that is an instance of the
+InputWrapper class. This class provides several ways to access the parts of the
+command line. These are:
 
-So if a command is given
+Method        | Description
+--------------|----------------
+raw           | The raw, unprocessed command line text.
+cooked        | The command line with variables and handlebars expanded.
+raw_command   | The command portion of the raw text.
+quick_command | The quick command of the raw text.
+raw_body      | The raw text after the command.
+quick_body    | The raw text after the quick command.
+cooked_body   | The cooked text after the command.
+parsed        | The command and parameters parsed into an array of strings.
+args          | The parameters parsed into an array of strings.
 
-    command abc "this is a string" 23 --launch --all
+Note: commands are not normally "cooked". Should this be required
+use the following code snippet:
 
-the args array will contain:
+```ruby
+input.raw.preprocess
+```
 
-    ["abc", "this is a string", "23", "--launch", "--all"]
-
-###### Some Useful Helper Methods
+##### Some Useful Helper Methods
 
 Within the mysh environment, there exists a number of methods designed to make
 life easier in adding new commands or in load ruby files or embedded into
 handlebars. Some of these more noteworthy methods are listed below:
 
-<br>**MNV[:name]**
-<br>Retrieve the mysh variable "$name"
-<br>
-<br>**MNV[:name]="value"**
-<br>Set/Update the mysh variable "$name". If the value is an empty string, the
+###### MNV[:name]
+Retrieve the mysh variable "$name"
+
+###### MNV[:name]="value"
+Set/Update the mysh variable "$name". Note that the value is always a string,
+even for things like "true" and "false". If the value is an empty string, the
 variable is deleted.
-<br>
-<br>**mysh "string"**
-<br>Execute the string as a mysh command.
-<br>
-<br>**Mysh.parse_args("string")**
-<br>Parse the string into an array of arguments.
-<br>
-<br>**Mysh.input.readline(parms)**
-<br>Get a line of input from the console. See the mini_readline gem for info
+
+###### mysh "string"
+Execute the string as a mysh command.
+
+###### Mysh.parse_args("string")
+Parse the string into an array of arguments.
+
+###### Mysh.input.readline(parms)
+Get a line of input from the console. See the mini_readline gem for info
 on the optional parms.
-<br>
-<br>**"string".preprocess(context=default_context)**
-<br>Process the string for embedded variables and handlebars. By default,
-execution takes place in the global expression binding. However, another
-BindingWrapper instance may be passed to access an alternative binding.
-<br>
-<br>**"string".decorate**
-<br>Given a string with a file spec, decorate that string so that it is more
+
+###### "string".preprocess(context=mysh_default_context)
+Process the string for embedded variables and handlebars. By default,
+any embedded ruby  is evaluated in the mysh global expression binding. However,
+another BindingWrapper instance may be passed to access an alternative binding.
+
+###### "string".decorate
+Given a string with a file spec, decorate that string so that it is more
 pleasing to the local environment. This is a great boon to writing effortless
 portable code.
-<br>
-
-
 
 #### Adding Help Topics
 
@@ -749,7 +787,7 @@ All participation is welcomed. There are two fabulous plans to choose from:
 
 #### Plan A
 
-1. Fork it ( https://github.com/PeterCamilleri/mysh/fork )
+1. Fork it (https://github.com/PeterCamilleri/mysh/fork)
 2. Switch to the development branch ('git branch development')
 3. Create your feature branch ('git checkout -b my-new-feature')
 4. Commit your changes ('git commit -am "Add some feature"')

@@ -32,21 +32,19 @@ module Mysh
 
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error #{err.class}: #{err}"
-    puts err.backtrace if MNV[:debug]
+    puts err.backtrace if MNV[:debug] || defined?(MiniTest)
   end
 
   #Try to execute a single line of input. Does not handle exceptions.
-  def self.try_execute_command(input)
-    unless input.start_with?("$")
-      input = input.preprocess
-    end
+  def self.try_execute_command(str)
+    input = InputWrapper.new(str)
 
-    puts "=> #{input}" if MNV[:debug]
+    puts "=> #{input.raw}" if MNV[:debug]
 
-    try_execute_quick_command(input)    ||
-    try_execute_internal_command(input) ||
-    try_execute_external_ruby(input)    ||
-    (system(input) ? :system : :error)
+    try_execute_quick(input)    ||
+    try_execute_internal(input) ||
+    try_execute_external(input) ||
+    try_execute_system(input)
   end
 
 end
