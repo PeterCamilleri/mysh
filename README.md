@@ -124,7 +124,8 @@ console. To better use mysh, it is good to understand each of these four
 operating steps.
 
 For more information on REPLs please see:
-( https://en.wikipedia.org/wiki/Read-eval-print_loop )
+(https://en.wikipedia.org/wiki/Read-eval-print_loop) and
+(https://repl.it/languages/ruby)
 
 ####READ
 
@@ -786,7 +787,7 @@ All participation is welcomed. There are two fabulous plans to choose from:
 
 #### Plan A
 
-1. Fork it ( https://github.com/PeterCamilleri/mysh/fork )
+1. Fork it (https://github.com/PeterCamilleri/mysh/fork)
 2. Switch to the development branch ('git branch development')
 3. Create your feature branch ('git checkout -b my-new-feature')
 4. Commit your changes ('git commit -am "Add some feature"')
