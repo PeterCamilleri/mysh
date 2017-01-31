@@ -20,11 +20,6 @@ module Mysh
       @pool[index]
     end
 
-    #Set a action.
-    def []=(index, value)
-      @pool[index] = value
-    end
-
     #Does this action exist?
     def exists?(index)
       @pool.has_key?(index)

@@ -20,7 +20,7 @@ module Mysh
     #Get an argument for an option.
     def get_arg(read_point)
       result = read_point.next
-      fail if COMMAND_LINE.exists?(result)
+      fail if COMMAND_LINE.exists?(result) #An arg should not be a command!
       result
     rescue
       fail "Error in #{short_name.inspect}: Invalid argument: #{result.inspect}"
@@ -46,7 +46,7 @@ module Mysh
       puts "", msg, ""
     end
 
-    HELP["usage"].process_command([])
+    HELP["usage"].process_command(nil)
     exit
   end
 

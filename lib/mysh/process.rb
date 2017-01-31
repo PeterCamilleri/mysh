@@ -39,8 +39,6 @@ module Mysh
   def self.try_execute_command(str)
     input = InputWrapper.new(str)
 
-    puts "=> #{input.raw}" if MNV[:debug]
-
     try_execute_quick(input)    ||
     try_execute_internal(input) ||
     try_execute_external(input) ||

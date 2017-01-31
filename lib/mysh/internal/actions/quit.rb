@@ -5,7 +5,6 @@ module Mysh
 
   #Add the quit command to the library.
   desc = 'Quit out of the mysh.'
-  action = lambda {|_input| exit }
 
-  COMMANDS.add_action(Action.new('quit', desc, &action))
+  COMMANDS.add_action(Action.new('quit', desc) {|_input| exit })
 end
