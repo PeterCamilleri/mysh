@@ -580,7 +580,15 @@ myfile.txt
 load myfile.txt
 type myfile.txt
 ```
-are also all equivalent. See External Mysh Commands below for more info.
+are also all equivalent. It is however noteworthy that these two are *not*
+equivalent!
+```
+myfile.rb
+load myfile.rb
+```
+The first executes myfile.rb with a new instance of the ruby interpreter. The
+second loads myfile.rb into the current mysh ruby environment. See below for
+more info.
 
 ### External Mysh Commands
 
