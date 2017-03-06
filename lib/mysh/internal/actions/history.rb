@@ -46,8 +46,10 @@ module Mysh
 
     #Just show the history.
     def show_history
+      pattern = Regexp.new(@args[0] || /./)
+
       @history.each_with_index do |item, index|
-        puts "#{index+1}: #{item}"
+        puts "#{index+1}: #{item}" if item =~ pattern
       end
     end
 
