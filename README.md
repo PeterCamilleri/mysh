@@ -334,11 +334,12 @@ command is controlled by an optional parameter.
 If the longer form, show is used, a space is required before the parameter. If
 the quick form, ! is used, the space is optional.
 
-Quick Form | Long Form    |  Command Description
+Quick&nbsp;Form | Long Form    |  Command Description
 -----------|--------------|--------------------------------
 !          | history      | Display the entire history buffer.
 !5         | history 5    | Retrieve history entry 5 and present this to the user as the next command.
 !clear     | history clear| Clear the command history.
+!pattern   | history&nbsp;pattern | Display the part history buffer containing the specified regular expression pattern. Note: The pattern cannot be the word "clear", use "clea[r]" instead.
 
 ### Shell Variables
 
