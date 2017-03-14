@@ -87,7 +87,7 @@ hop to it! :-)
 Now that we've launched mysh, what exactly does it do? This can be summarized
 with just two words: Boot and REPL.
 
-###Boot
+### Boot
 
 When mysh starts up, it, like most programs must first get itself initialized
 and acclimated to its environment. The boot/initialization  process of mysh is
@@ -115,7 +115,7 @@ $debug = on
 and the command line has the -nd option, then debug mode will be disabled
 because the -nd command line option is processed after the mysh_init file.
 
-###REPL
+### REPL
 
 Now for a little more detail about what happens after booting up. The mysh
 program is built around a design pattern called REPL. This stands for Read Eval
@@ -127,7 +127,7 @@ For more information on REPLs please see:
 (https://en.wikipedia.org/wiki/Read-eval-print_loop) and
 (https://repl.it/languages/ruby)
 
-####READ
+#### READ
 
 The first step is just to get input from the user. For interactive sessions
 this is done using the mini_readline gem. The user is prompted and input is
@@ -155,12 +155,12 @@ For more information about the mini_readline gem please see
 https://github.com/PeterCamilleri/mini_readline or
 https://rubygems.org/gems/mini_readline
 
-####EVAL
+#### EVAL
 
 Once input has been obtained from the user, that input is then evaluated. This
 evaluation has two phases: pre-processing and processing.
 
-#####Input Preprocessing
+##### Input Preprocessing
 
 During pre-processing, the input is scanned for macro-like substitutions that
 have been placed into the input. There are three steps to this phase:
@@ -171,7 +171,7 @@ being inserted into the user command.
 2. Replacing embedded ruby "handlebars" with the results of their execution.
 3. Replacing '\\{' and '\\}' with '{' and '}' respectively.
 
-#####Command Processing
+##### Command Processing
 
 Once input has been obtained and massaged adequately, it's time to actually
 do some work. In mysh there is a hierarchy of four types of commands. These
@@ -209,7 +209,7 @@ other forms of bad behavior before they do nasty things like blow up the stack.
 covered in their own section below.
 * The embedded ruby "handlebars" also get their own section below.
 
-####PRINT
+#### PRINT
 
 Once the command is run, some results are expected most of the time. For Ruby
 expressions, this is handled by the pretty print gem. The 'pp' function is
@@ -276,7 +276,7 @@ baz yes
 ```
 
 
-####LOOP
+#### LOOP
 
 The processing of input continues (looping) until it doesn't. This occurs when
 a command to stop looping is entered or the mini_readline gem signals
