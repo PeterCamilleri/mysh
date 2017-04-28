@@ -473,7 +473,7 @@ topics. These are:
 
 Topic      | Description
 -----------|----------------------------------------------------
-           | General help on mysh.
+none       | General help on mysh.
 !          | Help on the history command.
 $          | Help on mysh variables.
 =          | Help on ruby expressions.
