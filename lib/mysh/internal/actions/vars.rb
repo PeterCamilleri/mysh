@@ -21,21 +21,21 @@ module Mysh
     #Execute a command against the internal mysh variables.
     def process_command(input)
       match = VAR_EXP.match(input.raw)
-      @name, @equals, @value = match[:name], match[:equals], match[:value]
+      @var_name, @equals, @value = match[:name], match[:equals], match[:value]
       do_command
       :internal
     end
 
     #Do the actual work here.
     def do_command
-      sym = @name.to_sym if @name
+      sym = @var_name.to_sym if @var_name
 
       if @value
         MNV[sym] = @value
       elsif @equals
         MNV[sym] = ""
       elsif @name
-        puts "#{@name} = #{MNV.get_source(sym)}"
+        puts "#{@var_name} = #{MNV.get_source(sym)}"
       else
         show_all_values
       end
