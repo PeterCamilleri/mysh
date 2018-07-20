@@ -14,7 +14,7 @@ module Mysh
 
     #Setup an internal action.
     def initialize(name, description)
-      @name = @equals = @value = nil
+      @var_name = @equals = @value = nil
       super(name, description)
     end
 
@@ -34,7 +34,7 @@ module Mysh
         MNV[sym] = @value
       elsif @equals
         MNV[sym] = ""
-      elsif @name
+      elsif @var_name
         puts "#{@var_name} = #{MNV.get_source(sym)}"
       else
         show_all_values
