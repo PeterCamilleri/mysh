@@ -18,5 +18,5 @@ module Mysh
     end
   end
 
-  COMMANDS.add_action(Action.new('type file', desc, &action))
+  COMMANDS.add_action(Action.new('type <file>', desc, &action))
 end

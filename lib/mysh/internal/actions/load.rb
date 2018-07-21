@@ -32,5 +32,5 @@ module Mysh
     end
   end
 
-  COMMANDS.add_action(Action.new('load file', desc, &action))
+  COMMANDS.add_action(Action.new('load <file>', desc, &action))
 end
