@@ -600,7 +600,7 @@ Extension      | Description
 ---------------|----------------------------------------------------
 .rb            | A ruby source file executed via a new instance of the compiler.
 .mysh          | A mysh script file. Commands in this file are executed as if the user typed them in at the console.
-.txt           | A text file. The file (with any embedded code and veriables) is displayed on the console.
+.txt           | A text file. The file (with any embedded code and variables) is displayed on the console.
 
 Here is a sample session with an external Ruby program.
 
