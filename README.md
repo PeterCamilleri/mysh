@@ -391,9 +391,9 @@ environment. Just a few reminders:
 
 * Any line beginning with an equals "=" sign will be evaluated as a Ruby
   expression.
-* Expressions ending with a backslash character "\" are continued on the next
-  line. The prompt changes to end with a "\" character to indicate that this is
-  going on.
+* Expressions ending with a backslash character "\\" are continued on the next
+  line. The prompt changes to end with a "\\" character to indicate that this
+  is going on.
 * The results of the expression are displayed using the pretty-print facility.
 * Auto-complete always places any file names in quotes so they can be used
   as string parameters.
