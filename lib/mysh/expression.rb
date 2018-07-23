@@ -9,6 +9,10 @@ require_relative 'expression/lineage'
 #* :reek:ModuleInitialize -- False positive
 module Mysh
 
+  #Set up some popular constants
+  E = Math::E
+  PI = Math::PI
+
   #Reset the state of the execution hosting environment.
   #<br>Endemic Code Smells
   # :reek:TooManyStatements -- False positive
