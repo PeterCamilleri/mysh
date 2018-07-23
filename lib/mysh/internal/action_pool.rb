@@ -22,7 +22,7 @@ module Mysh
 
     #Does this action exist?
     def exists?(index)
-      @pool.has_key?(index)
+      @pool.key?(index)
     end
 
     #Add an action to the pool.
