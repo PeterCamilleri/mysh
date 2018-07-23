@@ -32,6 +32,7 @@ module Mysh
           ['=',       'Help on ruby expressions.',           'expr.txt'   ],
           ['quick',   'Help on quick commands.',             'quick.txt'  ],
           ['gls',     'Help on gls internal mysh command.',  'gls.txt'    ],
+          ['vls',     'Help on vls internal mysh command.',  'vls.txt'    ],
           ['!',       'Help on the history command.',        'history.txt'],
           ['history', 'Help on the history command.',        'history.txt'],
           ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'    ],

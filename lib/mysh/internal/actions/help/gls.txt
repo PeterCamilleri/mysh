@@ -6,7 +6,6 @@ usage template for this command is:
 mysh>gls <options> <mask>
 
 Where:
-
  <options> is one of:
    "-l" -- display detailed information on the selected gems.
    none -- display only the names of the selected gems.
