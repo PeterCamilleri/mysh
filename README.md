@@ -489,6 +489,7 @@ quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 show       | Help on the show command.
 usage      | Help on mysh usage options.
+vls        | Help on vls internal mysh command.
 {{         | Help on mysh handlebars.
 
 
