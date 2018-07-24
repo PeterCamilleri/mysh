@@ -56,7 +56,7 @@ module Mysh
   end
 
   #Add the history commands to the library.
-  desc = 'Display the mysh command history. See ?! for more info.'
+  desc = 'Display the mysh command history. See ?! for more.'
   COMMANDS.add_action(HistoryCommand.new('history <arg>', desc))
   #The history command action object.
   HISTORY_COMMAND = HistoryCommand.new('!<arg>', desc)
