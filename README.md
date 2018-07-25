@@ -489,7 +489,7 @@ quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 show       | Help on the show command.
 usage      | Help on mysh usage options.
-vls        | Help on vls internal mysh command.
+mls        | Help on mls internal mysh command.
 {{         | Help on mysh handlebars.
 
 
@@ -557,14 +557,14 @@ Command        | Description
 ---------------|----------------------------------------------------
 cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
 exit           | Exit mysh.
-gls {-l} {mask}| Display the loaded ruby gems. Use optional -l for a more details and a mask to limit output.
+gls {-l} {mask}| Display the loaded ruby gems. See ?gls for more.
 history {index}| The mysh command history. If an index is specified, get the command with that index value.
 load file      | Load a ruby program, mysh script, or text file into the mysh environment.
+mls {mask}     | Display modules with version info. See ?mls for more.
 pwd            | Display the current working directory.
 quit           | Exit mysh.
 say <stuff>    | Display the text in the command arguments.
 type file      | Display a text file with support for optional embedded handlebars and mysh variables.
-vls {mask}     | Display the loaded modules, matching the optional mask, that have version info.
 
 Notes:
 1. The notation {x} means that x is optional.
