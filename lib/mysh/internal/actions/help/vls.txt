@@ -1,9 +1,9 @@
-Help: mysh vls command summary:
+Help: mysh mls command summary:
 
-The vls command is used to provide version information for the loaded ruby
-modules. The usage template for this command is:
+The mls (module list) command is used to provide version information for the 
+loaded ruby modules. The usage template for this command is:
 
-mysh>vls <mask>
+mysh>mls <mask>
 
 Where:
  <mask> is an optional, case-sensitive pattern for filtering out the modules
@@ -11,7 +11,7 @@ Where:
 
 Examples:
 
-mysh>vls
+mysh>mls
 DidYouMean   1.0.0
 Gem          2.5.2
 InArray      0.1.8
@@ -19,7 +19,7 @@ MiniReadline 0.8.0
 Mysh         0.5.4
 VersionLS    0.4.1
 
-mysh>vls M
+mysh>mls M
 DidYouMean   1.0.0
 MiniReadline 0.8.0
 Mysh         0.5.4

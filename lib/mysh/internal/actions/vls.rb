@@ -2,12 +2,11 @@
 
 require 'vls'
 
-#* mysh/internal/actions/vls.rb -- The mysh module vls (Version LS) command.
+#* mysh/internal/actions/mls.rb -- The mysh module ls command.
 module Mysh
 
-  #Add the vls command to the library.
-  desc = 'Display the loaded modules, matching the optional mask, that ' +
-         'have version info.'
+  #Add the mls command to the library.
+  desc = 'Display modules with version info. See ?mls for more.'
 
   action = lambda do |input|
     filter  = input.args[0] || /./
@@ -20,5 +19,5 @@ module Mysh
     end
   end
 
-  COMMANDS.add_action(Action.new('vls <mask>', desc, &action))
+  COMMANDS.add_action(Action.new('mls <mask>', desc, &action))
 end
