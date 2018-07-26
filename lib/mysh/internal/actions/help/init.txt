@@ -1,0 +1,33 @@
+Help: mysh initialization summary:
+
+When mysh starts up, it must first gets itself initialized and acclimated to 
+its environment. The boot/initialization process of mysh is somewhat modeled 
+after (well if I'm honest, more like inspired by) that of the famous bash 
+shell. On startup:
+
+1 Option values are initialized to their initial, default values.
+
+2 Process pre-boot command line options: Some command line options are
+  processed early. These are --help, -h, -?, --init, -i, --no-init, and -ni.
+  See Usage above for details on these.
+
+3 Try to load and execute the mysh_init file. There are three possible files
+  for this role. In priority order they are
+
+    ~/mysh_init.mysh,
+    ~/mysh_init.rb,
+    ~/mysh_init.txt.
+
+  NOTE: If an init file is specified with the --init option, or disabled with
+        the --no-init option, then this step is skipped.
+
+4 The rest of the command line options are processed at this time. 
+
+It should be noted that in the event of a conflict in settings during the boot
+process, the last command/option encountered shall prevail. For example if
+the ~/mysh_init.mysh contains the line:
+
+\$debug = true
+
+and the command line has the -nd option, then debug mode will be disabled
+because the -nd command line option is processed after the mysh_init file.

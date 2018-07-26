@@ -14,10 +14,11 @@ class String
 
   #Evaluate any variable substitutions in the input.
   def eval_variables
-    self.gsub(/(\$\$)|(\$[a-z][a-z0-9_]*)/) do |str|
+    self.gsub(/((?<!\\)\$\$)|((?<!\\)\$[a-z][a-z0-9_]*)/) do |str|
       sym = str[1..-1].to_sym
       MNV.key?(sym) ? MNV[sym].to_s : str
-    end
+    end.gsub(/\\\$/, "$")
+    
   end
 
 end
