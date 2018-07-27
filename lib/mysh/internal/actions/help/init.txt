@@ -1,9 +1,8 @@
 Help: mysh initialization summary:
 
-When mysh starts up, it must first gets itself initialized and acclimated to 
-its environment. The boot/initialization process of mysh is somewhat modeled 
-after (well if I'm honest, more like inspired by) that of the famous bash 
-shell. On startup:
+When mysh starts up, it must be initialized and acclimated to its environment. 
+The boot/initialization process of mysh is somewhat modeled after that of the 
+famous bash shell. On startup:
 
 1 Option values are initialized to their initial, default values.
 
