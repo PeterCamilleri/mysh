@@ -31,7 +31,9 @@ module Mysh
        ["java?",     MiniReadline::TERM_JAVA ? true : false],
        ["term",      ENV['TERM']],
        ["disp",      ENV['DISPLAY']],
-       ["edit",      ENV['EDITOR']]]
+       ["edit",      ENV['EDITOR']],
+       ["PID",       $PROCESS_ID]
+      ]
     end
 
     #Get the path.
