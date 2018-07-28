@@ -24,5 +24,7 @@ module Mysh
 
   MNV[:date_fmt] = "%Y-%m-%d"
   MNV[:time_fmt] = "%H:%M"
+  
+  MNV[:home] = (ENV['HOME'] || "").decorate
 
 end
