@@ -19,7 +19,8 @@ module Mysh
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def info
-      [["version",   Mysh::VERSION],
+      [["about",     Mysh::SUMMARY],
+       ["version",   Mysh::VERSION],
        ["init file", $mysh_init_file.decorate],
        ["user",      ENV['USER']],
        ["home",      (ENV['HOME'] || "").decorate],

@@ -508,6 +508,7 @@ environment.
 
 Topic    | Description
 ---------|----------------------------------------------------
+about    | A brief description of the mysh shell program.
 version  | The version of mysh in use.
 init file| The init file in use or &#60;none found&#62; or &#60;none&#62;.
 user     | The current user name.
