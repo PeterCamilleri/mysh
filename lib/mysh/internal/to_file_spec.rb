@@ -1,10 +1,10 @@
 # coding: utf-8
 
-#* mysh/internal/decorate.rb -- mysh internal file name beauty treatments.
+#* mysh/internal/to_host_spec.rb -- mysh internal file name beauty treatments.
 class String
 
   #Make the file name fit the local system.
-  def decorate
+  def to_host_spec
     self.dress_up_slashes
         .dress_up_quotes
   end

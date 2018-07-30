@@ -20,7 +20,7 @@ module Mysh
       end
 
       if $mysh_init_file
-        mysh "load #{$mysh_init_file.decorate}"
+        mysh "load #{$mysh_init_file.to_host_spec}"
       else
         $mysh_init_file = '<none found>'
       end

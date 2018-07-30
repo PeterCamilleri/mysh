@@ -14,7 +14,7 @@ module Mysh
 
     #Execute a help command.
     def process_command(_args)
-      mysh "load #{(ACTIONS_PATH + 'help/' + @file_name).decorate}"
+      mysh "load #{(ACTIONS_PATH + 'help/' + @file_name).to_host_spec}"
     end
 
   end

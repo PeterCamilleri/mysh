@@ -13,7 +13,7 @@ module Mysh
 
     #Execute the load command line option.
     def post_boot(read_point)
-      mysh "load #{get_arg(read_point).decorate}"
+      mysh "load #{get_arg(read_point).to_host_spec}"
     end
 
   end

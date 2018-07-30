@@ -10,7 +10,7 @@ module Mysh
   action = lambda do |input|
     args = input.args
     Dir.chdir(args[0]) unless args.empty?
-    puts Dir.pwd.decorate
+    puts Dir.pwd.to_host_spec
   end
 
   COMMANDS.add_action(Action.new('cd <dir>', desc, &action))

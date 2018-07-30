@@ -220,7 +220,7 @@ To assist in the creation of well formatted output, the mysh environment
 provides a number of "helper" methods in the Array and String classes. These
 are:
 
-* String#decorate - given a string with a file path/name value, express that
+* String#to_host_spec - given a string with a file path/name value, express that
 string in a manner compatible with the current operating environment.
 * Array#format_mysh_columns - take an array and convert it to a string with nice
 regular columns.
@@ -232,7 +232,7 @@ bullet points. The appearance of each point depends on its structure. See below:
 This must all be confusing. Some examples may help:
 
 ```
-mysh>=puts "lib/mysh/expression/lineage.rb".decorate
+mysh>=puts "lib/mysh/expression/lineage.rb".to_host_spec
 lib\mysh\expression\lineage.rb
 
 mysh>=(1..100).to_a.puts_mysh_columns
@@ -766,8 +766,8 @@ Process the string for embedded variables and handlebars. By default,
 any embedded ruby  is evaluated in the mysh global expression binding. However,
 another BindingWrapper instance may be passed to access an alternative binding.
 
-###### "string".decorate
-Given a string with a file spec, decorate that string so that it is more
+###### "string".to_host_spec
+Given a string with a file spec, to_host_spec that string so that it is more
 pleasing to the local environment. This is a great boon to writing effortless
 portable code.
 

@@ -8,7 +8,7 @@ module Mysh
 
     #Skip over the argument for pre_boot.
     def pre_boot(read_point)
-      file_name = get_arg(read_point).decorate
+      file_name = get_arg(read_point).to_host_spec
 
       if $mysh_init_file
         $mysh_init_file = $mysh_init_file.in_array + [file_name]
