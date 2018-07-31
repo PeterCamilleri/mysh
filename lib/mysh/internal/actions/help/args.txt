@@ -1,0 +1,20 @@
+Available mysh command line arguments are:
+
+Option+Short Forms      Description                                     Default
+==================      ===========                                     =======
+--debug -d              Turn on mysh debugging.                         false
+--no-debug -nd          Turn off mysh debugging.
+--help -? -h            Display mysh usage info and exit.
+--init -i <name>        Initialize mysh by loading the specified file.*
+--no-init -ni           Do not load a file to initialize mysh.
+--load -l <name>        Load the specified file into the mysh.
+--post-prompt -pp "str" Set the mysh line continuation prompt to "str". $prompt
+--no-post-prompt -npp   Turn off mysh line continuation prompting.
+--pre-prompt -pr"str"   Set the mysh pre prompt to "str".               \$w
+--no-pre-prompt -npr    Turn off mysh pre prompting.
+
+--prompt -p "str"       Set the mysh prompt to "str".                   "mysh"
+--no-prompt -np         Turn off mysh prompting.
+--quit                  Quit out of the mysh program.
+
+* See ?init for more details on the default file loaded.

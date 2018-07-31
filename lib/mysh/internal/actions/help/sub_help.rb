@@ -38,6 +38,7 @@ module Mysh
           ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'    ],
           ['{{',      'Help on mysh handlebars.',            'hbar.txt'   ],
           ['init',    'Help on mysh initialization.',        'init.txt'   ],
+          ['args',    'Help on mysh command arguments.',     'args.txt'   ],
           ['help',    'This help on the help command.',      'h_o_h.txt'  ],
           ['?',       'This help on the help command.',      'h_o_h.txt'  ]
          ]

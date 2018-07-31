@@ -481,6 +481,7 @@ $          | Help on mysh variables.
 =          | Help on ruby expressions.
 ?          | This help on the help command.
 @          | Help on the show command.
+args       | Help on mysh command arguments.
 env        | Help on the show env command.
 gls        | Help on gls internal mysh command.
 help       | This help on the help command.
