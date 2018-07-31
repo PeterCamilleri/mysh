@@ -19,4 +19,8 @@ class String
     self[' '] ? "\"#{self}\"" : self
   end
 
+  #Make the file name fit the standard notation.
+  def to_std_spec
+    self.gsub("\\", "/")
+  end
 end

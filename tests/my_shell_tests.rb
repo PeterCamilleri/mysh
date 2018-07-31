@@ -215,4 +215,8 @@ class MyShellTester < Minitest::Test
     assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
   end
 
+  def test_to_std_spec
+    assert_equal("test\\foo\\bar.rb".to_std_spec, "test/foo/bar.rb")
+  end
+
 end

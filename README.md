@@ -767,9 +767,15 @@ any embedded ruby  is evaluated in the mysh global expression binding. However,
 another BindingWrapper instance may be passed to access an alternative binding.
 
 ###### "string".to_host_spec
-Given a string with a file spec, to_host_spec that string so that it is more
-pleasing to the local environment. This is a great boon to writing effortless
+Given a string with a file spec, to_host_spec adjusts that string so that it is
+more pleasing to the local environment. This is a great boon to writing
+effortless portable code.
+
+###### "string".to_std_spec
+Given a string with a file spec, to_std_spec adjusts that string so that it is
+compatible with standard usage. This is a great boon to writing effortless
 portable code.
+
 
 #### Adding Help Topics
 
