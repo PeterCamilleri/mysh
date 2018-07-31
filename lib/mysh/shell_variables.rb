@@ -19,6 +19,7 @@ module Mysh
   MNV[:d] = "{{ Time.now.strftime(MNV[:date_fmt]) }}"
   MNV[:h] = "{{ ENV['HOME'].to_host_spec }}"
   MNV[:r] = "{{ RbConfig.ruby.to_host_spec }}"
+  MNV[:s] = "{{ (ENV['SHELL'] || ENV['ComSpec'] || '').to_host_spec }}"
   MNV[:t] = "{{ Time.now.strftime(MNV[:time_fmt]) }}"
   MNV[:u] = "{{ ENV['USER'] }}"
   MNV[:w] = "{{ Dir.pwd.to_host_spec }}"
