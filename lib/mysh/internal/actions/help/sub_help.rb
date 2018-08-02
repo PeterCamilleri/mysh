@@ -25,6 +25,7 @@ module Mysh
           ['$',       'Help on mysh variables.',             'vars.txt'   ],
           ['show',    'Help on the show command.',           'show.txt'   ],
           ['@',       'Help on the show command.',           'show.txt'   ],
+          ['%',       'Help on timed command execution.',    'timed.txt'  ],
           ['env',     'Help on the show env command.',       'env.txt'    ],
           ['ruby',    'Help on the show ruby command.',      'ruby.txt'   ],
           ['math',    'Help on math functions.',             'math.txt'   ],

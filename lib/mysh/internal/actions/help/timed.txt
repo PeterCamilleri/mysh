@@ -1,0 +1,18 @@
+Help: mysh timed command summary:
+
+Any command starting with a first character of % will be timed by mysh. This
+timing occurs in real time at the accuracy of the host timing facilities
+accessed by Ruby. No accounting for system access or other tasks is made.
+
+Examples:
+
+  mysh>%say hello world
+  hello world
+  Elapsed execution time = 0.000 seconds.
+
+  mysh>%ls
+  CODE_OF_CONDUCT.md  LICENSE.txt  lib           pkg          samples
+  Gemfile             README.md    mysh.gemspec  rakefile.rb  tests
+  Gemfile.lock        bin          mysh.reek     reek.txt
+  Elapsed execution time = 0.047 seconds.
+

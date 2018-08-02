@@ -27,6 +27,8 @@ $$post_prompt The prompt used when a line is continued with a trailing \\
 $$pre_prompt  A prompt string displayed before the actual command prompt.
              Delete the pre_prompt variable to disable pre-prompting.
 $$prompt      The user prompt.
+$$r           The location of the Ruby interpreter.
+$$s           The location of the host command processor.
 $$t           The current time.
 $$time_fmt    The format for the time: "%H:%M". ie: 20:11
 $$u           The current user.
