@@ -199,7 +199,7 @@ class MyShellTester < Minitest::Test
     assert_equal('@last 45 "is finished" 4 ever', wrapper.cooked)
 
     assert_equal('@last', wrapper.raw_command)
-    assert_equal(' 45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
+    assert_equal('45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
 
     assert_equal('@', wrapper.quick_command)
     assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.quick_body)
@@ -213,6 +213,22 @@ class MyShellTester < Minitest::Test
     assert_equal('last 45 "is finished" {{ 2+2 }} ever', wrapper.raw_body)
     assert_equal(["@", "last", "45", "is finished", "4", "ever"], wrapper.parsed)
     assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
+
+    Mysh.process_string("$unjust = him")
+    wrapper = Mysh::InputWrapper.new "Lock $unjust up!"
+
+    assert_equal("Lock $unjust up!", wrapper.raw)
+    assert_equal("Lock him up!", wrapper.cooked)
+    assert_equal("Lock", wrapper.raw_command)
+    assert_equal("$unjust up!", wrapper.raw_body)
+    assert_equal("him up!", wrapper.cooked_body)
+
+    wrapper = Mysh::InputWrapper.new "Test"
+    assert_equal("Test", wrapper.raw)
+    assert_equal("Test", wrapper.cooked)
+    assert_equal("Test", wrapper.raw_command)
+    assert_equal("", wrapper.raw_body)
+    assert_equal("", wrapper.cooked_body)
   end
 
   def test_to_std_spec

@@ -32,7 +32,7 @@ module Mysh
 
     #Get the parameter text.
     def raw_body
-      @raw_body ||= @raw[(raw_command.length)..-1]
+      @raw_body ||= @raw[(raw_command.length + 1)..-1] || ""
     end
 
     #Get the preprocessed argument text.
@@ -42,7 +42,8 @@ module Mysh
 
     #Access the massaged text.
     def cooked
-      raw_command + cooked_body
+      body = cooked_body
+      raw_command + (body.empty? ? "" : " " + body)
     end
 
     #Get the parsed arguments
