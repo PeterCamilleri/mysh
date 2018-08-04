@@ -1,7 +1,6 @@
 # coding: utf-8
 
 require 'pp'
-require 'mathn'
 require_relative 'expression/lineage'
 
 #* mysh/expression.rb -- The mysh ruby expression processor.
