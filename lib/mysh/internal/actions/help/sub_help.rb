@@ -40,6 +40,7 @@ module Mysh
           ['{{',      'Help on mysh handlebars.',            'hbar.txt'   ],
           ['init',    'Help on mysh initialization.',        'init.txt'   ],
           ['args',    'Help on mysh command arguments.',     'args.txt'   ],
+          ['types',   'Help on mysh file types.',            'types.txt'  ],
           ['help',    'This help on the help command.',      'h_o_h.txt'  ],
           ['?',       'This help on the help command.',      'h_o_h.txt'  ]
          ]

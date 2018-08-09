@@ -1,0 +1,18 @@
+Help: mysh supported file types.
+
+The mysh shell has direct support for three types of external files. These are 
+mysh shell scripts, Ruby source files, and augmented text files
+
+1) The mysh shell scripts are identified by the ".mysh" file suffix. These
+   files contain mysh commands and are interpreted as if typed at the command 
+   prompt by the user.
+
+2) The Ruby source files are just that, Ruby code that is loaded into mysh and
+   executed in the mysh context. These have access to the full power of the
+   Ruby Language system.
+
+3) The augmented text files are simple text files augmented with support for
+   mysh shell variables ($$var) and embedded code {\{ Ruby code goes here }}
+
+This help file is an example of an augmented text file.
+
