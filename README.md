@@ -478,6 +478,7 @@ Topic      | Description
 none       | General help on mysh.
 !          | Help on the history command.
 $          | Help on mysh variables.
+%          | Help on timed command execution.
 =          | Help on ruby expressions.
 ?          | This help on the help command.
 @          | Help on the show command.
@@ -486,13 +487,15 @@ env        | Help on the show env command.
 gls        | Help on gls internal mysh command.
 help       | This help on the help command.
 history    | Help on the history command.
+init       | Help on mysh initialization.
 kbd        | Help on mysh keyboard mapping.
 math       | Help on math functions.
+mls        | Help on mls internal mysh command.
 quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 show       | Help on the show command.
+types      | Help on mysh file types.
 usage      | Help on mysh usage options.
-mls        | Help on mls internal mysh command.
 {{         | Help on mysh handlebars.
 
 
