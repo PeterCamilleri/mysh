@@ -30,6 +30,7 @@ module Mysh
        ["os",        ENV['OS']],
        ["platform",  MiniReadline::TERM_PLATFORM],
        ["java?",     MiniReadline::TERM_JAVA ? true : false],
+       ["code page", if MiniReadline::PLATFORM == :windows; (`chcp`); end],
        ["term",      ENV['TERM']],
        ["disp",      ENV['DISPLAY']],
        ["edit",      ENV['EDITOR']],
