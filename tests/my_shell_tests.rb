@@ -134,54 +134,54 @@ class MyShellTester < Minitest::Test
     assert_equal("", MNV.get_source(:test))
     refute(MNV.key?(:test), "MNV[:test] should not exist.")
 
-    Mysh.try_execute_command("$test = new value")
+    Mysh.try_execute_command("set $test = new value")
     assert_equal("new value", MNV[:test])
     assert_equal("new value", MNV.get_source(:test))
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 
-    Mysh.try_execute_command("$test =")
+    Mysh.try_execute_command("set $test =")
     assert_equal("", MNV[:test])
     assert_equal("", MNV.get_source(:test))
     refute(MNV.key?(:test), "MNV[:test] should not exist.")
 
-    Mysh.try_execute_command("$test = true")
+    Mysh.try_execute_command("set $test = true")
     assert(MNV[:test])
     assert_equal("true", MNV.get_source(:test))
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 
-    Mysh.try_execute_command("$test = off")
+    Mysh.try_execute_command("set $test = off")
     assert_equal(false, MNV[:test])
     assert_equal("off", MNV.get_source(:test))
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 
-    Mysh.try_execute_command("$a = foo")
-    Mysh.try_execute_command("$b = bar")
-    Mysh.try_execute_command("$test = $a$b")
+    Mysh.try_execute_command("set $a = foo")
+    Mysh.try_execute_command("set $b = bar")
+    Mysh.try_execute_command("set $test = $a$b")
     assert_equal("foobar", MNV[:test])
     assert_equal("$a$b", MNV.get_source(:test))
 
-    Mysh.try_execute_command("$test = $$foo")
+    Mysh.try_execute_command("set $test = $$foo")
     assert_equal("$foo", MNV[:test])
     assert_equal("$$foo", MNV.get_source(:test))
 
-    Mysh.try_execute_command("$bad = $bad")
+    Mysh.try_execute_command("set $bad = $bad")
     assert_raises { MNV[:bad] }
 
     MNV[:test] = "{{(1..9).to_a.join}}"
     assert_equal("123456789", MNV[:test])
     assert_equal("{{(1..9).to_a.join}}", MNV.get_source(:test))
 
-    Mysh.try_execute_command("$test = $whats_all_this")
+    Mysh.try_execute_command("set $test = $whats_all_this")
     assert_equal("$whats_all_this", MNV[:test])
     assert_equal("$whats_all_this", MNV.get_source(:test))
 
-    Mysh.try_execute_command("$bad = {{ MNV[:bad] }}")
+    Mysh.try_execute_command("set $bad = {{ MNV[:bad] }}")
     assert_raises { MNV[:bad] }
     assert_raises { MNV[:bad] } #Yes test this twice!
     assert_raises { Mysh.try_execute_command("=$bad") }
     assert_raises { Mysh.try_execute_command("=$bad") } #And this too!
 
-    Mysh.try_execute_command("$bad = OK")
+    Mysh.try_execute_command("set $bad = OK")
     assert_equal("OK", MNV[:bad])
     assert_equal("OK", MNV[:bad]) #And this too!
   end
