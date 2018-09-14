@@ -31,7 +31,7 @@ task :reek do |t|
   `reek --no-color lib > reek.txt`
 end
 
-desc "What version of mine_readline is this?"
+desc "What version of mysh is this?"
 task :vers do |t|
   puts
   puts "mysh (My Shell) version = #{Mysh::VERSION}"
