@@ -17,8 +17,6 @@ Form  Form     Description
 
   #            A comment.
 
-  $            A mysh variable statement. See ?$ for more info.
-
   %            Execute a command and then report the elapsed time.
 
   =            All command lines that begin with = are evaluated as Ruby
