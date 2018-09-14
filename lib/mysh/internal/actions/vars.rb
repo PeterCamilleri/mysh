@@ -59,6 +59,5 @@ module Mysh
 
   #The show command action object.
   desc = 'Set/query mysh variables. See ?set for more.'
-  VARS_COMMAND = VarsCommand.new('set <$name>=value', desc)
-  COMMANDS.add_action(VARS_COMMAND)
+  COMMANDS.add_action(VarsCommand.new('set <$name>=value', desc))
 end
