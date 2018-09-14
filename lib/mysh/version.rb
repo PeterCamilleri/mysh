@@ -2,7 +2,7 @@
 
 module Mysh
   #The version string of MY SHell.
-  VERSION = "0.5.6"
+  VERSION = "0.6.0"
 
   #A brief summary of this gem.
   SUMMARY = "mysh -- a Ruby inspired command line shell."
