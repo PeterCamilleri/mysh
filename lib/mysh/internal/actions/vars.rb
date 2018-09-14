@@ -20,9 +20,7 @@ module Mysh
 
     #Execute a command against the internal mysh variables.
     def process_command(input)
-      match = VAR_EXP.match(input.raw_body)
-
-      if match
+      if (match = VAR_EXP.match(input.raw_body))
         @var_name, @equals, @value = match[:name], match[:equals], match[:value]
       else
         @var_name, @equals, @value = nil
