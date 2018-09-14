@@ -187,7 +187,7 @@ class MyShellTester < Minitest::Test
   end
 
   def test_executing_some_strings
-    Mysh.process_string("$c=43\n$d=99")
+    Mysh.process_string("set $c=43\nset $d=99")
     assert_equal("43", MNV[:c])
     assert_equal("99", MNV[:d])
   end
@@ -214,7 +214,7 @@ class MyShellTester < Minitest::Test
     assert_equal(["@", "last", "45", "is finished", "4", "ever"], wrapper.parsed)
     assert_equal(["last", "45", "is finished", "4", "ever"], wrapper.args)
 
-    Mysh.process_string("$unjust = him")
+    Mysh.process_string("set $unjust = him")
     wrapper = Mysh::InputWrapper.new "Lock $unjust up!"
 
     assert_equal("Lock $unjust up!", wrapper.raw)
