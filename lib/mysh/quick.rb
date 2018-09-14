@@ -8,7 +8,6 @@ module Mysh
 
   QUICK['!'] = lambda {|input| HISTORY_COMMAND.process_quick_command(input)}
   QUICK['#'] = lambda {|input| MYSH_COMMENT.process_command(input)}
-  QUICK['$'] = lambda {|input| VARS_COMMAND.process_command(input)}
   QUICK['%'] = lambda {|input| TIMED_COMMAND.process_command(input)}
   QUICK['='] = lambda {|input| $mysh_exec_host.execute(input.raw.preprocess)}
   QUICK['?'] = lambda {|input| HELP_COMMAND.process_quick_command(input)}

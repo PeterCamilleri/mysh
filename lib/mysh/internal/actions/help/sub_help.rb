@@ -22,7 +22,7 @@ module Mysh
   #Add help topics here. Don't sweat the order; they get sorted by name.
   #        Name        Description                            Help File
   help = [['',        'General help on mysh.',               'help.txt'   ],
-          ['$',       'Help on mysh variables.',             'vars.txt'   ],
+          ['set',     'Help on mysh variables.',             'vars.txt'   ],
           ['show',    'Help on the show command.',           'show.txt'   ],
           ['@',       'Help on the show command.',           'show.txt'   ],
           ['%',       'Help on timed command execution.',    'timed.txt'  ],

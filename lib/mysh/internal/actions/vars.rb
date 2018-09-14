@@ -20,8 +20,12 @@ module Mysh
 
     #Execute a command against the internal mysh variables.
     def process_command(input)
-      match = VAR_EXP.match(input.raw)
-      @var_name, @equals, @value = match[:name], match[:equals], match[:value]
+      if (match = VAR_EXP.match(input.raw_body))
+        @var_name, @equals, @value = match[:name], match[:equals], match[:value]
+      else
+        @var_name, @equals, @value = nil
+      end
+
       do_command
       :internal
     end
@@ -35,7 +39,7 @@ module Mysh
       elsif @equals
         MNV[sym] = ""
       elsif @var_name
-        puts "#{@var_name} = #{MNV.get_source(sym)}"
+        puts "$#{@var_name} = #{MNV.get_source(sym)}"
       else
         show_all_values
       end
@@ -52,7 +56,6 @@ module Mysh
   end
 
   #The show command action object.
-  desc = 'Set/query mysh variables. See ?$ for more.'
-  VARS_COMMAND = VarsCommand.new('$<name>=value', desc)
-  COMMANDS.add_action(VARS_COMMAND)
+  desc = 'Set/query mysh variables. See ?set for more.'
+  COMMANDS.add_action(VarsCommand.new('set <$name>=value', desc))
 end
