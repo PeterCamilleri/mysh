@@ -347,7 +347,7 @@ In mysh, variables are kept that control the behavior of the shell. This simple
 command is used to set, delete, and display these variables. The basic method
 for setting a variable is:
 
-    $name=value
+    set $name=value
 
 Where:
 * name is a word matching the regex: /[a-z][a-z0-9_]*/. Note: lower case only.
@@ -355,17 +355,14 @@ Where:
 
 To erase the value of a variable, use:
 
-    $name=
+    set $name=
 
 To display the name/value of a variable, use:
 
-    $name
+    set $name
 
-To display all variable names/values use just enter a single $ sign.
-
-As an escapement, the string $$ maps to a single $.
-
-Some variables that are used in mysh are:
+To display all variable names/values use just enter "set". As an escapement,
+the string $$ maps to a single $. Some variables that are used in mysh are:
 
 Variable    | Description
 ------------|--------------------------------------------
