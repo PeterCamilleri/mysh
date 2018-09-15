@@ -235,4 +235,15 @@ class MyShellTester < Minitest::Test
     assert_equal("test\\foo\\bar.rb".to_std_spec, "test/foo/bar.rb")
   end
 
+  def test_recursion_detection
+    MNV[:rec_test_one] = "one"
+    assert_equal("one one", "$rec_test_one $rec_test_one".preprocess)
+
+    MNV[:rec_test_too] = "$rec_test_too".preprocess
+    assert_raises { "$rec_test_too".preprocess }
+
+    MNV[:rec_test_two] = "$rec_test_one $rec_test_one"
+    assert_equal("one one", "$rec_test_two".preprocess)
+  end
+
 end
