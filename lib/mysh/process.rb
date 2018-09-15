@@ -21,14 +21,14 @@ module Mysh
   #Process commands from a source.
   def self.process_source(source)
     until source.eoi? do
-      execute_a_command(get_command(source))
+      execute_a_command(source)
     end
-  rescue Interrupt, MyshExit
+  rescue MyshExit
   end
 
   #Execute a single line of input and handle exceptions.
-  def self.execute_a_command(str)
-    try_execute_command(str)
+  def self.execute_a_command(source)
+    try_execute_command(get_command(source))
 
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error #{err.class}: #{err}"

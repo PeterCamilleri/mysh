@@ -16,8 +16,9 @@ module Mysh
       my_id = self.object_id
       fail "Mysh variable looping error." if loop_check[my_id]
       loop_check[my_id] = self
-
       @value.preprocess
+    ensure
+      loop_check[my_id] = nil
     end
 
     #Get the source code of this variable.

@@ -15,11 +15,29 @@ module Mysh
     def get_command
       puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
       get(prompt: MNV[:prompt] + '>')
+    rescue => err
+      puts "Error #{err.class}: #{err}"
+      puts err.backtrace if MNV[:debug]
+
+      empty = MNV[:prompt].empty?
+      MNV[:prompt] = ""
+
+      retry unless empty
+      exit
     end
 
     #Get additional lines of continued commands.
     def get_command_extra(str)
       get(prompt: MNV[:post_prompt] + '\\', prefix: str[0])
+    rescue => err
+      puts "Error #{err.class}: #{err}"
+      puts err.backtrace if MNV[:debug]
+
+      empty = MNV[:post_prompt].empty?
+      MNV[:post_prompt] = ""
+
+      retry unless empty
+      exit
     end
 
     #Have we reached the end of input?
