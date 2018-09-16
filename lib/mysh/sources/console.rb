@@ -15,25 +15,25 @@ module Mysh
     def get_command
       puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
       get(prompt: MNV[:prompt] + '>')
-    rescue => err
-      retry unless handle_read_error(err, :prompt)
+    rescue MiniReadlinePLE => err
+      retry unless handle_get_error(err, :prompt)
       exit
     end
 
     #Get additional lines of continued commands.
     def get_command_extra(str)
       get(prompt: MNV[:post_prompt] + '\\', prefix: str[0])
-    rescue => err
-      retry unless handle_read_error(err, :post_prompt)
+    rescue MiniReadlinePLE => err
+      retry unless handle_get_error(err, :post_prompt)
       exit
     end
 
-    # Handle a read error
-    def handle_read_error(err, selector)
+    # Handle a readline error
+    def handle_get_error(err, selector)
       puts "Error #{err.class}: #{err}"
       puts err.backtrace if MNV[:debug]
 
-      MNV[:post_prompt].empty?
+      MNV[selector].empty?
     ensure
       MNV[selector] = ""
     end
