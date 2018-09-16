@@ -18,7 +18,7 @@ module Mysh
       loop_check[my_id] = self
       @value.preprocess
     ensure
-      loop_check[my_id] = nil
+      loop_check.delete(my_id)
     end
 
     #Get the source code of this variable.
