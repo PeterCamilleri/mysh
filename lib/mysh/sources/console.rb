@@ -33,9 +33,9 @@ module Mysh
       puts "Error #{err.class}: #{err}"
       puts err.backtrace if MNV[:debug]
 
-      empty = MNV[:post_prompt].empty?
-      MNV[:post_prompt] = ""
-      empty
+      MNV[:post_prompt].empty?
+    ensure
+      MNV[selector] = ""
     end
 
     #Have we reached the end of input?
