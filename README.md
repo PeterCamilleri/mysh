@@ -110,7 +110,7 @@ It should be noted that in the event of a conflict in settings during the boot
 process, the last command/option encountered shall prevail. For example if the
 ~/mysh_init.mysh contains the line:
 ```
-$debug = on
+set $debug = on
 ```
 and the command line has the -nd option, then debug mode will be disabled
 because the -nd command line option is processed after the mysh_init file.
