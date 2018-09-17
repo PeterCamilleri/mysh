@@ -522,6 +522,7 @@ host     | The name of the host computer.
 os       | The current operating system.
 platform | The operating platform detected by the low-level terminal gem.
 java     | Is the current platform powered by Java?
+code page| In Windows, what code page is active?
 term     | What terminal is defined by the system, if one is defined.
 disp     | What display is defined by the system, if one is defined.
 edit     | What editor is defined by the system, if one is defined.
