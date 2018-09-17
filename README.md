@@ -474,7 +474,6 @@ Topic      | Description
 -----------|----------------------------------------------------
 none       | General help on mysh.
 !          | Help on the history command.
-$          | Help on mysh variables.
 %          | Help on timed command execution.
 =          | Help on ruby expressions.
 ?          | This help on the help command.
@@ -490,6 +489,7 @@ math       | Help on math functions.
 mls        | Help on mls internal mysh command.
 quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
+set        | Help on mysh variables.
 show       | Help on the show command.
 types      | Help on mysh file types.
 usage      | Help on mysh usage options.
