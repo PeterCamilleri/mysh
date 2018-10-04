@@ -380,7 +380,27 @@ $time_fmt   | The format for the time: "%H:%M"
 $u          | The current user.
 $w          | The current working directory's path.
 
+#### Some Examples:
 
+Imagine you wish to have all commands numbered sequentially. Use this or put it
+in the Mysh ini file.
+
+    set $prompt = {{ cmd_cter||=0; cmd_cter+=1 }} mysh>
+
+And the command line will not look like:
+
+    1 mysh>ls
+    CODE_OF_CONDUCT.md  LICENSE.txt  lib           rakefile.rb  tests
+    Gemfile             README.md    mysh.gemspec  reek.txt
+    Gemfile.lock        bin          pkg           samples
+    C:\Sites\mysh
+    2 mysh>git status
+    On branch master
+    Your branch is up to date with 'origin/master'.
+
+    nothing to commit, working tree clean
+    C:\Sites\mysh
+    3 mysh>
 
 ### Ruby Expressions:
 
