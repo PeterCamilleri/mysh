@@ -14,7 +14,7 @@ module Mysh
     #Get the initial line of command input.
     def get_command
       puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
-      get(prompt: MNV[:prompt] + '>')
+      get(prompt: MNV[:prompt])
     rescue MiniReadlinePLE => err
       retry unless handle_get_error(err, :prompt)
       exit

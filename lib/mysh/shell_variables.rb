@@ -12,7 +12,7 @@ module Mysh
 
   #Set up some default values.
   MNV[:debug]       = "false"
-  MNV[:prompt]      = "mysh"
+  MNV[:prompt]      = "mysh>"
   MNV[:post_prompt] = "$prompt"
   MNV[:pre_prompt]  = "$w"
 
