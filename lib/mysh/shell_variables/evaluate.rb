@@ -5,7 +5,7 @@ class String
 
   #Extract common mysh data from this string.
   def extract_mysh_types
-    if self =~ /false|no|off/i
+    if self =~ /\A(false|no|off)\z/i
       false
     else
       self
@@ -18,7 +18,7 @@ class String
       sym = str[1..-1].to_sym
       MNV.key?(sym) ? MNV[sym].to_s : str
     end.gsub(/\\\$/, "$")
-    
+
   end
 
 end

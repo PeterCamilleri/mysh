@@ -25,7 +25,7 @@ module Mysh
         ensure
           @loop_check = nil
         end
-      end.extract_mysh_types
+      end
     end
 
     #Set the value of a variable.

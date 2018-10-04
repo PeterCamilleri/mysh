@@ -150,8 +150,8 @@ class MyShellTester < Minitest::Test
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 
     Mysh.try_execute_command("set $test = off")
-    assert_equal(false, MNV[:test])
-    assert_equal("off", MNV.get_source(:test))
+    assert_equal(false, MNV[:test].extract_mysh_types)
+    assert_equal("off", MNV[:test])
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 
     Mysh.try_execute_command("set $a = foo")
