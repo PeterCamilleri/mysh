@@ -387,7 +387,7 @@ in the Mysh ini file.
 
     set $prompt = {{ cmd_cter||=0; cmd_cter+=1 }} mysh>
 
-And the command line will not look like:
+And the command line will look like:
 
     1 mysh>ls
     CODE_OF_CONDUCT.md  LICENSE.txt  lib           rakefile.rb  tests
