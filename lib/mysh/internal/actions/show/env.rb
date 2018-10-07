@@ -24,7 +24,7 @@ module Mysh
        ["init file", $mysh_init_file.to_host_spec],
        ["user",      ENV['USER']],
        ["home",      (ENV['HOME'] || "").to_host_spec],
-       ["name",      $PROGRAM_NAME.to_host_spec],
+       ["name",      (t = MNV[:name]).empty? ? $PROGRAM_NAME.to_host_spec : t],
        ["os shell",  (ENV['SHELL'] || ENV['ComSpec'] || "").to_host_spec],
        ["host",      ENV['HOSTNAME'] || ENV['COMPUTERNAME']],
        ["os",        ENV['OS']],
