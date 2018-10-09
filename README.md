@@ -70,7 +70,7 @@ You should see the ruby's version info. If instead you see:
     'ruby' is not recognized as an internal or external command,
     operable program or batch file.
 
-The there are either installation issues with Ruby or you need to see option 2.
+Then there are either installation issues with Ruby or you need to see option 2.
 
 Once Ruby operation is confirmed, all that is needed is to get a copy of the
 Command Window Icon and update the target field in its properties as:
