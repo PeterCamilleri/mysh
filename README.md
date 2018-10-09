@@ -45,6 +45,62 @@ Or install it yourself as:
 
     $ gem install mysh
 
+
+#### Advanced Options
+
+As a gem, when mysh is installed, the mysh file in the bin directory gets
+"hooked in" to the system as an executable file. In Mac/Linux systems this is
+done natively. In Windows systems this is done via an intermediary mysh.bat
+file. This works, but leaves a great deal to be desired especially in its
+handling of signals like control-C. Since Windows users are treated as hated
+step-sisters, here are two alternative options to using mysh as your shell
+once the Ruby language and the mysh gem have been installed.
+
+**Option 1 - Against a standard Ruby install**
+
+This option applies if Ruby is installed so that it is generally available in
+any command window. You can test this by opening a regular command line window
+and typing:
+
+    ruby -v
+
+You should see the ruby's version info. If instead you see:
+
+    C:\Users\Hilda>ruby -v
+    'ruby' is not recognized as an internal or external command,
+    operable program or batch file.
+
+The there are either installation issues with Ruby or you need to see option 2.
+
+Once Ruby operation is confirmed, all that is needed is to get a copy of the
+Command Window Icon and update the target field in its properties as:
+
+OLD
+
+    %windir%\system32\cmd.exe
+
+NEW
+
+    %windir%\system32\cmd.exe /C ruby -e"require %q{mysh}; Mysh.run"
+
+
+**Option 2 - Against a RailsInstaller install**
+
+With RailsInstaller (RI) things are a teensy bit more involved. RI creates a
+special Command Prompt with Ruby and Rails icon. to start you need to make a
+copy of that icon. The the target field in properties needs to be updated:
+
+OLD
+
+    C:\Windows\System32\cmd.exe /E:ON /K C:\RailsInstaller\Ruby2.3.3\setup_environment.bat C:\RailsInstaller
+
+NEW
+
+    C:\Windows\System32\cmd.exe /E:ON /C C:\RailsInstaller\Ruby2.3.3\setup_environment.bat C:\RailsInstaller & ruby -e"require %q{mysh}; Mysh.run"
+
+Note: the change from /K to /C. Also, while the long lines wrap, the target
+entry needs to be one long line.
+
 ## Usage
 
 The mysh gem includes a simple executable called mysh. The template for running
