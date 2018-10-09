@@ -87,7 +87,7 @@ NEW
 **Option 2 - Against a RailsInstaller install**
 
 With RailsInstaller (RI) things are a teensy bit more involved. RI creates a
-special Command Prompt with Ruby and Rails icon. to start you need to make a
+special Command Prompt with Ruby and Rails icon. To start you need to make a
 copy of that icon. The the target field in properties needs to be updated:
 
 OLD
