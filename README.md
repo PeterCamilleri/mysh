@@ -88,7 +88,7 @@ NEW
 
 With RailsInstaller (RI) things are a teensy bit more involved. RI creates a
 special Command Prompt with Ruby and Rails icon. To start you need to make a
-copy of that icon. The the target field in properties needs to be updated:
+copy of that icon. Then the target field in properties needs to be updated:
 
 OLD
 
