@@ -98,8 +98,7 @@ NEW
 
     C:\Windows\System32\cmd.exe /E:ON /C C:\RailsInstaller\Ruby2.3.3\setup_environment.bat C:\RailsInstaller & ruby -e"require %q{mysh}; Mysh.run"
 
-Note: the change from /K to /C. Also, while the long lines wrap, the target
-entry needs to be one long line.
+Note: The change from /K to /C.
 
 ## Usage
 
