@@ -56,6 +56,8 @@ handling of signals like control-C. Since Windows users are treated as hated
 step-sisters, here are two alternative options to using mysh as your shell
 once the Ruby language and the mysh gem have been installed.
 
+---
+
 **Option 1 - Against a standard Ruby install**
 
 This option applies if Ruby is installed so that it is generally available in
@@ -83,6 +85,7 @@ NEW
 
     %windir%\system32\cmd.exe /C ruby -e"require %q{mysh}; Mysh.run"
 
+---
 
 **Option 2 - Against a RailsInstaller install**
 
@@ -99,6 +102,14 @@ NEW
     C:\Windows\System32\cmd.exe /E:ON /C C:\RailsInstaller\Ruby2.3.3\setup_environment.bat C:\RailsInstaller & ruby -e"require %q{mysh}; Mysh.run"
 
 Note: The change from /K to /C.
+
+---
+
+**Also** For both options, renaming the icon to something like
+"Mysh with Ruby and Rails" or some such is also a good idea. Then make sure you
+place your icon where you can find it. I pinned mine to the Windows Task Bar.
+
+---
 
 ## Usage
 
