@@ -904,7 +904,8 @@ All participation is welcomed. There are two fabulous plans to choose from:
 #### Plan B
 
 Go to the GitHub repository at (https://github.com/PeterCamilleri/mysh) and
-raise an issue calling attention to some aspect that could use some TLC or a
-suggestion or an idea or a comment.
+raise an [issue](https://github.com/PeterCamilleri/mysh/issues)
+calling attention to some aspect that could use some TLC or a suggestion or an
+idea or a comment.
 
 This is a low pressure environment. All are welcome!
