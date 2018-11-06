@@ -11,7 +11,11 @@ module Mysh
     if (args = input.args).empty?
       puts Dir.pwd.to_host_spec
     else
-      Dir.chdir(args[0]) unless args.empty?
+      begin
+        Dir.chdir(args[0])
+      rescue Errno::ENOENT
+        puts "Cannot find #{args[0]}"
+      end
     end
   end
 
