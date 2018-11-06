@@ -11,7 +11,7 @@ class String
 
   #Dress up slashes and backslashes.
   def dress_up_slashes
-    MiniReadline::PLATFORM == :windows ? self.gsub("/", "\\") : self
+    MiniTerm.windows? self.gsub("/", "\\") : self
   end
 
   #Dress up in quotes if needed.
