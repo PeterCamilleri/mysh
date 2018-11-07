@@ -14,7 +14,9 @@ module Mysh
       begin
         Dir.chdir(args[0])
       rescue Errno::ENOENT
-        puts "Cannot find #{args[0]}"
+        puts "Cannot find \"#{args[0]}\""
+      rescue Errno::EINVAL
+        puts "The file \"#{args[0]}\" is not a directory."
       end
     end
   end
