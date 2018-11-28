@@ -203,16 +203,18 @@ Normally an input is one line entered by the user. Like this:
 ```
 mysh> ls *.rb
 ```
-In mysh, the user is able to chain together multiple lines and have them
-treated as a single input. So for the following scenario:
+In mysh, the user is able enter Ruby code directly at the command line. Since
+these commands can be rather long, there is a need to to chain together 
+multiple lines and have them treated as a single input. So for the following 
+scenario:
 ```
-mysh>line one\
-mysh\line two\
-mysh\line three
+mysh>= "line one" +\
+mysh\"line two" +\
+mysh\"line three"
 ```
 The input string will be:
 ```
-"line one\nline two\nline three\n"
+"="line one" +\n"line two" +\n"line three"\n"
 ```
 Note that while the prompt is user configurable, it will always end with '>'
 for the initial line and '\\' for subsequent lines.
