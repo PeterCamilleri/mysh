@@ -204,8 +204,8 @@ Normally an input is one line entered by the user. Like this:
 mysh> ls *.rb
 ```
 In mysh, the user is able enter Ruby code directly at the command line. Since
-these commands can be rather long, there is a need to to chain together 
-multiple lines and have them treated as a single input. So for the following 
+these commands can be rather long, there is a need to to chain together
+multiple lines and have them treated as a single input. So for the following
 scenario:
 ```
 mysh>= "line one" +\
@@ -584,6 +584,8 @@ types      | Help on mysh file types.
 usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
 
+Also, absent any detailed help information, the help command will show the
+summary of any internal command.
 
 ### Shell Info
 

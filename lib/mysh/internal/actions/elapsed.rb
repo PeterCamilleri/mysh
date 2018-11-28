@@ -4,7 +4,7 @@
 module Mysh
 
   #Add the elapsed commands to the library.
-  desc = 'Execute a command and then display the elapsed time.'
+  desc = 'Execute a command and then display the elapsed time. See ?% for more.'
 
   action = lambda do |input|
     start_time = Time.now
