@@ -25,15 +25,15 @@ crass         mini_portile2 rack-test     thread_safe
 
 mysh>gls -l vls
 name        vls
-version     0.4.0
-date        2016-10-08 00:00:00 UTC
+version     0.4.1
+date        2016-10-27 00:00:00 UTC
 summary     A version listing utility.
 description A CLI and Rails console utility that lists the versions of modules
             used by the specified gems/ruby files or Rails project.
 executables vls
 authors     Peter Camilleri
 email       peter.c.camilleri@gmail.com
-homepage    http://teuthida-technologies.com/
+homepage    https://github.com/PeterCamilleri/vls
 
 A complete guide to the gem specification's properties may be found at:
 http://guides.rubygems.org/specification-reference/
