@@ -893,6 +893,19 @@ information.
 To add a new help topic, simply add the new help file to the help folder and
 and a corresponding line entry to to the help variable.
 
+#### Exceptions:
+
+As an application, exception handling is largely an internal matter. However,
+since user code can be embedded in mysh, they should be documented. The mysh
+application gem uses the following exception classes:
+
+    Exception              # From Ruby.
+      StandardError        # From Ruby.
+        MyshException      # The abstract base exception for mysh.
+          MyshExit         # Exit the current mysh processing loop.
+          MyshStopOutput   # Stop further output from a verbose command.
+
+
 ## Contributing
 
 All participation is welcomed. There are two fabulous plans to choose from:
