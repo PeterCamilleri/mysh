@@ -19,6 +19,7 @@ module Mysh
   MNV[:page_width]  = "{{ MiniTerm.width }}"
   MNV[:page_height] = "{{ MiniTerm.height }}"
   MNV[:page_pause]  = "on"
+  MNV[:page_msg]    = "Press a key, a space, or q:"
 
   MNV[:d] = "{{ Time.now.strftime(MNV[:date_fmt]) }}"
   MNV[:h] = "{{ ENV['HOME'].to_host_spec }}"
