@@ -203,16 +203,18 @@ Normally an input is one line entered by the user. Like this:
 ```
 mysh> ls *.rb
 ```
-In mysh, the user is able to chain together multiple lines and have them
-treated as a single input. So for the following scenario:
+In mysh, the user is able enter Ruby code directly at the command line. Since
+these commands can be rather long, there is a need to to chain together
+multiple lines and have them treated as a single input. So for the following
+scenario:
 ```
-mysh>line one\
-mysh\line two\
-mysh\line three
+mysh>= "line one" +\
+mysh\"line two" +\
+mysh\"line three"
 ```
 The input string will be:
 ```
-"line one\nline two\nline three\n"
+"="line one" +\n"line two" +\n"line three"\n"
 ```
 Note that while the prompt is user configurable, it will always end with '>'
 for the initial line and '\\' for subsequent lines.
@@ -582,6 +584,8 @@ types      | Help on mysh file types.
 usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
 
+Also, absent any detailed help information, the help command will show the
+summary of any internal command.
 
 ### Shell Info
 
@@ -888,6 +892,19 @@ information.
 
 To add a new help topic, simply add the new help file to the help folder and
 and a corresponding line entry to to the help variable.
+
+#### Exceptions:
+
+As an application, exception handling is largely an internal matter. However,
+since user code can be embedded in mysh, they should be documented. The mysh
+application gem uses the following exception classes:
+
+    Exception              # From Ruby.
+      StandardError        # From Ruby.
+        MyshException      # The abstract base exception for mysh.
+          MyshExit         # Exit the current mysh processing loop.
+          MyshStopOutput   # Stop further output from a verbose command.
+
 
 ## Contributing
 

@@ -18,7 +18,7 @@ module Mysh
 
   #Get any continuations of the inputs
   def self.get_command_extra(source, str)
-    if /\\\s*$/ =~ str
+    if str.start_with?("=") && /\\\s*$/ =~ str
       get_command_extra(source, $PREMATCH + "\n" + source.get_command_extra(str))
     else
       str
