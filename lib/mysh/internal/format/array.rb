@@ -6,7 +6,7 @@ class Array
   # Columns ========================================================
 
   #Print out the array with efficient columns.
-  def puts_mysh_columns(page_width  = Mysh::PAGE_WIDTH)
+  def puts_mysh_columns(page_width  = MiniTerm.width)
     puts format_mysh_columns(page_width)
   end
 
@@ -30,7 +30,7 @@ class Array
   #* A string.
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
-  def format_mysh_columns(page_width = Mysh::PAGE_WIDTH)
+  def format_mysh_columns(page_width = MiniTerm.width)
     raw_mysh_columns(page_width).join("\n")
   end
 
@@ -45,7 +45,7 @@ class Array
   # Bullets ========================================================
 
   #Print out the array as bullet points.
-  def puts_mysh_bullets(page_width = Mysh::PAGE_WIDTH)
+  def puts_mysh_bullets(page_width = MiniTerm.width)
     puts format_mysh_bullets(page_width)
   end
 
@@ -54,7 +54,7 @@ class Array
   #* A string.
   #<br>Endemic Code Smells
   #* :reek:FeatureEnvy -- false positive.
-  def format_mysh_bullets(page_width = Mysh::PAGE_WIDTH)
+  def format_mysh_bullets(page_width = MiniTerm.width)
     return "" if empty?
 
     builder = Mysh::BulletPoints.new(page_width)
