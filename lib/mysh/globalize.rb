@@ -15,4 +15,20 @@ class Object
     Mysh.try_execute_command(str)
   end
 
+  # Execute a block with page paused output.
+  def more
+    saved = $stdout
+
+    if MNV[:page_pause].extract_mysh_types
+      $stdout = OutputPager.new if (outer = $stdout.equal?($mysh_out))
+    end
+
+    yield
+  rescue MyshStopOutput
+    raise unless outer
+    return
+  ensure
+    $stdout = saved
+  end
+
 end

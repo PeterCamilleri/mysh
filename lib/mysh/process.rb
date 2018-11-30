@@ -39,10 +39,12 @@ module Mysh
   def self.try_execute_command(str)
     input = InputWrapper.new(str)
 
-    try_execute_quick(input)    ||
-    try_execute_internal(input) ||
-    try_execute_external(input) ||
-    try_execute_system(input)
+    more {
+      try_execute_quick(input)    ||
+      try_execute_internal(input) ||
+      try_execute_external(input) ||
+      try_execute_system(input)
+    }
   end
 
 end
