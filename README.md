@@ -130,6 +130,8 @@ Option               | Short Form(s)| Description             | Default
 --init filename      | -i filename  | Initialize mysh by loading the specified file. | ~/mysh_init.mysh
 --no-init            | -ni          | Do not load a file to initialize mysh.
 --load filename      | -l filename  | Load the specified file into the mysh.
+--pause              |              | Enable page pauses for long output.
+--no-pause           |              | Disable page pauses for long output.
 --post-prompt "str"  | -pp "str"    | Set the mysh line continuation prompt to "str". | $prompt
 --no-post-prompt     | -npp         | Turn off mysh line continuation prompting.
 --pre-prompt "str"   | -pr "str"    | Set the mysh pre prompt to "str". | $w
@@ -343,6 +345,25 @@ baz yes
 
 ```
 
+###### Page Pause
+
+Some commands can generate very lengthy output that can scroll off the top of
+the screen. to handle this, mysh automatically inserts pauses once per screen.
+At this point, it displays a prompt and waits for the users to press a key that
+will determine the action to take. The default message is:
+
+    Press a key, a space, or q:
+
+The available actions are:
+
+Key        | Action
+-----------|-----------------------------------------------
+'q' or "Q" | Stop the long winded command.
+Space      | Add a single line of additional output.
+Other      | Add up to a whole page of additional output.
+
+This feature is controlled by the $page_pause variable that can be either
+on or off as well as the --pause and --no-pause command line options.
 
 #### LOOP
 
@@ -439,6 +460,10 @@ $date_fmt   | The format for the date: "%Y-%m-%d"
 $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
 $name       | The name given to this mysh session.
+$page_height| The page height.
+$page_msg   | The paging message.
+$page_pause | Is page pausing enabled?
+$page_width | The page width.
 $post_prompt| The prompt used when a line is continued with a trailing \\ character. By default this is the same as the normal prompt.
 $pre_prompt | A prompt string displayed before the actual command prompt. Delete the pre_prompt variable to disable pre-prompting.
 $prompt     | The user prompt.
