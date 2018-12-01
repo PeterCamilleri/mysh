@@ -461,7 +461,7 @@ $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
 $name       | The name given to this mysh session.
 $page_height| The page height.
-$page_msg   | The paging message.
+$page_msg   | The paging message. Default is "Press a key, a space, or q:"
 $page_pause | Is page pausing enabled?
 $page_width | The page width.
 $post_prompt| The prompt used when a line is continued with a trailing \\ character. By default this is the same as the normal prompt.
