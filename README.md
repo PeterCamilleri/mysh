@@ -677,7 +677,7 @@ Some commands, not already covered in other sections include:
 Command        | Description
 ---------------|----------------------------------------------------
 cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
-exit           | Exit mysh.
+exit           | Exit a nested mysh file or command.
 gls {-l} {mask}| Display the loaded ruby gems. See ?gls for more.
 history {index}| The mysh command history. If an index is specified, get the command with that index value.
 load file      | Load a ruby program, mysh script, or text file into the mysh environment.

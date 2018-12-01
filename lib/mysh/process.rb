@@ -30,6 +30,8 @@ module Mysh
   def self.execute_a_command(source)
     try_execute_command(get_command(source))
 
+  rescue MyshExit
+    raise
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error #{err.class}: #{err}"
     puts err.backtrace if MNV[:debug].extract_mysh_types || defined?(MiniTest)
