@@ -5,4 +5,4 @@
 
 require 'mysh'
 
-Mysh.run
+Mysh.run(ARGV)

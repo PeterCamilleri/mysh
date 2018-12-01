@@ -8,11 +8,10 @@ Option+Short Forms      Description                                     Default
 --init -i <name>        Initialize mysh by loading the specified file.*
 --no-init -ni           Do not load a file to initialize mysh.
 --load -l <name>        Load the specified file into the mysh.
---post-prompt -pp "str" Set the mysh line continuation prompt to "str". $prompt
+--post-prompt -pp "str" Set the mysh line continuation prompt to "str". $$prompt
 --no-post-prompt -npp   Turn off mysh line continuation prompting.
 --pre-prompt -pr"str"   Set the mysh pre prompt to "str".               \$w
 --no-pre-prompt -npr    Turn off mysh pre prompting.
-
 --prompt -p "str"       Set the mysh prompt to "str".                   "mysh"
 --no-prompt -np         Turn off mysh prompting.
 --quit                  Quit out of the mysh program.
