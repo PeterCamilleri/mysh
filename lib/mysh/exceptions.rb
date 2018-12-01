@@ -8,3 +8,6 @@ class MyshExit < MyshException; end
 
 # Stop further output from a verbose command.
 class MyshStopOutput < MyshException; end
+
+# Display usage info and exit.
+class MyshUsage < MyshException; end

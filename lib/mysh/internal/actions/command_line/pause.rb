@@ -12,6 +12,10 @@ module Mysh
       MNV[:page_pause] = "on"
     end
 
+    def pre_boot(_args)
+      MNV[:page_pause] = "on"
+    end
+
   end
 
   #Add the pause command line option to the library.
@@ -25,6 +29,10 @@ module Mysh
     #<br>Endemic Code Smells
     #* :reek:UtilityFunction
     def post_boot(_args)
+      MNV[:page_pause] = "off"
+    end
+
+    def pre_boot(_args)
       MNV[:page_pause] = "off"
     end
 

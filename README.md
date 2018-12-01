@@ -904,6 +904,7 @@ application gem uses the following exception classes:
         MyshException      # The abstract base exception for mysh.
           MyshExit         # Exit the current mysh processing loop.
           MyshStopOutput   # Stop further output from a verbose command.
+          MyshUsage        # Internal: Used by the --help options.
 
 
 ## Contributing
