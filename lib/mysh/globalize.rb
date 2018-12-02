@@ -24,9 +24,11 @@ class Object
     end
 
     yield
+
   rescue MyshStopOutput
     raise unless outer
     return
+
   ensure
     $stdout = saved
   end
