@@ -1,11 +1,11 @@
 # coding: utf-8
 
-#* mysh/internal/actions/exit.rb -- The mysh internal exit command.
+#The mysh internal cancel command.
 module Mysh
 
-  #Add the exit command to the library.
-  desc = 'Exit the current mysh level.'
-  action = lambda {|_input| raise MyshExit}
+  #Add the cancel command to the library.
+  desc = 'Cancel the current mysh level.'
+  action = lambda {|_input| cancel}
 
-  COMMANDS.add_action(Action.new('exit', desc, &action))
+  COMMANDS.add_action(Action.new('cancel', desc, &action))
 end
