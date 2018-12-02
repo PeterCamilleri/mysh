@@ -32,6 +32,7 @@ module Mysh
 
   rescue MyshExit
     raise
+
   rescue Interrupt, StandardError, ScriptError => err
     puts "Error #{err.class}: #{err}"
     puts err.backtrace if MNV[:debug].extract_mysh_types || defined?(MiniTest)
