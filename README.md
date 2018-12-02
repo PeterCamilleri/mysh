@@ -674,18 +674,21 @@ Internal commands are recognized by name and are executed by mysh directly. The
 complete list of internal commands is given in the default help command ("?").
 Some commands, not already covered in other sections include:
 
-Command        | Description
----------------|----------------------------------------------------
-cd {dir}       | Change directory to the optional dir parameter and then display the current working directory.
-exit           | Exit a nested mysh file or command.
-gls {-l} {mask}| Display the loaded ruby gems. See ?gls for more.
-history {index}| The mysh command history. If an index is specified, get the command with that index value.
-load file      | Load a ruby program, mysh script, or text file into the mysh environment.
-mls {mask}     | Display modules with version info. See ?mls for more.
-pwd            | Display the current working directory.
-quit           | Exit mysh.
-say <stuff>    | Display the text in the command arguments.
-type file      | Display a text file with support for optional embedded handlebars and mysh variables.
+Command          | Description
+-----------------|----------------------------------------------------
+cancel           | Cancel the current mysh execution level.
+cd <dir>         | Change directory to the optional <dir> parameter or display the current working directory.
+exit             | Exit out of the mysh.
+gls <-l> <mask>  | Display the loaded ruby gems.
+help <topic>     | Display help information for mysh with an optional topic.
+history <arg>    | Display the mysh command history.
+load <file>      | Load a ruby program, mysh script, or text file into the mysh
+mls <mask>       | Display modules with version info.
+pwd              | Display the current working directory.
+say <stuff>      | Display the text in the command arguments.
+set <$name>=value| Set/query mysh variables.
+show <item>      | Display information about a part of mysh.
+type <file>      | Display a text file with support for optional embedded handlebars and mysh variables.
 
 Notes:
 1. The notation {x} means that x is optional.
