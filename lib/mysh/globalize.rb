@@ -31,4 +31,9 @@ class Object
     $stdout = saved
   end
 
+  #Unwrap one mysh layer.
+  def cancel
+    raise MyshExit
+  end
+
 end
