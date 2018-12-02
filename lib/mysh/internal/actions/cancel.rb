@@ -5,7 +5,6 @@ module Mysh
 
   #Add the cancel command to the library.
   desc = 'Cancel the current mysh level.'
-  action = lambda {|_input| cancel}
 
-  COMMANDS.add_action(Action.new('cancel', desc, &action))
+  COMMANDS.add_action(Action.new('cancel', desc) {|_input| cancel})
 end
