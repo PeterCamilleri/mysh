@@ -19,16 +19,23 @@ class Object
   def more
     saved = $stdout
 
-    if MNV[:page_pause].extract_mysh_types
+    if MNV[:page_pause].extract_boolean
       $stdout = OutputPager.new if (outer = $stdout.equal?($mysh_out))
     end
 
     yield
+
   rescue MyshStopOutput
     raise unless outer
     return
+
   ensure
     $stdout = saved
+  end
+
+  #Unwrap one mysh layer.
+  def cancel
+    raise MyshExit
   end
 
 end

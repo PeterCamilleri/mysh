@@ -20,6 +20,11 @@ class OutputPager
     end
   end
 
+  # Write out an object as a string.
+  def <<(obj)
+    write(obj.to_s)
+  end
+
 private
 
   # Write out a simple string with no embedded new-lines.

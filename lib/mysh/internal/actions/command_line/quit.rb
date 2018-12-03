@@ -14,6 +14,6 @@ module Mysh
   end
 
   #Add the quit command line option to the library.
-  desc = 'Quit out of the mysh program.'
+  desc = "Exit a nested mysh file or command."
   COMMAND_LINE.add_action(QuitOption.new('--quit', desc))
 end

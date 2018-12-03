@@ -1,11 +1,10 @@
 # coding: utf-8
 
-#* mysh/internal/actions/exit.rb -- The mysh internal exit command.
+# The mysh internal exit command.
 module Mysh
 
-  #Add the exit command to the library.
-  desc = 'Exit the current mysh level.'
-  action = lambda {|_input| raise MyshExit}
+  # Add the exit command to the library.
+  desc = 'Exit out of the mysh.'
 
-  COMMANDS.add_action(Action.new('exit', desc, &action))
+  COMMANDS.add_action(Action.new('exit', desc) {|_input| exit })
 end

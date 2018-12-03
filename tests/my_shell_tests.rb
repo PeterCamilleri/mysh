@@ -28,7 +28,7 @@ class MyShellTester < Minitest::Test
 
   def test_for_internal_commands
     assert(Mysh::COMMANDS['exit'], "The exit command is missing.")
-    assert(Mysh::COMMANDS['quit'], "The quit command is missing.")
+    assert(Mysh::COMMANDS['cancel'], "The cancel command is missing.")
 
     assert(Mysh::COMMANDS['history'],  "The history command is missing.")
     assert(Mysh::COMMANDS['!<arg>'], "The ! command is missing.")
@@ -150,7 +150,7 @@ class MyShellTester < Minitest::Test
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 
     Mysh.try_execute_command("set $test = off")
-    assert_equal(false, MNV[:test].extract_mysh_types)
+    assert_equal(false, MNV[:test].extract_boolean)
     assert_equal("off", MNV[:test])
     assert(MNV.key?(:test), "MNV[:test] should exist.")
 

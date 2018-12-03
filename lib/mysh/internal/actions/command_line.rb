@@ -41,12 +41,16 @@ module Mysh
       next_command.send(phase, read_point)
     end
 
+  rescue MyshUsage
+    HELP["usage"].process_command(nil)
+    exit
+
   rescue => err
-    unless (msg = err.to_s).empty?
-      puts "", msg, ""
+    more do
+      puts "", err.to_s, ""
+      HELP["usage"].process_command(nil)
     end
 
-    HELP["usage"].process_command(nil)
     exit
   end
 
