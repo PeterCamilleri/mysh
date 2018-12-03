@@ -4,7 +4,7 @@
 class String
 
   #Extract common mysh data from this string.
-  def extract_mysh_types
+  def extract_boolean
     if self =~ /\A(false|no|off)\z/i
       false
     else

@@ -19,7 +19,7 @@ class Object
   def more
     saved = $stdout
 
-    if MNV[:page_pause].extract_mysh_types
+    if MNV[:page_pause].extract_boolean
       $stdout = OutputPager.new if (outer = $stdout.equal?($mysh_out))
     end
 
