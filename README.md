@@ -667,6 +667,29 @@ host os     | The current operating system.
 host vendor | The current environment vendor/genre.
 $:          | An easy-to-read, formatted version of $: or the ruby search path.
 
+##### Gem (@gem)
+
+This command displays useful information about the current rubygems
+gem management system.
+
+Topic         | Description
+--------------|----------------------------------------------------
+rubygems vers | The installed version of rubygems.
+latest vers   | The latest version of rubygems available.
+marshal vers  | The version of the Marshal format for your Ruby.
+host          | Get the default RubyGems API host. This is normally https://rubygems.org.
+sources       | Returns an Array of sources to fetch remote gems from.
+gem folder    | The path where gems are to be installed.
+bin folder    | The path where gem executables are to be installed.
+config path   | The path to standard location of the user's .gemrc file.
+cert path     | The default signing certificate chain path
+key path      | The default signing key path
+spec cache    | The path to where specs are cached.
+file suffixes | Suffixes for require-able paths.
+gem dep files | The files where dependencies may be specified. Use Gemfile
+gem platforms | Array of platforms this RubyGems supports.
+gem path      | The folders searched when looking for a gem locally.
+
 
 ### Internal Shell Commands:
 
