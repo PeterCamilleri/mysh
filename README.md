@@ -371,8 +371,8 @@ The processing of input continues (looping) until it doesn't. This occurs when
 a command to stop looping is entered or the mini_readline gem signals
 end-of-input condition. The (internal) commands that do this are:
 
-* exit - exit the current mysh level.
-* quit - terminate the mysh program.
+* cancel - exit the current mysh file/level.
+* exit - terminate the mysh program.
 
 An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
