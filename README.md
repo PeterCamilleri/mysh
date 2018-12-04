@@ -593,6 +593,7 @@ none       | General help on mysh.
 ?          | This help on the help command.
 @          | Help on the show command.
 env        | Help on the show env command.
+gem        | Help on the show gem command.
 gls        | Help on gls internal mysh command.
 help       | This help on the help command.
 history    | Help on the history command.
