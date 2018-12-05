@@ -371,8 +371,8 @@ The processing of input continues (looping) until it doesn't. This occurs when
 a command to stop looping is entered or the mini_readline gem signals
 end-of-input condition. The (internal) commands that do this are:
 
-* exit - exit the current mysh level.
-* quit - terminate the mysh program.
+* cancel - exit the current mysh file/level.
+* exit - terminate the mysh program.
 
 An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
@@ -592,8 +592,8 @@ none       | General help on mysh.
 =          | Help on ruby expressions.
 ?          | This help on the help command.
 @          | Help on the show command.
-args       | Help on mysh command arguments.
 env        | Help on the show env command.
+gem        | Help on the show gem command.
 gls        | Help on gls internal mysh command.
 help       | This help on the help command.
 history    | Help on the history command.
@@ -666,6 +666,29 @@ host cpu    | A (crude) approximation of the installed cpu.
 host os     | The current operating system.
 host vendor | The current environment vendor/genre.
 $:          | An easy-to-read, formatted version of $: or the ruby search path.
+
+##### Gem (@gem)
+
+This command displays useful information about the current rubygems
+gem management system.
+
+Topic         | Description
+--------------|----------------------------------------------------
+rubygems vers | The installed version of rubygems.
+latest vers   | The latest version of rubygems available.
+marshal vers  | The version of the Marshal format for your Ruby.
+host          | Get the default RubyGems API host. This is normally https://rubygems.org.
+sources       | Returns an Array of sources to fetch remote gems from.
+gem folder    | The path where gems are to be installed.
+bin folder    | The path where gem executables are to be installed.
+config path   | The path to standard location of the user's .gemrc file.
+cert path     | The default signing certificate chain path
+key path      | The default signing key path
+spec cache    | The path to where specs are cached.
+file suffixes | Suffixes for require-able paths.
+gem dep files | The files where dependencies may be specified. Use Gemfile
+gem platforms | Array of platforms this RubyGems supports.
+gem path      | The folders searched when looking for a gem locally.
 
 
 ### Internal Shell Commands:
