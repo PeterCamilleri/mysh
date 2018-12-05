@@ -605,6 +605,7 @@ quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 set        | Help on mysh variables.
 show       | Help on the show command.
+term       | Help on the show term command.
 types      | Help on mysh file types.
 usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
