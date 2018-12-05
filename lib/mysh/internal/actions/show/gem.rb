@@ -8,7 +8,7 @@ module Mysh
 
     #Execute the @gem shell command.
     def process_command(_args)
-      print "Working...\r" unless @ran_once
+      print WORKING unless @ran_once
 
       puts "Key gem system information.", "",
            info.format_mysh_bullets, "",

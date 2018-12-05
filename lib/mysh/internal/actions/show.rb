@@ -3,6 +3,9 @@
 #* mysh/internal/actions/show.rb -- The mysh internal show command.
 module Mysh
 
+  # The working message for long duration processing.
+  WORKING = "Working...\r"
+
   #Show items.
   default = Action.new do |input|
     puts "No show data found for #{input.raw.inspect}. See ?@ for more."

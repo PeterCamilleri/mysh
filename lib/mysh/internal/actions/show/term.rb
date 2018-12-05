@@ -8,7 +8,7 @@ module Mysh
 
     #Execute the @term shell command.
     def process_command(_args)
-      print "Working...\r" unless @ran_once
+      print WORKING unless @ran_once
 
       puts "Key term information.", "",
            info.format_mysh_bullets, ""
