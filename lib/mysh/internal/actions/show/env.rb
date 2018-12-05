@@ -30,10 +30,6 @@ module Mysh
        ["os",        ENV['OS']],
        ["platform",  MiniTerm::TERM_PLATFORM],
        ["java?",     MiniTerm.java? ? true : false],
-       ["code page", if MiniTerm.windows?; (`chcp`); end],
-       ["term",      ENV['TERM']],
-       ["disp",      ENV['DISPLAY']],
-       ["edit",      ENV['EDITOR']],
        ["PID",       $PROCESS_ID]
       ]
     end
