@@ -3,10 +3,10 @@
 # Get help on the gem environment.
 module Mysh
 
-  #* mysh/internal/actions/show/env.rb -- Get help on the mysh environment.
+  # Get help on the gem environment.
   class GemInfoCommand < Action
 
-    #Execute the ? shell command.
+    #Execute the @gem shell command.
     def process_command(_args)
       print "Working...\r" unless @ran_once
 
@@ -20,8 +20,7 @@ module Mysh
     private
 
     # Get the info
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Endemic Code Smells :reek:UtilityFunction
     def info
       [["rubygems vers", Gem.rubygems_version.to_s],
        ["latest vers",   Gem.latest_rubygems_version.to_s],
@@ -41,8 +40,7 @@ module Mysh
     end
 
     # Get the Gem path.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Endemic Code Smells :reek:UtilityFunction
     def path
       [["gem path"].concat(Gem.path)]
     end
