@@ -629,19 +629,18 @@ Topic    | Description
 ---------|----------------------------------------------------
 about    | A brief description of the mysh shell program.
 version  | The version of mysh in use.
+installed| All installed versions of mysh.
+latest   | The latest version of mysh.
 init file| The init file in use or &#60;none found&#62; or &#60;none&#62;.
 user     | The current user name.
 home     | The current home directory.
 name     | The path/name of the mysh program currently executing.
-shell    | The path/name of the system command shell.
+os shell | The path/name of the system command shell.
 host     | The name of the host computer.
 os       | The current operating system.
 platform | The operating platform detected by the low-level terminal gem.
 java     | Is the current platform powered by Java?
-code page| In Windows, what code page is active?
-term     | What terminal is defined by the system, if one is defined.
-disp     | What display is defined by the system, if one is defined.
-edit     | What editor is defined by the system, if one is defined.
+PID      | The process ID of the mysh program.
 path     | An easy-to-read, formatted version of the current search path.
 
 
@@ -674,9 +673,10 @@ gem management system.
 
 Topic         | Description
 --------------|----------------------------------------------------
-rubygems vers | The installed version of rubygems.
-latest vers   | The latest version of rubygems available.
-marshal vers  | The version of the Marshal format for your Ruby.
+about         | About rubygems.
+version       | The current version of rubygems.
+latest        | The latest version of rubygems available.
+marshal       | The version of the marshal format for your Ruby.
 host          | Get the default RubyGems API host. This is normally https://rubygems.org.
 sources       | Returns an Array of sources to fetch remote gems from.
 gem folder    | The path where gems are to be installed.
@@ -689,6 +689,28 @@ file suffixes | Suffixes for require-able paths.
 gem dep files | The files where dependencies may be specified. Use Gemfile
 gem platforms | Array of platforms this RubyGems supports.
 gem path      | The folders searched when looking for a gem locally.
+
+##### Term (@term)
+
+This command displays useful information about the console.
+
+Topic         | Description
+--------------|----------------------------------------------------
+about         | About the mini_readline gem.
+version       | The installed version of mini_readline.
+installed     | All installed versions of mini_readline.
+latest        | The latest version of mini_readline available.
+about         | About the mini_term gem.
+version       | The installed version of mini_term.
+installed     | All installed versions of mini_term.
+latest        | The latest version of mini_term available.
+platform      | The operating platform detected by mini_term.
+columns       | The number of columns in the console.
+rows          | The number of rows in the console.
+code page     | For Windows, what is the current code page?
+term          | What terminal is defined by the system, if one is defined.
+disp          | What display is defined by the system, if one is defined.
+edit          | What editor is defined by the system, if one is defined.
 
 
 ### Internal Shell Commands:
