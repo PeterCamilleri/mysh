@@ -374,6 +374,9 @@ end-of-input condition. The (internal) commands that do this are:
 * cancel - exit the current mysh file/level.
 * exit - terminate the mysh program.
 
+The cancel and exit commands are also available, with the same names and
+behavior, to Ruby code.
+
 An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
 more information on the keyboard mappings used by mysh.
