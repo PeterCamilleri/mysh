@@ -1,0 +1,21 @@
+Help: mysh show term command summary:
+
+The show term (or @term) command is used to display useful information about
+the current console. This includes:
+
+about         - About the mini_readline gem.
+version       - The installed version of mini_readline.
+installed     - All installed versions of mini_readline.
+latest        - The latest version of mini_readline available.
+about         - About the mini_term gem.
+version       - The installed version of mini_term.
+installed     - All installed versions of mini_term.
+latest        - The latest version of mini_term available.
+platform      - The operating platform detected by mini_term.
+columns       - The number of columns in the console.
+rows          - The number of rows in the console.
+code page     - For Windows, what is the current code page?
+term          - What terminal is defined by the system, if one is defined.
+disp          - What display is defined by the system, if one is defined.
+edit          - What editor is defined by the system, if one is defined.
+
