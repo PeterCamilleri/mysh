@@ -3,9 +3,11 @@ Help: mysh show gem command summary:
 The show gem (or @gem) command is used to display useful information about
 the current gem system. This includes:
 
-rubygems vers - The installed version of rubygems.
-latest vers   - The latest version of rubygems available.
-marshal vers  - The version of the Marshal format for your Ruby.
+about         - RubyGems is the ruby standard for publishing and managing
+                third party libraries.
+version       - The installed version of rubygems.
+latest        - The latest version of rubygems available.
+marshal       - The version of the marshal format for your ruby.
 host          - Get the default RubyGems API host.
                 This is normally https://rubygems.org.
 sources       - Returns an Array of sources to fetch remote gems from.

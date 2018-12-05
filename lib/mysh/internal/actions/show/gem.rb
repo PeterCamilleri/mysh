@@ -22,7 +22,7 @@ module Mysh
     # Get the info
     # Endemic Code Smells :reek:UtilityFunction
     def info
-      [["about",         "RubyGems is the Ruby standard for publishing and " +
+      [["about",         "RubyGems is the ruby standard for publishing and " +
                          "managing third party libraries."],
        ["version",       Gem.rubygems_version.to_s],
        ["latest",        insouciant {Gem.latest_rubygems_version.to_s}],
