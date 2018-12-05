@@ -22,9 +22,16 @@ module Mysh
     # Get the info
     # Endemic Code Smells :reek:UtilityFunction
     def info
-      [["rubygems vers", Gem.rubygems_version.to_s],
-       ["latest vers",   Gem.latest_rubygems_version.to_s],
-       ["marshal vers",  Gem.marshal_version],
+      [["about",         "RubyGems is the Ruby standard for publishing and " +
+                         "managing third party libraries."],
+       ["version",       Gem.rubygems_version.to_s],
+       ["latest",        begin
+                           Gem.latest_rubygems_version.to_s
+                         rescue => err
+                           err.to_s
+                         end
+       ],
+       ["marshal",       Gem.marshal_version],
        ["host",          Gem.host],
        ["sources",       Gem.sources.map(&:to_s)],
        ["gem folder",    Gem.dir.to_host_spec],
