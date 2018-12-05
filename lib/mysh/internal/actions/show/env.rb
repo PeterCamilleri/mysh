@@ -27,12 +27,7 @@ module Mysh
        ["installed", Gem::Specification.find_all_by_name("mysh")
                                        .map{|s| s.version.to_s}
                                        .join(", ")],
-       ["latest",    begin
-                       Gem.latest_version_for("mysh").to_s
-                     rescue => err
-                       err.to_s
-                     end
-       ],
+       ["latest",    insouciant {Gem.latest_version_for("mysh").to_s}],
        ["init file", $mysh_init_file.to_host_spec],
        ["user",      ENV['USER']],
        ["home",      (ENV['HOME'] || "").to_host_spec],

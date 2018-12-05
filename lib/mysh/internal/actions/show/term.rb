@@ -26,23 +26,13 @@ module Mysh
        ["installed", Gem::Specification.find_all_by_name("mini_readline")
                                        .map{|s| s.version.to_s}
                                        .join(", ")],
-       ["latest",    begin
-                       Gem.latest_version_for("mini_readline").to_s
-                     rescue => err
-                       err.to_s
-                     end
-       ],
+       ["latest",    insouciant {Gem.latest_version_for("mini_readline").to_s}],
        ["about",     MiniTerm::DESCRIPTION],
        ["version",   MiniTerm::VERSION],
        ["installed", Gem::Specification.find_all_by_name("mini_term")
                                        .map{|s| s.version.to_s}
                                        .join(", ")],
-       ["latest",    begin
-                       Gem.latest_version_for("mini_term").to_s
-                     rescue => err
-                       err.to_s
-                     end
-       ],
+       ["latest",    insouciant {Gem.latest_version_for("mini_term").to_s}],
        ["platform",  MiniTerm::TERM_PLATFORM.inspect],
        ["term type", MiniTerm::TERM_TYPE.inspect],
        ["columns",   MiniTerm.width.to_s],

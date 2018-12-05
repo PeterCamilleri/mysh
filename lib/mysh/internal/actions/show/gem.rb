@@ -25,12 +25,7 @@ module Mysh
       [["about",         "RubyGems is the Ruby standard for publishing and " +
                          "managing third party libraries."],
        ["version",       Gem.rubygems_version.to_s],
-       ["latest",        begin
-                           Gem.latest_rubygems_version.to_s
-                         rescue => err
-                           err.to_s
-                         end
-       ],
+       ["latest",        insouciant {Gem.latest_rubygems_version.to_s}],
        ["marshal",       Gem.marshal_version],
        ["host",          Gem.host],
        ["sources",       Gem.sources.map(&:to_s)],

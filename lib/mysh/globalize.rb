@@ -33,9 +33,16 @@ class Object
     $stdout = saved
   end
 
-  #Unwrap one mysh layer.
+  # Unwrap one mysh layer.
   def cancel
     raise MyshExit
+  end
+
+  # Run some code with no wuccas.
+  def insouciant
+    yield
+  rescue => err
+    err.to_s
   end
 
 end
