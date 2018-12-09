@@ -68,7 +68,7 @@ module Mysh
                                          .join(", ")
         details << [gem, version_list]
 
-        latest = insouciant {Gem.latest_version_for(gem).to_s}
+        latest = insouciant {latest_version_for(gem).to_s}
         details << ["latest", latest]
         details << [" ", " "]
       end
@@ -77,9 +77,17 @@ module Mysh
            details.format_mysh_bullets
     end
 
+    # Get the latest version for the named gem. Patched code.
+    def latest_version_for(name)
+      dependency = Gem::Dependency.new(name)
+      fetcher = Gem::SpecFetcher.fetcher
+      spec = fetcher.spec_for_dependency(dependency)[0][-1][0]
+      spec && spec.version
+    end
+
   end
 
-  desc = 'Get information about the current gem support. ' +
-         'See ?gem for more.'
-  SHOW.add_action(GemInfoCommand.new('gem', desc))
+  desc = 'Get information about the current gem support or ' +
+         'the specified list of gems. See ?gem for more.'
+  SHOW.add_action(GemInfoCommand.new('gem <gems>', desc))
 end
