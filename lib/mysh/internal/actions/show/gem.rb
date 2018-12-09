@@ -7,17 +7,28 @@ module Mysh
   class GemInfoCommand < Action
 
     #Execute the @gem shell command.
-    def process_command(_args)
+    def process_command(input)
       print WORKING unless @ran_once
 
-      puts "Key gem system information.", "",
-           info.format_mysh_bullets, "",
-           path.format_mysh_bullets, ""
+      args = input.cooked_body.split(" ")[1..-1]
+
+      if args.empty?
+        general
+      else
+        specific(args)
+      end
 
       @ran_once = true
     end
 
     private
+
+    # A general info request
+    def general
+      puts "Key gem system information.", "",
+           info.format_mysh_bullets, "",
+           path.format_mysh_bullets, ""
+    end
 
     # Get the info
     # Endemic Code Smells :reek:UtilityFunction
@@ -45,6 +56,25 @@ module Mysh
     # Endemic Code Smells :reek:UtilityFunction
     def path
       [["gem path"].concat(Gem.path)]
+    end
+
+    # Get gem info on the specified gems
+    def specific(args)
+      details = []
+
+      args.each do |gem|
+        version_list = Gem::Specification.find_all_by_name(gem)
+                                         .map{|s| s.version.to_s}
+                                         .join(", ")
+        details << [gem, version_list]
+
+        latest = insouciant {Gem.latest_version_for(gem).to_s}
+        details << ["latest", latest]
+        details << [" ", " "]
+      end
+
+      puts "Info on specified gems.", "",
+           details.format_mysh_bullets
     end
 
   end
