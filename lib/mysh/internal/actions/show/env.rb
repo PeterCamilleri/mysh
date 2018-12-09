@@ -1,26 +1,33 @@
 # coding: utf-8
 
-#* mysh/internal/actions/show/env.rb -- Get help on the mysh environment.
+# Get info on the mysh environment.
 module Mysh
 
-  #* mysh/internal/actions/show/env.rb -- Get help on the mysh environment.
+  # Get info on the mysh environment.
   class EnvInfoCommand < Action
 
-    #Execute the ? shell command.
+    # Execute the @env shell command.
     def process_command(_args)
-      puts "Key mysh environment information.", ""
-      puts info.format_mysh_bullets, "",
+      print WORKING unless @ran_once
+
+      puts "Key mysh environment information.", "",
+           info.format_mysh_bullets, "",
            path.format_mysh_bullets, ""
+
+      @ran_once = true
     end
 
     private
 
-    #Get the info
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Get the info
+    # Endemic Code Smells :reek:UtilityFunction
     def info
       [["about",     Mysh::SUMMARY],
        ["version",   Mysh::VERSION],
+       ["installed", Gem::Specification.find_all_by_name("mysh")
+                                       .map{|s| s.version.to_s}
+                                       .join(", ")],
+       ["latest",    insouciant {Gem.latest_version_for("mysh").to_s}],
        ["init file", $mysh_init_file.to_host_spec],
        ["user",      ENV['USER']],
        ["home",      (ENV['HOME'] || "").to_host_spec],
@@ -30,17 +37,12 @@ module Mysh
        ["os",        ENV['OS']],
        ["platform",  MiniTerm::TERM_PLATFORM],
        ["java?",     MiniTerm.java? ? true : false],
-       ["code page", if MiniTerm.windows?; (`chcp`); end],
-       ["term",      ENV['TERM']],
-       ["disp",      ENV['DISPLAY']],
-       ["edit",      ENV['EDITOR']],
        ["PID",       $PROCESS_ID]
       ]
     end
 
-    #Get the path.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Get the path.
+    # Endemic Code Smells :reek:UtilityFunction
     def path
       [["path"].concat(ENV['PATH'].split(File::PATH_SEPARATOR))]
     end

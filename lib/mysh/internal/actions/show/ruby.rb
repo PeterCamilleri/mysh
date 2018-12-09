@@ -1,12 +1,12 @@
 # coding: utf-8
 
-#* mysh/internal/actions/show/ruby.rb -- Get help on the ruby environment.
+# Get info on the ruby environment.
 module Mysh
 
-  #* mysh/internal/actions/show/ruby.rb -- Get help on the ruby environment.
+  # Get info on the ruby environment.
   class RubyInfoCommand < Action
 
-    #Execute the ? shell command.
+    #Execute the @ruby shell command.
     def process_command(_input)
       puts "Key ruby environment information.", ""
       puts info.format_mysh_bullets, "",
@@ -15,9 +15,8 @@ module Mysh
 
     private
 
-    #Get the info
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Get the info
+    # Endemic Code Smells :reek:UtilityFunction
     def info
       [["location",    RbConfig.ruby.to_host_spec],
        ["description", RUBY_DESCRIPTION],
@@ -36,9 +35,8 @@ module Mysh
       ]
     end
 
-    #Get the path.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Get the path.
+    # Endemic Code Smells :reek:UtilityFunction
     def path
       [["$:"].concat($:)]
     end

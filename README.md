@@ -374,6 +374,9 @@ end-of-input condition. The (internal) commands that do this are:
 * cancel - exit the current mysh file/level.
 * exit - terminate the mysh program.
 
+The cancel and exit commands are also available, with the same names and
+behavior, to Ruby code.
+
 An end-of-input condition is signaled by the user by entering Ctrl-z (in
 windows) or Alt-z (in Linux/Mac). See the mini_readline gem (link above) for
 more information on the keyboard mappings used by mysh.
@@ -605,6 +608,7 @@ quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 set        | Help on mysh variables.
 show       | Help on the show command.
+term       | Help on the show term command.
 types      | Help on mysh file types.
 usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
@@ -629,19 +633,18 @@ Topic    | Description
 ---------|----------------------------------------------------
 about    | A brief description of the mysh shell program.
 version  | The version of mysh in use.
+installed| All installed versions of mysh.
+latest   | The latest version of mysh.
 init file| The init file in use or &#60;none found&#62; or &#60;none&#62;.
 user     | The current user name.
 home     | The current home directory.
 name     | The path/name of the mysh program currently executing.
-shell    | The path/name of the system command shell.
+os shell | The path/name of the system command shell.
 host     | The name of the host computer.
 os       | The current operating system.
 platform | The operating platform detected by the low-level terminal gem.
 java     | Is the current platform powered by Java?
-code page| In Windows, what code page is active?
-term     | What terminal is defined by the system, if one is defined.
-disp     | What display is defined by the system, if one is defined.
-edit     | What editor is defined by the system, if one is defined.
+PID      | The process ID of the mysh program.
 path     | An easy-to-read, formatted version of the current search path.
 
 
@@ -669,14 +672,18 @@ $:          | An easy-to-read, formatted version of $: or the ruby search path.
 
 ##### Gem (@gem)
 
-This command displays useful information about the current rubygems
-gem management system.
+The show gem (or @gem) command is used to display useful information about
+the current gem system. There are two distinct ways to use this command.
+
+The first is without any arguments. This displays general information about the
+gem subsystem. This includes:
 
 Topic         | Description
 --------------|----------------------------------------------------
-rubygems vers | The installed version of rubygems.
-latest vers   | The latest version of rubygems available.
-marshal vers  | The version of the Marshal format for your Ruby.
+about         | About rubygems.
+version       | The current version of rubygems.
+latest        | The latest version of rubygems available.
+marshal       | The version of the marshal format for your Ruby.
 host          | Get the default RubyGems API host. This is normally https://rubygems.org.
 sources       | Returns an Array of sources to fetch remote gems from.
 gem folder    | The path where gems are to be installed.
@@ -689,6 +696,41 @@ file suffixes | Suffixes for require-able paths.
 gem dep files | The files where dependencies may be specified. Use Gemfile
 gem platforms | Array of platforms this RubyGems supports.
 gem path      | The folders searched when looking for a gem locally.
+
+The alternative is to specify a list of gems of interest. For each gem in the
+list, the program will list all installed versions of that gem and the latest
+version of that gem on the rubygems host. For example:
+
+    8 mysh>@gem rails gosu
+    Info on specified gems.
+
+    rails  4.2.0, 5.1.3, 5.1.6
+    latest 5.2.2
+
+    gosu   0.13.3
+    latest 0.14.4
+
+##### Term (@term)
+
+This command displays useful information about the console.
+
+Topic         | Description
+--------------|----------------------------------------------------
+about         | About the mini_readline gem.
+version       | The installed version of mini_readline.
+installed     | All installed versions of mini_readline.
+latest        | The latest version of mini_readline available.
+about         | About the mini_term gem.
+version       | The installed version of mini_term.
+installed     | All installed versions of mini_term.
+latest        | The latest version of mini_term available.
+platform      | The operating platform detected by mini_term.
+columns       | The number of columns in the console.
+rows          | The number of rows in the console.
+code page     | For Windows, what is the current code page?
+term          | What terminal is defined by the system, if one is defined.
+disp          | What display is defined by the system, if one is defined.
+edit          | What editor is defined by the system, if one is defined.
 
 
 ### Internal Shell Commands:

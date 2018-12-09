@@ -29,6 +29,7 @@ module Mysh
           ['env',     'Help on the show env command.',       'env.txt'    ],
           ['ruby',    'Help on the show ruby command.',      'ruby.txt'   ],
           ['gem',     'Help on the show gem command.',       'gem.txt'    ],
+          ['term',    'Help on the show term command.',      'term.txt'   ],
           ['math',    'Help on math functions.',             'math.txt'   ],
           ['usage',   'Help on mysh usage.',                 'usage.txt'  ],
           ['=',       'Help on ruby expressions.',           'expr.txt'   ],
