@@ -672,8 +672,11 @@ $:          | An easy-to-read, formatted version of $: or the ruby search path.
 
 ##### Gem (@gem)
 
-This command displays useful information about the current rubygems
-gem management system.
+The show gem (or @gem) command is used to display useful information about
+the current gem system. There are two distinct ways to use this command.
+
+The first is without any arguments. This displays general information about the
+gem subsystem. This includes:
 
 Topic         | Description
 --------------|----------------------------------------------------
@@ -693,6 +696,19 @@ file suffixes | Suffixes for require-able paths.
 gem dep files | The files where dependencies may be specified. Use Gemfile
 gem platforms | Array of platforms this RubyGems supports.
 gem path      | The folders searched when looking for a gem locally.
+
+The alternative is to specify a list of gems of interest. For each gem in the
+list, the program will list all installed versions of that gem and the latest
+version of that gem on the rubygems host. For example:
+
+    8 mysh>@gem rails gosu
+    Info on specified gems.
+
+    rails  4.2.0, 5.1.3, 5.1.6
+    latest 5.2.2
+
+    gosu   0.13.3
+    latest 0.14.4
 
 ##### Term (@term)
 
