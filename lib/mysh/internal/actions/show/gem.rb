@@ -64,7 +64,7 @@ module Mysh
 
       args.each do |gem_name|
         version_list = Gem::Specification.find_all_by_name(gem_name)
-                                         .map{|s| s.version.to_s}
+                                         .map {|spec| spec.version.to_s}
                                          .join(", ")
         details << [gem_name, version_list]
 
