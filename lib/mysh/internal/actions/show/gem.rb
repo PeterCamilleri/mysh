@@ -3,7 +3,7 @@
 # Get help on the gem environment.
 module Mysh
 
-  # Get help on the gem environment.
+  # Get information on the gem environment.
   class GemInfoCommand < Action
 
     #Execute the @gem shell command.
