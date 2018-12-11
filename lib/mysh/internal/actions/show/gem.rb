@@ -62,13 +62,13 @@ module Mysh
     def specific(args)
       details = []
 
-      args.each do |gem|
-        version_list = Gem::Specification.find_all_by_name(gem)
+      args.each do |gem_name|
+        version_list = Gem::Specification.find_all_by_name(gem_name)
                                          .map{|s| s.version.to_s}
                                          .join(", ")
-        details << [gem, version_list]
+        details << [gem_name, version_list]
 
-        latest = insouciant {latest_version_for(gem).to_s}
+        latest = insouciant {latest_version_for(gem_name).to_s}
         details << ["latest", latest]
         details << [" ", " "]
       end
