@@ -3,7 +3,7 @@
 # Get help on the gem environment.
 module Mysh
 
-  # Get help on the gem environment.
+  # Get information on the gem environment.
   class GemInfoCommand < Action
 
     #Execute the @gem shell command.
@@ -62,13 +62,13 @@ module Mysh
     def specific(args)
       details = []
 
-      args.each do |gem|
-        version_list = Gem::Specification.find_all_by_name(gem)
-                                         .map{|s| s.version.to_s}
+      args.each do |gem_name|
+        version_list = Gem::Specification.find_all_by_name(gem_name)
+                                         .map {|spec| spec.version.to_s}
                                          .join(", ")
-        details << [gem, version_list]
+        details << [gem_name, version_list]
 
-        latest = insouciant {latest_version_for(gem).to_s}
+        latest = insouciant {latest_version_for(gem_name).to_s}
         details << ["latest", latest]
         details << [" ", " "]
       end
@@ -81,8 +81,12 @@ module Mysh
     def latest_version_for(name)
       dependency = Gem::Dependency.new(name)
       fetcher = Gem::SpecFetcher.fetcher
-      spec = fetcher.spec_for_dependency(dependency)[0][-1][0]
-      spec && spec.version
+      if specs = fetcher.spec_for_dependency(dependency)[0][-1]
+        spec = specs[0]
+        spec && spec.version
+      else
+        "<Not found in repository>"
+      end
     end
 
   end
