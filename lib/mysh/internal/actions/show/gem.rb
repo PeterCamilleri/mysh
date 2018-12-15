@@ -81,8 +81,12 @@ module Mysh
     def latest_version_for(name)
       dependency = Gem::Dependency.new(name)
       fetcher = Gem::SpecFetcher.fetcher
-      spec = fetcher.spec_for_dependency(dependency)[0][-1][0]
-      spec && spec.version
+      if specs = fetcher.spec_for_dependency(dependency)[0][-1]
+        spec = specs[0]
+        spec && spec.version
+      else
+        "<Not found in repository>"
+      end
     end
 
   end
