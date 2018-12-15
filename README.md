@@ -348,7 +348,7 @@ baz yes
 ###### Page Pause
 
 Some commands can generate very lengthy output that can scroll off the top of
-the screen. to handle this, mysh automatically inserts pauses once per screen.
+the screen. To handle this, mysh automatically inserts pauses once per screen.
 Now this capability has been moved into the pause_output gem, but since it has
 an impact on the user "experience" it is discussed here. When a pause point is
 reached, mysh displays a prompt and waits for the users to press a key that
