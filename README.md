@@ -349,8 +349,10 @@ baz yes
 
 Some commands can generate very lengthy output that can scroll off the top of
 the screen. to handle this, mysh automatically inserts pauses once per screen.
-At this point, it displays a prompt and waits for the users to press a key that
-will determine the action to take. The default message is:
+Now this capability has been moved into the pause_output gem, but since it has
+an impact on the user "experience" it is discussed here. When a pause point is
+reached, mysh displays a prompt and waits for the users to press a key that
+will determine the action to take. The default pause prompt message is:
 
     Press a key, a space, or q:
 
@@ -996,7 +998,6 @@ application gem uses the following exception classes:
       StandardError        # From Ruby.
         MyshException      # The abstract base exception for mysh.
           MyshExit         # Exit the current mysh processing loop.
-          MyshStopOutput   # Stop further output from a verbose command.
           MyshUsage        # Internal: Used by the --help options.
 
 
