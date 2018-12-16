@@ -9,6 +9,7 @@ module Mysh
     #Execute the @gem shell command.
     def process_command(input)
       print WORKING unless @ran_once
+      Gem.refresh
 
       args = input.cooked_body.split(" ")[1..-1]
 
