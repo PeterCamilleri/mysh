@@ -12,7 +12,7 @@ module Mysh
       Gem.refresh
 
       puts "Key term information.", "",
-           info.format_mysh_bullets, ""
+           info.format_output_bullets, ""
 
       @ran_once = true
     end

@@ -5,6 +5,7 @@
 require 'English'
 require 'in_array'
 require 'pause_output'
+require 'format_output'
 
 require_relative 'mysh/exceptions'
 require_relative 'mysh/binding_wrapper'

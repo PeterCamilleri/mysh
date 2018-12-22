@@ -4,7 +4,6 @@ require_relative 'internal/actions/actions_path'
 require_relative 'internal/action'
 require_relative 'internal/action_pool'
 require_relative 'internal/manage'
-require_relative 'internal/format'
 require_relative 'internal/to_file_spec'
 
 #Load up the internal actions!

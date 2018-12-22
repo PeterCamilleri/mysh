@@ -15,7 +15,7 @@ module Mysh
     if help.empty?
       puts "No help found for #{topic.inspect}."
     else
-      puts help.format_mysh_bullets
+      help.puts_format_output_bullets
     end
   end
 

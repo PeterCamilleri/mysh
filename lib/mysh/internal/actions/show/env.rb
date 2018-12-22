@@ -12,8 +12,8 @@ module Mysh
       Gem.refresh
 
       puts "Key mysh environment information.", "",
-           info.format_mysh_bullets, "",
-           path.format_mysh_bullets, ""
+           info.format_output_bullets, "",
+           path.format_output_bullets, ""
 
       @ran_once = true
     end

@@ -50,7 +50,7 @@ module Mysh
       puts (MNV.keys - ['$'.to_sym])
              .sort
              .map {|sym| ["$" + sym.to_s, MNV.get_source(sym)]}
-             .format_mysh_bullets
+             .format_output_bullets
     end
 
   end

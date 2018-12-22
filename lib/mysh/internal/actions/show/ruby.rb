@@ -9,8 +9,8 @@ module Mysh
     #Execute the @ruby shell command.
     def process_command(_input)
       puts "Key ruby environment information.", ""
-      puts info.format_mysh_bullets, "",
-           path.format_mysh_bullets, ""
+      puts info.format_output_bullets, "",
+           path.format_output_bullets, ""
     end
 
     private

@@ -27,8 +27,8 @@ module Mysh
     # A general info request
     def general
       puts "Key gem system information.", "",
-           info.format_mysh_bullets, "",
-           path.format_mysh_bullets, ""
+           info.format_output_bullets, "",
+           path.format_output_bullets, ""
     end
 
     # Get the info
@@ -75,7 +75,7 @@ module Mysh
       end
 
       puts "Info on specified gems.", "",
-           details.format_mysh_bullets
+           details.format_output_bullets
     end
 
     # Get the latest version for the named gem. Patched code.

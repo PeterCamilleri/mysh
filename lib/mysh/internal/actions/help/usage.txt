@@ -4,5 +4,5 @@ Usage: mysh <args>
 
 Where args are one or more of the following command options:
 
-{{ Mysh::COMMAND_LINE.actions_info.format_mysh_bullets }}
+{{ Mysh::COMMAND_LINE.actions_info.format_output_bullets }}
 
