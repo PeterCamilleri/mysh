@@ -7,5 +7,5 @@ Args = {{ args.inspect }}
 
 {{ [["Numbers", Array.new(count){|i| (i+1)} ],
     ["Squares", Array.new(count){|i| (i+1)**2} ],
-    ["Cubes",   Array.new(count){|i| (i+1)**3} ]].format_mysh_bullets }}
+    ["Cubes",   Array.new(count){|i| (i+1)**3} ]].format_output_bullets }}
 

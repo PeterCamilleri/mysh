@@ -9,9 +9,10 @@ module Mysh
     #Execute the @term shell command.
     def process_command(_args)
       print WORKING unless @ran_once
+      Gem.refresh
 
       puts "Key term information.", "",
-           info.format_mysh_bullets, ""
+           info.format_output_bullets, ""
 
       @ran_once = true
     end

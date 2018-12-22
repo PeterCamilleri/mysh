@@ -292,65 +292,20 @@ are:
 
 * String#to_host_spec - given a string with a file path/name value, express that
 string in a manner compatible with the current operating environment.
-* Array#format_mysh_columns - take an array and convert it to a string with nice
-regular columns.
-* Array#puts_mysh_columns - as above, but print the string.
-* Array#format_mysh_bullets - take an array and convert it to a string with nice
-bullet points. The appearance of each point depends on its structure. See below:
-* Array#puts_mysh_bullets - as above, but print the string.
 
-This must all be confusing. Some examples may help:
+###### Formatting
 
-```
-mysh>=puts "lib/mysh/expression/lineage.rb".to_host_spec
-lib\mysh\expression\lineage.rb
-
-mysh>=(1..100).to_a.puts_mysh_columns
-1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97
-2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98
-3 7 11 15 19 23 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 95 99
-4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100
-
-mysh>=["foo", "bar "*30, "some "*25, "stuff"].puts_mysh_bullets
-* foo
-* bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar
-  bar bar bar bar bar bar bar bar bar bar bar
-* some some some some some some some some some some some some some some some
-  some some some some some some some some some some
-* stuff
-
-mysh>=[["foo", "bar "*20], ["sna", "foo young "*10 ] ].puts_mysh_bullets
-foo bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar bar
-    bar bar
-sna foo young foo young foo young foo young foo young foo young foo young foo
-    young foo young foo young
-
-mysh>=[["foo", 1,2,3]].puts_mysh_bullets
-foo 1
-    2
-    3
-
-mysh>=[[(1..100).to_a]].puts_mysh_bullets
-* 1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97
-  2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98
-  3 7 11 15 19 23 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 95 99
-  4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100
-
-mysh>=[["foo", (1..100).to_a], ["baz", "yes"]].puts_mysh_bullets
-foo 1 5 9  13 17 21 25 29 33 37 41 45 49 53 57 61 65 69 73 77 81 85 89 93 97
-    2 6 10 14 18 22 26 30 34 38 42 46 50 54 58 62 66 70 74 78 82 86 90 94 98
-    3 7 11 15 19 23 27 31 35 39 43 47 51 55 59 63 67 71 75 79 83 87 91 95 99
-    4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76 80 84 88 92 96 100
-baz yes
-
-```
+To assist in creating nicely formatted output, the mysh employs the
+format_output gem. Please refer to that gem for more information.
 
 ###### Page Pause
 
 Some commands can generate very lengthy output that can scroll off the top of
-the screen. to handle this, mysh automatically inserts pauses once per screen.
-At this point, it displays a prompt and waits for the users to press a key that
-will determine the action to take. The default message is:
+the screen. To handle this, mysh automatically inserts pauses once per screen.
+Now this capability has been moved into the pause_output gem, but since it has
+an impact on the user "experience" it is discussed here. When a pause point is
+reached, mysh displays a prompt and waits for the users to press a key that
+will determine the action to take. The default pause prompt message is:
 
     Press a key, a space, or q:
 
@@ -996,7 +951,6 @@ application gem uses the following exception classes:
       StandardError        # From Ruby.
         MyshException      # The abstract base exception for mysh.
           MyshExit         # Exit the current mysh processing loop.
-          MyshStopOutput   # Stop further output from a verbose command.
           MyshUsage        # Internal: Used by the --help options.
 
 

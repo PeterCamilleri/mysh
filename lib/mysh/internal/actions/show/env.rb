@@ -9,10 +9,11 @@ module Mysh
     # Execute the @env shell command.
     def process_command(_args)
       print WORKING unless @ran_once
+      Gem.refresh
 
       puts "Key mysh environment information.", "",
-           info.format_mysh_bullets, "",
-           path.format_mysh_bullets, ""
+           info.format_output_bullets, "",
+           path.format_output_bullets, ""
 
       @ran_once = true
     end

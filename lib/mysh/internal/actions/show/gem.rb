@@ -9,6 +9,7 @@ module Mysh
     #Execute the @gem shell command.
     def process_command(input)
       print WORKING unless @ran_once
+      Gem.refresh
 
       args = input.cooked_body.split(" ")[1..-1]
 
@@ -26,8 +27,8 @@ module Mysh
     # A general info request
     def general
       puts "Key gem system information.", "",
-           info.format_mysh_bullets, "",
-           path.format_mysh_bullets, ""
+           info.format_output_bullets, "",
+           path.format_output_bullets, ""
     end
 
     # Get the info
@@ -74,7 +75,7 @@ module Mysh
       end
 
       puts "Info on specified gems.", "",
-           details.format_mysh_bullets
+           details.format_output_bullets
     end
 
     # Get the latest version for the named gem. Patched code.

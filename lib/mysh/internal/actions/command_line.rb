@@ -46,7 +46,7 @@ module Mysh
     exit
 
   rescue => err
-    more do
+    more(MNV) do
       puts "", err.to_s, ""
       HELP["usage"].process_command(nil)
     end

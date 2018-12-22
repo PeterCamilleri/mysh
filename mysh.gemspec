@@ -31,6 +31,9 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'reek', "~> 5.0.2"
 
   spec.add_runtime_dependency     'mini_readline', "~> 0.9.0"
+  spec.add_runtime_dependency     'mini_term', "~> 0.1.0"
+  spec.add_runtime_dependency     'pause_output', "~> 0.1.0"
+  spec.add_runtime_dependency     'format_output', "~> 0.1.0"
   spec.add_runtime_dependency     'vls', "~> 0.4.1"
   spec.add_runtime_dependency     'in_array', "~> 0.1.8"
 end

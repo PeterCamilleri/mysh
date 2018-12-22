@@ -45,7 +45,7 @@ module Mysh
 
     #The brief gem list report.
     def short_report
-      puts @specs.map {|spec| spec.name}.format_mysh_columns, ""
+      puts @specs.map {|spec| spec.name}.format_output_columns, ""
     end
 
     #The long-winded gem list report.
@@ -54,7 +54,7 @@ module Mysh
         buffer.concat(info(spec))
       end
 
-      puts report.format_mysh_bullets
+      report.puts_format_output_bullets
     end
 
     #Get detailed information on a gem specification.
