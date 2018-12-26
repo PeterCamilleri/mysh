@@ -23,7 +23,7 @@ module Mysh
       #Set up a new execution environment
       def initialize
         $mysh_exec_result  = nil
-        $mysh_exec_binding = mysh_binding
+        $mysh_exec_binding = binding
       end
 
       #Do the actual work of executing an expression.
@@ -55,11 +55,6 @@ module Mysh
       def reset
         Mysh.reset_host
         nil
-      end
-
-      #Create a binding for mysh to execute expressions in.
-      def mysh_binding
-        binding
       end
     end
 
