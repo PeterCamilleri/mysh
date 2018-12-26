@@ -26,14 +26,6 @@ module Mysh
         $mysh_exec_binding = binding
       end
 
-      #Do the actual work of executing an expression.
-      #<br>Note:
-      #* The expression string always begins with an '=' character.
-      def execute(expression)
-        pp $mysh_exec_binding.eval("$mysh_exec_result" + expression)
-        :expression
-      end
-
       #Return a simple message for less convoluted error messages.
       def inspect
         "exec_host"
