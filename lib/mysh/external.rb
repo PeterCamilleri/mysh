@@ -22,7 +22,7 @@ module Mysh
         Mysh.process_file(file_name)
         :mysh_script
       elsif ext == '.txt'
-        show_handlebar_file(file_name, BindingWrapper.new(binding))
+        show_handlebar_file(file_name, binding)
         :internal
       end
     end

@@ -31,11 +31,6 @@ module Mysh
         "exec_host"
       end
 
-      #Evaluate the string in the my shell context.
-      def mysh_eval(str)
-        $mysh_exec_binding.eval(str)
-      end
-
       private
 
       #Get the previous result

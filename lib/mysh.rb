@@ -1,6 +1,6 @@
 # coding: utf-8
 
-# mysh -- MY SHell -- a Ruby/Rails inspired command line shell.
+# mysh -- MY SHell -- a Ruby inspired command line shell.
 
 require 'English'
 require 'in_array'
@@ -8,7 +8,6 @@ require 'pause_output'
 require 'format_output'
 
 require_relative 'mysh/exceptions'
-require_relative 'mysh/binding_wrapper'
 require_relative 'mysh/input_wrapper'
 require_relative 'mysh/user_input'
 require_relative 'mysh/expression'

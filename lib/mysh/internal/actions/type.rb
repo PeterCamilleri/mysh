@@ -12,7 +12,7 @@ module Mysh
     file_name = args.shift
 
     if file_name
-      show_handlebar_file(file_name, BindingWrapper.new(binding))
+      show_handlebar_file(file_name, binding)
     else
       fail "A text file must be specified."
     end
