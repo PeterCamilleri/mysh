@@ -2,21 +2,20 @@
 
 require_relative 'handlebars/string'
 
-#* user_input/handlebars.rb -- Handlebar embedded ruby support.
+# Handlebar embedded ruby support.
 class Object
 
-  #Show a file with embedded ruby handlebars.
-  #<br>Note:
-  #The message receiver is the evaluation host for the handlebar code.
+private
+
+  # Show a file with embedded ruby handlebars.
+  # Note: The message receiver is the evaluation host for the handlebar code.
   def show_handlebar_file(name, evaluator = $mysh_exec_binding)
     puts eval_handlebar_file(name, evaluator)
   end
 
-  #Expand a file with embedded ruby handlebars.
-  #<br>Note:
-  #The message receiver is the evaluation host for the handlebar code.
-  #<br>Endemic Code Smells
-  #* :reek:UtilityFunction
+  # Expand a file with embedded ruby handlebars.
+  # Note: The message receiver is the evaluation host for the handlebar code.
+  # Endemic Code Smells   :reek:UtilityFunction
   def eval_handlebar_file(name, evaluator)
     IO.read(name).preprocess(evaluator)
   end
