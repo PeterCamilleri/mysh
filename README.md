@@ -907,7 +907,7 @@ on the optional parms.
 ###### "string".preprocess(context=mysh_default_context)
 Process the string for embedded variables and handlebars. By default,
 any embedded ruby  is evaluated in the mysh global expression binding. However,
-another BindingWrapper instance may be passed to access an alternative binding.
+another binding may be passed to access an alternative execution environment.
 
 ###### "string".to_host_spec
 Given a string with a file spec, to_host_spec adjusts that string so that it is
