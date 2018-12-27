@@ -5,7 +5,7 @@ class String
 
   #The mysh string pre-processor stack.
   def preprocess(evaluator=$mysh_exec_binding)
-    self.eval_variables.eval_handlebars(evaluator).eval_quoted_braces
+    self.eval_variables.eval_handlebars(evaluator)
   end
 
 end

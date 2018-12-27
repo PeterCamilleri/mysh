@@ -1,6 +1,5 @@
 # coding: utf-8
 
-require 'pp'
 require_relative 'expression/lineage'
 
 # Endemic Code Smells  :reek:ModuleInitialize -- False positive
@@ -9,6 +8,8 @@ module Mysh
   # Set up some popular constants
   E = Math::E
   PI = Math::PI
+
+  $mysh_exec_result  = nil
 
   # Reset the state of the execution hosting environment.
   # Endemic Code Smells  :reek:TooManyStatements -- False positive
@@ -19,7 +20,6 @@ module Mysh
 
       # Set up a new execution environment
       def initialize
-        $mysh_exec_result  = nil
         $mysh_exec_binding = binding
       end
 
@@ -40,6 +40,7 @@ module Mysh
         Mysh.reset_host
         nil
       end
+
     end
 
     $mysh_exec_host = exec_class.new
