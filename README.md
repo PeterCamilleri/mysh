@@ -26,7 +26,7 @@ See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
 Oh, and one other little thing. A survey of the mysh reveals that it currently
-contains 2291 lines of code. It seems that there has been some growth beyond
+contains 2188 lines of code. It seems that there has been some growth beyond
 the 25 lines in the original article.
 
 ## Installation
