@@ -21,10 +21,7 @@ require_relative 'mysh/pre_processor'
 require_relative 'mysh/process'
 require_relative 'mysh/globalize'
 require_relative 'mysh/init'
-
-$VERBOSE = nil
 require_relative 'mysh/expression'
-
 require_relative 'mysh/version'
 
 #The Mysh (MY SHell) module. A container for mysh and its functionality.
@@ -45,3 +42,5 @@ end
 if __FILE__ == $0
   Mysh.run(ARGV)  #Run a shell if this file is run directly.
 end
+
+$VERBOSE = nil
