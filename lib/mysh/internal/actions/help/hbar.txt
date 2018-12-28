@@ -30,6 +30,17 @@ those cases, simply end the expression with a '#' character. For example:
     mysh>echo \{\{ "not embedded" #\}\} \{\{ "embedded" \}\}
       embedded
 
+A common use for not embedded code snippets is to act as the control
+structures. For example:
+
+    \{\{ 3.times do |i| #\}\} The count is: \{\{ i+1 \}\}
+    \{\{ end #\}\}
+
+Yields the following output:
+
+    {{ 3.times do |i| #}} The count is: {{ i+1 }}
+    {{ end #}}
+
 Finally, it may be that it is desired to embed braces into a text file or
 the command line. In that case precede the brace with a backslash character
 like: \\{  or \\}
