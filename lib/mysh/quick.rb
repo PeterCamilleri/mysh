@@ -13,7 +13,9 @@ module Mysh
   QUICK['@'] = lambda {|input| SHOW_COMMAND.process_quick_command(input)}
 
   QUICK['='] = lambda do |input|
-    pp $mysh_exec_binding.eval("$mysh_exec_result" + input.raw.preprocess)
+    cmd = "$mysh_exec_result=(" + input.raw[1..-1].preprocess + ")"
+    puts cmd if MNV[:debug].extract_boolean
+    pp $mysh_exec_binding.eval(cmd)
     :expression
   end
 
