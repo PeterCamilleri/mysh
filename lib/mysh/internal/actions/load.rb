@@ -18,7 +18,7 @@ module Mysh
         Mysh.process_file(file_name)
         :internal
       elsif file_ext == '.txt'
-        show_handlebar_file(file_name, BindingWrapper.new(binding))
+        show_handlebar_file(file_name, binding)
         :internal
       elsif file_ext == '.rb'
         load file_name

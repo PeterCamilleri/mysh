@@ -26,7 +26,7 @@ See the original article at:
 (http://www.blackbytes.info/2016/07/writing-a-shell-in-ruby/)
 
 Oh, and one other little thing. A survey of the mysh reveals that it currently
-contains 2291 lines of code. It seems that there has been some growth beyond
+contains 2188 lines of code. It seems that there has been some growth beyond
 the 25 lines in the original article.
 
 ## Installation
@@ -907,7 +907,7 @@ on the optional parms.
 ###### "string".preprocess(context=mysh_default_context)
 Process the string for embedded variables and handlebars. By default,
 any embedded ruby  is evaluated in the mysh global expression binding. However,
-another BindingWrapper instance may be passed to access an alternative binding.
+another binding may be passed to access an alternative execution environment.
 
 ###### "string".to_host_spec
 Given a string with a file spec, to_host_spec adjusts that string so that it is

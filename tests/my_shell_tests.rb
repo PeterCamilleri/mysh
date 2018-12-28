@@ -19,7 +19,6 @@ class MyShellTester < Minitest::Test
     assert_equal(Class,  Mysh::ActionPool.class)
     assert_equal(Module, Mysh::MNV.class)
     assert_equal(Class,  Mysh::Keeper.class)
-    assert_equal(Class,  Mysh::BindingWrapper.class)
     assert_equal(Class,  Mysh::InputWrapper.class)
 
     assert_equal(Mysh::ActionPool, Mysh::COMMANDS.class)
@@ -44,13 +43,13 @@ class MyShellTester < Minitest::Test
 
   def test_handlebars
     assert_equal("ABC 123 DEF",
-                 "ABC {{ (1..3).to_a.join }} DEF".eval_handlebars)
+                 "ABC {{ (1..3).to_a.join }} DEF".preprocess)
 
-    assert_equal("ABC", "{{ 'ABC'  }}".eval_handlebars)
-    assert_equal("",    "{{ 'ABC' #}}".eval_handlebars)
+    assert_equal("ABC", "{{ 'ABC'  }}".preprocess)
+    assert_equal("",    "{{ 'ABC' #}}".preprocess)
 
-    assert_equal("{{ 'ABC' }}", "\\{\\{ 'ABC' \\}\\}".eval_quoted_braces)
-    assert_equal("{{A}}", "{{ '{'+'{A}'+'}' }}".eval_handlebars.eval_quoted_braces)
+    assert_equal("{{ 'ABC' }}", "\\{\\{ 'ABC' \\}\\}".preprocess)
+    assert_equal("{{A}}", "{{ '{'+'{A}'+'}' }}".preprocess)
   end
 
   def test_command_parsing
