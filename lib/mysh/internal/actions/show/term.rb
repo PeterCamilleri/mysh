@@ -45,8 +45,6 @@ module Mysh
       ]
     end
 
-
-
   end
 
   desc = 'Get information about the console. See ?term for more.'
