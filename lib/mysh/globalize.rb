@@ -27,4 +27,17 @@ class Object
     err.to_s
   end
 
+  # Get the latest version for the named gem. Patched code.
+  def latest_version_for(name, fetcher=nil)
+    dependency = Gem::Dependency.new(name)
+    fetcher ||= Gem::SpecFetcher.new
+
+    if specs = fetcher.spec_for_dependency(dependency)[0][-1]
+      spec = specs[0]
+      spec && spec.version
+    else
+      "<Not found in repository>"
+    end
+  end
+
 end

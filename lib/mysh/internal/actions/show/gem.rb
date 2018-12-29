@@ -8,7 +8,7 @@ module Mysh
 
     #Execute the @gem shell command.
     def process_command(input)
-      print WORKING unless @ran_once
+      print WORKING
       Gem.refresh
 
       args = input.cooked_body.split(" ")[1..-1]
@@ -19,7 +19,6 @@ module Mysh
         specific(args)
       end
 
-      @ran_once = true
     end
 
     private
@@ -61,7 +60,7 @@ module Mysh
 
     # Get gem info on the specified gems
     def specific(args)
-      details = []
+      fetcher, details = Gem::SpecFetcher.new, []
 
       args.each do |gem_name|
         version_list = Gem::Specification.find_all_by_name(gem_name)
@@ -69,25 +68,13 @@ module Mysh
                                          .join(", ")
         details << [gem_name, version_list]
 
-        latest = insouciant {latest_version_for(gem_name).to_s}
+        latest = insouciant {latest_version_for(gem_name, fetcher).to_s}
         details << ["latest", latest]
         details << [" ", " "]
       end
 
       puts "Info on specified gems.", "",
            details.format_output_bullets
-    end
-
-    # Get the latest version for the named gem. Patched code.
-    def latest_version_for(name)
-      dependency = Gem::Dependency.new(name)
-      fetcher = Gem::SpecFetcher.fetcher
-      if specs = fetcher.spec_for_dependency(dependency)[0][-1]
-        spec = specs[0]
-        spec && spec.version
-      else
-        "<Not found in repository>"
-      end
     end
 
   end
