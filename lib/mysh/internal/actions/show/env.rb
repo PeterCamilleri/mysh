@@ -8,14 +8,12 @@ module Mysh
 
     # Execute the @env shell command.
     def process_command(_args)
-      print WORKING unless @ran_once
+      print WORKING
       Gem.refresh
 
       puts "Key mysh environment information.", "",
            info.format_output_bullets, "",
            path.format_output_bullets, ""
-
-      @ran_once = true
     end
 
     private
@@ -28,7 +26,7 @@ module Mysh
        ["installed", Gem::Specification.find_all_by_name("mysh")
                                        .map{|s| s.version.to_s}
                                        .join(", ")],
-       ["latest",    insouciant {Gem.latest_version_for("mysh").to_s}],
+       ["latest",    insouciant {latest_version_for("mysh").to_s}],
        ["init file", $mysh_init_file.to_host_spec],
        ["user",      ENV['USER']],
        ["home",      (ENV['HOME'] || "").to_host_spec],
