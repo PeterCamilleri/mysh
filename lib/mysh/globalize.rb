@@ -30,7 +30,7 @@ class Object
   # Get the latest version for the named gem. Patched code.
   def latest_version_for(name, fetcher=nil)
     dependency = Gem::Dependency.new(name)
-    fetcher ||= Gem::SpecFetcher.new
+    fetcher  ||= Gem::SpecFetcher.new
 
     if specs = fetcher.spec_for_dependency(dependency)[0][-1]
       spec = specs[0]
