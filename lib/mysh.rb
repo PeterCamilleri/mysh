@@ -24,10 +24,10 @@ require_relative 'mysh/init'
 require_relative 'mysh/expression'
 require_relative 'mysh/version'
 
-#The Mysh (MY SHell) module. A container for mysh and its functionality.
+# The Mysh (MY SHell) module. A container for mysh and its functionality.
 module Mysh
 
-  #The actual shell method.
+  # The actual shell method.
   def self.run(args=[])
     process_command_args(args, :pre_boot)
     mysh_load_init
@@ -40,7 +40,7 @@ module Mysh
 end
 
 if __FILE__ == $0
-  Mysh.run(ARGV)  #Run a shell if this file is run directly.
+  Mysh.run(ARGV)  # Run a shell if this file is run directly.
 end
 
 # Suppress an annoying warning during tests.

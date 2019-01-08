@@ -1,17 +1,17 @@
 # coding: utf-8
 
-#* mysh/sources/console.rb -- The mysh console command source.
+# The mysh console command source.
 module Mysh
 
-  #A wrapper for the mysh console terminal.
+  # A wrapper for the mysh console terminal.
   class Console
 
-    #Setup the console wrapper.
+    # Setup the console wrapper.
     def initialize
       @eoi = false
     end
 
-    #Get the initial line of command input.
+    # Get the initial line of command input.
     def get_command
       puts MNV[:pre_prompt] if MNV.key?(:pre_prompt)
       get(prompt: MNV[:prompt])
@@ -20,7 +20,7 @@ module Mysh
       exit
     end
 
-    #Get additional lines of continued commands.
+    # Get additional lines of continued commands.
     def get_command_extra(str)
       get(prompt: MNV[:post_prompt] + '\\', prefix: str[0])
     rescue MiniReadlinePLE => err
@@ -38,15 +38,18 @@ module Mysh
       MNV[selector] = ""
     end
 
-    #Have we reached the end of input?
+    # Have we reached the end of input?
     def eoi?
       @eoi
     end
 
     private
 
-    #Get some actual user input!
+    # Get some actual user input!
     def get(parms={})
+      parms[:history] = MNV[:history].extract_boolean
+      parms[:no_move] = MNV[:no_move].extract_boolean
+
       result = (input = Mysh.input).readline(parms)
       input.instance_options[:initial] = ""
       result
