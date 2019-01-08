@@ -125,8 +125,12 @@ Where the available options are:
 Option               | Short Form(s)| Description             | Default
 ---------------------|--------------|-------------------------|-----------
 --debug              | -d           | Turn on mysh debugging. | false
+--do-move            |              | Turn on mysh command history shifting.
+--no-move            |              | Turn off mysh command history shifting. | true
 --no-debug           | -nd          | Turn off mysh debugging.
 --help               | -? -h        | Display mysh usage info and exit.
+--history            |              | Turn on mysh command history. | true
+--no-history         |              | Turn off mysh command history.
 --init filename      | -i filename  | Initialize mysh by loading the specified file. | ~/mysh_init.mysh
 --no-init            | -ni          | Do not load a file to initialize mysh.
 --load filename      | -l filename  | Load the specified file into the mysh.
@@ -417,7 +421,9 @@ $d          | The current date.
 $date_fmt   | The format for the date: "%Y-%m-%d"
 $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
+$history    | Is command line history enabled?
 $name       | The name given to this mysh session.
+$no_move    | Entries are not moved up when pulled from the command history.
 $page_height| The page height.
 $page_msg   | The paging message. Default is "Press a key, a space, or q:"
 $page_pause | Is page pausing enabled?

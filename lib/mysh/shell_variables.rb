@@ -21,6 +21,9 @@ module Mysh
   MNV[:page_pause]  = "on"
   MNV[:page_msg]    = "Press a key, a space, or q:"
 
+  MNV[:history]     = "on"
+  MNV[:no_move]     = "on"
+
   MNV[:d] = "{{ Time.now.strftime(MNV[:date_fmt]) }}"
   MNV[:h] = "{{ ENV['HOME'].to_host_spec }}"
   MNV[:r] = "{{ RbConfig.ruby.to_host_spec }}"

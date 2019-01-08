@@ -27,8 +27,7 @@ module Mysh
 
   #Get the user input ready.
   def self.input
-    @input ||= MiniReadline::Readline.new(history:       true,
-                                          eoi_detect:    true,
+    @input ||= MiniReadline::Readline.new(eoi_detect:    true,
                                           auto_complete: true,
                                           auto_source:   SmartSource)
   end

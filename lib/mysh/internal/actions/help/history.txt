@@ -21,3 +21,10 @@ Form     Form            Description
                          regex pattern. Note: This pattern cannot be 'clear'
                          so use 'clea[r]' instead.
 
+The history buffer is controlled by two variables:
+
+$$history  Is the history buffer enabled?
+$$no_move  Are history entries kept in place or shifted up the buffer?
+
+These are also controlled by command line options. See ?usage for more info.
+
