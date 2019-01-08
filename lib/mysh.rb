@@ -43,4 +43,4 @@ if __FILE__ == $0
   Mysh.run(ARGV)  #Run a shell if this file is run directly.
 end
 
-$VERBOSE = nil
+$VERBOSE = nil if defined?(Rake)
