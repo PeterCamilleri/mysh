@@ -1,6 +1,6 @@
 # coding: utf-8
 
-require_relative 'handlebars/string'
+require_relative 'handlebars/eval_handlebars'
 
 # Handlebar embedded ruby support.
 class Object
