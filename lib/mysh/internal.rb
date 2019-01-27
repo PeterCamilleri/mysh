@@ -20,4 +20,7 @@ module Mysh
 end
 
 # Load up the internal actions!
+load_spec = MYSH_LIB + "mysh/internal/*.rb"
+Dir[load_spec].each {|file| require file }
+
 Dir[Mysh::Action::ACTIONS_PATH + '*.rb'].each {|file| require file }
