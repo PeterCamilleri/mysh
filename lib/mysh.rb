@@ -9,6 +9,7 @@ require 'pause_output'
 require 'format_output'
 
 require_relative 'mysh/exceptions'
+require_relative 'mysh/string_helpers'
 require_relative 'mysh/input_wrapper'
 require_relative 'mysh/user_input'
 require_relative 'mysh/internal'
