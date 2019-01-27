@@ -3,13 +3,9 @@
 # Monkey patches for Mysh string data.
 class String
 
-  # Extract common mysh data from this string.
+  # Extract Boolean data from this string.
   def extract_boolean
-    if self =~ /\A(false|no|off)\z/i
-      false
-    else
-      self
-    end
+    self !~ /\A(false|no|off)\z/i
   end
 
   # Make the file name fit the local system.
