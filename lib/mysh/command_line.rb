@@ -1,12 +1,12 @@
 # coding: utf-8
 
-# The mysh internal command line option.
+# The command line options of mysh.
 module Mysh
 
   # Action pool of command line options.
   COMMAND_LINE = ActionPool.new("COMMAND_LINE")
 
-  # The mysh internal command line option.
+  # A mysh command line option.
   class CommandOption < Action
 
     # Execute a pre-boot command line option.
@@ -29,7 +29,7 @@ module Mysh
   end
 
   # Execute command line options.
-  #<Endemic Code Smells   :reek:TooManyStatements
+  # Endemic Code Smells   :reek:TooManyStatements
   def self.process_command_args(args, phase)
     read_point = args.each
 
