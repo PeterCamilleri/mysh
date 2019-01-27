@@ -1,23 +1,23 @@
 # coding: utf-8
 
-#* mysh/internal/actions/command_line.rb -- The mysh internal command line option.
+# The mysh internal command line option.
 module Mysh
 
   # Action pool of command line options.
   COMMAND_LINE = ActionPool.new("COMMAND_LINE")
 
-  #* mysh/internal/actions/command_line.rb -- The mysh internal command line option.
+  # The mysh internal command line option.
   class CommandOption < Action
 
-    #Execute a pre-boot command line option.
+    # Execute a pre-boot command line option.
     def pre_boot(_args); end
 
-    #Execute a post-boot command line option.
+    # Execute a post-boot command line option.
     def post_boot(_args); end
 
     alias :process_command :pre_boot
 
-    #Get an argument for an option.
+    # Get an argument for an option.
     def get_arg(read_point)
       result = read_point.next
       fail if COMMAND_LINE.exists?(result) #An arg should not be a command!
@@ -28,9 +28,8 @@ module Mysh
 
   end
 
-  #Execute command line options.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
+  # Execute command line options.
+  #<Endemic Code Smells   :reek:TooManyStatements
   def self.process_command_args(args, phase)
     read_point = args.each
 
@@ -56,5 +55,6 @@ module Mysh
 
 end
 
-#Load up the extra help actions!
-Dir[Mysh::Action::ACTIONS_PATH + 'command_line/*.rb'].each {|file| require file }
+# Load up the extra help actions!
+path = MYSH_LIB + "mysh/command_line/*.rb"
+Dir[path].each {|file| require file }
