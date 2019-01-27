@@ -7,6 +7,7 @@ require 'English'
 require 'in_array'
 require 'pause_output'
 require 'format_output'
+require 'mini_readline'
 
 require_relative 'mysh/exceptions'
 require_relative 'mysh/string_helpers'

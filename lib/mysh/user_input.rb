@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require 'mini_readline'
-
 require_relative 'sources/console'
 require_relative 'sources/string'
 
