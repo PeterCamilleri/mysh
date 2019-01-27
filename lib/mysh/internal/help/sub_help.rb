@@ -1,12 +1,12 @@
 # coding: utf-8
 
-#* mysh/internal/actions/help/sub_help.rb -- The mysh internal help sub commands.
+# The mysh internal help sub commands.
 module Mysh
 
-  #* mysh/internal/actions/help/sub_help.rb -- The mysh internal help sub commands.
+  # The mysh internal help sub commands.
   class HelpSubCommand < Action
 
-    #Setup a help command.
+    # Setup a help command.
     def initialize(name, description, file_name)
       super(name, description)
       @file_name = file_name
@@ -14,12 +14,13 @@ module Mysh
 
     #Execute a help command.
     def process_command(_args)
-      mysh "load #{(ACTIONS_PATH + 'help/' + @file_name).to_host_spec}"
+      path = MYSH_LIB + "mysh/help/" + @file_name
+      mysh "load #{path.to_host_spec}"
     end
 
   end
 
-  #Add help topics here. Don't sweat the order; they get sorted by name.
+  # Add help topics here. Don't sweat the order; they get sorted by name.
   #        Name        Description                            Help File
   help = [['',        'General help on mysh.',               'help.txt'   ],
           ['set',     'Help on mysh variables.',             'vars.txt'   ],
