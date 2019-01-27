@@ -1,8 +1,6 @@
 # coding: utf-8
 
 require_relative 'internal/actions/actions_path'
-require_relative 'internal/action'
-require_relative 'internal/action_pool'
 
 module Mysh
 
