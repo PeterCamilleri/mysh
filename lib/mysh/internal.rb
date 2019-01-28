@@ -1,7 +1,5 @@
 # coding: utf-8
 
-require_relative 'internal/actions/actions_path'
-
 module Mysh
 
   # Set up the command action pool.
@@ -22,5 +20,3 @@ end
 # Load up the internal actions!
 load_spec = MYSH_LIB + "mysh/internal/*.rb"
 Dir[load_spec].each {|file| require file }
-
-Dir[Mysh::Action::ACTIONS_PATH + '*.rb'].each {|file| require file }

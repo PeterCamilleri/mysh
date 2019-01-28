@@ -43,4 +43,4 @@ module Mysh
 end
 
 # Load in support for help sub-topics
-require_relative 'help/sub_help'
+require_relative 'support/sub_help'
