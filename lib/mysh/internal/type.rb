@@ -8,15 +8,16 @@ module Mysh
          'handlebars and mysh variables.'
 
   action = lambda do |input|
-    args = input.args
-    file_name = args.shift
+    count = 0
 
-    if file_name
+    input.args.each do |file_name|
+      puts file_name
       show_handlebar_file(file_name, binding)
-    else
-      fail "A text file must be specified."
+      count += 1
     end
+
+    fail "A text file must be specified." if count == 0
   end
 
-  COMMANDS.add_action(Action.new('type <file>', desc, &action))
+  COMMANDS.add_action(Action.new('type <files>', desc, &action))
 end
