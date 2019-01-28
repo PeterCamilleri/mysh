@@ -9,9 +9,10 @@ module Mysh
 
   action = lambda do |input|
     count = 0
+    args = input.args
 
-    input.args.each do |file_name|
-      puts file_name
+    args.each do |file_name|
+      puts file_name if args.length > 1
       Mysh.load_a_file(file_name)
       count += 1
     end

@@ -4,15 +4,30 @@
 module Mysh
 
   #Add the type command to the library.
-  desc = 'Display a text file with support for optional embedded ' +
+  desc = 'Display text files with support for optional support for embedded ' +
          'handlebars and mysh variables.'
 
   action = lambda do |input|
     count = 0
+    cooked = true
+    args = input.args
 
-    input.args.each do |file_name|
-      puts file_name
-      show_handlebar_file(file_name, binding)
+    args.each do |file_name|
+      puts file_name if args.length > 1
+
+      case file_name
+      when "-c"
+        cooked = false
+      when "+c"
+        cooked = true
+      else
+        if cooked
+          show_handlebar_file(file_name, binding)
+        else
+          puts IO.read(file_name)
+        end
+      end
+
       count += 1
     end
 
