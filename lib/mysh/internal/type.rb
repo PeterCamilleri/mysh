@@ -4,12 +4,12 @@
 module Mysh
 
   #Add the type command to the library.
-  desc = 'Display text files with support for optional support for embedded ' +
-         'handlebars and mysh variables.'
+  desc = 'Display one or more text files with optional support for ' +
+         'embedded handlebars and mysh variables.'
 
   action = lambda do |input|
     count = 0
-    cooked = true
+    cooked = MNV[:type] !~ /\A(raw|false|no|off)\z/i
     args = input.args
 
     args.each do |file_name|

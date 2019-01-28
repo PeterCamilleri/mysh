@@ -1,0 +1,28 @@
+Help: mysh type command summary:
+
+The type command is used to display one or more text files. The names of these
+files are the arguments to this command as are options that control how those
+files are processed before being displayed.
+
+Files can be handled in one of two modes:
+
+    raw    Files are displayed with no pre-processing
+    cooked Files are displayed after handlebars and shell variables have been
+           processed and the results inserted into the text.
+
+The default behavior of the type command is set by the \$type variable. This
+may take the values:
+
+    raw, off, false, no   = raw mode (the default value)
+    cooked, on, true, yes = cooked mode
+
+Within the type command, options can be used to override the defaults:
+
+    +c  Force cooked mode.
+    -c  Force raw mode.
+
+Note: This command contrasts with the load command which can also be used to
+      display text files. The difference is the the load command always expands
+      handlebars and shell variables.
+
+
