@@ -4,33 +4,41 @@
 module Mysh
 
   #Add the load command to the library.
-  desc = "Load a ruby program, mysh script, " +
-         "or text file into the mysh environment."
+  desc = "Load ruby programs, mysh scripts, " +
+         "or text files into the mysh environment."
 
   action = lambda do |input|
-    args = input.args
-    file_name = args.shift
+    count = 0
 
-    if file_name
-      file_ext = File.extname(file_name)
+    input.args.each do |file_name|
+      puts file_name
+      Mysh.load_a_file(file_name)
+      count += 1
+    end
 
-      if file_ext == '.mysh'
-        Mysh.process_file(file_name)
-        :internal
-      elsif file_ext == '.txt'
-        show_handlebar_file(file_name, binding)
-        :internal
-      elsif file_ext == '.rb'
-        load file_name
-        :internal
-      else
-        fail "Error: Unknown file type: #{file_name.inspect}"
-      end
-
+    if count > 0
+      :internal
     else
       fail "Error: A load file must be specified."
     end
   end
 
-  COMMANDS.add_action(Action.new('load <file>', desc, &action))
+  # Load a single file.
+  def self.load_a_file(file_name)
+    case File.extname(file_name)
+    when '.mysh'
+      Mysh.process_file(file_name)
+      :internal
+    when '.txt'
+      show_handlebar_file(file_name, binding)
+      :internal
+    when '.rb'
+      load file_name
+      :internal
+    else
+      fail "Error: Unknown file type: #{file_name.inspect}"
+    end
+  end
+
+  COMMANDS.add_action(Action.new('load <files>', desc, &action))
 end
