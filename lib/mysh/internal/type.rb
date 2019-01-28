@@ -5,7 +5,7 @@ module Mysh
 
   #Add the type command to the library.
   desc = 'Display one or more text files with optional support for ' +
-         'embedded handlebars and mysh variables.'
+         'embedded handlebars and mysh variables. See ?type for more.'
 
   action = lambda do |input|
     count = 0
