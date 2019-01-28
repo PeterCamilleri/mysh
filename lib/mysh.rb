@@ -28,7 +28,7 @@ require_relative 'mysh/shell_variables'
 require_relative 'mysh/pre_processor'
 require_relative 'mysh/process'
 require_relative 'mysh/globalize'
-require_relative 'mysh/init'
+require_relative 'mysh/load_init_file'
 require_relative 'mysh/expression'
 require_relative 'mysh/version'
 
