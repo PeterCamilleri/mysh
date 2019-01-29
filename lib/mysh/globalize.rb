@@ -32,8 +32,7 @@ class Object
     fetcher  ||= Gem::SpecFetcher.new
 
     if specs = fetcher.spec_for_dependency(dependency)[0][-1]
-      spec = specs[0]
-      spec && spec.version
+      specs[0].version
     else
       "<Not found in repository>"
     end
