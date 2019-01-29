@@ -4,13 +4,13 @@ require_relative 'shell_variables/shell_variable_store'
 require_relative 'shell_variables/shell_variable_keeper'
 require_relative 'shell_variables/evaluate'
 
-#* mysh/shell_variables.rb -- Adds support for mysh scripting variables.
+# Adds support for mysh scripting variables.
 module Mysh
 
-  #Set up some essential entries.
+  # Set up some essential entries.
   MNV['$'.to_sym] = "$"
 
-  #Set up some default values.
+  # Set up some default values.
   MNV[:debug]       = "false"
   MNV[:prompt]      = "mysh>"
   MNV[:post_prompt] = "$prompt"
