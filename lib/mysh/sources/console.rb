@@ -48,6 +48,7 @@ module Mysh
     # Get some actual user input!
     def get(parms={})
       parms[:history] = MNV[:history].extract_boolean
+      parms[:no_dups] = MNV[:no_dups].extract_boolean
       parms[:no_move] = MNV[:no_move].extract_boolean
 
       result = (input = Mysh.input).readline(parms)

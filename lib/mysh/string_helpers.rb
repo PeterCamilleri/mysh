@@ -5,7 +5,7 @@ class String
 
   # Extract Boolean data from this string.
   def extract_boolean
-    self !~ /\A(false|no|off)\z/i
+    self !~ /\A(false|no|off)?\z/i
   end
 
   # Make the file name fit the local system.

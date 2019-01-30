@@ -22,6 +22,7 @@ module Mysh
   MNV[:page_msg]    = "Press a key, a space, or q:"
 
   MNV[:history]     = "on"
+  MNV[:no_dups]     = "on"
   MNV[:no_move]     = "on"
 
   MNV[:d] = "{{ Time.now.strftime(MNV[:date_fmt]) }}"

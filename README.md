@@ -423,6 +423,7 @@ $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
 $history    | Is command line history enabled?
 $name       | The name given to this mysh session.
+$no_dups    | Suppress duplicate entries in the history buffer.
 $no_move    | Entries are not moved up when pulled from the command history.
 $page_height| The page height.
 $page_msg   | The paging message. Default is "Press a key, a space, or q:"
