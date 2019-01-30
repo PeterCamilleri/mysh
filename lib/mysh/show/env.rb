@@ -21,7 +21,7 @@ module Mysh
     # Get the info
     # Endemic Code Smells :reek:UtilityFunction
     def info
-      [["about",     Mysh::SUMMARY],
+      [["about",     Mysh::DESCRIPTION],
        ["version",   Mysh::VERSION],
        ["installed", Gem::Specification.find_all_by_name("mysh")
                                        .map{|s| s.version.to_s}

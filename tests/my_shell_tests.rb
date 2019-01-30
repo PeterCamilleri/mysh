@@ -11,6 +11,19 @@ class MyShellTester < Minitest::Test
   #Track mini-test progress.
   include MinitestVisible
 
+  def test_that_it_has_a_version_number
+    refute_nil(::Mysh::VERSION)
+    assert(::Mysh::VERSION.frozen?)
+    assert(::Mysh::VERSION.is_a?(String))
+    assert(/\A\d+\.\d+\.\d+/ =~ ::Mysh::VERSION)
+  end
+
+  def test_that_it_has_a_description
+    refute_nil(::Mysh::DESCRIPTION)
+    assert(::Mysh::DESCRIPTION.frozen?)
+    assert(::Mysh::DESCRIPTION.is_a?(String))
+  end
+
   def test_that_module_entities_exists
     assert_equal(String, Mysh::VERSION.class)
 

@@ -1,35 +1,35 @@
 # coding: utf-8
 
-#* mysh/internal/action.rb -- The framework of mysh internal actions.
+# The framework of mysh internal actions.
 module Mysh
 
-  #The mysh internal action class.
+  # The mysh internal action class.
   class Action
-    #The name of the action.
+    # The name of the action.
     attr_reader :name
 
-    #The description of the action.
+    # The description of the action.
     attr_reader :description
 
-    #Setup an internal action.
+    # Setup an internal action.
     def initialize(name = "", description = "", &action)
       @name, @description = name, description.in_array
 
       define_singleton_method(:process_command, &action) if block_given?
     end
 
-    #Parse the string and call the action.
+    # Parse the string and call the action.
     def process_quick_command(input)
       process_command(input.quick)
       :internal
     end
 
-    #Get information about the action.
+    # Get information about the action.
     def action_info
       [@name].concat(@description)
     end
 
-    #Get the name without any argument descriptions.
+    # Get the name without any argument descriptions.
     def short_name
       name.split[0] || ""
     end

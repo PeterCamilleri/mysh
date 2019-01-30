@@ -1,12 +1,12 @@
 # coding: utf-8
 
-#* mysh/internal/actions/help/sub_help.rb -- The mysh internal help sub commands.
+# The mysh internal help sub commands.
 module Mysh
 
-  #* mysh/internal/actions/help/sub_help.rb -- The mysh internal help sub commands.
+  # The mysh internal help sub commands.
   class HelpSubCommand < Action
 
-    #Setup a help command.
+    # Setup a help command.
     def initialize(name, description, file_name)
       super(name, description)
       @file_name = file_name
@@ -14,12 +14,13 @@ module Mysh
 
     #Execute a help command.
     def process_command(_args)
-      mysh "load #{(ACTIONS_PATH + 'help/' + @file_name).to_host_spec}"
+      path = MYSH_LIB + "mysh/help/" + @file_name
+      mysh "load #{path.to_host_spec}"
     end
 
   end
 
-  #Add help topics here. Don't sweat the order; they get sorted by name.
+  # Add help topics here. Don't sweat the order; they get sorted by name.
   #        Name        Description                            Help File
   help = [['',        'General help on mysh.',               'help.txt'   ],
           ['set',     'Help on mysh variables.',             'vars.txt'   ],
@@ -34,13 +35,14 @@ module Mysh
           ['usage',   'Help on mysh usage.',                 'usage.txt'  ],
           ['=',       'Help on ruby expressions.',           'expr.txt'   ],
           ['quick',   'Help on quick commands.',             'quick.txt'  ],
-          ['gls',     'Help on gls internal mysh command.',  'gls.txt'    ],
-          ['mls',     'Help on mls internal mysh command.',  'mls.txt'    ],
+          ['gls',     'Help on the gls command.',            'gls.txt'    ],
+          ['mls',     'Help on the mls command.',            'mls.txt'    ],
           ['!',       'Help on the history command.',        'history.txt'],
           ['history', 'Help on the history command.',        'history.txt'],
           ['kbd',     'Help on mysh keyboard mapping.',      'kbd.txt'    ],
           ['{{',      'Help on mysh handlebars.',            'hbar.txt'   ],
           ['init',    'Help on mysh initialization.',        'init.txt'   ],
+          ['type',    'Help on the type command.',           'type.txt'   ],
           ['types',   'Help on mysh file types.',            'types.txt'  ],
           ['help',    'This help on the help command.',      'h_o_h.txt'  ],
           ['?',       'This help on the help command.',      'h_o_h.txt'  ]

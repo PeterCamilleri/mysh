@@ -423,6 +423,7 @@ $debug      | Does the shell display additional debugging info (true/false)
 $h          | The home folder's path
 $history    | Is command line history enabled?
 $name       | The name given to this mysh session.
+$no_dups    | Suppress duplicate entries in the history buffer.
 $no_move    | Entries are not moved up when pulled from the command history.
 $page_height| The page height.
 $page_msg   | The paging message. Default is "Press a key, a space, or q:"
@@ -435,6 +436,7 @@ $r          | The location of the Ruby compiler.
 $s          | The location of the host command interpreter.
 $t          | The current time.
 $time_fmt   | The format for the time: "%H:%M"
+$type       | Does the type command operate in cooked or raw mode. Default is raw mode.
 $u          | The current user.
 $w          | The current working directory's path.
 
@@ -558,18 +560,19 @@ none       | General help on mysh.
 @          | Help on the show command.
 env        | Help on the show env command.
 gem        | Help on the show gem command.
-gls        | Help on gls internal mysh command.
+gls        | Help on the gls command.
 help       | This help on the help command.
 history    | Help on the history command.
 init       | Help on mysh initialization.
 kbd        | Help on mysh keyboard mapping.
 math       | Help on math functions.
-mls        | Help on mls internal mysh command.
+mls        | Help on the mls command.
 quick      | Help on quick commands.
 ruby       | Help on the show ruby command.
 set        | Help on mysh variables.
 show       | Help on the show command.
 term       | Help on the show term command.
+type       | Help on the type command.
 types      | Help on mysh file types.
 usage      | Help on mysh usage options.
 {{         | Help on mysh handlebars.
@@ -714,7 +717,7 @@ pwd              | Display the current working directory.
 say <stuff>      | Display the text in the command arguments.
 set <$name>=value| Set/query mysh variables.
 show <item>      | Display information about a part of mysh.
-type <file>      | Display a text file with support for optional embedded handlebars and mysh variables.
+type <file>      | Display one or more text files with optional support for embedded handlebars and shell variables.
 
 Notes:
 1. The notation {x} means that x is optional.

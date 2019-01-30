@@ -14,7 +14,7 @@ Brief summaries are also available on the following internal commands:
 
 {{ Mysh::COMMANDS.actions_info
                  .reject{|cmd| cmd[1]["See ?"]}
-                 .map{|cmd| cmd[0].split[0] }
+                 .map{|cmd| cmd[0].gsub(/<.*>/, "").strip }
                  .join(" ")
 }}
 

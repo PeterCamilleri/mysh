@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/quick.rb -- The mysh internal quick commands.
+# The mysh internal quick commands.
 module Mysh
 
-  #A hash of quick command short cuts and their actions.
+  # A hash of quick command short cuts and their actions.
   QUICK = Hash.new(lambda {|_input| false })
 
   QUICK['!'] = lambda {|input| HISTORY_COMMAND.process_quick_command(input)}
@@ -19,7 +19,7 @@ module Mysh
     :expression
   end
 
-  #Try to execute the inputing as a quick command.
+  # Try to execute the inputing as a quick command.
   def self.try_execute_quick(input)
     QUICK[input.quick_command].call(input)
   end

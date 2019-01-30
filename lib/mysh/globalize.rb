@@ -1,16 +1,15 @@
 # coding: utf-8
 
-#Monkey patches for mysh global entities.
+# Monkey patches for mysh global entities.
 class Object
 
-  #Make the environment variable store accessible everywhere.
+  # Make the environment variable store accessible everywhere.
   MNV = Mysh::MNV
 
   private
 
-  #The mysh equivalent of the system method.
-  #<br>Endemic Code Smells
-  #* :reek:UtilityFunction
+  # The mysh equivalent of the system method.
+  # Endemic Code Smells  :reek:UtilityFunction
   def mysh(str)
     Mysh.try_execute_command(str)
   end
@@ -33,8 +32,7 @@ class Object
     fetcher  ||= Gem::SpecFetcher.new
 
     if specs = fetcher.spec_for_dependency(dependency)[0][-1]
-      spec = specs[0]
-      spec && spec.version
+      specs[0].version
     else
       "<Not found in repository>"
     end

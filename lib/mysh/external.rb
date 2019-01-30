@@ -1,11 +1,10 @@
 # coding: utf-8
 
-#* mysh/external.rb -- Support for executing external files.
+# Support for executing external files.
 module Mysh
 
-  #Try to execute an external file.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
+  # Try to execute an external file.
+  # Endemic Code Smells   :reek:TooManyStatements
   def self.try_execute_external(input)
     args = input.parsed
     file_name = args.shift

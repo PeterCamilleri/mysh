@@ -7,14 +7,15 @@ class String
   def eval_handlebars(evaluator=$mysh_exec_binding)
     string, text, buffer = self, "", []
 
+    # Translate the string with embedded code into Ruby code.
     until string.empty?
       text, code, string = string.partition(/{{.*?}}/m)
 
-      if not text.empty?
+      unless text.empty?
         text = text.gsub(/\\[{}]/) {|found| found[1]}
         buffer << "_m_<<#{text.inspect};"
-      elsif buffer.empty?
-        buffer << ""
+      else
+        buffer << "" if buffer.empty?
       end
 
       unless code.empty?
@@ -26,6 +27,7 @@ class String
       end
     end
 
+    # Evaluate the result of the translation.
     if buffer.length > 1
       evaluator.eval("_m_ = '';" + buffer.join + "_m_")
     else
