@@ -57,9 +57,8 @@ module Mysh
       report.puts_format_output_bullets
     end
 
-    #Get detailed information on a gem specification.
-    #<br>Endemic Code Smells
-    #* :reek:UtilityFunction
+    # Get detailed information on a gem specification.
+    # Endemic Code Smells   :reek:UtilityFunction
     def info(spec)
       [["name",        spec.name],
        ["version",     spec.version],
