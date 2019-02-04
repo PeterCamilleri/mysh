@@ -1,19 +1,19 @@
 # coding: utf-8
 
-#* mysh/internal/actions/command_line/usage.rb -- The mysh help command usage.
+# The mysh help command usage.
 module Mysh
 
-  #* mysh/internal/actions/command_line/usage.rb -- The mysh help command usage.
+  # The mysh help command usage.
   class UsageOption < CommandOption
 
-    #Execute the help command line option. (Punt to error handler with no msg)
+    # Execute the help command line option. (Punt to error handler with no msg)
     def pre_boot(_args)
       raise MyshUsage
     end
 
   end
 
-  #Add the usage command line option to the library.
+  # Add the usage command line option to the library.
   desc = 'Display mysh usage info and exit.'
 
   USAGE = UsageOption.new('--help', desc)

@@ -1,18 +1,18 @@
 # coding: utf-8
 
-#* mysh/internal/actions/gls.rb -- The mysh gls (gem ls) command.
+# The mysh gls (gem ls) command.
 module Mysh
 
-  #* mysh/internal/actions/gls.rb -- The mysh gls (gem ls) command.
+  # The mysh gls (gem ls) command.
   class GlsCommand < Action
 
-    #Set up this command.
+    # Set up this command.
     def initialize(*args)
       super
       @report = @mask = @specs = nil
     end
 
-    #Execute the gls command.
+    # Execute the gls command.
     def process_command(input)
       process_args(input.args)
       gather_gems

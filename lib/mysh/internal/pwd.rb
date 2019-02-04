@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* mysh/internal/actions/pwd.rb -- The mysh internal pwd command.
+# The mysh internal pwd command.
 module Mysh
 
   desc = 'Display the current working directory.'

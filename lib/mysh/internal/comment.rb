@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/comment.rb -- A mysh internal comment.
+# A mysh internal comment.
 module Mysh
 
-  #Add comments to the library.
+  # Add comments to the library.
   desc = 'A mysh comment. No action taken'
   action = lambda {|_input| :internal}
 

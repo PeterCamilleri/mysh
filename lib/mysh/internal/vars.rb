@@ -1,24 +1,24 @@
 # coding: utf-8
 
-#* mysh/internal/actions/vars.rb -- The mysh internal variables commands.
+# The mysh internal variables commands.
 module Mysh
 
-  #* mysh/internal/actions/vars.rb -- The mysh internal variable commands.
+  # The mysh internal variable commands.
   class VarsCommand < Action
 
-    #The mysh variable parsing regex.
+    # The mysh variable parsing regex.
     VAR_EXP = %r{(?<name>   [a-z][a-z0-9_]*){0}
                  (?<equals> =){0}
                  (?<value>  \S.*){0}
                  \$ (\g<name> \s* (\g<equals> \s* \g<value>?)?)?}x
 
-    #Setup an internal action.
+    # Setup an internal action.
     def initialize(name, description)
       @var_name = @equals = @value = nil
       super(name, description)
     end
 
-    #Execute a command against the internal mysh variables.
+    # Execute a command against the internal mysh variables.
     def process_command(input)
       if (match = VAR_EXP.match(input.raw_body))
         @var_name, @equals, @value = match[:name], match[:equals], match[:value]
@@ -30,7 +30,7 @@ module Mysh
       :internal
     end
 
-    #Do the actual work here.
+    # Do the actual work here.
     def do_command
       sym = @var_name.to_sym if @var_name
 
@@ -45,7 +45,7 @@ module Mysh
       end
     end
 
-    #Display all variables neatly.
+    # Display all variables neatly.
     def show_all_values
       puts (MNV.keys - ['$'.to_sym])
              .sort
@@ -55,7 +55,7 @@ module Mysh
 
   end
 
-  #The show command action object.
+  # The set command action object.
   desc = 'Set/query mysh variables. See ?set for more.'
   COMMANDS.add_action(VarsCommand.new('set <$name>=value', desc))
 end
