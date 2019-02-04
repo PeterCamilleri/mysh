@@ -5,6 +5,7 @@
 require 'pp'
 require 'English'
 require 'in_array'
+require 'insouciant'
 require 'pause_output'
 require 'format_output'
 require 'mini_readline'
