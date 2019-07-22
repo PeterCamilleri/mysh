@@ -19,13 +19,6 @@ class Object
     raise MyshExit
   end
 
-  # Run some code with no wuccas.
-  def insouciant
-    yield
-  rescue => err
-    err.to_s
-  end
-
   # Get the latest version for the named gem. Patched code.
   def latest_version_for(name, fetcher=nil)
     dependency = Gem::Dependency.new(name)

@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/elapsed.rb -- The mysh internal elapsed command.
+# The mysh internal elapsed command.
 module Mysh
 
-  #Add the elapsed commands to the library.
+  # Add the elapsed commands to the library.
   desc = 'Execute a command and then display the elapsed time. See ?% for more.'
 
   action = lambda do |input|

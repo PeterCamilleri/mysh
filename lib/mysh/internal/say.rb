@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#* mysh/internal/actions/say.rb -- A mysh internal say command.
+# The mysh internal say command.
 module Mysh
 
   #Add says to the library.

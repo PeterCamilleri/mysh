@@ -1,11 +1,10 @@
 # coding: utf-8
 
-#* mysh/sources/parse.rb -- mysh general parser.
+# mysh general parser.
 module Mysh
 
-  #Parse a string into components.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
+  # Parse a string into components.
+  # Endemic Code Smells   :reek:TooManyStatements
   def self.parse_args(input)
     result, read_point = [], input.chars.each
 
@@ -24,9 +23,8 @@ module Mysh
 
   private
 
-  #Get a string parameter.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
+  # Get a string parameter.
+  # Endemic Code Smells   :reek:TooManyStatements
   def self.get_string(read_point)
     result = ""
 
@@ -41,9 +39,8 @@ module Mysh
     [result]
   end
 
-  #Get a parameter.
-  #<br>Endemic Code Smells
-  #* :reek:TooManyStatements
+  # Get a parameter.
+  # Endemic Code Smells   :reek:TooManyStatements
   def self.get_parameter(first_char, read_point)
     result = first_char
 

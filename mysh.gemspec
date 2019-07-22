@@ -36,4 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency     'format_output', "~> 0.1.0"
   spec.add_runtime_dependency     'vls', "~> 0.4.1"
   spec.add_runtime_dependency     'in_array', "~> 0.1.8"
+  spec.add_runtime_dependency     'insouciant', "~> 0.1.0"
 end

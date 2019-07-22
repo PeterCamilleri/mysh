@@ -2,10 +2,10 @@
 
 require 'vls'
 
-#* mysh/internal/actions/mls.rb -- The mysh module ls command.
+# The mysh module ls command.
 module Mysh
 
-  #Add the mls command to the library.
+  # Add the mls command to the library.
   desc = 'Display modules with version info. See ?mls for more.'
 
   action = lambda do |input|

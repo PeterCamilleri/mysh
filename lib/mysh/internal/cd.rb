@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/cd.rb -- The mysh internal cd command.
+# The mysh internal cd command.
 module Mysh
 
-  #Add the cd command to the library.
+  # Add the cd command to the library.
   desc = 'Change directory to the optional <dir> parameter ' +
          'or display the current working directory.'
 

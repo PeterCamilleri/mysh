@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/type.rb -- The mysh type command.
+# The mysh type command.
 module Mysh
 
-  #Add the type command to the library.
+  # Add the type command to the library.
   desc = 'Display one or more text files with optional support for ' +
          'embedded handlebars and shell variables. See ?type for more.'
 

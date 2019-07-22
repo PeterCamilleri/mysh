@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/load.rb -- The mysh load command.
+# The mysh load command.
 module Mysh
 
-  #Add the load command to the library.
+  # Add the load command to the library.
   desc = "Load ruby programs, mysh scripts, " +
          "or text files into the mysh environment."
 

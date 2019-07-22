@@ -1,9 +1,9 @@
 # coding: utf-8
 
-#* mysh/internal/actions/history.rb -- The mysh internal history command.
+# The mysh internal history command.
 module Mysh
 
-  #* mysh/internal/actions/history.rb -- The mysh internal history command.
+  # The mysh internal history command.
   class HistoryCommand < Action
 
     #Set up this command.
@@ -12,11 +12,11 @@ module Mysh
       @args = @history = nil
     end
 
-    #Execute the history command.
+    # Execute the history command.
     def process_command(input)
       @args, @history = input.args, Mysh.input.history
 
-      #The history command should not be part of the history.
+      # The history command should not be part of the history.
       @history.pop
 
       pull_index || clear_history || show_history
@@ -24,7 +24,7 @@ module Mysh
 
     private
 
-    #Deal with history index arguments
+    # Deal with history index arguments
     def pull_index
       index = @args[0].to_i
 
@@ -35,7 +35,7 @@ module Mysh
       end
     end
 
-    #Clear the history buffer.
+    # Clear the history buffer.
     def clear_history
       if @args[0] == 'clear'
         @history.clear
@@ -44,7 +44,7 @@ module Mysh
       end
     end
 
-    #Just show the history.
+    # Just show the history.
     def show_history
       pattern = Regexp.new(@args[0] || /./)
 
@@ -55,10 +55,11 @@ module Mysh
 
   end
 
-  #Add the history commands to the library.
+  # Add the history commands to the library.
   desc = 'Display the mysh command history. See ?! for more.'
   COMMANDS.add_action(HistoryCommand.new('history <arg>', desc))
-  #The history command action object.
+
+  # The history command action object.
   HISTORY_COMMAND = HistoryCommand.new('!<arg>', desc)
   COMMANDS.add_action(HISTORY_COMMAND)
 end
