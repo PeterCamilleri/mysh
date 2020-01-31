@@ -23,8 +23,8 @@ $$date_fmt    The format for the date: "%Y-%m-%d". ie: 2017-01-09
 $$debug       Does the shell display additional debugging info (true/false)
 $$h           The home folder's path
 $$name        The name given to this mysh session.
-$$post_prompt The prompt used when a line is continued with a trailing \\
-             character.
+$$post_prompt The prompt used when a line is continued with a trailing \
+             character. By default this just a single \
 $$pre_prompt  A prompt string displayed before the actual command prompt.
              Delete the pre_prompt variable to disable pre-prompting.
 $$prompt      The user prompt.
